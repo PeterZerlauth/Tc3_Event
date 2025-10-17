@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_Format" Id="{c74a83d1-7aa5-43e9-937a-1b3406f838e2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_Format : STRING(255)
+VAR_INPUT
+    sMessage:				STRING(255);
+    sArguments:				STRING(255);	// Arguments are separated by $R 
+END_VAR
+VAR
+    sArg:					STRING; 	// single argument
+    nPosition:				INT;         	// Position of the $R delimiter
+    nPlaceholder:			INT;         	// Position of the %s placeholder
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF sArguments = '' THEN
+    RETURN;
+END_IF
+
+// replace placeholders with arguments
+F_Format := sMessage;
+nPosition := FIND('$R', sArguments);
+WHILE nPosition > 0 DO
+    
+    sArg := LEFT(sArguments, nPosition - 1);
+    
+    nPlaceholder := FIND(F_Format, '%s');
+    IF nPlaceholder > 0 THEN
+        F_Format := REPLACE(F_Format, sArg, nPlaceholder, 2);
+    ELSE
+        RETURN;
+    END_IF
+	
+    sArguments := DELETE(sArguments, 1, nPosition);
+    nPosition := FIND('$R', sArguments);
+    
+END_WHILE]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="I_Logger" Id="{8d10f800-b621-4e55-9c3b-f2a551bf051a}">
+    <Declaration><![CDATA[INTERFACE I_Logger
+]]></Declaration>
+  </Itf>
+</TcPlcObject>

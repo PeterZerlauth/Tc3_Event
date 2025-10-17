@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="MAIN" Id="{19c7fd4e-92ee-4c48-b527-6576c9627f78}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+		fbLogging:			FB_Logging;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbLogging();
+
+
+fbLogging.M_Log(E_LogLevel.Info, 1, 'source2', 'Test1', '');
+// fbLogging.M_Log(E_LogLevel.Error, 1, 'source', 'Test', '');]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
