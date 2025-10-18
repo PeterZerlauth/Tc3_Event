@@ -24,14 +24,14 @@ IF bInfo THEN
 	fbLogger.M_Info(2276475569, 'Info message');END_IF
 
 IF bWarning THEN
-	fbLogger.M_Info(2276475569, 'Info message');
+
 	fbLogger.M_Info(2276475569, 'Info message');
 	fbLogger.M_Warning(1791326186, 'Warning message');
 	fbLogger.M_Error(2621541999, 'Error message');
 END_IF
 
 IF bError THEN
-
+	fbLogger.M_Info(2276475569, 'Info message');
 END_IF
 
 IF bCritical THEN

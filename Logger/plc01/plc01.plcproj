@@ -16,6 +16,28 @@
     <Implicit_KindOfTask>{145585bd-8529-4399-848e-c9d48111167f}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{7bdc3684-1de6-4b15-9a28-ec346817fd31}</Implicit_Jitter_Distribution>
     <LibraryReferences>{1e063326-ecdb-47ef-86ef-95e165709f93}</LibraryReferences>
+    <DeploymentEvents>
+      <Events>
+        <Event>
+          <CommandType>Execute</CommandType>
+          <DeploymentType>ActivateConfiguration</DeploymentType>
+          <Command1>powershell.exe -ExecutionPolicy Bypass -NoProfile -WindowStyle Hidden -File "%SOLUTIONPATH%\script\export.ps1"</Command1>
+          <Command2 />
+        </Event>
+        <Event>
+          <CommandType>Copy</CommandType>
+          <DeploymentType>ActivateConfiguration</DeploymentType>
+          <Command1 />
+          <Command2 />
+        </Event>
+        <Event>
+          <CommandType>Copy</CommandType>
+          <DeploymentType>ActivateConfiguration</DeploymentType>
+          <Command1 />
+          <Command2 />
+        </Event>
+      </Events>
+    </DeploymentEvents>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DUTs\E_LogLevel.TcDUT">
