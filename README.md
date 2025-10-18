@@ -24,7 +24,7 @@
 
 ## Basic Usage
 
-```delphi
+```ada
 PROGRAM MAIN
 VAR
     fbLogging        : FB_Logging;
