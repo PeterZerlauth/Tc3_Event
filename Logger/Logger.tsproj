@@ -2,31 +2,31 @@
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.19">
 	<DataTypes>
 		<DataType>
-			<Name GUID="{AAC67BA7-F5FA-4003-8647-3CF9CA1CC3B0}" PersistentType="true">TcLogging</Name>
+			<Name GUID="{366E346C-09BD-4777-AF29-EAE84C4927DE}" PersistentType="true">TcLogging</Name>
 			<DisplayName TxtId=""><![CDATA[TcLogging]]></DisplayName>
 			<EventId>
 				<Name Id="1">Verbose</Name>
-				<DisplayName TxtId=""><![CDATA[Verbose {0}]]></DisplayName>
+				<DisplayName TxtId=""><![CDATA[Verbose: "{0}"]]></DisplayName>
 				<Severity>Verbose</Severity>
 			</EventId>
 			<EventId>
 				<Name Id="2">Info</Name>
-				<DisplayName TxtId=""><![CDATA[Info {0}]]></DisplayName>
+				<DisplayName TxtId=""><![CDATA[Info: "{0}"]]></DisplayName>
 				<Severity>Info</Severity>
 			</EventId>
 			<EventId>
 				<Name Id="3">Warning</Name>
-				<DisplayName TxtId=""><![CDATA[Warning {0}]]></DisplayName>
+				<DisplayName TxtId=""><![CDATA[Warning: "{0}"]]></DisplayName>
 				<Severity>Warning</Severity>
 			</EventId>
 			<EventId>
 				<Name Id="4">Error</Name>
-				<DisplayName TxtId=""><![CDATA[Error {0}]]></DisplayName>
+				<DisplayName TxtId=""><![CDATA[Error: "{0}"]]></DisplayName>
 				<Severity>Warning</Severity>
 			</EventId>
 			<EventId>
 				<Name Id="5">Critical</Name>
-				<DisplayName TxtId=""><![CDATA[Critical {0}]]></DisplayName>
+				<DisplayName TxtId=""><![CDATA[Critical: "{0}"]]></DisplayName>
 				<Severity>Critical</Severity>
 			</EventId>
 			<Hides>
@@ -46,6 +46,11 @@
 				<Hide GUID="{65EA632A-052D-4D21-8AA4-01980D3EA085}"/>
 				<Hide GUID="{12C4B274-66F6-4F37-8DE3-B7E658FA3B7C}"/>
 				<Hide GUID="{08A3C855-94A2-4EA6-84F5-918A9ADB1D91}"/>
+				<Hide GUID="{AAC67BA7-F5FA-4003-8647-3CF9CA1CC3B0}"/>
+				<Hide GUID="{C806A3CF-1AE2-435C-A404-A6D1DF66BFC3}"/>
+				<Hide GUID="{47A03CE2-28BD-49CE-9466-223052854AB7}"/>
+				<Hide GUID="{636A1E57-1F2E-450A-AA93-443F2DCBF706}"/>
+				<Hide GUID="{DFD6340F-2E50-4283-A0CC-36A00EEFB312}"/>
 			</Hides>
 		</DataType>
 	</DataTypes>
@@ -60,7 +65,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{90CE2844-1A87-435D-8A79-619DCCF6A970}" Name="plc01" PrjFilePath="plc01\plc01.plcproj" TmcFilePath="plc01\plc01.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{E5B3CA80-3663-067C-BF36-AE71DFFAB61E}" TmcPath="plc01\plc01.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{9B73B85B-9379-4E54-14D8-B116908AE726}" TmcPath="plc01\plc01.tmc">
 					<Name>plc01 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

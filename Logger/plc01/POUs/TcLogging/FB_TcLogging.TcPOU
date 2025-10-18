@@ -57,8 +57,6 @@ END_IF
 fbSourceInfo.Clear();
 fbSourceInfo.sName:= sSource;
 
-fbMsg.ipArguments.Clear().AddString(sMessage);
-
 CASE eLogLevel OF
 	E_LogLevel.Verbose:
     	fbMsg.CreateEx(TC_EVENTS.TcLogging.Verbose, fbSourceInfo); 	
@@ -76,6 +74,8 @@ CASE eLogLevel OF
     	fbMsg.CreateEx(TC_EVENTS.TcLogging.Critical, fbSourceInfo); 
 		
 END_CASE
+sMessage:= F_Format(sMessage, sArguments);
+fbMsg.ipArguments.Clear().AddString(sMessage);
 
 fbMsg.Send(0);]]></ST>
       </Implementation>
