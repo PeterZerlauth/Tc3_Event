@@ -4,13 +4,13 @@
     <Declaration><![CDATA[// Provide logging 
 FUNCTION_BLOCK FB_Logging IMPLEMENTS I_Logging
 VAR_INPUT
-	eLogLevel:				E_LogLevel:= E_LogLevel.Debug;
+	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 END_VAR
 VAR_OUTPUT
     bInfo:					BOOL;
-    bWarn:					BOOL;
+    bWarning:				BOOL;
     bError:					BOOL;
-    bFatal:					BOOL;
+    bCritical:				BOOL;
 END_VAR
 VAR
 	aMessages:				ARRAY[0..99] OF ST_LogMessage; // Message store
@@ -31,9 +31,9 @@ WHILE nIndex < nMessages DO
         MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_LogMessage) * (nMessages - nIndex));
         nMessages := nMessages - 1;
 		bInfo:=	FALSE;
-		bWarn:=	FALSE;
+		bWarning:=	FALSE;
 		bError:= FALSE;
-		bFatal:= FALSE;
+		bCritical:= FALSE;
     END_IF
 END_WHILE]]></ST>
     </Implementation>
@@ -78,14 +78,14 @@ CASE eLogLevel OF
 	E_LogLevel.Info:
     	bInfo:= TRUE;
 		
-	E_LogLevel.Warn:		
-    	bWarn:= TRUE;
+	E_LogLevel.Warning:		
+    	bWarning:= TRUE;
 		
 	E_LogLevel.Error:
     	bError:= TRUE;
 		
-	E_LogLevel.Fatal:
-    	bFatal:= TRUE;
+	E_LogLevel.Critical:
+    	bCritical:= TRUE;
 		
 	ELSE
 		;

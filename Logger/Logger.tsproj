@@ -1,5 +1,54 @@
 <?xml version="1.0"?>
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.19">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{AAC67BA7-F5FA-4003-8647-3CF9CA1CC3B0}" PersistentType="true">TcLogging</Name>
+			<DisplayName TxtId=""><![CDATA[TcLogging]]></DisplayName>
+			<EventId>
+				<Name Id="1">Verbose</Name>
+				<DisplayName TxtId=""><![CDATA[Verbose {0}]]></DisplayName>
+				<Severity>Verbose</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="2">Info</Name>
+				<DisplayName TxtId=""><![CDATA[Info {0}]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="3">Warning</Name>
+				<DisplayName TxtId=""><![CDATA[Warning {0}]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="4">Error</Name>
+				<DisplayName TxtId=""><![CDATA[Error {0}]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="5">Critical</Name>
+				<DisplayName TxtId=""><![CDATA[Critical {0}]]></DisplayName>
+				<Severity>Critical</Severity>
+			</EventId>
+			<Hides>
+				<Hide GUID="{E7070E72-987B-4626-BC34-EA41AB25311B}"/>
+				<Hide GUID="{1CC1C39F-C332-4051-8AD0-EF0528718898}"/>
+				<Hide GUID="{74797750-757F-424D-A362-81C6BF7C65A0}"/>
+				<Hide GUID="{031F14C6-52C9-4E25-B5E4-604E38923F7A}"/>
+				<Hide GUID="{144496AA-4E13-49B6-A7EF-55E6E3D24100}"/>
+				<Hide GUID="{83E0EE1F-6FC1-4698-A892-824388E7CCF6}"/>
+				<Hide GUID="{3342A6F6-7E28-4A71-A44B-064F45D8C31E}"/>
+				<Hide GUID="{454EF50C-6308-495E-8D8C-48EB65ED4454}"/>
+				<Hide GUID="{B1DD928B-5854-4F85-9150-DE317FF8E436}"/>
+				<Hide GUID="{ED9686D0-DC9B-4B0C-8C73-696933B513B4}"/>
+				<Hide GUID="{5E3509CC-18E8-4BEE-B52D-5EEBEFDC33C6}"/>
+				<Hide GUID="{5F36E389-CD42-4ED7-B91C-B1643B176C5D}"/>
+				<Hide GUID="{1D704178-4FB0-47B0-8DF1-C873F43D818C}"/>
+				<Hide GUID="{65EA632A-052D-4D21-8AA4-01980D3EA085}"/>
+				<Hide GUID="{12C4B274-66F6-4F37-8DE3-B7E658FA3B7C}"/>
+				<Hide GUID="{08A3C855-94A2-4EA6-84F5-918A9ADB1D91}"/>
+			</Hides>
+		</DataType>
+	</DataTypes>
 	<Project ProjectGUID="{1D2625EF-8024-4597-B02E-DC91CE8D752E}" Target64Bit="true" ShowHideConfigurations="#x6">
 		<System>
 			<Settings MaxCpus="64" NonWinCpus="63"/>
@@ -11,7 +60,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{90CE2844-1A87-435D-8A79-619DCCF6A970}" Name="plc01" PrjFilePath="plc01\plc01.plcproj" TmcFilePath="plc01\plc01.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{872EC2E7-322E-2CA0-E40F-7119225FEBBC}" TmcPath="plc01\plc01.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{E5B3CA80-3663-067C-BF36-AE71DFFAB61E}" TmcPath="plc01\plc01.tmc">
 					<Name>plc01 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

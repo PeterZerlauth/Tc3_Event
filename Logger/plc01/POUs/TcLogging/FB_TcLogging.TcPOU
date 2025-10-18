@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_TcLogging" Id="{292e637e-4d7a-4db7-abeb-2b010315ee0d}" SpecialFunc="None">
+    <Declaration><![CDATA[// Provide logging 
+FUNCTION_BLOCK FB_TcLogging IMPLEMENTS I_Logging
+VAR_INPUT
+	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	iLogging:				I_Logging;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="M_Attach" Id="{3f88776c-53a0-4184-9466-1323781c8a3f}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
+VAR_INPUT
+	iLogging:				I_Logging;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF THIS^.iLogging = 0 THEN
+	THIS^.iLogging:= iLogging;
+	M_Attach:= TRUE;
+ELSIF THIS^.iLogging = iLogging THEN
+	// already inside
+	M_Attach:= TRUE;
+	RETURN;
+ELSE
+	// redirect to next logging function block
+	THIS^.iLogging.M_Attach(iLogging);
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Log" Id="{fbcda6eb-ae6d-4cd1-8b07-21ee1ce3950e}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
+VAR_INPUT
+	eLogLevel:			E_LogLevel;
+	nID:				UDINT;
+	sSource:			STRING(255);
+	sMessage:			STRING(255);
+	sArguments:			STRING(255);
+END_VAR
+VAR
+	fbMsg:				FB_TcMessage; 
+	fbSourceInfo:		FB_TcSourceInfo;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF THIS^.eLogLevel > eLogLevel THEN
+	M_Log:= TRUE;
+	RETURN;
+END_IF
+
+fbSourceInfo.Clear();
+fbSourceInfo.sName:= sSource;
+
+fbMsg.ipArguments.Clear().AddString(sMessage);
+
+CASE eLogLevel OF
+	E_LogLevel.Verbose:
+    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Verbose, fbSourceInfo); 	
+
+	E_LogLevel.Info:
+    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Info, fbSourceInfo); 
+		
+	E_LogLevel.Warning:		
+    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Warning, fbSourceInfo); 
+		
+	E_LogLevel.Error:
+    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Error, fbSourceInfo); 
+		
+	E_LogLevel.Critical:
+    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Critical, fbSourceInfo); 
+		
+END_CASE
+
+fbMsg.Send(0);]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

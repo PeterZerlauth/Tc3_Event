@@ -4,12 +4,13 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	fbLogging:			FB_Logging;
+	fbTcLogging:		FB_TcLogging;
 	fbLogger:			FB_Logger;
 	bDebug:				BOOL;
 	bInfo:				BOOL;
 	bWarning:			BOOL;
 	bError:				BOOL;
-	bFatal:				BOOL;
+	bCritical:				BOOL;
 END_VAR
 
 // toDo 
@@ -17,6 +18,8 @@ END_VAR
 // * integrate a file logger]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbLogging();
+fbLogging.M_Attach(fbTcLogging);
+fbTcLogging();
 
 fbLogger.iLogging:= fbLogging;
 
@@ -33,15 +36,15 @@ IF bInfo THEN
 END_IF
 
 IF bWarning THEN
-	fbLogger.M_Warn(0, 'Warn message');
+	fbLogger.M_Warning(0, 'Warn message');
 END_IF
 
 IF bError THEN
 	fbLogger.M_Error(0, 'Error message');
 END_IF
 
-IF bFatal THEN
-	fbLogger.M_Fatal(0, 'Fatal message');
+IF bCritical THEN
+	fbLogger.M_Critical(0, 'Fatal message');
 END_IF]]></ST>
     </Implementation>
   </POU>

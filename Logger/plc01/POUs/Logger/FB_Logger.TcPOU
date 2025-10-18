@@ -101,6 +101,21 @@ sValue:= CONCAT(sValue, '$R');				// add separator
 sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
       </Implementation>
     </Method>
+    <Method Name="M_Critical" Id="{accc1bfb-8e8e-4805-9e0b-d8677c60b196}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Critical : BOOL
+VAR_INPUT
+	nID:				UDINT;
+	sMessage:			STRING(255);
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF iLogging = 0 THEN
+	RETURN;
+END_IF
+
+iLogging.M_Log(E_LogLevel.Critical, nID, sInstancePath, sMessage, sArguments);
+sArguments:= '';]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="M_Debug" Id="{de67a697-7e72-4e4b-b32b-4b561494e424}">
       <Declaration><![CDATA[METHOD PUBLIC M_Debug : BOOL
 VAR_INPUT
@@ -112,7 +127,7 @@ END_VAR
 	RETURN;
 END_IF
 
-iLogging.M_Log(E_LogLevel.Debug, 0, sInstancePath, sMessage, sArguments);
+iLogging.M_Log(E_LogLevel.Verbose, 0, sInstancePath, sMessage, sArguments);
 sArguments:= '';]]></ST>
       </Implementation>
     </Method>
@@ -132,21 +147,6 @@ iLogging.M_Log(E_LogLevel.Error, nID, sInstancePath, sMessage, sArguments);
 sArguments:= '';]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_Fatal" Id="{accc1bfb-8e8e-4805-9e0b-d8677c60b196}">
-      <Declaration><![CDATA[METHOD PUBLIC M_Fatal : BOOL
-VAR_INPUT
-	nID:				UDINT;
-	sMessage:			STRING(255);
-END_VAR]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[IF iLogging = 0 THEN
-	RETURN;
-END_IF
-
-iLogging.M_Log(E_LogLevel.Fatal, nID, sInstancePath, sMessage, sArguments);
-sArguments:= '';]]></ST>
-      </Implementation>
-    </Method>
     <Method Name="M_Info" Id="{2ea5a01b-eb1e-4166-8c91-90bf5bd9cfc5}">
       <Declaration><![CDATA[METHOD PUBLIC M_Info : BOOL
 VAR_INPUT
@@ -162,8 +162,8 @@ iLogging.M_Log(E_LogLevel.Info, nID, sInstancePath, sMessage, sArguments);
 sArguments:= '';]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_Warn" Id="{a6eef191-b99b-4a50-95aa-3b8f792c1e41}">
-      <Declaration><![CDATA[METHOD PUBLIC M_Warn : BOOL
+    <Method Name="M_Warning" Id="{a6eef191-b99b-4a50-95aa-3b8f792c1e41}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Warning : BOOL
 VAR_INPUT
 	nID:				UDINT;
 	sMessage:			STRING(255);
@@ -173,7 +173,7 @@ END_VAR]]></Declaration>
 	RETURN;
 END_IF
 
-iLogging.M_Log(E_LogLevel.Warn, nID, sInstancePath, sMessage, sArguments);
+iLogging.M_Log(E_LogLevel.Warning, nID, sInstancePath, sMessage, sArguments);
 sArguments:= '';]]></ST>
       </Implementation>
     </Method>
