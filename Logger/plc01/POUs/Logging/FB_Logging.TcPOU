@@ -30,13 +30,12 @@ WHILE nIndex < nMessages DO
 	ELSE
         MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_LogMessage) * (nMessages - nIndex));
         nMessages := nMessages - 1;
+		bInfo:=	FALSE;
+		bWarn:=	FALSE;
+		bError:= FALSE;
+		bFatal:= FALSE;
     END_IF
-END_WHILE
-
-bInfo:=	FALSE;
-bWarn:=	FALSE;
-bError:= FALSE;
-bFatal:= FALSE;]]></ST>
+END_WHILE]]></ST>
     </Implementation>
     <Method Name="M_Attach" Id="{f57e9ab0-821c-4fb8-ac2e-06aed1be4c34}">
       <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
