@@ -52,7 +52,8 @@ fbLogger.M_Verbose('Process completed: %s %s');
 fbLogger.M_Info(2276475569, 'System initialized');
 
 // Warning with context
-fbLogger.M_Warning(1791326186, 'High temperature detected');
+fbLogger.M_AddREAL(33.1345321, 3);
+fbLogger.M_Warning(1791326186, 'High temperature detected < %s °C');
 
 // Error reporting
 fbLogger.M_Error(2621541999, 'Motor communication failed');
