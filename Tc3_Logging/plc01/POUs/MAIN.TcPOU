@@ -12,6 +12,7 @@ VAR
 	bWarning:			BOOL;
 	bError:				BOOL;
 	bCritical:			BOOL;
+	sTest:				String;
 END_VAR
 
 // toDo 
@@ -32,24 +33,30 @@ fbLogger();
 IF bVerbose THEN
 	fbLogger.M_AddINT(134052566194980000);
 	fbLogger.M_AddSTRING('mm');
-	fbLogger.M_Verbose('Verbose message %s %s');
+	fbLogger.M_Verbose('message %s %s');
 END_IF
 
 IF bInfo THEN
-	fbLogger.M_Info(2276475569, 'Info message');
+	fbLogger.M_AddREAL(33.134581234, 3);
+	fbLogger.M_AddSTRING('mm');
+	fbLogger.M_Info(2263151477, 'message %s %s');
 END_IF
 
 IF bWarning THEN
-	fbLogger.M_Warning(1791326186, 'Warning message');
+	fbLogger.M_Warning(292272521, 'message');
 END_IF
 
 IF bError THEN
-	fbLogger.M_Error(2621541999, 'Error message');
+	fbLogger.M_Error(292272521, 'message');
 END_IF
 
 IF bCritical THEN
-	fbLogger.M_Critical(2626343866, 'Critical message');
-END_IF]]></ST>
+	fbLogger.M_Critical(292272521, 'message');
+END_IF
+
+
+sTest:= F_GetSymbolName (fbLogger);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

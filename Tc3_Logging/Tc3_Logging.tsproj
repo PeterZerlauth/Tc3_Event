@@ -109,9 +109,11 @@
 			</Hides>
 		</DataType>
 	</DataTypes>
-	<Project ProjectGUID="{1D2625EF-8024-4597-B02E-DC91CE8D752E}" Target64Bit="true" ShowHideConfigurations="#x6">
+	<Project ProjectGUID="{1D2625EF-8024-4597-B02E-DC91CE8D752E}" Target64Bit="true" SaveSolutionArchive="true" ShowHideConfigurations="#x6">
 		<System>
-			<Settings MaxCpus="64" NonWinCpus="63"/>
+			<Settings MaxCpus="32">
+				<Cpu CpuId="31"/>
+			</Settings>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="200000" AmsPort="350" AdtTasks="true">
 					<Name>SlowTask</Name>
@@ -120,10 +122,13 @@
 					<Name>FastTask</Name>
 				</Task>
 			</Tasks>
+			<AdditionalProjectFiles>
+				<File>..\script\messages.json</File>
+			</AdditionalProjectFiles>
 		</System>
 		<Plc>
 			<Project GUID="{90CE2844-1A87-435D-8A79-619DCCF6A970}" Name="plc01" PrjFilePath="plc01\plc01.plcproj" TmcFilePath="plc01\plc01.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{31530A8E-C6C6-F617-5053-649B3B20DB5E}" TmcPath="plc01\plc01.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{0393204A-4BAE-ACEF-40CF-78624998610B}" TmcPath="plc01\plc01.tmc">
 					<Name>plc01 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>
@@ -151,6 +156,9 @@
 						<TaskPouOid Prio="20" OTCID="#x08502001"/>
 					</TaskPouOids>
 				</Instance>
+			</Project>
+			<Project GUID="{DD47BDB8-5322-4236-807D-3FF7BA1320EF}" Name="Library" PrjFilePath="Library\Library.plcproj" TmcFilePath="Library\Library.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance File="Library Instance.xti"/>
 			</Project>
 		</Plc>
 		<Analytics ConfigVersion="1.4">

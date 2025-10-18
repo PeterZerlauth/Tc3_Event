@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="F_Format" Id="{c74a83d1-7aa5-43e9-937a-1b3406f838e2}" SpecialFunc="None">
+  <POU Name="F_Format" Id="{bd1ae1ff-de92-4fbf-9c28-b97df594421e}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION F_Format : STRING(255)
 VAR_INPUT
     sMessage:				STRING(255);

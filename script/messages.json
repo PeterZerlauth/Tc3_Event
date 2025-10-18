@@ -1,9 +1,9 @@
 ﻿[
     {
-        "id":  2276475569,
+        "id":  292272521,
         "messages":  {
                          "de":  "",
-                         "en":  "Info message"
+                         "en":  "message"
                      }
     },
     {
@@ -11,6 +11,20 @@
         "messages":  {
                          "de":  "",
                          "en":  "Critical message"
+                     }
+    },
+    {
+        "id":  2276475569,
+        "messages":  {
+                         "de":  "",
+                         "en":  "Info message"
+                     }
+    },
+    {
+        "id":  2263151477,
+        "messages":  {
+                         "de":  "",
+                         "en":  "message %s %s"
                      }
     },
     {

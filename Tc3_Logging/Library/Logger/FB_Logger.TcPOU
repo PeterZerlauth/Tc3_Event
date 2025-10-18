@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="FB_Logger" Id="{24e84e8b-19c0-4381-a1e9-ba01ff2711b8}" SpecialFunc="None">
+  <POU Name="FB_Logger" Id="{fcfa56ff-d0f1-4149-9de7-6f44354915c6}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'reflection'} 
 FUNCTION_BLOCK FB_Logger
 VAR_INPUT
@@ -18,7 +18,7 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="FB_Init" Id="{334f028f-5e57-4c30-9ad1-974a7aa5caf6}">
+    <Method Name="FB_Init" Id="{256fe292-0b03-4593-83b5-0da540634dee}">
       <Declaration><![CDATA[//FB_Init ist immer implizit verfügbar und wird primär für die Initialisierung verwendet.
 //Der Rückgabewert wird nicht ausgewertet. Für gezielte Einflussnahme können Sie
 //die Methoden explizit deklarieren und darin mit dem Standard-Initialisierungscode 
@@ -32,7 +32,7 @@ END_VAR]]></Declaration>
         <ST><![CDATA[sInstancePath:= F_InstancePath(sInstancePath);]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_AddBOOL" Id="{5a67c7b3-acb8-4118-8aa1-19ff601601ea}">
+    <Method Name="M_AddBOOL" Id="{6fe5c2f5-9f6f-45ef-a512-7b981b0be320}">
       <Declaration><![CDATA[METHOD PUBLIC M_AddBOOL
 VAR_INPUT
 	nValue:				LINT;
@@ -46,7 +46,7 @@ sValue:= CONCAT(sValue, '$R');				// add separator
 sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_AddINT" Id="{706983d2-23f8-44c2-88ef-14192d2f58aa}">
+    <Method Name="M_AddINT" Id="{0fb61d34-2130-4e2b-8ca3-a66334bd442e}">
       <Declaration><![CDATA[METHOD PUBLIC M_AddINT
 VAR_INPUT
 	nValue:				LINT;
@@ -60,7 +60,7 @@ sValue:= CONCAT(sValue, '$R');				// add separator
 sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_AddREAL" Id="{c30915ad-192c-43b6-9f87-5fe35fbfe2fa}">
+    <Method Name="M_AddREAL" Id="{ec2078de-d198-403e-9f1d-9aa3713c42cf}">
       <Declaration><![CDATA[METHOD PUBLIC M_AddREAL
 VAR_INPUT
 	fValue:				LREAL;
@@ -75,7 +75,7 @@ sValue:= CONCAT(sValue, '$R');							// add separator
 sArguments:= CONCAT(sArguments, sValue);				// add new arg]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_AddSTRING" Id="{1ab4f6c4-048c-4e14-80b1-f9f14f5bf3a4}">
+    <Method Name="M_AddSTRING" Id="{6ddea08b-8528-414a-b8b0-ca7a04ccfa78}">
       <Declaration><![CDATA[METHOD PUBLIC M_AddSTRING
 VAR_INPUT
 	sValue:				STRING(255);
@@ -86,7 +86,7 @@ END_VAR
 sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_AddTIME" Id="{9cde1437-e5dc-4706-aa5a-a5acc59be7c8}">
+    <Method Name="M_AddTIME" Id="{5bf7bbc0-6a06-4191-858d-e9e3e764bb18}">
       <Declaration><![CDATA[METHOD PUBLIC M_AddTIME
 VAR_INPUT
 	tValue:				TIME;
@@ -100,7 +100,7 @@ sValue:= CONCAT(sValue, '$R');				// add separator
 sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_Critical" Id="{accc1bfb-8e8e-4805-9e0b-d8677c60b196}">
+    <Method Name="M_Critical" Id="{7b4c91bf-8e3c-413c-a148-e271617106d9}">
       <Declaration><![CDATA[METHOD PUBLIC M_Critical : BOOL
 VAR_INPUT
 	nID:				UDINT;
@@ -127,7 +127,7 @@ iLogging.M_Log(stMessage);
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_Error" Id="{ff42a88a-8912-4d2c-af88-2d59a6d8da27}">
+    <Method Name="M_Error" Id="{11687e23-ea95-4e4f-aed4-4799ffa1ad84}">
       <Declaration><![CDATA[METHOD PUBLIC M_Error : BOOL
 VAR_INPUT
 	nID:				UDINT;
@@ -154,7 +154,7 @@ iLogging.M_Log(stMessage);
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_Info" Id="{2ea5a01b-eb1e-4166-8c91-90bf5bd9cfc5}">
+    <Method Name="M_Info" Id="{7a920e55-da6d-473b-9aba-119c4de007e0}">
       <Declaration><![CDATA[METHOD PUBLIC M_Info : BOOL
 VAR_INPUT
 	nID:				UDINT;
@@ -181,7 +181,7 @@ iLogging.M_Log(stMessage);
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_Verbose" Id="{de67a697-7e72-4e4b-b32b-4b561494e424}">
+    <Method Name="M_Verbose" Id="{db95e385-16ed-493b-a6a5-28cc6625776b}">
       <Declaration><![CDATA[METHOD PUBLIC M_Verbose : BOOL
 VAR_INPUT
 	sMessage:			STRING(255);
@@ -207,7 +207,7 @@ iLogging.M_Log(stMessage);
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_Warning" Id="{a6eef191-b99b-4a50-95aa-3b8f792c1e41}">
+    <Method Name="M_Warning" Id="{1aa0d3ef-0f74-4102-97d7-7d587822db85}">
       <Declaration><![CDATA[METHOD PUBLIC M_Warning : BOOL
 VAR_INPUT
 	nID:				UDINT;
@@ -233,9 +233,9 @@ sArguments:= '';
 iLogging.M_Log(stMessage);]]></ST>
       </Implementation>
     </Method>
-    <Property Name="P_Logger" Id="{134e0ae4-88be-4cc8-992b-473aa00879c7}">
+    <Property Name="P_Logger" Id="{98c079df-4944-4aae-a3d6-ca12ac41d1d4}">
       <Declaration><![CDATA[PROPERTY PUBLIC P_Logger : I_Logging]]></Declaration>
-      <Get Name="Get" Id="{b32f6a48-3497-4aba-b41b-4cc92ef6b6d2}">
+      <Get Name="Get" Id="{7f49254e-94b6-4972-a1b5-02a92d10e780}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -243,7 +243,7 @@ END_VAR
           <ST><![CDATA[P_Logger:= iLogging;]]></ST>
         </Implementation>
       </Get>
-      <Set Name="Set" Id="{9409cdd8-94a3-49af-847c-401ba81bb0f1}">
+      <Set Name="Set" Id="{4bbb606c-4053-49cc-ae04-84e1809ace25}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>

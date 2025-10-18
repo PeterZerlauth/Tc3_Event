@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="FB_TcLogging" Id="{292e637e-4d7a-4db7-abeb-2b010315ee0d}" SpecialFunc="None">
+  <POU Name="FB_FileLogging" Id="{9a6a3514-7dcc-42ca-8394-f112c0e45419}" SpecialFunc="None">
     <Declaration><![CDATA[// Provide logging 
-FUNCTION_BLOCK FB_TcLogging IMPLEMENTS I_Logging
+FUNCTION_BLOCK FB_FileLogging IMPLEMENTS I_Logging
 VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 END_VAR
@@ -15,7 +15,7 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="M_Attach" Id="{3f88776c-53a0-4184-9466-1323781c8a3f}">
+    <Method Name="M_Attach" Id="{0027130b-1adf-4ef8-b1b0-509d54331a0c}">
       <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
 VAR_INPUT
 	iLogging:				I_Logging;
@@ -35,54 +35,18 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_Log" Id="{fbcda6eb-ae6d-4cd1-8b07-21ee1ce3950e}">
+    <Method Name="M_Log" Id="{757dfb5f-b25f-4a7d-b4b5-e64d3c75e129}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
 	stMessage:			ST_Message;
-END_VAR
-VAR
-	fbMsg:				FB_TcMessage; 
-	fbSourceInfo:		FB_TcSourceInfo;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF THIS^.eLogLevel > eLogLevel THEN
-	M_Log:= TRUE;
-	RETURN;
-END_IF
-
-IF stMessage.bActive THEN
-
-	fbSourceInfo.Clear();
-	fbSourceInfo.sName:= stMessage.sSource;
-	
-	CASE stMessage.eLogLevel OF
-		E_LogLevel.Verbose:
-			fbMsg.CreateEx(TC_EVENTS.TcLogging.Verbose, fbSourceInfo); 	
-	
-		E_LogLevel.Info:
-			fbMsg.CreateEx(TC_EVENTS.TcLogging.Info, fbSourceInfo); 
-			
-		E_LogLevel.Warning:		
-			fbMsg.CreateEx(TC_EVENTS.TcLogging.Warning, fbSourceInfo); 
-			
-		E_LogLevel.Error:
-			fbMsg.CreateEx(TC_EVENTS.TcLogging.Error, fbSourceInfo); 
-			
-		E_LogLevel.Critical:
-			fbMsg.CreateEx(TC_EVENTS.TcLogging.Critical, fbSourceInfo); 
-			
-	END_CASE
-	
-	fbMsg.ipArguments.Clear().AddString(stMessage.sDefault);
-	
-	fbMsg.Send(stMessage.nTimestamp);
-
-END_IF]]></ST>
+        <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <Property Name="P_LogLevel" Id="{20284c4a-b49d-4717-b587-44632cbeee93}">
+    <Property Name="P_LogLevel" Id="{3c08d044-f3e7-4900-b273-c5b3e4af3b4d}">
       <Declaration><![CDATA[PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
-      <Get Name="Get" Id="{2ddf3a03-42dc-4c50-93f3-3a68b5c79508}">
+      <Get Name="Get" Id="{08e69a52-2a9b-4b9b-a4dc-4ef57f155340}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -90,7 +54,7 @@ END_VAR
           <ST><![CDATA[P_LogLevel:= eLogLevel;]]></ST>
         </Implementation>
       </Get>
-      <Set Name="Set" Id="{02addeea-bac2-4187-adee-a3a4ebdbd958}">
+      <Set Name="Set" Id="{b480e56f-e4d1-407c-b08a-38e5017c1aca}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>

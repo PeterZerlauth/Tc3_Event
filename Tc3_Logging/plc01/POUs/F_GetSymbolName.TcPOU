@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_GetSymbolName" Id="{32af0d2c-87c0-45e5-8b3b-e3d3a368786a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_GetSymbolName : string(255)
+VAR_INPUT
+	Symobl:				ANY;
+END_VAR
+VAR
+	fbJsonReadWriteDataType: FB_JsonReadWriteDataType;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[F_GetSymbolName:= fbJsonReadWriteDataType.GetDatatypeNameByAddress(Symobl.diSize, Symobl.pValue);
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

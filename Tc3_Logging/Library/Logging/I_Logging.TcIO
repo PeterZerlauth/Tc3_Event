@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <Itf Name="I_Logging" Id="{8d10f800-b621-4e55-9c3b-f2a551bf051a}">
+  <Itf Name="I_Logging" Id="{c8546c00-1964-4def-86cd-48ddf720fa88}">
     <Declaration><![CDATA[INTERFACE I_Logging
 ]]></Declaration>
-    <Method Name="M_Attach" Id="{246fd3da-f4e3-4f73-a14a-612d68e14b33}">
+    <Method Name="M_Attach" Id="{d8504e1d-ba05-46db-8e36-f183866560d7}">
       <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
 VAR_INPUT
 	iLogging:				I_Logging;
 END_VAR
 ]]></Declaration>
     </Method>
-    <Method Name="M_Log" Id="{3bf5264c-77ea-40c4-942b-0eebcecbddb2}">
+    <Method Name="M_Log" Id="{70349284-7301-41be-b202-535da7461a8a}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
 	stMessage:			ST_Message;
