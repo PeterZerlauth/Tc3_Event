@@ -24,7 +24,7 @@
 
 ## Basic Usage
 
-```ada
+```iecst
 PROGRAM MAIN
 VAR
     fbLogging        : FB_Logging;
