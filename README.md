@@ -6,23 +6,15 @@
 
 ## ✨ Features
 
-- 🚀 **Simple Implementation**: Easy-to-use Function Block for structured text
-- 📊 **Structured Logging**: Organized log messages with consistent formatting
-- 🔧 **Reusable Components**: Modular design for integration across projects
-- 📝 **PowerShell Automation**: Includes a script to generate IDs for messages
-- 📈 **Event Tracing**: Efficient debugging and issue identification
-- 🔢 **Parameter Support**: Support for adding integers,floats and strings to log messages
-- 📊 **Multiple Log Levels**: Verbose, Info, Warning, Error, and Critical levels
+- **Simple Implementation**: Easy-to-use Function Block for structured text
+- **Structured Logging**: Organized log messages with consistent formatting
+- **Reusable Components**: Modular design for integration across projects
+- **PowerShell Automation**: Includes a script to generate IDs for messages
+- **Event Tracing**: Efficient debugging and issue identification
+- **Parameter Support**: Support for adding integers,floats and strings to log messages
+- **Multiple Log Levels**: Verbose, Info, Warning, Error, and Critical levels
 
 ## 🚀 Getting Started
-
-### Prerequisites
-- TwinCAT 3 environment
-- Basic knowledge of Structured Text (ST) programming
-- PowerShell for script execution
-
-
-## Basic Usage
 
 ```iecst
 PROGRAM MAIN
@@ -31,11 +23,7 @@ VAR
     fbTcLogging      : FB_TcLogging;
     fbLogger         : FB_Logger;
     
-    bVerbose         : BOOL := TRUE;
     bInfo            : BOOL := TRUE;
-    bWarning         : BOOL := TRUE;
-    bError           : BOOL := FALSE;
-    bCritical        : BOOL := FALSE;
 END_VAR
 
 // Initialize logging components
@@ -47,26 +35,30 @@ fbTcLogging();
 fbLogger.iLogging := fbLogging;
 fbLogger();
 
-// Example logging at different levels
-IF bVerbose THEN
-    fbLogger.M_AddINT(134052566194980000);
-    fbLogger.M_AddSTRING('mm');
-    fbLogger.M_Verbose('Verbose message %s %s');
-END_IF
-
 IF bInfo THEN
     fbLogger.M_Info(2276475569, 'Info message');
 END_IF
-
-IF bWarning THEN
-    fbLogger.M_Warning(1791326186, 'Warning message');
-END_IF
-
-IF bError THEN
-    fbLogger.M_Error(2621541999, 'Error message');
-END_IF
-
-IF bCritical THEN
-    fbLogger.M_Critical(2626343866, 'Critical message');
-END_IF
 ```
+
+## Advanced Usage
+
+```iecst
+// Verbose logging with parameters
+fbLogger.M_AddINT(counter);
+fbLogger.M_AddSTRING('cycles');
+fbLogger.M_Verbose('Process completed: %s %s');
+
+// Simple info message
+fbLogger.M_Info(2276475569, 'System initialized');
+
+// Warning with context
+fbLogger.M_Warning(1791326186, 'High temperature detected');
+
+// Error reporting
+fbLogger.M_Error(2621541999, 'Motor communication failed');
+
+// Critical error
+fbLogger.M_Critical(2626343866, 'Emergency stop activated');
+```
+
+
