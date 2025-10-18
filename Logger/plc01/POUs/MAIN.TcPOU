@@ -20,7 +20,7 @@ fbLogger.iLogging:= fbLogging;
 fbLogger();
 
 IF bDebug THEN
-	fbLogger.M_AddREAL(22.12345, 3);
+	fbLogger.M_AddINT(134052566194980000);
 	fbLogger.M_AddSTRING('mm');
 	fbLogger.M_Debug('Debug message %s %s');
 END_IF

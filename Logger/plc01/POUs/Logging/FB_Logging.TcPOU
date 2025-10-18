@@ -7,20 +7,20 @@ VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Debug;
 END_VAR
 VAR_OUTPUT
+    bInfo:					BOOL;
+    bWarn:					BOOL;
+    bError:					BOOL;
+    bFatal:					BOOL;
 END_VAR
 VAR
 	aMessages:				ARRAY[0..99] OF ST_LogMessage; // Message store
     nMessages:				UINT := 0;                     // Message count
 	{attribute 'hide'} 
 	nIndex: 				UINT;
-	{attribute 'hide'} 
-	fbGetTime: 				NT_GetTime;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// remove outdated messages
-fbGetTime(START:= FALSE);
-
 nIndex := 0;
 WHILE nIndex < nMessages DO
 	IF aMessages[nIndex].bActive THEN
@@ -31,7 +31,11 @@ WHILE nIndex < nMessages DO
         nMessages := nMessages - 1;
     END_IF
 END_WHILE
-]]></ST>
+
+bInfo:=	FALSE;
+bWarn:=	FALSE;
+bError:= FALSE;
+bFatal:= FALSE;]]></ST>
     </Implementation>
     <Method Name="M_Log" Id="{ced7a02e-e5d1-4f22-8859-d2eccf7c8c34}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
@@ -50,6 +54,24 @@ END_VAR]]></Declaration>
 	RETURN;
 END_IF
 
+CASE eLogLevel OF
+	E_LogLevel.Info:
+    	bInfo:= TRUE;
+		
+	E_LogLevel.Warn:		
+    	bWarn:= TRUE;
+		
+	E_LogLevel.Error:
+    	bError:= TRUE;
+		
+	E_LogLevel.Fatal:
+    	bFatal:= TRUE;
+		
+	ELSE
+		;
+END_CASE
+
+
 // Find
 FOR nIndex := 0 TO nMessages DO
     IF aMessages[nIndex].sMessage = sMessage AND_THEN aMessages[nIndex].sSource = sSource THEN
@@ -61,11 +83,10 @@ END_FOR
 
 // else Add
 IF nMessages < 99 THEN
-	fbGetTime(START:= TRUE);
 	nIndex := nMessages;
     aMessages[nMessages].eLogLevel:= 	eLogLevel;
     aMessages[nMessages].nID:=			nID;
-	aMessages[nMessages].nTimestamp:= 	SYSTEMTIME_TO_DT(fbGetTime.TIMESTR);
+	aMessages[nMessages].nTimestamp:= 	F_GetSystemTime();
     aMessages[nMessages].sSource:=		sSource;
     aMessages[nMessages].sMessage:=		sMessage;
 	aMessages[nMessages].sDefault:=		F_Format(sMessage, sArguments);

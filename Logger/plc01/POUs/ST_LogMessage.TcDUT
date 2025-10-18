@@ -5,7 +5,7 @@
 STRUCT
 	eLogLevel:			E_LogLevel;
 	nID:				UDINT;
-	nTimestamp:			DT;	
+	nTimestamp:			ULINT;	
 	sSource:			STRING(255);
 	sMessage:			STRING(255);
 	sDefault:			STRING(255);
