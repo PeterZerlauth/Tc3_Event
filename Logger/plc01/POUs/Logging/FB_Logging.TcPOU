@@ -21,13 +21,16 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// remove outdated messages
-nIndex := 0;
+      <ST><![CDATA[nIndex := 0;
 WHILE nIndex < nMessages DO
 	IF aMessages[nIndex].bActive THEN
 		aMessages[nIndex].bActive:= FALSE;
 		nIndex := nIndex + 1;
 	ELSE
+		IF iLogging <> 0 THEN
+			// publish outdated messages to remove
+			iLogging.M_Log(aMessages[nIndex]);
+		END_IF
         MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_Message) * (nMessages - nIndex));
         nMessages := nMessages - 1;
 		bInfo:=	FALSE;
@@ -100,15 +103,17 @@ END_FOR
 // else Add
 IF nMessages < 99 THEN
 	nIndex := nMessages;
+	stMessage.bActive:= TRUE;
     aMessages[nMessages]:= stMessage;;
-	aMessages[nMessages].bActive:= TRUE;
     nMessages := nMessages + 1;
-	// just for new messages
+	// reduce internal buffers 
+	// publish new messages to log
 	IF iLogging <> 0 THEN
 		iLogging.M_Log(stMessage);
 	END_IF
 	M_Log := TRUE;
-END_IF]]></ST>
+END_IF
+]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_LogLevel" Id="{5b672b68-2f94-4b6d-a86c-6bbf69121d9a}">

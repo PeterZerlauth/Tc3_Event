@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Task Name="FastTask" Id="{3797b695-5747-460a-bd5f-230aa8a166ea}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>1000</CycleTime>
+    <Priority>1</Priority>
+    <PouCall>
+      <Name>FAST</Name>
+    </PouCall>
+    <TaskFBGuid>{54b0b009-bf69-4004-9d62-c36e14f65e00}</TaskFBGuid>
+    <Fb_init>{d8e0c03a-b51f-4053-bf5b-21eef5b04ca9}</Fb_init>
+    <Fb_exit>{23f7ceda-d4ac-4102-ac40-a1d4f1b445d6}</Fb_exit>
+    <CycleUpdate>{abaac783-10da-4787-afb0-28341d96b679}</CycleUpdate>
+    <PostCycleUpdate>{14abe574-3d04-4965-a722-a66daf3f33db}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

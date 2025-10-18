@@ -9,7 +9,6 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	{attribute 'hide'} 
     {attribute 'instance-path'} 
     {attribute 'noinit'} 
     sInstancePath:				STRING(255); 

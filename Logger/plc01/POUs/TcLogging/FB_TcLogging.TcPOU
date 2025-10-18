@@ -50,30 +50,34 @@ END_VAR]]></Declaration>
 	RETURN;
 END_IF
 
-fbSourceInfo.Clear();
-fbSourceInfo.sName:= stMessage.sSource;
+IF stMessage.bActive THEN
 
-CASE eLogLevel OF
-	E_LogLevel.Verbose:
-    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Verbose, fbSourceInfo); 	
+	fbSourceInfo.Clear();
+	fbSourceInfo.sName:= stMessage.sSource;
+	
+	CASE stMessage.eLogLevel OF
+		E_LogLevel.Verbose:
+			fbMsg.CreateEx(TC_EVENTS.TcLogging.Verbose, fbSourceInfo); 	
+	
+		E_LogLevel.Info:
+			fbMsg.CreateEx(TC_EVENTS.TcLogging.Info, fbSourceInfo); 
+			
+		E_LogLevel.Warning:		
+			fbMsg.CreateEx(TC_EVENTS.TcLogging.Warning, fbSourceInfo); 
+			
+		E_LogLevel.Error:
+			fbMsg.CreateEx(TC_EVENTS.TcLogging.Error, fbSourceInfo); 
+			
+		E_LogLevel.Critical:
+			fbMsg.CreateEx(TC_EVENTS.TcLogging.Critical, fbSourceInfo); 
+			
+	END_CASE
+	
+	fbMsg.ipArguments.Clear().AddString(stMessage.sDefault);
+	
+	fbMsg.Send(stMessage.nTimestamp);
 
-	E_LogLevel.Info:
-    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Info, fbSourceInfo); 
-		
-	E_LogLevel.Warning:		
-    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Warning, fbSourceInfo); 
-		
-	E_LogLevel.Error:
-    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Error, fbSourceInfo); 
-		
-	E_LogLevel.Critical:
-    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Critical, fbSourceInfo); 
-		
-END_CASE
-
-fbMsg.ipArguments.Clear().AddString(stMessage.sDefault);
-
-fbMsg.Send(stMessage.nTimestamp);]]></ST>
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_LogLevel" Id="{20284c4a-b49d-4717-b587-44632cbeee93}">

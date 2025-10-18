@@ -1,11 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="MAIN" Id="{19c7fd4e-92ee-4c48-b527-6576c9627f78}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM MAIN
+  <POU Name="FAST" Id="{56131508-6984-4602-9bc7-713829ff2f55}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM FAST
 VAR
-	fbLogging:			FB_Logging;
-	fbTcLogging:		FB_TcLogging;
-	fbTcAlarming:		FB_TcAlarming;
 	fbLogger:			FB_Logger;
 	bVerbose:			BOOL;
 	bInfo:				BOOL;
@@ -13,21 +10,9 @@ VAR
 	bError:				BOOL;
 	bCritical:			BOOL;
 END_VAR
-
-// toDo 
-// * integrate a twincat logger
-// * integrate a file logger]]></Declaration>
+]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbLogging();
-fbLogging.M_Attach(fbTcLogging);
-
-fbTcLogging();
-
-fbTcAlarming();
-
-fbLogger.iLogging:= fbLogging;
-
-fbLogger();
+      <ST><![CDATA[fbLogger.P_Logger:= MAIN.fbLogging;
 
 IF bVerbose THEN
 	fbLogger.M_AddINT(134052566194980000);
@@ -49,7 +34,8 @@ END_IF
 
 IF bCritical THEN
 	fbLogger.M_Critical(0, 'Critical message');
-END_IF]]></ST>
+END_IF
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
