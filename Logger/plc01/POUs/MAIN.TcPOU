@@ -28,7 +28,7 @@ fbLogger();
 IF bDebug THEN
 	fbLogger.M_AddINT(134052566194980000);
 	fbLogger.M_AddSTRING('mm');
-	fbLogger.M_Debug('Debug message %s %s');
+	fbLogger.M_Verbose('Debug message %s %s');
 END_IF
 
 IF bInfo THEN

@@ -116,21 +116,6 @@ iLogging.M_Log(E_LogLevel.Critical, nID, sInstancePath, sMessage, sArguments);
 sArguments:= '';]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_Debug" Id="{de67a697-7e72-4e4b-b32b-4b561494e424}">
-      <Declaration><![CDATA[METHOD PUBLIC M_Debug : BOOL
-VAR_INPUT
-	sMessage:			STRING(255);
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[IF iLogging = 0 THEN
-	RETURN;
-END_IF
-
-iLogging.M_Log(E_LogLevel.Verbose, 0, sInstancePath, sMessage, sArguments);
-sArguments:= '';]]></ST>
-      </Implementation>
-    </Method>
     <Method Name="M_Error" Id="{ff42a88a-8912-4d2c-af88-2d59a6d8da27}">
       <Declaration><![CDATA[METHOD PUBLIC M_Error : BOOL
 VAR_INPUT
@@ -159,6 +144,21 @@ END_VAR]]></Declaration>
 END_IF
 
 iLogging.M_Log(E_LogLevel.Info, nID, sInstancePath, sMessage, sArguments);
+sArguments:= '';]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Verbose" Id="{de67a697-7e72-4e4b-b32b-4b561494e424}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Verbose : BOOL
+VAR_INPUT
+	sMessage:			STRING(255);
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF iLogging = 0 THEN
+	RETURN;
+END_IF
+
+iLogging.M_Log(E_LogLevel.Verbose, 0, sInstancePath, sMessage, sArguments);
 sArguments:= '';]]></ST>
       </Implementation>
     </Method>
