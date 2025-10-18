@@ -15,12 +15,14 @@ END_VAR
     <Implementation>
       <ST><![CDATA[fbLogging();
 
-fbLogger.iLogger:= fbLogging;
+fbLogger.iLogging:= fbLogging;
 
 fbLogger();
 
 IF bDebug THEN
-	fbLogger.M_Debug('Debug message');
+	fbLogger.M_AddREAL(22.12345, 3);
+	fbLogger.M_AddSTRING('mm');
+	fbLogger.M_Debug('Debug message %s %s');
 END_IF
 
 IF bInfo THEN

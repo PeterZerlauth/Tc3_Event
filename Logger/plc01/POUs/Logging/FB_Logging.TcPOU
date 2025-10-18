@@ -2,7 +2,7 @@
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_Logging" Id="{f3c6275a-64fe-47c7-8398-c8b4638ef175}" SpecialFunc="None">
     <Declaration><![CDATA[// Provide logging 
-FUNCTION_BLOCK FB_Logging IMPLEMENTS I_Logger
+FUNCTION_BLOCK FB_Logging IMPLEMENTS I_Logging
 VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Debug;
 END_VAR
@@ -11,11 +11,16 @@ END_VAR
 VAR
 	aMessages:				ARRAY[0..99] OF ST_LogMessage; // Message store
     nMessages:				UINT := 0;                     // Message count
+	{attribute 'hide'} 
 	nIndex: 				UINT;
+	{attribute 'hide'} 
+	fbGetTime: 				NT_GetTime;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// remove outdated messages
+fbGetTime(START:= FALSE);
+
 nIndex := 0;
 WHILE nIndex < nMessages DO
 	IF aMessages[nIndex].bActive THEN
@@ -25,7 +30,8 @@ WHILE nIndex < nMessages DO
         MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_LogMessage) * (nMessages - nIndex));
         nMessages := nMessages - 1;
     END_IF
-END_WHILE]]></ST>
+END_WHILE
+]]></ST>
     </Implementation>
     <Method Name="M_Log" Id="{ced7a02e-e5d1-4f22-8859-d2eccf7c8c34}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
@@ -35,6 +41,8 @@ VAR_INPUT
 	sSource:			STRING(255);
 	sMessage:			STRING(255);
 	sArguments:			STRING(255);
+END_VAR
+VAR
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF THIS^.eLogLevel > eLogLevel THEN
@@ -53,10 +61,11 @@ END_FOR
 
 // else Add
 IF nMessages < 99 THEN
+	fbGetTime(START:= TRUE);
 	nIndex := nMessages;
     aMessages[nMessages].eLogLevel:= 	eLogLevel;
     aMessages[nMessages].nID:=			nID;
-    aMessages[nMessages].nTimestamp:=	ULINT_TO_UDINT(F_GetSystemTime() / 1000);
+	aMessages[nMessages].nTimestamp:= 	SYSTEMTIME_TO_DT(fbGetTime.TIMESTR);
     aMessages[nMessages].sSource:=		sSource;
     aMessages[nMessages].sMessage:=		sMessage;
 	aMessages[nMessages].sDefault:=		F_Format(sMessage, sArguments);

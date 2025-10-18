@@ -14,13 +14,13 @@ END_VAR
 
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[F_Format := sMessage;
+      <ST><![CDATA[// replace placeholders with arguments
+F_Format := sMessage;
 
 IF sArguments = '' THEN
     RETURN;
 END_IF
 
-// replace placeholders with arguments
 nPosition := FIND(sArguments, '$R');
 WHILE nPosition > 0 DO
     

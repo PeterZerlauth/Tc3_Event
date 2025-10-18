@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="I_Logger" Id="{2977d5a3-ccf0-4069-9e1a-ebbe3114c9d8}">
+    <Declaration><![CDATA[INTERFACE I_Logger
+]]></Declaration>
+    <Method Name="M_AddBOOL" Id="{b524e841-06bf-49b1-a255-4ed35f054085}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddBOOL
+VAR_INPUT
+	nValue:				LINT;
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_AddINT" Id="{26055a86-218e-41f1-a874-39819f7e6193}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddINT
+VAR_INPUT
+	nValue:				LINT;
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_AddREAL" Id="{483de8c6-ea69-436f-9eb7-a4d498b70423}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddREAL
+VAR_INPUT
+	fValue:				LREAL;
+	nDecimals:			USINT;
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_AddSTRING" Id="{0477f0c0-6a42-49e6-8e05-17de2eb4fef5}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddSTRING
+VAR_INPUT
+	sValue:				STRING(255);
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_AddTIME" Id="{fb288466-5055-4bd0-bc6b-df5c85953242}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddTIME
+VAR_INPUT
+	tValue:				TIME;
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_Debug" Id="{00ed8901-1865-43e8-809c-6c82edbbebe1}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Debug : BOOL
+VAR_INPUT
+	sMessage:			STRING(255);
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_Error" Id="{abe749a2-b4bc-4c80-b55a-310740beaed2}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Error : BOOL
+VAR_INPUT
+	nID:				UDINT;
+	sMessage:			STRING(255);
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_Fatal" Id="{d26b176d-4746-463a-a7b0-7d0952786fc6}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Fatal : BOOL
+VAR_INPUT
+	nID:				UDINT;
+	sMessage:			STRING(255);
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_Info" Id="{82c44cb5-fe98-4a69-ae80-73264b472c9a}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Info : BOOL
+VAR_INPUT
+	nID:				UDINT;
+	sMessage:			STRING(255);
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_Warn" Id="{32fb4e96-4458-4f70-9ee1-b7edfc8c7253}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Warn : BOOL
+VAR_INPUT
+	nID:				UDINT;
+	sMessage:			STRING(255);
+END_VAR]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

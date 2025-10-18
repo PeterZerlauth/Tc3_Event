@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <Itf Name="I_Logger" Id="{8d10f800-b621-4e55-9c3b-f2a551bf051a}">
-    <Declaration><![CDATA[INTERFACE I_Logger
+  <Itf Name="I_Logging" Id="{8d10f800-b621-4e55-9c3b-f2a551bf051a}">
+    <Declaration><![CDATA[INTERFACE I_Logging
 ]]></Declaration>
     <Method Name="M_Log" Id="{3bf5264c-77ea-40c4-942b-0eebcecbddb2}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL

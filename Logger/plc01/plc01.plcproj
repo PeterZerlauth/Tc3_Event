@@ -27,6 +27,9 @@
     <Compile Include="POUs\Logger\F_InstancePath.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Logger\I_Logger.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Logging\E_LogLevel.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -36,7 +39,7 @@
     <Compile Include="POUs\Logging\F_Format.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Logging\I_Logger.TcIO">
+    <Compile Include="POUs\Logging\I_Logging.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -62,6 +65,10 @@
     <PlaceholderReference Include="Tc2_System">
       <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_System</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_Utilities">
+      <DefaultResolution>Tc2_Utilities, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Utilities</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="Tc3_Module">
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>

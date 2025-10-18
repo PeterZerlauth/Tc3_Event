@@ -4,11 +4,12 @@
     <Declaration><![CDATA[{attribute 'reflection'} 
 FUNCTION_BLOCK FB_Logger
 VAR_INPUT
-	iLogger:			I_Logger;
+	iLogging:			I_Logging;
 END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
+	{attribute 'hide'} 
     {attribute 'instance-path'} 
     {attribute 'noinit'} 
     sInstancePath:				STRING(255); 
@@ -32,6 +33,74 @@ END_VAR]]></Declaration>
         <ST><![CDATA[sInstancePath:= F_InstancePath(sInstancePath);]]></ST>
       </Implementation>
     </Method>
+    <Method Name="M_AddBOOL" Id="{5a67c7b3-acb8-4118-8aa1-19ff601601ea}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddBOOL
+VAR_INPUT
+	nValue:				LINT;
+END_VAR
+VAR
+	sValue: 			STRING;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[sValue:= LINT_TO_STRING(nValue);			// convert
+sValue:= CONCAT(sValue, '$R');				// add separator
+sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_AddINT" Id="{706983d2-23f8-44c2-88ef-14192d2f58aa}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddINT
+VAR_INPUT
+	nValue:				LINT;
+END_VAR
+VAR
+	sValue: 			STRING;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[sValue:= LINT_TO_STRING(nValue);			// convert
+sValue:= CONCAT(sValue, '$R');				// add separator
+sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_AddREAL" Id="{c30915ad-192c-43b6-9f87-5fe35fbfe2fa}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddREAL
+VAR_INPUT
+	fValue:				LREAL;
+	nDecimals:			USINT;
+END_VAR
+VAR
+	sValue: 			STRING;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[sValue:= LREAL_TO_FMTSTR(fValue, nDecimals, TRUE);		// convert
+sValue:= CONCAT(sValue, '$R');							// add separator
+sArguments:= CONCAT(sArguments, sValue);				// add new arg]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_AddSTRING" Id="{1ab4f6c4-048c-4e14-80b1-f9f14f5bf3a4}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddSTRING
+VAR_INPUT
+	sValue:				STRING(255);
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[sValue:= CONCAT(sValue, '$R');				// add separator
+sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_AddTIME" Id="{9cde1437-e5dc-4706-aa5a-a5acc59be7c8}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddTIME
+VAR_INPUT
+	tValue:				TIME;
+END_VAR
+VAR
+	sValue: 			STRING;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[sValue:= TIME_TO_STRING(tValue);			// convert
+sValue:= CONCAT(sValue, '$R');				// add separator
+sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="M_Debug" Id="{de67a697-7e72-4e4b-b32b-4b561494e424}">
       <Declaration><![CDATA[METHOD PUBLIC M_Debug : BOOL
 VAR_INPUT
@@ -39,11 +108,12 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF iLogger = 0 THEN
+        <ST><![CDATA[IF iLogging = 0 THEN
 	RETURN;
 END_IF
 
-iLogger.M_Log(E_LogLevel.Debug, 0, sInstancePath, sMessage, sArguments);]]></ST>
+iLogging.M_Log(E_LogLevel.Debug, 0, sInstancePath, sMessage, sArguments);
+sArguments:= '';]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Error" Id="{ff42a88a-8912-4d2c-af88-2d59a6d8da27}">
@@ -54,11 +124,12 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF iLogger = 0 THEN
+        <ST><![CDATA[IF iLogging = 0 THEN
 	RETURN;
 END_IF
 
-iLogger.M_Log(E_LogLevel.Error, nID, sInstancePath, sMessage, sArguments);]]></ST>
+iLogging.M_Log(E_LogLevel.Error, nID, sInstancePath, sMessage, sArguments);
+sArguments:= '';]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Fatal" Id="{accc1bfb-8e8e-4805-9e0b-d8677c60b196}">
@@ -68,11 +139,12 @@ VAR_INPUT
 	sMessage:			STRING(255);
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF iLogger = 0 THEN
+        <ST><![CDATA[IF iLogging = 0 THEN
 	RETURN;
 END_IF
 
-iLogger.M_Log(E_LogLevel.Fatal, nID, sInstancePath, sMessage, sArguments);]]></ST>
+iLogging.M_Log(E_LogLevel.Fatal, nID, sInstancePath, sMessage, sArguments);
+sArguments:= '';]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Info" Id="{2ea5a01b-eb1e-4166-8c91-90bf5bd9cfc5}">
@@ -82,11 +154,12 @@ VAR_INPUT
 	sMessage:			STRING(255);
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF iLogger = 0 THEN
+        <ST><![CDATA[IF iLogging = 0 THEN
 	RETURN;
 END_IF
 
-iLogger.M_Log(E_LogLevel.Info, nID, sInstancePath, sMessage, sArguments);]]></ST>
+iLogging.M_Log(E_LogLevel.Info, nID, sInstancePath, sMessage, sArguments);
+sArguments:= '';]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Warn" Id="{a6eef191-b99b-4a50-95aa-3b8f792c1e41}">
@@ -96,21 +169,22 @@ VAR_INPUT
 	sMessage:			STRING(255);
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF iLogger = 0 THEN
+        <ST><![CDATA[IF iLogging = 0 THEN
 	RETURN;
 END_IF
 
-iLogger.M_Log(E_LogLevel.Warn, nID, sInstancePath, sMessage, sArguments);]]></ST>
+iLogging.M_Log(E_LogLevel.Warn, nID, sInstancePath, sMessage, sArguments);
+sArguments:= '';]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_Logger" Id="{134e0ae4-88be-4cc8-992b-473aa00879c7}">
-      <Declaration><![CDATA[PROPERTY PUBLIC P_Logger : I_Logger]]></Declaration>
+      <Declaration><![CDATA[PROPERTY PUBLIC P_Logger : I_Logging]]></Declaration>
       <Get Name="Get" Id="{b32f6a48-3497-4aba-b41b-4cc92ef6b6d2}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[P_Logger:= iLogger;]]></ST>
+          <ST><![CDATA[P_Logger:= iLogging;]]></ST>
         </Implementation>
       </Get>
       <Set Name="Set" Id="{9409cdd8-94a3-49af-847c-401ba81bb0f1}">
@@ -118,7 +192,7 @@ END_VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[iLogger:= P_Logger;]]></ST>
+          <ST><![CDATA[iLogging:= P_Logger;]]></ST>
         </Implementation>
       </Set>
     </Property>
