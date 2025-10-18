@@ -24,7 +24,7 @@
 
 ## Basic Usage
 
-```pascal
+```delphi
 PROGRAM MAIN
 VAR
     fbLogging        : FB_Logging;
