@@ -1,20 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_Logging" Id="{f3c6275a-64fe-47c7-8398-c8b4638ef175}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_Logging IMPLEMENTS I_Logger
+    <Declaration><![CDATA[// Provide logging 
+FUNCTION_BLOCK FB_Logging IMPLEMENTS I_Logger
 VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Debug;
 END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	aMessages:				ARRAY[0..99] OF ST_LogMessage; // The array to store messages
-    nMessages:				UINT := 0;                     // The current count of messages in the array
+	aMessages:				ARRAY[0..99] OF ST_LogMessage; // Message store
+    nMessages:				UINT := 0;                     // Message count
 	nIndex: 				UINT;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[nIndex := 0;
+      <ST><![CDATA[// remove outdated messages
+nIndex := 0;
 WHILE nIndex < nMessages DO
 	IF aMessages[nIndex].bActive THEN
 		aMessages[nIndex].bActive:= FALSE;
@@ -35,12 +37,10 @@ VAR_INPUT
 	sArguments:			STRING(255);
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[// IF THIS^.eLogLevel > eLogLevel THEN
-// 	M_Log:= TRUE;
-// 	RETURN;
-// END_IF
-
-
+        <ST><![CDATA[IF THIS^.eLogLevel > eLogLevel THEN
+	M_Log:= TRUE;
+	RETURN;
+END_IF
 
 // Find
 FOR nIndex := 0 TO nMessages DO

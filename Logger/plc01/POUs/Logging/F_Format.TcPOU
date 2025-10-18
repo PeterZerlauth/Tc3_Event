@@ -14,26 +14,27 @@ END_VAR
 
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF sArguments = '' THEN
+      <ST><![CDATA[F_Format := sMessage;
+
+IF sArguments = '' THEN
     RETURN;
 END_IF
 
 // replace placeholders with arguments
-F_Format := sMessage;
-nPosition := FIND('$R', sArguments);
+nPosition := FIND(sArguments, '$R');
 WHILE nPosition > 0 DO
     
     sArg := LEFT(sArguments, nPosition - 1);
     
     nPlaceholder := FIND(F_Format, '%s');
     IF nPlaceholder > 0 THEN
-        F_Format := REPLACE(F_Format, sArg, nPlaceholder, 2);
+        F_Format := REPLACE(F_Format, sArg, 2, nPlaceholder);
     ELSE
         RETURN;
     END_IF
 	
-    sArguments := DELETE(sArguments, 1, nPosition);
-    nPosition := FIND('$R', sArguments);
+    sArguments := DELETE(sArguments, nPosition, 1);
+    nPosition := FIND(sArguments, '$R');
     
 END_WHILE]]></ST>
     </Implementation>

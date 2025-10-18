@@ -3,15 +3,41 @@
   <POU Name="MAIN" Id="{19c7fd4e-92ee-4c48-b527-6576c9627f78}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-		fbLogging:			FB_Logging;
+	fbLogging:			FB_Logging;
+	fbLogger:			FB_Logger;
+	bDebug:				BOOL;
+	bInfo:				BOOL;
+	bWarning:			BOOL;
+	bError:				BOOL;
+	bFatal:				BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbLogging();
 
+fbLogger.iLogger:= fbLogging;
 
-fbLogging.M_Log(E_LogLevel.Info, 1, 'source2', 'Test1', '');
-// fbLogging.M_Log(E_LogLevel.Error, 1, 'source', 'Test', '');]]></ST>
+fbLogger();
+
+IF bDebug THEN
+	fbLogger.M_Debug('Debug message');
+END_IF
+
+IF bInfo THEN
+	fbLogger.M_Info(0, 'Info message');
+END_IF
+
+IF bWarning THEN
+	fbLogger.M_Warn(0, 'Warn message');
+END_IF
+
+IF bError THEN
+	fbLogger.M_Error(0, 'Error message');
+END_IF
+
+IF bFatal THEN
+	fbLogger.M_Fatal(0, 'Fatal message');
+END_IF]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

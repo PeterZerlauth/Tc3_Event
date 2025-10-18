@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_InstancePath" Id="{e3017078-1054-4269-bc57-a424c61884d3}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_InstancePath : STRING(255)
+VAR_INPUT
+	sInstancePath:			STRING(255);
+END_VAR
+VAR
+    nPosition     : INT;
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[F_InstancePath:= RIGHT(sInstancePath, LEN(sInstancePath) - FIND(sInstancePath, '.'));
+F_InstancePath:= RIGHT(F_InstancePath, LEN(F_InstancePath) - FIND(F_InstancePath, '.'));
+
+FOR nPosition:= LEN(F_InstancePath) TO 1 BY -1 DO
+    IF F_InstancePath[nPosition] = 46 THEN
+		F_InstancePath := LEFT(F_InstancePath, nPosition);
+		RETURN;
+	END_IF
+END_FOR]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
