@@ -36,19 +36,19 @@ IF bVerbose THEN
 END_IF
 
 IF bInfo THEN
-	fbLogger.M_Info(0, 'Info message');
+	fbLogger.M_Info(2276475569, 'Info message');
 END_IF
 
 IF bWarning THEN
-	fbLogger.M_Warning(0, 'Warning message');
+	fbLogger.M_Warning(1791326186, 'Warning message');
 END_IF
 
 IF bError THEN
-	fbLogger.M_Error(0, 'Error message');
+	fbLogger.M_Error(2621541999, 'Error message');
 END_IF
 
 IF bCritical THEN
-	fbLogger.M_Critical(0, 'Critical message');
+	fbLogger.M_Critical(2626343866, 'Critical message');
 END_IF]]></ST>
     </Implementation>
   </POU>
