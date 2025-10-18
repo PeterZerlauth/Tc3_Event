@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <DUT Name="ST_LogMessage" Id="{56bff33d-8470-42da-bea5-9559cbe6e709}">
-    <Declaration><![CDATA[TYPE ST_LogMessage :
+  <DUT Name="ST_Message" Id="{56bff33d-8470-42da-bea5-9559cbe6e709}">
+    <Declaration><![CDATA[TYPE ST_Message :
 STRUCT
 	eLogLevel:			E_LogLevel;
 	nID:				UDINT;

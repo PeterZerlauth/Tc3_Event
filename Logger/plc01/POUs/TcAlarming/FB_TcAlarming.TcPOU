@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_TcAlarming" Id="{b6b9d53e-320a-43f4-af08-5491e8ff7b78}" SpecialFunc="None">
+    <Declaration><![CDATA[// Provide logging 
+FUNCTION_BLOCK FB_TcAlarming IMPLEMENTS I_Logging
+VAR_INPUT
+	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	iLogging:				I_Logging;
+	fbAlarm:				FB_TcAlarm; 
+	bInit: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF NOT bInit THEN
+	bInit:= TRUE;
+	fbAlarm.CreateEx(TC_EVENTS.TcLogging.Verbose, FALSE, 0);
+END_IF
+
+IF fbAlarm.bRaised THEN
+	;
+ELSE
+	fbAlarm.Raise(0);
+END_IF
+
+//    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Verbose, fbSourceInfo); 	]]></ST>
+    </Implementation>
+    <Method Name="M_Attach" Id="{a40614b1-3973-468c-ab07-88a8adebeba6}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
+VAR_INPUT
+	iLogging:				I_Logging;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF THIS^.iLogging = 0 THEN
+	THIS^.iLogging:= iLogging;
+	M_Attach:= TRUE;
+ELSIF THIS^.iLogging = iLogging THEN
+	// already inside
+	M_Attach:= TRUE;
+	RETURN;
+ELSE
+	// redirect to next logging function block
+	THIS^.iLogging.M_Attach(iLogging);
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Log" Id="{5a47f799-51ce-40a3-86ed-99adceead7ba}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
+VAR_INPUT
+	stMessage:			ST_Message;
+END_VAR
+VAR
+	fbSourceInfo:		FB_TcSourceInfo;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// IF THIS^.eLogLevel > eLogLevel THEN
+// 	M_Log:= TRUE;
+// 	RETURN;
+// END_IF
+// 
+// fbSourceInfo.Clear();
+// fbSourceInfo.sName:= stMessage.sSource;
+// 
+// CASE eLogLevel OF
+// 	E_LogLevel.Verbose:
+//     	fbMsg.CreateEx(TC_EVENTS.TcLogging.Verbose, fbSourceInfo); 	
+// 
+// 	E_LogLevel.Info:
+//     	fbMsg.CreateEx(TC_EVENTS.TcLogging.Info, fbSourceInfo); 
+// 		
+// 	E_LogLevel.Warning:		
+//     	fbMsg.CreateEx(TC_EVENTS.TcLogging.Warning, fbSourceInfo); 
+// 		
+// 	E_LogLevel.Error:
+//     	fbMsg.CreateEx(TC_EVENTS.TcLogging.Error, fbSourceInfo); 
+// 		
+// 	E_LogLevel.Critical:
+//     	fbMsg.CreateEx(TC_EVENTS.TcLogging.Critical, fbSourceInfo); 
+// 		
+// END_CASE
+// 
+// fbMsg.ipArguments.Clear().AddString(stMessage.sDefault);
+// 
+// fbMsg.Send(stMessage.nTimestamp);]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="P_LogLevel" Id="{dacde164-261f-416f-89f3-89fe3a30d375}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
+      <Get Name="Get" Id="{2cc2483d-8888-40ac-a1a2-5c89fae1112b}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[P_LogLevel:= eLogLevel;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{53395058-5225-4b5a-bfa4-8537b852ef8e}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[eLogLevel:= P_LogLevel;
+]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+  </POU>
+</TcPlcObject>

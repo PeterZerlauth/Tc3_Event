@@ -13,7 +13,7 @@ VAR_OUTPUT
     bCritical:				BOOL;
 END_VAR
 VAR
-	aMessages:				ARRAY[0..99] OF ST_LogMessage; // Message store
+	aMessages:				ARRAY[0..99] OF ST_Message; // Message store
     nMessages:				UINT := 0;                     // Message count
 	{attribute 'hide'} 
 	nIndex: 				UINT;
@@ -28,7 +28,7 @@ WHILE nIndex < nMessages DO
 		aMessages[nIndex].bActive:= FALSE;
 		nIndex := nIndex + 1;
 	ELSE
-        MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_LogMessage) * (nMessages - nIndex));
+        MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_Message) * (nMessages - nIndex));
         nMessages := nMessages - 1;
 		bInfo:=	FALSE;
 		bWarning:=	FALSE;
@@ -60,21 +60,17 @@ END_IF]]></ST>
     <Method Name="M_Log" Id="{ced7a02e-e5d1-4f22-8859-d2eccf7c8c34}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
-	eLogLevel:			E_LogLevel;
-	nID:				UDINT;
-	sSource:			STRING(255);
-	sMessage:			STRING(255);
-	sArguments:			STRING(255);
+	stMessage:			ST_Message;
 END_VAR
 VAR
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF THIS^.eLogLevel > eLogLevel THEN
+        <ST><![CDATA[IF eLogLevel > stMessage.eLogLevel THEN
 	M_Log:= TRUE;
 	RETURN;
 END_IF
 
-CASE eLogLevel OF
+CASE stMessage.eLogLevel OF
 	E_LogLevel.Info:
     	bInfo:= TRUE;
 		
@@ -94,7 +90,7 @@ END_CASE
 
 // Find
 FOR nIndex := 0 TO nMessages DO
-    IF aMessages[nIndex].sMessage = sMessage AND_THEN aMessages[nIndex].sSource = sSource THEN
+    IF aMessages[nIndex].sMessage = stMessage.sMessage AND_THEN aMessages[nIndex].sSource = stMessage.sSource THEN
         aMessages[nIndex].bActive:= TRUE;
 		M_Log := TRUE;
         RETURN;
@@ -104,22 +100,36 @@ END_FOR
 // else Add
 IF nMessages < 99 THEN
 	nIndex := nMessages;
-    aMessages[nMessages].eLogLevel:= 	eLogLevel;
-    aMessages[nMessages].nID:=			nID;
-	aMessages[nMessages].nTimestamp:= 	F_GetSystemTime();
-    aMessages[nMessages].sSource:=		sSource;
-    aMessages[nMessages].sMessage:=		sMessage;
-	aMessages[nMessages].sDefault:=		F_Format(sMessage, sArguments);
-    aMessages[nMessages].sArguments:=	sArguments;
-	aMessages[nMessages].bActive:=		TRUE;
+    aMessages[nMessages]:= stMessage;;
+	aMessages[nMessages].bActive:= TRUE;
     nMessages := nMessages + 1;
 	// just for new messages
 	IF iLogging <> 0 THEN
-		iLogging.M_Log(	eLogLevel, nID, sSource, sMessage, sArguments);
+		iLogging.M_Log(stMessage);
 	END_IF
 	M_Log := TRUE;
 END_IF]]></ST>
       </Implementation>
     </Method>
+    <Property Name="P_LogLevel" Id="{5b672b68-2f94-4b6d-a86c-6bbf69121d9a}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
+      <Get Name="Get" Id="{8afc35b6-8665-4f6e-8d3f-84f7aea7e81f}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[P_LogLevel:= eLogLevel;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{319b062e-4082-438b-bd27-4271f016d2a7}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[eLogLevel:= P_LogLevel;
+]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
   </POU>
 </TcPlcObject>

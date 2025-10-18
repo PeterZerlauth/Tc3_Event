@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="FB_TcLogging" Id="{292e637e-4d7a-4db7-abeb-2b010315ee0d}" SpecialFunc="None">
+  <POU Name="FB_FileLogging" Id="{98718708-3849-429d-beae-f0d90c92980c}" SpecialFunc="None">
     <Declaration><![CDATA[// Provide logging 
-FUNCTION_BLOCK FB_TcLogging IMPLEMENTS I_Logging
+FUNCTION_BLOCK FB_FileLogging IMPLEMENTS I_Logging
 VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 END_VAR
@@ -15,7 +15,7 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="M_Attach" Id="{3f88776c-53a0-4184-9466-1323781c8a3f}">
+    <Method Name="M_Attach" Id="{e5f3d61e-3e1e-49a5-be36-d112b991237f}">
       <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
 VAR_INPUT
 	iLogging:				I_Logging;
@@ -35,50 +35,26 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_Log" Id="{fbcda6eb-ae6d-4cd1-8b07-21ee1ce3950e}">
+    <Method Name="M_Log" Id="{99ec6938-a1ad-4754-8b3a-271a0cd755f4}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
-	stMessage:			ST_Message;
+	eLogLevel:			E_LogLevel;
+	nID:				UDINT;
+	sSource:			STRING(255);
+	sMessage:			STRING(255);
+	sArguments:			STRING(255);
 END_VAR
 VAR
-	fbMsg:				FB_TcMessage; 
+	fbMsg:				FB_TcLogging; 
 	fbSourceInfo:		FB_TcSourceInfo;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF THIS^.eLogLevel > eLogLevel THEN
-	M_Log:= TRUE;
-	RETURN;
-END_IF
-
-fbSourceInfo.Clear();
-fbSourceInfo.sName:= stMessage.sSource;
-
-CASE eLogLevel OF
-	E_LogLevel.Verbose:
-    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Verbose, fbSourceInfo); 	
-
-	E_LogLevel.Info:
-    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Info, fbSourceInfo); 
-		
-	E_LogLevel.Warning:		
-    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Warning, fbSourceInfo); 
-		
-	E_LogLevel.Error:
-    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Error, fbSourceInfo); 
-		
-	E_LogLevel.Critical:
-    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Critical, fbSourceInfo); 
-		
-END_CASE
-
-fbMsg.ipArguments.Clear().AddString(stMessage.sDefault);
-
-fbMsg.Send(stMessage.nTimestamp);]]></ST>
+        <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <Property Name="P_LogLevel" Id="{20284c4a-b49d-4717-b587-44632cbeee93}">
+    <Property Name="P_LogLevel" Id="{e44967b0-7bc6-4691-a053-a7a9ae307d31}">
       <Declaration><![CDATA[PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
-      <Get Name="Get" Id="{2ddf3a03-42dc-4c50-93f3-3a68b5c79508}">
+      <Get Name="Get" Id="{a7b9af1e-350a-4368-9af9-ad37be55cf9f}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -86,7 +62,7 @@ END_VAR
           <ST><![CDATA[P_LogLevel:= eLogLevel;]]></ST>
         </Implementation>
       </Get>
-      <Set Name="Set" Id="{02addeea-bac2-4187-adee-a3a4ebdbd958}">
+      <Set Name="Set" Id="{ee7c41e7-11fd-4dce-aade-31ad3f7ed8fc}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>

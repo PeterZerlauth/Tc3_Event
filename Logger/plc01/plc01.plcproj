@@ -18,46 +18,54 @@
     <LibraryReferences>{1e063326-ecdb-47ef-86ef-95e165709f93}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\E_LogLevel.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\F_Format.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\I_Logger.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\I_Logging.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_Message.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\FileLogging\FB_FileLogging.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\F_InstancePath.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Logger\FB_Logger.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Logger\F_InstancePath.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Logger\I_Logger.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Logging\E_LogLevel.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\Logging\FB_Logging.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Logging\F_Format.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Logging\I_Logging.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\ST_LogMessage.TcDUT">
+    <Compile Include="POUs\TcLogging\FB_TcLogging.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\TcLogging\FB_TcLogging.TcPOU">
+    <Compile Include="POUs\TcAlarming\FB_TcAlarming.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\FileLogging" />
     <Folder Include="POUs\Logging" />
     <Folder Include="POUs\Logger" />
     <Folder Include="POUs\TcLogging" />
+    <Folder Include="POUs\TcAlarming" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

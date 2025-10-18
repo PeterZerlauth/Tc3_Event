@@ -106,14 +106,26 @@ sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
 VAR_INPUT
 	nID:				UDINT;
 	sMessage:			STRING(255);
+END_VAR
+VAR
+	stMessage:			ST_Message;
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF iLogging = 0 THEN
 	RETURN;
 END_IF
 
-iLogging.M_Log(E_LogLevel.Critical, nID, sInstancePath, sMessage, sArguments);
-sArguments:= '';]]></ST>
+stMessage.eLogLevel:= E_LogLevel.Critical;
+stMessage.nID:= nID;
+stMessage.nTimestamp:= F_GetSystemTime();
+stMessage.sMessage:= sMessage;
+stMessage.sArguments:= sArguments;
+stMessage.sDefault:= F_Format(sMessage, sArguments);
+stMessage.sSource:= sInstancePath;
+sArguments:= '';
+
+iLogging.M_Log(stMessage);
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Error" Id="{ff42a88a-8912-4d2c-af88-2d59a6d8da27}">
@@ -122,14 +134,25 @@ VAR_INPUT
 	nID:				UDINT;
 	sMessage:			STRING(255);
 END_VAR
-]]></Declaration>
+VAR
+	stMessage:			ST_Message;
+END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF iLogging = 0 THEN
 	RETURN;
 END_IF
 
-iLogging.M_Log(E_LogLevel.Error, nID, sInstancePath, sMessage, sArguments);
-sArguments:= '';]]></ST>
+stMessage.eLogLevel:= E_LogLevel.Error;
+stMessage.nID:= nID;
+stMessage.nTimestamp:= F_GetSystemTime();
+stMessage.sMessage:= sMessage;
+stMessage.sArguments:= sArguments;
+stMessage.sDefault:= F_Format(sMessage, sArguments);
+stMessage.sSource:= sInstancePath;
+sArguments:= '';
+
+iLogging.M_Log(stMessage);
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Info" Id="{2ea5a01b-eb1e-4166-8c91-90bf5bd9cfc5}">
@@ -137,14 +160,26 @@ sArguments:= '';]]></ST>
 VAR_INPUT
 	nID:				UDINT;
 	sMessage:			STRING(255);
+END_VAR
+VAR
+	stMessage:			ST_Message;
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF iLogging = 0 THEN
 	RETURN;
 END_IF
 
-iLogging.M_Log(E_LogLevel.Info, nID, sInstancePath, sMessage, sArguments);
-sArguments:= '';]]></ST>
+stMessage.eLogLevel:= E_LogLevel.Info;
+stMessage.nID:= nID;
+stMessage.nTimestamp:= F_GetSystemTime();
+stMessage.sMessage:= sMessage;
+stMessage.sArguments:= sArguments;
+stMessage.sDefault:= F_Format(sMessage, sArguments);
+stMessage.sSource:= sInstancePath;
+sArguments:= '';
+
+iLogging.M_Log(stMessage);
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Verbose" Id="{de67a697-7e72-4e4b-b32b-4b561494e424}">
@@ -152,14 +187,25 @@ sArguments:= '';]]></ST>
 VAR_INPUT
 	sMessage:			STRING(255);
 END_VAR
-]]></Declaration>
+VAR
+	stMessage:			ST_Message;
+END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF iLogging = 0 THEN
 	RETURN;
 END_IF
 
-iLogging.M_Log(E_LogLevel.Verbose, 0, sInstancePath, sMessage, sArguments);
-sArguments:= '';]]></ST>
+stMessage.eLogLevel:= E_LogLevel.Verbose;
+stMessage.nID:= 0;
+stMessage.nTimestamp:= F_GetSystemTime();
+stMessage.sMessage:= sMessage;
+stMessage.sArguments:= sArguments;
+stMessage.sDefault:= F_Format(sMessage, sArguments);
+stMessage.sSource:= sInstancePath;
+sArguments:= '';
+
+iLogging.M_Log(stMessage);
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Warning" Id="{a6eef191-b99b-4a50-95aa-3b8f792c1e41}">
@@ -167,14 +213,25 @@ sArguments:= '';]]></ST>
 VAR_INPUT
 	nID:				UDINT;
 	sMessage:			STRING(255);
+END_VAR
+VAR
+	stMessage:			ST_Message;
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF iLogging = 0 THEN
 	RETURN;
 END_IF
 
-iLogging.M_Log(E_LogLevel.Warning, nID, sInstancePath, sMessage, sArguments);
-sArguments:= '';]]></ST>
+stMessage.eLogLevel:= E_LogLevel.Warning;
+stMessage.nID:= nID;
+stMessage.nTimestamp:= F_GetSystemTime();
+stMessage.sMessage:= sMessage;
+stMessage.sArguments:= sArguments;
+stMessage.sDefault:= F_Format(sMessage, sArguments);
+stMessage.sSource:= sInstancePath;
+sArguments:= '';
+
+iLogging.M_Log(stMessage);]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_Logger" Id="{134e0ae4-88be-4cc8-992b-473aa00879c7}">

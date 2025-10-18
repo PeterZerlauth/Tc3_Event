@@ -5,12 +5,13 @@
 VAR
 	fbLogging:			FB_Logging;
 	fbTcLogging:		FB_TcLogging;
+	fbTcAlarming:		FB_TcAlarming;
 	fbLogger:			FB_Logger;
 	bDebug:				BOOL;
 	bInfo:				BOOL;
 	bWarning:			BOOL;
 	bError:				BOOL;
-	bCritical:				BOOL;
+	bCritical:			BOOL;
 END_VAR
 
 // toDo 
@@ -19,7 +20,10 @@ END_VAR
     <Implementation>
       <ST><![CDATA[fbLogging();
 fbLogging.M_Attach(fbTcLogging);
+
 fbTcLogging();
+
+fbTcAlarming();
 
 fbLogger.iLogging:= fbLogging;
 
