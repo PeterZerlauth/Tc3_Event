@@ -17,6 +17,7 @@ VAR
     nMessages:				UINT := 0;                     // Message count
 	{attribute 'hide'} 
 	nIndex: 				UINT;
+	iLogging:				I_Logging;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -37,6 +38,26 @@ bWarn:=	FALSE;
 bError:= FALSE;
 bFatal:= FALSE;]]></ST>
     </Implementation>
+    <Method Name="M_Attach" Id="{f57e9ab0-821c-4fb8-ac2e-06aed1be4c34}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
+VAR_INPUT
+	iLogging:				I_Logging;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF THIS^.iLogging = 0 THEN
+	THIS^.iLogging:= iLogging;
+	M_Attach:= TRUE;
+ELSIF THIS^.iLogging = iLogging THEN
+	// already inside
+	M_Attach:= TRUE;
+	RETURN;
+ELSE
+	// redirect to next logging function block
+	THIS^.iLogging.M_Attach(iLogging);
+END_IF]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="M_Log" Id="{ced7a02e-e5d1-4f22-8859-d2eccf7c8c34}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
@@ -93,6 +114,10 @@ IF nMessages < 99 THEN
     aMessages[nMessages].sArguments:=	sArguments;
 	aMessages[nMessages].bActive:=		TRUE;
     nMessages := nMessages + 1;
+	// just for new messages
+	IF iLogging <> 0 THEN
+		iLogging.M_Log(	eLogLevel, nID, sSource, sMessage, sArguments);
+	END_IF
 	M_Log := TRUE;
 END_IF]]></ST>
       </Implementation>

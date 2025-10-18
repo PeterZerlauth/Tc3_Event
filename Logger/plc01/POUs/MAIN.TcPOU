@@ -11,7 +11,10 @@ VAR
 	bError:				BOOL;
 	bFatal:				BOOL;
 END_VAR
-]]></Declaration>
+
+// toDo 
+// * integrate a twincat logger
+// * integrate a file logger]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbLogging();
 

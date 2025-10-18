@@ -3,6 +3,13 @@
   <Itf Name="I_Logging" Id="{8d10f800-b621-4e55-9c3b-f2a551bf051a}">
     <Declaration><![CDATA[INTERFACE I_Logging
 ]]></Declaration>
+    <Method Name="M_Attach" Id="{246fd3da-f4e3-4f73-a14a-612d68e14b33}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
+VAR_INPUT
+	iLogging:				I_Logging;
+END_VAR
+]]></Declaration>
+    </Method>
     <Method Name="M_Log" Id="{3bf5264c-77ea-40c4-942b-0eebcecbddb2}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
