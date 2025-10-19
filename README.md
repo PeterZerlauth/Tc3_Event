@@ -65,4 +65,55 @@ fbLogger.M_Critical(2626343866, 'Emergency stop activated');
 <img width="768" height="315" alt="image" src="https://github.com/user-attachments/assets/b2c84339-6437-416f-bf1d-d2c682075724" />
 
 
+## JSON Export script
+```json
+[
+    {
+        "id": 292272521,
+        "messages": {
+            "de": "",
+            "en": "message"
+        }
+    },
+    {
+        "id": 2626343866,
+        "messages": {
+            "de": "",
+            "en": "Critical message"
+        }
+    },
+    {
+        "id": 2276475569,
+        "messages": {
+            "de": "",
+            "en": "Info message"
+        }
+    },
+    {
+        "id": 2263151477,
+        "messages": {
+            "de": "",
+            "en": "message %s %s"
+        }
+    },
+    {
+        "id": 1791326186,
+        "messages": {
+            "de": "",
+            "en": "Warning message"
+        }
+    },
+    {
+        "id": 2621541999,
+        "messages": {
+            "de": "",
+            "en": "Error message"
+        }
+    }
+]
+```
+
+
+
+
 
