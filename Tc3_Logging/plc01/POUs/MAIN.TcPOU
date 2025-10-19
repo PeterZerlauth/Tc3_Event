@@ -3,6 +3,7 @@
   <POU Name="MAIN" Id="{19c7fd4e-92ee-4c48-b527-6576c9627f78}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	fbFile:				FB_File;
 	fbLogging:			FB_Logging;
 	fbTcLogging:		FB_TcLogging;
 	fbTcAlarming:		FB_TcAlarming;
@@ -13,13 +14,19 @@ VAR
 	bError:				BOOL;
 	bCritical:			BOOL;
 	sTest:				String;
+	bOpen: BOOL;
 END_VAR
 
 // toDo 
 // * integrate a twincat logger
 // * integrate a file logger]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbLogging();
+      <ST><![CDATA[fbFile();
+IF bOpen THEN
+	bOpen:= NOT fbFile.M_Create('C:\temp\log.txt');
+END_IF
+
+fbLogging();
 fbLogging.M_Attach(fbTcLogging);
 
 fbTcLogging();

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_File" Id="{c4bb7fa1-2c1b-4349-b0e9-7ca94a16f6d1}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+{attribute 'to_string'}
+TYPE E_File :
+(
+	Idle		:= 0,
+	Info		:= 1,
+	Create		:= 2,
+	Open		:= 9,
+	Read		:= 10,
+	Write		:= 11,
+	Close		:= 12
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>
