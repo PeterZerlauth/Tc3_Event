@@ -139,8 +139,7 @@ ELSE
 	fbDelete.bExecute:= TRUE;
 	fbDelete.sPathName:= PathName;
 	fbDelete.ePath:= E_OpenPath.PATH_GENERIC;
-END_IF
-]]></ST>
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Open" Id="{a8dc81cc-e694-069e-3edb-de6efac1c222}">
@@ -164,9 +163,11 @@ END_VAR
 		M_Open:= TRUE;
 	END_IF	
 ELSE
-	fbOpen.bExecute:= TRUE;
-	fbOpen.sPathName:= sPathName;
-	fbOpen.nMode:= (FOPEN_MODEAPPEND OR FOPEN_MODEPLUS OR FOPEN_MODETEXT);
+	IF M_Create(sPathName) THEN
+		fbOpen.bExecute:= TRUE;
+		fbOpen.sPathName:= sPathName;
+		fbOpen.nMode:= (FOPEN_MODEAPPEND OR FOPEN_MODEPLUS OR FOPEN_MODETEXT);		
+	END_IF
 END_IF
 ]]></ST>
       </Implementation>

@@ -19,7 +19,7 @@
     <DeploymentEvents>
       <Events>
         <Event>
-          <CommandType>Execute</CommandType>
+          <CommandType RunAsAdmin="false">Execute</CommandType>
           <DeploymentType>ActivateConfiguration</DeploymentType>
           <Command1>powershell.exe -ExecutionPolicy Bypass -NoProfile -WindowStyle Hidden -File "%SOLUTIONPATH%\script\export.ps1"</Command1>
           <Command2 />
