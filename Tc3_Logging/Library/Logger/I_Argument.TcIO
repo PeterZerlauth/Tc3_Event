@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="I_Argument" Id="{6070f7e3-601d-44ff-953b-e02d5e046b3f}">
+    <Declaration><![CDATA[INTERFACE I_Argument
+]]></Declaration>
+    <Method Name="M_AddBOOL" Id="{4a4232c5-0b26-4f8c-ad4a-57193de9aa82}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddBOOL : I_Argument
+VAR_INPUT
+	nValue:				LINT;
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_AddINT" Id="{99a67206-55c1-420d-bfe5-b508362e690a}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddINT : I_Argument
+VAR_INPUT
+	nValue:				LINT;
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_AddREAL" Id="{1ad60c9b-cb74-4a8f-bb0e-612d270c055f}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddREAL : I_Argument
+VAR_INPUT
+	fValue:				LREAL;
+	nDecimals:			USINT;
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_AddSTRING" Id="{414031c3-c7b6-4eea-9f37-5e0792bcf60a}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddSTRING : I_Argument
+VAR_INPUT
+	sValue:				STRING(255);
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_AddTIME" Id="{71f3c0ef-d656-473b-a742-2f0eba5b6965}">
+      <Declaration><![CDATA[METHOD PUBLIC M_AddTIME : I_Argument
+VAR_INPUT
+	tValue:				TIME;
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_Clear" Id="{6ae742a7-b2b9-4d22-b51b-9a085a158100}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Clear : I_Argument
+VAR_INPUT
+END_VAR]]></Declaration>
+    </Method>
+    <Property Name="P_Value" Id="{0503188b-97cc-41df-8f7e-52f232810f0c}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_Value : string(255)]]></Declaration>
+      <Get Name="Get" Id="{c58f5a69-aa2b-4993-9224-a484f99c2b8e}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>

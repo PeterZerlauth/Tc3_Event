@@ -38,6 +38,7 @@
         </Event>
       </Events>
     </DeploymentEvents>
+    <Released>false</Released>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="FastTask.TcTTO">
@@ -58,7 +59,10 @@
     <Compile Include="POUs\File\FB_File.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\F_GetSymbolName.TcPOU">
+    <Compile Include="POUs\LinkedList\FB_LoggerList.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\LinkedList\ST_LoggingNode.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -72,7 +76,12 @@
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
     <Folder Include="POUs\FileLogging" />
-    <Folder Include="POUs\File" />
+    <Folder Include="POUs\File">
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Folder>
+    <Folder Include="POUs\LinkedList">
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Folder>
     <Folder Include="POUs\TcAlarming" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
@@ -126,10 +135,22 @@
           <d n="SubKeys" t="Hashtable" />
           <d n="Values" t="Hashtable" />
         </o>
+        <v>{246001F4-279D-43AC-B241-948EB31120E1}</v>
+        <o>
+          <v n="Name">"{246001F4-279D-43AC-B241-948EB31120E1}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
         <v>{29BD8D0C-3586-4548-BB48-497B9A01693F}</v>
         <o>
           <v n="Name">"{29BD8D0C-3586-4548-BB48-497B9A01693F}"</v>
           <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+            <v>NamingConventions</v>
+            <o>
+              <v n="Name">"NamingConventions"</v>
+              <d n="SubKeys" t="Hashtable" />
+              <d n="Values" t="Hashtable" />
+            </o>
             <v>Rules</v>
             <o>
               <v n="Name">"Rules"</v>

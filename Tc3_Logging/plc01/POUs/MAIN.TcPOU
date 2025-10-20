@@ -3,7 +3,8 @@
   <POU Name="MAIN" Id="{19c7fd4e-92ee-4c48-b527-6576c9627f78}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	fbFile:				FB_File;
+// 	fbLoggerList:		FB_LoggerList;
+// 	fbFile:				FB_File;
 	fbLogging:			FB_Logging;
 	fbTcLogging:		FB_TcLogging;
 	fbTcAlarming:		FB_TcAlarming;
@@ -13,18 +14,13 @@ VAR
 	bWarning:			BOOL;
 	bError:				BOOL;
 	bCritical:			BOOL;
-	sTest:				String;
-	bOpen: BOOL;
-END_VAR
-
-// toDo 
-// * integrate a twincat logger
-// * integrate a file logger]]></Declaration>
+	bOpen: 				BOOL;
+END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbFile();
-IF bOpen THEN
-	bOpen:= NOT fbFile.M_Create('C:\temp\log.txt');
-END_IF
+      <ST><![CDATA[// fbFile();
+// IF bOpen THEN
+// 	bOpen:= NOT fbFile.M_Open('C:\temp\log.txt');
+// END_IF
 
 fbLogging();
 fbLogging.M_Attach(fbTcLogging);
@@ -37,15 +33,19 @@ fbLogger.iLogging:= fbLogging;
 
 fbLogger();
 
+// fbLoggerList.M_Add(fbTcLogging);
+
+
+
 IF bVerbose THEN
-	fbLogger.M_AddINT(134052566194980000);
-	fbLogger.M_AddSTRING('mm');
+	fbLogger.P_Argument.M_AddINT(134052566194980000);
+	fbLogger.P_Argument.M_AddSTRING('mm');
 	fbLogger.M_Verbose('message %s %s');
 END_IF
 
 IF bInfo THEN
-	fbLogger.M_AddREAL(33.134581234, 3);
-	fbLogger.M_AddSTRING('mm');
+	fbLogger.P_Argument.M_AddREAL(33.134581234, 3);
+	fbLogger.P_Argument.M_AddSTRING('mm');
 	fbLogger.M_Info(2263151477, 'message %s %s');
 END_IF
 
@@ -60,9 +60,6 @@ END_IF
 IF bCritical THEN
 	fbLogger.M_Critical(292272521, 'message');
 END_IF
-
-
-sTest:= F_GetSymbolName (fbLogger);
 ]]></ST>
     </Implementation>
   </POU>

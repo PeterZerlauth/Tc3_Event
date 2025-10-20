@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_LoggerList" Id="{cfe3afb6-08fa-448f-8d45-7b5802652752}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_LoggerList IMPLEMENTS I_Logging
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	pLoggingNode: 	POINTER TO St_LoggingNode;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+
+]]></ST>
+    </Implementation>
+    <Method Name="M_Add" Id="{acf57393-b80f-48cd-b55c-c8192f1f884a}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Add : BOOL
+VAR_INPUT
+	iLogging:  I_Logging;
+END_VAR
+VAR
+	pNewNode : POINTER TO St_LoggingNode;
+	pIter    : POINTER TO St_LoggingNode;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Allocate new node
+pNewNode := __NEW(ST_LoggingNode);
+IF pNewNode = 0 THEN 
+	RETURN;
+END_IF
+
+// Assign interface pointer
+pNewNode^.pLogger := iLogging;
+pNewNode^.pNext := 0;
+
+// Append to list
+IF pLoggingNode = 0 THEN
+	pLoggingNode := pNewNode;
+ELSE
+	pIter := pLoggingNode;
+	WHILE pIter^.pNext <> 0 DO
+		pIter := pIter^.pNext;
+	END_WHILE
+	pIter^.pNext := pNewNode;
+END_IF
+
+M_Add := TRUE;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Delete" Id="{c5d4f937-adfd-45a6-9b75-ad08182e5372}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Delete : BOOL
+VAR_INPUT
+END_VAR
+VAR
+	pIter, pNext : POINTER TO St_LoggingNode;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[pIter := pLoggingNode;
+WHILE pIter <> 0 DO
+	pNext := pIter^.pNext;
+	__DELETE(pIter);
+	pIter := pNext;
+END_WHILE
+pLoggingNode := 0;
+M_Delete:= TRUE;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Log" Id="{c8644b7c-fb0b-4983-b3a5-ba0ac57c41d6}">
+      <Declaration><![CDATA[METHOD M_Log : BOOL
+VAR_INPUT
+	stMessage	: Tc3_Logging.ST_Message;
+END_VAR
+VAR
+	pIter : POINTER TO St_LoggingNode;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[pIter := pLoggingNode;
+WHILE pIter <> 0 DO
+	IF pIter^.pLogger <> 0 THEN
+		pIter^.pLogger^.M_Log(stMessage);
+	END_IF
+	pIter := pIter^.pNext;
+END_WHILE
+M_Log:= TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

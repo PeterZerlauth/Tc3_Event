@@ -15,8 +15,8 @@ END_VAR
       <ST><![CDATA[fbLogger.P_Logger:= MAIN.fbLogging;
 
 IF bVerbose THEN
-	fbLogger.M_AddINT(134052566194980000);
-	fbLogger.M_AddSTRING('mm');
+	fbLogger.P_Argument.M_AddINT(134052566194980000);
+	fbLogger.P_Argument.M_AddSTRING('mm');
 	fbLogger.M_Verbose('Verbose message %s %s');
 END_IF
 

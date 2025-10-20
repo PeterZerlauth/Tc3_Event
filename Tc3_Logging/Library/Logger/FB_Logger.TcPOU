@@ -7,12 +7,13 @@ VAR_INPUT
 	iLogging:			I_Logging;
 END_VAR
 VAR_OUTPUT
+	fbArguments:				FB_Argument;
 END_VAR
 VAR
+    {attribute 'hide'} 
     {attribute 'instance-path'} 
     {attribute 'noinit'} 
     sInstancePath:				STRING(255); 
-	sArguments:					STRING(255); 
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -30,74 +31,6 @@ bInCopyCode: BOOL;  // TRUE: Die Instanz wird danach in den Kopiercode kopiert (
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[sInstancePath:= F_InstancePath(sInstancePath);]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="M_AddBOOL" Id="{6fe5c2f5-9f6f-45ef-a512-7b981b0be320}">
-      <Declaration><![CDATA[METHOD PUBLIC M_AddBOOL
-VAR_INPUT
-	nValue:				LINT;
-END_VAR
-VAR
-	sValue: 			STRING;
-END_VAR]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[sValue:= LINT_TO_STRING(nValue);			// convert
-sValue:= CONCAT(sValue, '$R');				// add separator
-sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="M_AddINT" Id="{0fb61d34-2130-4e2b-8ca3-a66334bd442e}">
-      <Declaration><![CDATA[METHOD PUBLIC M_AddINT
-VAR_INPUT
-	nValue:				LINT;
-END_VAR
-VAR
-	sValue: 			STRING;
-END_VAR]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[sValue:= LINT_TO_STRING(nValue);			// convert
-sValue:= CONCAT(sValue, '$R');				// add separator
-sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="M_AddREAL" Id="{ec2078de-d198-403e-9f1d-9aa3713c42cf}">
-      <Declaration><![CDATA[METHOD PUBLIC M_AddREAL
-VAR_INPUT
-	fValue:				LREAL;
-	nDecimals:			USINT;
-END_VAR
-VAR
-	sValue: 			STRING;
-END_VAR]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[sValue:= LREAL_TO_FMTSTR(fValue, nDecimals, TRUE);		// convert
-sValue:= CONCAT(sValue, '$R');							// add separator
-sArguments:= CONCAT(sArguments, sValue);				// add new arg]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="M_AddSTRING" Id="{6ddea08b-8528-414a-b8b0-ca7a04ccfa78}">
-      <Declaration><![CDATA[METHOD PUBLIC M_AddSTRING
-VAR_INPUT
-	sValue:				STRING(255);
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[sValue:= CONCAT(sValue, '$R');				// add separator
-sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="M_AddTIME" Id="{5bf7bbc0-6a06-4191-858d-e9e3e764bb18}">
-      <Declaration><![CDATA[METHOD PUBLIC M_AddTIME
-VAR_INPUT
-	tValue:				TIME;
-END_VAR
-VAR
-	sValue: 			STRING;
-END_VAR]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[sValue:= TIME_TO_STRING(tValue);			// convert
-sValue:= CONCAT(sValue, '$R');				// add separator
-sArguments:= CONCAT(sArguments, sValue);	// add new arg]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Critical" Id="{7b4c91bf-8e3c-413c-a148-e271617106d9}">
@@ -118,10 +51,10 @@ stMessage.eLogLevel:= E_LogLevel.Critical;
 stMessage.nID:= nID;
 stMessage.nTimestamp:= F_GetSystemTime();
 stMessage.sMessage:= sMessage;
-stMessage.sArguments:= sArguments;
-stMessage.sDefault:= F_Format(sMessage, sArguments);
+stMessage.sArguments:= fbArguments.P_Value;
+stMessage.sDefault:= F_Format(sMessage, fbArguments.P_Value);
 stMessage.sSource:= sInstancePath;
-sArguments:= '';
+fbArguments.M_Clear();
 
 iLogging.M_Log(stMessage);
 ]]></ST>
@@ -145,10 +78,10 @@ stMessage.eLogLevel:= E_LogLevel.Error;
 stMessage.nID:= nID;
 stMessage.nTimestamp:= F_GetSystemTime();
 stMessage.sMessage:= sMessage;
-stMessage.sArguments:= sArguments;
-stMessage.sDefault:= F_Format(sMessage, sArguments);
+stMessage.sArguments:= fbArguments.P_Value;
+stMessage.sDefault:= F_Format(sMessage, fbArguments.P_Value);
 stMessage.sSource:= sInstancePath;
-sArguments:= '';
+fbArguments.M_Clear();
 
 iLogging.M_Log(stMessage);
 ]]></ST>
@@ -172,10 +105,10 @@ stMessage.eLogLevel:= E_LogLevel.Info;
 stMessage.nID:= nID;
 stMessage.nTimestamp:= F_GetSystemTime();
 stMessage.sMessage:= sMessage;
-stMessage.sArguments:= sArguments;
-stMessage.sDefault:= F_Format(sMessage, sArguments);
+stMessage.sArguments:= fbArguments.P_Value;
+stMessage.sDefault:= F_Format(sMessage, fbArguments.P_Value);
 stMessage.sSource:= sInstancePath;
-sArguments:= '';
+fbArguments.M_Clear();
 
 iLogging.M_Log(stMessage);
 ]]></ST>
@@ -198,10 +131,10 @@ stMessage.eLogLevel:= E_LogLevel.Verbose;
 stMessage.nID:= 0;
 stMessage.nTimestamp:= F_GetSystemTime();
 stMessage.sMessage:= sMessage;
-stMessage.sArguments:= sArguments;
-stMessage.sDefault:= F_Format(sMessage, sArguments);
+stMessage.sArguments:= fbArguments.P_Value;
+stMessage.sDefault:= F_Format(sMessage, fbArguments.P_Value);
 stMessage.sSource:= sInstancePath;
-sArguments:= '';
+fbArguments.M_Clear();
 
 iLogging.M_Log(stMessage);
 ]]></ST>
@@ -225,14 +158,25 @@ stMessage.eLogLevel:= E_LogLevel.Warning;
 stMessage.nID:= nID;
 stMessage.nTimestamp:= F_GetSystemTime();
 stMessage.sMessage:= sMessage;
-stMessage.sArguments:= sArguments;
-stMessage.sDefault:= F_Format(sMessage, sArguments);
+stMessage.sArguments:= fbArguments.P_Value;
+stMessage.sDefault:= F_Format(sMessage, fbArguments.P_Value);
 stMessage.sSource:= sInstancePath;
-sArguments:= '';
+fbArguments.M_Clear();
 
 iLogging.M_Log(stMessage);]]></ST>
       </Implementation>
     </Method>
+    <Property Name="P_Argument" Id="{dd3bce54-33d7-4a6c-8d06-ad6a5d0ec566}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_Argument : I_Argument]]></Declaration>
+      <Get Name="Get" Id="{9148b4be-b1fa-4fe4-a389-e96c939bba14}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[P_Argument:= fbArguments;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
     <Property Name="P_Logger" Id="{98c079df-4944-4aae-a3d6-ca12ac41d1d4}">
       <Declaration><![CDATA[PROPERTY PUBLIC P_Logger : I_Logging]]></Declaration>
       <Get Name="Get" Id="{7f49254e-94b6-4972-a1b5-02a92d10e780}">

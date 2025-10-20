@@ -9,10 +9,7 @@ VAR
 	fbRead:				FB_FileRead;
 	fbWrite:			FB_FileWrite;
 	fbClose:			FB_FileClose;
-	fbDelete:			FB_FileDelete;
-	pBuffer:			POINTER TO BYTE;
-	nBuffer:			UDINT;
-
+	fbDelete:			FB_FileDelete; 
 END_VAR
 VAR_OUTPUT
 	bBusy:					BOOL;
@@ -29,7 +26,8 @@ fbOpen();
 fbRead();
 fbWrite();
 fbClose();
-fbDelete();]]></ST>
+fbDelete();
+]]></ST>
     </Implementation>
     <Method Name="M_Append" Id="{1e5af4d0-f329-067d-0bf2-a3973278c0e5}">
       <Declaration><![CDATA[METHOD PUBLIC M_Append : BOOL
@@ -190,8 +188,6 @@ END_VAR]]></Declaration>
 	END_IF
 ELSE
 	fbRead.bExecute:= TRUE;
-	fbRead.pReadBuff:= pBuffer;
-	fbRead.cbReadLen:= nBuffer;
 END_IF
 
 ]]></ST>
@@ -215,8 +211,6 @@ END_VAR]]></Declaration>
 	END_IF
 ELSE
 	fbWrite.bExecute:= TRUE;
-	fbRead.pReadBuff:= pBuffer;
-	fbRead.cbReadLen:= nBuffer;
 END_IF
 ]]></ST>
       </Implementation>

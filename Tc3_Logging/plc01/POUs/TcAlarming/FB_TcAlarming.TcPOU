@@ -10,23 +10,22 @@ VAR_OUTPUT
 END_VAR
 VAR
 	iLogging:				I_Logging;
-	fbAlarm:				FB_TcAlarm; 
-	bInit: BOOL;
+	aAlarm:					ARRAY[0..99] OF FB_TcAlarm; // Message store
+    nAlarm:					UINT := 0;                     // Message count
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF NOT bInit THEN
-	bInit:= TRUE;
-	fbAlarm.CreateEx(TC_EVENTS.TcLogging.Verbose, FALSE, 0);
-END_IF
-
-IF fbAlarm.bRaised THEN
-	;
-ELSE
-	fbAlarm.Raise(0);
-END_IF
-
-//    	fbMsg.CreateEx(TC_EVENTS.TcLogging.Verbose, fbSourceInfo); 	]]></ST>
+      <ST><![CDATA[// IF NOT bInit THEN
+// 	bInit:= TRUE;
+// 	aAlarm[0].
+// 	aAlarm[0].CreateEx(TC_EVENTS.TcLogging.Verbose, FALSE, 0);
+// END_IF
+// 
+// IF fbAlarm.bRaised THEN
+// 	;
+// ELSE
+// 	fbAlarm.Raise(0);
+// END_IF]]></ST>
     </Implementation>
     <Method Name="M_Attach" Id="{a40614b1-3973-468c-ab07-88a8adebeba6}">
       <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
