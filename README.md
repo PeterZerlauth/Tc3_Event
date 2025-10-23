@@ -1,4 +1,4 @@
-# Tc3_Logging
+# Tc3_Event
 
 > A simple and efficient logging framework for TwinCAT 3 automation projects,
 > providing structured logging capabilities with reusable Function Blocks.
