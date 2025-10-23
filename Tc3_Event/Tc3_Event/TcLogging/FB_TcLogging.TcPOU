@@ -2,14 +2,14 @@
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_TcLogging" Id="{a25dbc17-9138-425a-a854-e40fc76dd77c}" SpecialFunc="None">
     <Declaration><![CDATA[// Provide logging 
-FUNCTION_BLOCK FB_TcLogging IMPLEMENTS I_Logging
+FUNCTION_BLOCK FB_TcLogging IMPLEMENTS I_Logger
 VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	iLogging:				I_Logging;
+	iLogging:				I_Logger;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -18,7 +18,7 @@ END_VAR
     <Method Name="M_Attach" Id="{1c8989a0-b07f-40c8-a8af-0456191e3a9c}">
       <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
 VAR_INPUT
-	iLogging:				I_Logging;
+	iLogging:				I_Logger;
 END_VAR
 ]]></Declaration>
       <Implementation>

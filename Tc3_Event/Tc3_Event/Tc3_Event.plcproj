@@ -8,7 +8,7 @@
     <DownloadApplicationInfo>true</DownloadApplicationInfo>
     <WriteProductVersion>false</WriteProductVersion>
     <GenerateTpy>false</GenerateTpy>
-    <Name>Library</Name>
+    <Name>Tc3_Event</Name>
     <ProgramVersion>3.1.4026.19</ProgramVersion>
     <Application>{31b54c60-b197-4f56-bc36-04081940ab73}</Application>
     <TypeSystem>{7cbfef62-c143-4aa2-90cb-def22df8c25c}</TypeSystem>
@@ -18,10 +18,10 @@
     <LibraryReferences>{e9c43dee-60df-466d-b16c-22e077299722}</LibraryReferences>
     <Company>www.peterzerlauth.com</Company>
     <Released>false</Released>
-    <Title>Tc3_Logging</Title>
+    <Title>Tc3_Event</Title>
     <ProjectVersion>0.0.0.0</ProjectVersion>
-    <DefaultNamespace>Tc3_Logging</DefaultNamespace>
-    <Placeholder>Tc3_Logging</Placeholder>
+    <DefaultNamespace>Tc3_Event</DefaultNamespace>
+    <Placeholder>Tc3_Event</Placeholder>
     <Author>Peter Zerlauth</Author>
     <GlobalVersionStructureIncluded>true</GlobalVersionStructureIncluded>
     <POUsForPropertyAccessIncluded>true</POUsForPropertyAccessIncluded>
@@ -32,38 +32,38 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Helpers" />
-    <Folder Include="Logger" />
+    <Folder Include="Event" />
     <Folder Include="Logging" />
     <Folder Include="Project Information" />
     <Folder Include="TcLogging" />
     <Folder Include="Version" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\F_Format.TcPOU">
+    <Compile Include="Event\I_Event.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\F_PrintF.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\F_InstancePath.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Logger\FB_Argument.TcPOU">
+    <Compile Include="Event\FB_Argument.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Logger\FB_Logger.TcPOU">
+    <Compile Include="Event\FB_Event.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Logger\I_Argument.TcIO">
+    <Compile Include="Event\I_Argument.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logging\E_LogLevel.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Logging\FB_Logging.TcPOU">
+    <Compile Include="Logging\FB_Logger.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logging\I_Logger.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Logging\I_Logging.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logging\ST_Message.TcDUT">
@@ -111,11 +111,6 @@
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library.tmc">
-      <SubType>Content</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <PlaceholderResolution Include="Tc2_Standard">
       <Resolution>Tc2_Standard, * (Beckhoff Automation GmbH)</Resolution>
     </PlaceholderResolution>
@@ -132,16 +127,27 @@
       <Resolution>Tc3_Module, * (Beckhoff Automation GmbH)</Resolution>
     </PlaceholderResolution>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Tc3_Event.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-  <Data>
-    <o xml:space="preserve" t="OptionKey">
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
         <o>
           <v n="Name">"{192FAD59-8248-4824-A8DE-9177C94C195A}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{246001F4-279D-43AC-B241-948EB31120E1}</v>
+        <o>
+          <v n="Name">"{246001F4-279D-43AC-B241-948EB31120E1}"</v>
           <d n="SubKeys" t="Hashtable" />
           <d n="Values" t="Hashtable" />
         </o>
@@ -273,14 +279,14 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-  </Data>
-  <TypeList>
-    <Type n="Boolean">System.Boolean</Type>
-    <Type n="Hashtable">System.Collections.Hashtable</Type>
-    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-    <Type n="String">System.String</Type>
-  </TypeList>
-</XmlArchive>
+        </Data>
+        <TypeList>
+          <Type n="Boolean">System.Boolean</Type>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>

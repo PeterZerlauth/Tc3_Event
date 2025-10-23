@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="FB_Logger" Id="{fcfa56ff-d0f1-4149-9de7-6f44354915c6}" SpecialFunc="None">
+  <POU Name="FB_Event" Id="{fcfa56ff-d0f1-4149-9de7-6f44354915c6}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'reflection'} 
-FUNCTION_BLOCK FB_Logger
+FUNCTION_BLOCK FB_Event IMPLEMENTS I_Event
 VAR_INPUT
-	iLogging:			I_Logging;
+	iEvent:			I_Logger;
 END_VAR
 VAR_OUTPUT
 	fbArguments:				FB_Argument;
@@ -14,10 +14,59 @@ VAR
     {attribute 'instance-path'} 
     {attribute 'noinit'} 
     sInstancePath:				STRING(255); 
+	bVerbose: 					BOOL;
+	bInfo: 						BOOL;
+	bWarning: 					BOOL;
+	bError: 					BOOL;
+	bCritical: 					BOOL;
+	fbVerbose: 					FB_TcAlarm;
+	fbInfo: 					FB_TcAlarm;
+	fbWarning: 					FB_TcAlarm;
+	fbError: 					FB_TcAlarm;
+	fbCritical: 				FB_TcAlarm;
+	fbSourceInfo: 				FB_TcSourceInfo;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF bVerbose THEN
+	bVerbose:= FALSE;
+ELSE
+	IF fbVerbose.bRaised THEN
+		fbVerbose.Clear();
+	END_IF
+END_IF
+
+IF bInfo THEN
+	bInfo:= FALSE;
+ELSE
+	IF fbInfo.bRaised THEN
+		fbInfo.Clear();
+	END_IF
+END_IF
+
+IF bWarning THEN
+	bWarning:= FALSE;
+ELSE
+	IF fbWarning.bRaised THEN
+		fbWarning.Clear();
+	END_IF
+END_IF
+
+IF bError THEN
+	bError:= FALSE;
+ELSE
+	IF fbError.bRaised THEN
+		fbError.Clear();
+	END_IF
+END_IF
+
+IF bCritical THEN
+	bCritical:= FALSE;
+ELSE
+	IF fbCritical.bRaised THEN
+		fbCritical.Clear();
+	END_IF
+END_IF]]></ST>
     </Implementation>
     <Method Name="FB_Init" Id="{256fe292-0b03-4593-83b5-0da540634dee}">
       <Declaration><![CDATA[//FB_Init ist immer implizit verfügbar und wird primär für die Initialisierung verwendet.
@@ -30,7 +79,14 @@ bInitRetains: BOOL; // TRUE: Die Retain-Variablen werden initialisiert (Reset wa
 bInCopyCode: BOOL;  // TRUE: Die Instanz wird danach in den Kopiercode kopiert (Online-Change)
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[sInstancePath:= F_InstancePath(sInstancePath);]]></ST>
+        <ST><![CDATA[sInstancePath:= F_InstancePath(sInstancePath);
+fbSourceInfo.sName:= sInstancePath;
+
+fbVerbose.CreateEx(TC_Events.Tc3_Event.Verbose, FALSE, fbSourceInfo);
+fbInfo.CreateEx(TC_Events.Tc3_Event.Info, FALSE, fbSourceInfo);
+fbWarning.CreateEx(TC_Events.Tc3_Event.Warning, FALSE, fbSourceInfo);
+fbError.CreateEx(TC_Events.Tc3_Event.Error, FALSE, fbSourceInfo);
+fbCritical.CreateEx(TC_Events.Tc3_Event.Critical, FALSE, fbSourceInfo);]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Critical" Id="{7b4c91bf-8e3c-413c-a148-e271617106d9}">
@@ -43,20 +99,25 @@ VAR
 	stMessage:			ST_Message;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF iLogging = 0 THEN
-	RETURN;
-END_IF
-
-stMessage.eLogLevel:= E_LogLevel.Critical;
+        <ST><![CDATA[stMessage.eLogLevel:= E_LogLevel.Critical;
 stMessage.nID:= nID;
 stMessage.nTimestamp:= F_GetSystemTime();
 stMessage.sMessage:= sMessage;
 stMessage.sArguments:= fbArguments.P_Value;
-stMessage.sDefault:= F_Format(sMessage, fbArguments.P_Value);
+stMessage.sDefault:= F_PrintF(sMessage, fbArguments.P_Value);
 stMessage.sSource:= sInstancePath;
 fbArguments.M_Clear();
 
-iLogging.M_Log(stMessage);
+bCritical:= TRUE;
+fbCritical.ipArguments.Clear();
+fbCritical.ipArguments.AddUDInt(nID);
+fbCritical.ipArguments.AddString(stMessage.sDefault);
+fbCritical.Raise(stMessage.nTimestamp);
+
+IF iEvent <> 0 THEN
+	iEvent.M_Log(stMessage);
+END_IF
+
 ]]></ST>
       </Implementation>
     </Method>
@@ -70,20 +131,24 @@ VAR
 	stMessage:			ST_Message;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF iLogging = 0 THEN
-	RETURN;
-END_IF
-
-stMessage.eLogLevel:= E_LogLevel.Error;
+        <ST><![CDATA[stMessage.eLogLevel:= E_LogLevel.Error;
 stMessage.nID:= nID;
 stMessage.nTimestamp:= F_GetSystemTime();
 stMessage.sMessage:= sMessage;
 stMessage.sArguments:= fbArguments.P_Value;
-stMessage.sDefault:= F_Format(sMessage, fbArguments.P_Value);
+stMessage.sDefault:= F_PrintF(sMessage, fbArguments.P_Value);
 stMessage.sSource:= sInstancePath;
 fbArguments.M_Clear();
 
-iLogging.M_Log(stMessage);
+bError:= TRUE;
+fbError.ipArguments.Clear();
+fbError.ipArguments.AddUDInt(nID);
+fbError.ipArguments.AddString(stMessage.sDefault);
+fbError.Raise(stMessage.nTimestamp);
+
+IF iEvent <> 0 THEN
+	iEvent.M_Log(stMessage);
+END_IF
 ]]></ST>
       </Implementation>
     </Method>
@@ -97,21 +162,24 @@ VAR
 	stMessage:			ST_Message;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF iLogging = 0 THEN
-	RETURN;
-END_IF
-
-stMessage.eLogLevel:= E_LogLevel.Info;
+        <ST><![CDATA[stMessage.eLogLevel:= E_LogLevel.Info;
 stMessage.nID:= nID;
 stMessage.nTimestamp:= F_GetSystemTime();
 stMessage.sMessage:= sMessage;
 stMessage.sArguments:= fbArguments.P_Value;
-stMessage.sDefault:= F_Format(sMessage, fbArguments.P_Value);
+stMessage.sDefault:= F_PrintF(sMessage, fbArguments.P_Value);
 stMessage.sSource:= sInstancePath;
 fbArguments.M_Clear();
 
-iLogging.M_Log(stMessage);
-]]></ST>
+bInfo:= TRUE;
+fbInfo.ipArguments.Clear();
+fbInfo.ipArguments.AddUDInt(nID);
+fbInfo.ipArguments.AddString(stMessage.sDefault);
+fbInfo.Raise(stMessage.nTimestamp);
+
+IF iEvent <> 0 THEN
+	iEvent.M_Log(stMessage);
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Verbose" Id="{db95e385-16ed-493b-a6a5-28cc6625776b}">
@@ -123,20 +191,24 @@ VAR
 	stMessage:			ST_Message;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF iLogging = 0 THEN
-	RETURN;
-END_IF
-
-stMessage.eLogLevel:= E_LogLevel.Verbose;
+        <ST><![CDATA[stMessage.eLogLevel:= E_LogLevel.Verbose;
 stMessage.nID:= 0;
 stMessage.nTimestamp:= F_GetSystemTime();
 stMessage.sMessage:= sMessage;
 stMessage.sArguments:= fbArguments.P_Value;
-stMessage.sDefault:= F_Format(sMessage, fbArguments.P_Value);
+stMessage.sDefault:= F_PrintF(sMessage, fbArguments.P_Value);
 stMessage.sSource:= sInstancePath;
 fbArguments.M_Clear();
 
-iLogging.M_Log(stMessage);
+bVerbose:= TRUE;
+fbVerbose.ipArguments.Clear();
+fbVerbose.ipArguments.AddString(stMessage.sDefault);
+fbVerbose.Raise(stMessage.nTimestamp);
+
+IF iEvent <> 0 THEN
+	iEvent.M_Log(stMessage);
+END_IF
+
 ]]></ST>
       </Implementation>
     </Method>
@@ -150,20 +222,23 @@ VAR
 	stMessage:			ST_Message;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF iLogging = 0 THEN
-	RETURN;
-END_IF
-
-stMessage.eLogLevel:= E_LogLevel.Warning;
+        <ST><![CDATA[stMessage.eLogLevel:= E_LogLevel.Warning;
 stMessage.nID:= nID;
 stMessage.nTimestamp:= F_GetSystemTime();
 stMessage.sMessage:= sMessage;
 stMessage.sArguments:= fbArguments.P_Value;
-stMessage.sDefault:= F_Format(sMessage, fbArguments.P_Value);
+stMessage.sDefault:= F_PrintF(sMessage, fbArguments.P_Value);
 stMessage.sSource:= sInstancePath;
 fbArguments.M_Clear();
 
-iLogging.M_Log(stMessage);]]></ST>
+bWarning:= TRUE;
+fbWarning.ipArguments.Clear();
+fbWarning.ipArguments.AddString(stMessage.sDefault);
+fbWarning.Raise(stMessage.nTimestamp);
+
+IF iEvent <> 0 THEN
+	iEvent.M_Log(stMessage);
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_Argument" Id="{dd3bce54-33d7-4a6c-8d06-ad6a5d0ec566}">
@@ -178,13 +253,13 @@ END_VAR
       </Get>
     </Property>
     <Property Name="P_Logger" Id="{98c079df-4944-4aae-a3d6-ca12ac41d1d4}">
-      <Declaration><![CDATA[PROPERTY PUBLIC P_Logger : I_Logging]]></Declaration>
+      <Declaration><![CDATA[PROPERTY PUBLIC P_Logger : I_Logger]]></Declaration>
       <Get Name="Get" Id="{7f49254e-94b6-4972-a1b5-02a92d10e780}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[P_Logger:= iLogging;]]></ST>
+          <ST><![CDATA[P_Logger:= iEvent;]]></ST>
         </Implementation>
       </Get>
       <Set Name="Set" Id="{4bbb606c-4053-49cc-ae04-84e1809ace25}">
@@ -192,7 +267,7 @@ END_VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[iLogging:= P_Logger;]]></ST>
+          <ST><![CDATA[iEvent:= P_Logger;]]></ST>
         </Implementation>
       </Set>
     </Property>

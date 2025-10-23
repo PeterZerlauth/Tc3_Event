@@ -5,10 +5,7 @@
 VAR
 // 	fbLoggerList:		FB_LoggerList;
 // 	fbFile:				FB_File;
-	fbLogging:			FB_Logging;
-	fbTcLogging:		FB_TcLogging;
-	fbTcAlarming:		FB_TcAlarming;
-	fbLogger:			FB_Logger;
+	fbEvent:			FB_Event;
 	bVerbose:			BOOL;
 	bInfo:				BOOL;
 	bWarning:			BOOL;
@@ -22,43 +19,32 @@ END_VAR]]></Declaration>
 // 	bOpen:= NOT fbFile.M_Open('C:\temp\log.txt');
 // END_IF
 
-fbLogging();
-fbLogging.M_Attach(fbTcLogging);
-
-fbTcLogging();
-
-fbTcAlarming();
-
-fbLogger.iLogging:= fbLogging;
-
-fbLogger();
+fbEvent();
 
 // fbLoggerList.M_Add(fbTcLogging);
 
-
-
 IF bVerbose THEN
-	fbLogger.P_Argument.M_AddINT(134052566194980000);
-	fbLogger.P_Argument.M_AddSTRING('mm');
-	fbLogger.M_Verbose('message %s %s');
+	fbEvent.P_Argument.M_AddINT(134052566194980000);
+	fbEvent.P_Argument.M_AddSTRING('mm');
+	fbEvent.M_Verbose('message %s %s');
 END_IF
 
 IF bInfo THEN
-	fbLogger.P_Argument.M_AddREAL(33.134581234, 3);
-	fbLogger.P_Argument.M_AddSTRING('mm');
-	fbLogger.M_Info(2263151477, 'message %s %s');
+	fbEvent.P_Argument.M_AddREAL(33.134581234, 3);
+	fbEvent.P_Argument.M_AddSTRING('mm');
+	fbEvent.M_Info(2263151477, 'message %s %s');
 END_IF
 
 IF bWarning THEN
-	fbLogger.M_Warning(292272521, 'message');
+	fbEvent.M_Warning(292272521, 'message');
 END_IF
 
 IF bError THEN
-	fbLogger.M_Error(292272521, 'message');
+	fbEvent.M_Error(292272521, 'message');
 END_IF
 
 IF bCritical THEN
-	fbLogger.M_Critical(292272521, 'message');
+	fbEvent.M_Critical(292272521, 'message');
 END_IF
 ]]></ST>
     </Implementation>

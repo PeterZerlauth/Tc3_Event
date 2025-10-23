@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="I_Event" Id="{ec343ea8-6c81-46a2-a502-db967531265d}">
+    <Declaration><![CDATA[INTERFACE I_Event
+]]></Declaration>
+    <Method Name="M_Critical" Id="{d0c46115-ac72-4277-9bcb-ddcf7e3d7ab4}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Critical : BOOL
+VAR_INPUT
+	nID:				UDINT;
+	sMessage:			STRING(255);
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_Error" Id="{c094c3d2-f3e1-45d9-923d-9b2e1892dfd7}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Error : BOOL
+VAR_INPUT
+	nID:				UDINT;
+	sMessage:			STRING(255);
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_Info" Id="{0cdab1e1-7612-435a-9f36-4662c49c13a4}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Info : BOOL
+VAR_INPUT
+	nID:				UDINT;
+	sMessage:			STRING(255);
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_Verbose" Id="{b412bfba-2470-494c-bd5a-84fb67b788ff}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Verbose : BOOL
+VAR_INPUT
+	sMessage:			STRING(255);
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_Warning" Id="{25d7ea16-bfc2-4298-bc2f-eb93105fccab}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Warning : BOOL
+VAR_INPUT
+	nID:				UDINT;
+	sMessage:			STRING(255);
+END_VAR]]></Declaration>
+    </Method>
+    <Property Name="P_Argument" Id="{4316dac3-f428-4613-b61e-a2d56083c4db}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_Argument : I_Argument]]></Declaration>
+      <Get Name="Get" Id="{22806bbd-7675-4908-bdec-75caf88b8e4f}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="P_Logger" Id="{f3108a54-ddb7-4e8b-a849-4dcac1444404}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_Logger : I_Logger]]></Declaration>
+      <Get Name="Get" Id="{ce49d412-fffa-4edc-87bc-4ab9c5371f4b}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{8c043879-cb58-41a7-9bfc-487118bd6496}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+  </Itf>
+</TcPlcObject>

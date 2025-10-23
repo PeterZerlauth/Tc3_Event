@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <Itf Name="I_Logging" Id="{c8546c00-1964-4def-86cd-48ddf720fa88}">
-    <Declaration><![CDATA[INTERFACE I_Logging
+  <Itf Name="I_Logger" Id="{c8546c00-1964-4def-86cd-48ddf720fa88}">
+    <Declaration><![CDATA[INTERFACE I_Logger
 ]]></Declaration>
     <Method Name="M_Attach" Id="{d8504e1d-ba05-46db-8e36-f183866560d7}">
       <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
 VAR_INPUT
-	iLogging:				I_Logging;
+	iLogging:				I_Logger;
 END_VAR
 ]]></Declaration>
     </Method>

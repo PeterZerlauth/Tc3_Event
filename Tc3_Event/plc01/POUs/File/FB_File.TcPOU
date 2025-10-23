@@ -166,8 +166,7 @@ ELSE
 		fbOpen.sPathName:= sPathName;
 		fbOpen.nMode:= (FOPEN_MODEAPPEND OR FOPEN_MODEPLUS OR FOPEN_MODETEXT);		
 	END_IF
-END_IF
-]]></ST>
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Read" Id="{b2e3afdd-1ca1-0d8e-0510-561806c5e056}">
