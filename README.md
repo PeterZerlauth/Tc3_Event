@@ -109,7 +109,8 @@ Messages for the Hmi can be exported easyly and  fast during the "Activate confi
 ## Results
 
 <img width="768" height="315" alt="image" src="https://github.com/user-attachments/assets/b2c84339-6437-416f-bf1d-d2c682075724" />
-<img width="696" height="131" alt="image" src="https://github.com/user-attachments/assets/90faf7e9-4f03-4702-97f4-84518e524544" />
+<img width="1271" height="195" alt="image" src="https://github.com/user-attachments/assets/dbc4e062-77dd-4cb7-ab16-48f9eb94d3ca" />
+
 
 
 
