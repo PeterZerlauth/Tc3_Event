@@ -19,31 +19,25 @@
 ```iecst
 PROGRAM MAIN
 VAR
-    fbLogging        : FB_Logging;
-    fbTcLogging      : FB_TcLogging;
-    fbLogger         : FB_Logger;
-    
-    bInfo            : BOOL := TRUE;
+	fbLogger:			FB_Logger;
 END_VAR
 
-// Initialize logging components
-fbLogging();
-fbLogging.M_Attach(fbTcLogging);
-fbTcLogging();
-
-// Set up logger
-fbLogger.iLogging := fbLogging;
 fbLogger();
 
-IF bInfo THEN
-    fbLogger.M_Info(2276475569, 'Info message');
+// send a simple message
+IF bVerbose THEN
+	fbEvent.M_Verbose('message');
 END_IF
+
 ```
 
 ## Advanced Usage
 
 ```iecst
+
+// Different log levels
 // Verbose logging with parameters
+
 fbLogger.M_AddINT(counter);
 fbLogger.M_AddSTRING('cycles');
 fbLogger.M_Verbose('Process completed: %s %s');
@@ -60,8 +54,11 @@ fbLogger.M_Error(2621541999, 'Motor communication failed');
 
 // Critical error
 fbLogger.M_Critical(2626343866, 'Emergency stop activated');
+
 ```
 ## JSON Export script
+
+Messages for the Hmi can be exported easyly and  fast during the "Activate configuration" with a simple powershell script
 
 ```json
 [
