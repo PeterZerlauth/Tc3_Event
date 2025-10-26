@@ -4,7 +4,7 @@
     <Declaration><![CDATA[{attribute 'reflection'} 
 FUNCTION_BLOCK FB_Event IMPLEMENTS I_Event
 VAR_INPUT
-	iEvent:			I_Logger;
+	iLogger:					I_Logger;
 END_VAR
 VAR_OUTPUT
 	fbArguments:				FB_Argument;
@@ -14,6 +14,7 @@ VAR
     {attribute 'instance-path'} 
     {attribute 'noinit'} 
     sInstancePath:				STRING(255); 
+	fbSourceInfo: 				FB_TcSourceInfo;
 	bVerbose: 					BOOL;
 	bInfo: 						BOOL;
 	bWarning: 					BOOL;
@@ -24,48 +25,39 @@ VAR
 	fbWarning: 					FB_TcAlarm;
 	fbError: 					FB_TcAlarm;
 	fbCritical: 				FB_TcAlarm;
-	fbSourceInfo: 				FB_TcSourceInfo;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF bVerbose THEN
+      <ST><![CDATA[// all events stay alive until mehtod is not called any more
+
+IF bVerbose THEN
 	bVerbose:= FALSE;
-ELSE
-	IF fbVerbose.bRaised THEN
-		fbVerbose.Clear();
-	END_IF
+ELSIF fbVerbose.bActive THEN
+	fbVerbose.Clear();
 END_IF
 
 IF bInfo THEN
 	bInfo:= FALSE;
-ELSE
-	IF fbInfo.bRaised THEN
-		fbInfo.Clear();
-	END_IF
+ELSIF fbInfo.bActive THEN
+	fbInfo.Clear();
 END_IF
 
 IF bWarning THEN
 	bWarning:= FALSE;
-ELSE
-	IF fbWarning.bRaised THEN
-		fbWarning.Clear();
-	END_IF
+ELSIF fbWarning.bActive THEN
+	fbWarning.Clear();
 END_IF
 
 IF bError THEN
 	bError:= FALSE;
-ELSE
-	IF fbError.bRaised THEN
-		fbError.Clear();
-	END_IF
+ELSIF fbError.bActive THEN
+	fbError.Clear();
 END_IF
 
 IF bCritical THEN
 	bCritical:= FALSE;
-ELSE
-	IF fbCritical.bRaised THEN
-		fbCritical.Clear();
-	END_IF
+ELSIF fbCritical.bActive THEN
+	fbCritical.Clear();
 END_IF]]></ST>
     </Implementation>
     <Method Name="FB_Init" Id="{256fe292-0b03-4593-83b5-0da540634dee}">
@@ -114,11 +106,9 @@ fbCritical.ipArguments.AddUDInt(nID);
 fbCritical.ipArguments.AddString(stMessage.sDefault);
 fbCritical.Raise(stMessage.nTimestamp);
 
-IF iEvent <> 0 THEN
-	iEvent.M_Log(stMessage);
-END_IF
-
-]]></ST>
+IF iLogger <> 0 THEN
+	iLogger.M_Log(stMessage);
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Error" Id="{11687e23-ea95-4e4f-aed4-4799ffa1ad84}">
@@ -146,10 +136,9 @@ fbError.ipArguments.AddUDInt(nID);
 fbError.ipArguments.AddString(stMessage.sDefault);
 fbError.Raise(stMessage.nTimestamp);
 
-IF iEvent <> 0 THEN
-	iEvent.M_Log(stMessage);
-END_IF
-]]></ST>
+IF iLogger <> 0 THEN
+	iLogger.M_Log(stMessage);
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Info" Id="{7a920e55-da6d-473b-9aba-119c4de007e0}">
@@ -177,8 +166,8 @@ fbInfo.ipArguments.AddUDInt(nID);
 fbInfo.ipArguments.AddString(stMessage.sDefault);
 fbInfo.Raise(stMessage.nTimestamp);
 
-IF iEvent <> 0 THEN
-	iEvent.M_Log(stMessage);
+IF iLogger <> 0 THEN
+	iLogger.M_Log(stMessage);
 END_IF]]></ST>
       </Implementation>
     </Method>
@@ -205,8 +194,8 @@ fbVerbose.ipArguments.Clear();
 fbVerbose.ipArguments.AddString(stMessage.sDefault);
 fbVerbose.Raise(stMessage.nTimestamp);
 
-IF iEvent <> 0 THEN
-	iEvent.M_Log(stMessage);
+IF iLogger <> 0 THEN
+	iLogger.M_Log(stMessage);
 END_IF
 
 ]]></ST>
@@ -233,11 +222,12 @@ fbArguments.M_Clear();
 
 bWarning:= TRUE;
 fbWarning.ipArguments.Clear();
+fbWarning.ipArguments.AddUDInt(nID);
 fbWarning.ipArguments.AddString(stMessage.sDefault);
 fbWarning.Raise(stMessage.nTimestamp);
 
-IF iEvent <> 0 THEN
-	iEvent.M_Log(stMessage);
+IF iLogger <> 0 THEN
+	iLogger.M_Log(stMessage);
 END_IF]]></ST>
       </Implementation>
     </Method>
@@ -259,7 +249,7 @@ END_VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[P_Logger:= iEvent;]]></ST>
+          <ST><![CDATA[P_Logger:= iLogger;]]></ST>
         </Implementation>
       </Get>
       <Set Name="Set" Id="{4bbb606c-4053-49cc-ae04-84e1809ace25}">
@@ -267,7 +257,7 @@ END_VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[iEvent:= P_Logger;]]></ST>
+          <ST><![CDATA[iLogger:= P_Logger;]]></ST>
         </Implementation>
       </Set>
     </Property>

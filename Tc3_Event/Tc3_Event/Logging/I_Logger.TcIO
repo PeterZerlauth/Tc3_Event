@@ -3,27 +3,11 @@
   <Itf Name="I_Logger" Id="{c8546c00-1964-4def-86cd-48ddf720fa88}">
     <Declaration><![CDATA[INTERFACE I_Logger
 ]]></Declaration>
-    <Method Name="M_Attach" Id="{d8504e1d-ba05-46db-8e36-f183866560d7}">
-      <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
-VAR_INPUT
-	iLogging:				I_Logger;
-END_VAR
-]]></Declaration>
-    </Method>
     <Method Name="M_Log" Id="{70349284-7301-41be-b202-535da7461a8a}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
 	stMessage:			ST_Message;
 END_VAR]]></Declaration>
     </Method>
-    <Property Name="P_LogLevel" Id="{f99cbbda-76c9-45bd-bfff-f0a515bcf17d}">
-      <Declaration><![CDATA[PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
-      <Get Name="Get" Id="{7944be96-fe0f-454d-b80e-0d57feb93034}">
-        <Declaration><![CDATA[]]></Declaration>
-      </Get>
-      <Set Name="Set" Id="{629baaa2-9d8b-4230-8de8-dc02daae734e}">
-        <Declaration><![CDATA[]]></Declaration>
-      </Set>
-    </Property>
   </Itf>
 </TcPlcObject>

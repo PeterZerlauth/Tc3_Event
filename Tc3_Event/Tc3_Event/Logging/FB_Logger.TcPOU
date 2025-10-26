@@ -17,49 +17,29 @@ VAR
     nMessages:				UINT := 0;                     // Message count
 	{attribute 'hide'} 
 	nIndex: 				UINT;
-	iLogging:				I_Logger;
+	nTimestamp:				LINT;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[nIndex := 0;
-WHILE nIndex < nMessages DO
-	IF aMessages[nIndex].bActive THEN
-		aMessages[nIndex].bActive:= FALSE;
-		nIndex := nIndex + 1;
-	ELSE
-		IF iLogging <> 0 THEN
-			// publish outdated messages to remove
-			iLogging.M_Log(aMessages[nIndex]);
+      <ST><![CDATA[// clean up after 1 secound
+IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime THEN // 1 second = 1e9 ns
+	nTimestamp := TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime + 1000000000;
+	nIndex := 0;
+	WHILE nIndex < nMessages DO
+		IF aMessages[nIndex].bActive THEN
+			aMessages[nIndex].bActive:= FALSE;
+			nIndex := nIndex + 1;
+		ELSE
+			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_Message) * (nMessages - nIndex));
+			nMessages := nMessages - 1;
+			bInfo:=	FALSE;
+			bWarning:=	FALSE;
+			bError:= FALSE;
+			bCritical:= FALSE;
 		END_IF
-        MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_Message) * (nMessages - nIndex));
-        nMessages := nMessages - 1;
-		bInfo:=	FALSE;
-		bWarning:=	FALSE;
-		bError:= FALSE;
-		bCritical:= FALSE;
-    END_IF
-END_WHILE]]></ST>
-    </Implementation>
-    <Method Name="M_Attach" Id="{5132dc24-cefc-4685-9f79-c0a1a72e2231}">
-      <Declaration><![CDATA[METHOD PUBLIC M_Attach : BOOL
-VAR_INPUT
-	iLogging:				I_Logger;
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[IF THIS^.iLogging = 0 THEN
-	THIS^.iLogging:= iLogging;
-	M_Attach:= TRUE;
-ELSIF THIS^.iLogging = iLogging THEN
-	// already inside
-	M_Attach:= TRUE;
-	RETURN;
-ELSE
-	// redirect to next logging function block
-	THIS^.iLogging.M_Attach(iLogging);
+	END_WHILE
 END_IF]]></ST>
-      </Implementation>
-    </Method>
+    </Implementation>
     <Method Name="M_Log" Id="{c925afc5-8e57-47da-84bb-210c829a3dd4}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
@@ -106,11 +86,6 @@ IF nMessages < 99 THEN
 	stMessage.bActive:= TRUE;
     aMessages[nMessages]:= stMessage;;
     nMessages := nMessages + 1;
-	// reduce internal buffers 
-	// publish new messages to log
-	IF iLogging <> 0 THEN
-		iLogging.M_Log(stMessage);
-	END_IF
 	M_Log := TRUE;
 END_IF
 ]]></ST>

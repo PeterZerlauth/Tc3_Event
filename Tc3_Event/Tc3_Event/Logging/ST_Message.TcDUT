@@ -5,7 +5,7 @@
 STRUCT
 	eLogLevel:			E_LogLevel;
 	nID:				UDINT;
- 	{attribute 'displaymode':='LDT'} 
+	{attribute 'displaymode':='datetime'}
 	nTimestamp:			ULINT;	
 	sSource:			STRING(255);
 	sMessage:			STRING(255);

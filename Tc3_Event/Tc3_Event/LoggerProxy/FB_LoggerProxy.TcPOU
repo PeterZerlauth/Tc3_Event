@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_LoggerProxy" Id="{c92161d9-49ae-4c50-bdac-f079e9b056c0}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'no_explicit_call' := 'do not call this POU directly'} 
+FUNCTION_BLOCK FB_LoggerProxy IMPLEMENTS I_Logger
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	pHead:				POINTER TO ST_LoggerNode;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+]]></ST>
+    </Implementation>
+    <Method Name="M_Attach" Id="{a672c9f6-c6e5-42cc-9e0b-921d3f608c6a}">
+      <Declaration><![CDATA[METHOD M_Attach : BOOL
+VAR_INPUT
+    iLogger : I_Logger;
+END_VAR
+VAR
+    pCurrent : POINTER TO ST_LoggerNode;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// invalid input
+IF iLogger = 0 THEN
+    M_Attach := FALSE;
+    RETURN;
+END_IF
+
+// first node
+IF pHead = 0 THEN
+    pHead := __NEW(ST_LoggerNode);
+    IF pHead = 0 THEN
+        RETURN;
+    END_IF
+    pHead^.iLogger := iLogger;
+    pHead^.pNext := 0;
+    M_Attach := TRUE;
+    RETURN;
+END_IF
+
+// traverse list to check duplicates and reach last node
+pCurrent := pHead;
+WHILE pCurrent^.pNext <> 0 DO
+    IF pCurrent^.iLogger = iLogger THEN
+        M_Attach := FALSE; // already attached
+        RETURN;
+    END_IF
+    pCurrent := pCurrent^.pNext;
+END_WHILE
+
+// check last node for duplicate
+IF pCurrent^.iLogger = iLogger THEN
+    RETURN;
+END_IF
+
+pCurrent^.pNext:= __NEW(ST_LoggerNode);
+IF pCurrent^.pNext = 0 THEN
+    RETURN;
+END_IF
+pCurrent^:= pCurrent^.pNext^;
+
+pCurrent^.iLogger:= iLogger;
+pCurrent^.pNext := 0;
+
+M_Attach := TRUE;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Detach" Id="{abdf1d3f-b4ea-47b4-a7bf-8742c13025eb}">
+      <Declaration><![CDATA[METHOD M_Detach : BOOL
+VAR_INPUT
+	iLogger:			I_Logger;
+END_VAR
+VAR
+    pCurrent : POINTER TO ST_LoggerNode;
+    pPrev : POINTER TO ST_LoggerNode;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// invalid input
+IF iLogger = 0 THEN
+    RETURN;
+END_IF
+
+pCurrent := pHead;
+pPrev := 0;
+WHILE pCurrent <> 0 DO
+    IF pCurrent^.iLogger = iLogger THEN
+        IF pPrev = 0 THEN
+            pHead := pCurrent^.pNext;
+        ELSE
+            pPrev^.pNext := pCurrent^.pNext;
+        END_IF
+        __DELETE(pCurrent);
+        M_Detach := TRUE;
+        RETURN;
+    END_IF
+    pPrev := pCurrent;
+    pCurrent := pCurrent^.pNext;
+END_WHILE
+
+M_Detach := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Log" Id="{eb21a125-c7d6-460d-84cb-3d1cb4ea2fdf}">
+      <Declaration><![CDATA[METHOD M_Log : BOOL
+VAR_INPUT
+	stMessage	: ST_Message;
+END_VAR
+VAR
+    pCurrent : POINTER TO ST_LoggerNode:= pHead;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[WHILE pCurrent <> 0 DO
+    pCurrent^.iLogger.M_Log(stMessage);
+    pCurrent := pCurrent^.pNext;
+END_WHILE
+M_Log := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

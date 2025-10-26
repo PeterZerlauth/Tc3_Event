@@ -3,9 +3,9 @@
   <POU Name="MAIN" Id="{19c7fd4e-92ee-4c48-b527-6576c9627f78}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-// 	fbLoggerList:		FB_LoggerList;
-// 	fbFile:				FB_File;
-	fbEvent:			FB_Event;
+	fbLogger:			FB_Logger;
+	fbLoggerProxy:		FB_LoggerProxy;
+	fbEvent: 			FB_Event;
 	bVerbose:			BOOL;
 	bInfo:				BOOL;
 	bWarning:			BOOL;
@@ -14,14 +14,13 @@ VAR
 	bOpen: 				BOOL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// fbFile();
-// IF bOpen THEN
-// 	bOpen:= NOT fbFile.M_Open('C:\temp\log.txt');
-// END_IF
+      <ST><![CDATA[fbLoggerProxy.M_Attach(fbLogger);
+fbLogger();
+
+fbEvent.P_Logger:= fbLoggerProxy;
 
 fbEvent();
 
-// fbLoggerList.M_Add(fbTcLogging);
 
 IF bVerbose THEN
 	fbEvent.P_Argument.M_AddINT(134052566194980000);

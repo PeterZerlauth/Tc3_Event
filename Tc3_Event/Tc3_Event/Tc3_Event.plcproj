@@ -33,9 +33,9 @@
   <ItemGroup>
     <Folder Include="Helpers" />
     <Folder Include="Event" />
+    <Folder Include="LoggerProxy" />
     <Folder Include="Logging" />
     <Folder Include="Project Information" />
-    <Folder Include="TcLogging" />
     <Folder Include="Version" />
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +55,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Event\I_Argument.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LoggerProxy\FB_LoggerProxy.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LoggerProxy\ST_LoggerNode.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logging\E_LogLevel.TcDUT">
@@ -80,9 +86,6 @@
     <Compile Include="Project Information\F_GetVersion.TcPOU">
       <SubType>Code</SubType>
       <SystemCall>true</SystemCall>
-    </Compile>
-    <Compile Include="TcLogging\FB_TcLogging.TcPOU">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Version\Global_Version.TcGVL">
       <SubType>Code</SubType>
