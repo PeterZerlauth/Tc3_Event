@@ -19,31 +19,25 @@
 ```iecst
 PROGRAM MAIN
 VAR
-    fbLogging        : FB_Logging;
-    fbTcLogging      : FB_TcLogging;
-    fbLogger         : FB_Logger;
-    
-    bInfo            : BOOL := TRUE;
+	fbLogger:			FB_Logger;
 END_VAR
 
-// Initialize logging components
-fbLogging();
-fbLogging.M_Attach(fbTcLogging);
-fbTcLogging();
-
-// Set up logger
-fbLogger.iLogging := fbLogging;
 fbLogger();
 
-IF bInfo THEN
-    fbLogger.M_Info(2276475569, 'Info message');
+// send a simple message
+IF bVerbose THEN
+	fbEvent.M_Verbose('message');
 END_IF
+
 ```
 
 ## Advanced Usage
 
 ```iecst
+
+// Different log levels
 // Verbose logging with parameters
+
 fbLogger.M_AddINT(counter);
 fbLogger.M_AddSTRING('cycles');
 fbLogger.M_Verbose('Process completed: %s %s');
@@ -60,8 +54,11 @@ fbLogger.M_Error(2621541999, 'Motor communication failed');
 
 // Critical error
 fbLogger.M_Critical(2626343866, 'Emergency stop activated');
+
 ```
 ## JSON Export script
+
+Messages for the HMI can be quickly and easily exported during “Activate Configuration” using a simple PowerShell script
 
 ```json
 [
@@ -109,10 +106,15 @@ fbLogger.M_Critical(2626343866, 'Emergency stop activated');
     }
 ]
 ```
+<img width="1012" height="323" alt="image" src="https://github.com/user-attachments/assets/6491c5bd-8974-447c-8958-210d7c7f3671" />
+
+
 ## Results
 
+<img width="303" height="212" alt="image" src="https://github.com/user-attachments/assets/76e4d475-e2f1-42ff-9ccd-e3bdb786d7bc" />
 <img width="768" height="315" alt="image" src="https://github.com/user-attachments/assets/b2c84339-6437-416f-bf1d-d2c682075724" />
-<img width="696" height="131" alt="image" src="https://github.com/user-attachments/assets/90faf7e9-4f03-4702-97f4-84518e524544" />
+<img width="1271" height="195" alt="image" src="https://github.com/user-attachments/assets/dbc4e062-77dd-4cb7-ab16-48f9eb94d3ca" />
+
 
 
 
