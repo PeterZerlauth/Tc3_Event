@@ -3,6 +3,20 @@
 ###############################################################################
 * text=auto
 
+*.ps1 linguist-generated=false
+
+# Force GitHub to treat TwinCAT files as Structured Text
+*.st linguist-language=StructuredText
+*.TcPOU linguist-language=StructuredText
+*.TcDUT linguist-language=StructuredText
+*.TcGVL linguist-language=StructuredText
+*.TcTTO linguist-language=StructuredText
+*.TcIO linguist-language=StructuredText
+*.TcGVL linguist-language=StructuredText
+*.TcPlcProj linguist-language=StructuredText
+
+
+
 ###############################################################################
 # Set default behavior for command prompt diff.
 #
@@ -35,7 +49,7 @@
 #*.sqlproj   merge=binary
 #*.wwaproj   merge=binary
 
-*.ps1 linguist-generated=true
+
 
 ###############################################################################
 # behavior for image files
@@ -64,13 +78,4 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
-# Force GitHub to treat TwinCAT files as Structured Text
-*.st linguist-language=StructuredText
-*.TcPOU linguist-language=StructuredText
-*.TcDUT linguist-language=StructuredText
-*.TcGVL linguist-language=StructuredText
-*.TcTTO linguist-language=StructuredText
-*.TcIO linguist-language=StructuredText
-*.TcGVL linguist-language=StructuredText
-*.TcPlcProj linguist-language=StructuredText
 
