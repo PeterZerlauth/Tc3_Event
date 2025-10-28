@@ -11,10 +11,28 @@ VAR
 	bWarning:			BOOL;
 	bError:				BOOL;
 	bCritical:			BOOL;
-	bOpen: 				BOOL;
+	
+	fbFile:				FB_File;
+	bFileInfo: 				BOOL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbLoggerProxy.M_Attach(fbLogger);
+      <ST><![CDATA[fbFile();
+
+IF bFileInfo THEN
+	bFileInfo:= NOT fbFile.M_Info('C:\temp\lo.txt');
+END_IF
+
+
+
+
+
+
+
+
+
+
+
+fbLoggerProxy.M_Attach(fbLogger);
 fbLogger();
 
 fbEvent.P_Logger:= fbLoggerProxy;
