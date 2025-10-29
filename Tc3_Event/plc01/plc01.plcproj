@@ -47,16 +47,16 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\development\FC_Error.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\FAST.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FC_Error.TcPOU">
+    <Compile Include="POUs\development\E_FileState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\File\E_FileState.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\File\FB_File.TcPOU">
+    <Compile Include="POUs\development\FB_File.TcPOU">
       <SubType>Code</SubType>
       <ExcludeFromBuild>true</ExcludeFromBuild>
     </Compile>
@@ -67,7 +67,7 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
-    <Folder Include="POUs\File" />
+    <Folder Include="POUs\development" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

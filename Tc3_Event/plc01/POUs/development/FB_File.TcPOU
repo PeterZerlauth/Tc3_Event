@@ -42,9 +42,7 @@ CASE eState OF
 	E_FileState.Write:;	
 	E_FileState.Close:;	
 	
-END_CASE
-
-]]></ST>
+END_CASE]]></ST>
     </Implementation>
     <Method Name="M_Append" Id="{1e5af4d0-f329-067d-0bf2-a3973278c0e5}">
       <Declaration><![CDATA[METHOD PUBLIC M_Append : BOOL
