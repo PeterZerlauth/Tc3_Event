@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FC_Error" Id="{492044bc-8770-42e5-96e0-a78383f77ab0}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION FC_Error : STRING
+VAR_INPUT
+	eError : UDINT;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE eError OF
+	// Global error codes
+	16#00000000: FC_Error := 'No error';
+	16#00000001: FC_Error := 'Internal error';
+	16#00000002: FC_Error := 'No real time';
+	16#00000003: FC_Error := 'Allocation locked – memory error';
+	16#00000004: FC_Error := 'Mailbox full – ADS message could not be sent';
+	16#00000005: FC_Error := 'Wrong HMSG';
+	16#00000006: FC_Error := 'Target port not found – ADS server not started or reachable';
+	16#00000007: FC_Error := 'Target computer not found – AMS route not found';
+	16#00000008: FC_Error := 'Unknown command ID';
+	16#00000009: FC_Error := 'Invalid task ID';
+	16#0000000A: FC_Error := 'No IO';
+	16#0000000B: FC_Error := 'Unknown AMS command';
+	16#0000000C: FC_Error := 'Win32 error';
+	16#0000000D: FC_Error := 'Port not connected';
+	16#0000000E: FC_Error := 'Invalid AMS length';
+	16#0000000F: FC_Error := 'Invalid AMS Net ID';
+	16#00000010: FC_Error := 'Installation level too low – TwinCAT 2 license error';
+	16#00000011: FC_Error := 'No debugging available';
+	16#00000012: FC_Error := 'Port disabled – TwinCAT system service not started';
+	16#00000013: FC_Error := 'Port already connected';
+	16#00000014: FC_Error := 'AMS Sync Win32 error';
+	16#00000015: FC_Error := 'AMS Sync timeout';
+	16#00000016: FC_Error := 'AMS Sync error';
+	16#00000017: FC_Error := 'No index map for AMS Sync';
+	16#00000018: FC_Error := 'Invalid AMS port';
+	16#00000019: FC_Error := 'No memory';
+	16#0000001A: FC_Error := 'TCP send error';
+	16#0000001B: FC_Error := 'Host unreachable';
+	16#0000001C: FC_Error := 'Invalid AMS fragment';
+	16#0000001D: FC_Error := 'TLS send error – secure ADS connection failed';
+	16#0000001E: FC_Error := 'Access denied – secure ADS access denied';
+
+	// Router error codes
+	16#00000500: FC_Error := 'Locked memory cannot be allocated';
+	16#00000501: FC_Error := 'Router memory size could not be changed';
+	16#00000502: FC_Error := 'Mailbox reached maximum messages';
+	16#00000503: FC_Error := 'Debug mailbox reached maximum messages';
+	16#00000504: FC_Error := 'Unknown port type';
+	16#00000505: FC_Error := 'Router not initialized';
+	16#00000506: FC_Error := 'Port number already assigned';
+	16#00000507: FC_Error := 'Port not registered';
+	16#00000508: FC_Error := 'Maximum number of ports reached';
+	16#00000509: FC_Error := 'Invalid port';
+	16#0000050A: FC_Error := 'Router not active';
+	16#0000050B: FC_Error := 'Mailbox reached maximum for fragmented messages';
+	16#0000050C: FC_Error := 'Fragment timeout occurred';
+	16#0000050D: FC_Error := 'Port removed';
+
+	// General ADS error codes
+	16#00000700: FC_Error := 'General device error';
+	16#00000701: FC_Error := 'Service not supported by server';
+	16#00000702: FC_Error := 'Invalid index group';
+	16#00000703: FC_Error := 'Invalid index offset';
+	16#00000704: FC_Error := 'Reading or writing not permitted';
+	16#00000705: FC_Error := 'Parameter size not correct';
+	16#00000706: FC_Error := 'Invalid data values';
+	16#00000707: FC_Error := 'Device not ready';
+	16#00000708: FC_Error := 'Device busy';
+	16#00000709: FC_Error := 'Invalid operating system context';
+	16#0000070A: FC_Error := 'Insufficient memory';
+	16#0000070B: FC_Error := 'Invalid parameter values';
+	16#0000070C: FC_Error := 'Not found (files, …)';
+	16#0000070D: FC_Error := 'Syntax error in file or command';
+	16#0000070E: FC_Error := 'Objects do not match';
+	16#0000070F: FC_Error := 'Object already exists';
+	16#00000710: FC_Error := 'Symbol not found';
+	16#00000711: FC_Error := 'Invalid symbol version';
+	16#00000712: FC_Error := 'Device in invalid state';
+	16#00000713: FC_Error := 'AdsTransMode not supported';
+	16#00000714: FC_Error := 'Notification handle invalid';
+	16#00000715: FC_Error := 'Notification client not registered';
+	16#00000716: FC_Error := 'No further handle available';
+	16#00000717: FC_Error := 'Notification size too large';
+	16#00000718: FC_Error := 'Device not initialized';
+	16#00000719: FC_Error := 'Device timeout';
+	16#0000071A: FC_Error := 'Interface query failed';
+	16#0000071B: FC_Error := 'Wrong interface requested';
+	16#0000071C: FC_Error := 'Class ID invalid';
+	16#0000071D: FC_Error := 'Object ID invalid';
+	16#0000071E: FC_Error := 'Request pending';
+	16#0000071F: FC_Error := 'Request aborted';
+	16#00000720: FC_Error := 'Signal warning';
+	16#00000721: FC_Error := 'Invalid array index';
+	16#00000722: FC_Error := 'Symbol not active';
+	16#00000723: FC_Error := 'Access denied';
+	16#00000724: FC_Error := 'License not found';
+	16#00000725: FC_Error := 'License expired';
+	16#00000726: FC_Error := 'License exceeded';
+	16#00000727: FC_Error := 'Invalid license';
+	16#00000728: FC_Error := 'System ID invalid';
+	16#00000729: FC_Error := 'License not limited in time';
+	16#0000072A: FC_Error := 'License time in future';
+	16#0000072B: FC_Error := 'License period too long';
+	16#0000072C: FC_Error := 'Exception at system startup';
+	16#0000072D: FC_Error := 'License file read twice';
+	16#0000072E: FC_Error := 'Invalid signature';
+	16#0000072F: FC_Error := 'Invalid certificate';
+	16#00000730: FC_Error := 'OEM public key not found';
+	16#00000731: FC_Error := 'License not valid for system ID';
+	16#00000732: FC_Error := 'Demo license prohibited';
+	16#00000733: FC_Error := 'Invalid function ID';
+	16#00000734: FC_Error := 'Value out of range';
+	16#00000735: FC_Error := 'Invalid alignment';
+	16#00000736: FC_Error := 'Invalid platform level';
+	16#00000737: FC_Error := 'Forward to passive level';
+	16#00000738: FC_Error := 'Forward to dispatch level';
+	16#00000739: FC_Error := 'Forward to real-time';
+	16#00000740: FC_Error := 'Client error';
+	16#00000741: FC_Error := 'Service contains invalid parameter';
+	16#00000742: FC_Error := 'Polling list empty';
+	16#00000743: FC_Error := 'Var connection already in use';
+	16#00000744: FC_Error := 'Called ID already in use';
+	16#00000745: FC_Error := 'Timeout occurred';
+	16#00000746: FC_Error := 'Win32 subsystem error';
+	16#00000747: FC_Error := 'Invalid client timeout value';
+	16#00000748: FC_Error := 'Port not open';
+	16#00000749: FC_Error := 'No AMS address';
+	16#00000750: FC_Error := 'Internal error in ADS sync';
+	16#00000751: FC_Error := 'Hash table overflow';
+	16#00000752: FC_Error := 'Key not found in table';
+	16#00000753: FC_Error := 'No symbols in cache';
+	16#00000754: FC_Error := 'Invalid response received';
+	16#00000755: FC_Error := 'Sync port is locked';
+	16#00000756: FC_Error := 'Request cancelled';
+
+	// RTime error codes
+	16#00001000: FC_Error := 'Internal real-time error';
+	16#00001001: FC_Error := 'Invalid timer value';
+	16#00001002: FC_Error := 'Invalid task pointer';
+	16#00001003: FC_Error := 'Invalid stack pointer';
+	16#00001004: FC_Error := 'Task priority already assigned';
+	16#00001005: FC_Error := 'No free TCB available';
+	16#00001006: FC_Error := 'No free semaphores';
+	16#00001007: FC_Error := 'No free queue space';
+	16#0000100D: FC_Error := 'External IRQ already defined';
+	16#0000100E: FC_Error := 'No external sync IRQ applied';
+	16#0000100F: FC_Error := 'External sync IRQ install failed';
+	16#00001010: FC_Error := 'Service call in wrong context';
+	16#00001017: FC_Error := 'Intel VT-x not supported';
+	16#00001018: FC_Error := 'Intel VT-x disabled';
+	16#00001019: FC_Error := 'VT-x controls missing';
+	16#0000101A: FC_Error := 'VT-x activation failed';
+
+	// TCP Winsock
+	16#0000274C: FC_Error := 'Connection timeout';
+	16#0000274D: FC_Error := 'Connection refused';
+	16#00002751: FC_Error := 'No route to host';
+
+ELSE
+	FC_Error := CONCAT('Unknown error 16#', DWORD_TO_HEXSTR(eError,4, FALSE));
+END_CASE
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

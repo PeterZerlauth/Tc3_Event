@@ -12,19 +12,10 @@ VAR
 	bError:				BOOL;
 	bCritical:			BOOL;
 	
-	fbFile:				FB_File;
 	bFileInfo: 				BOOL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbFile();
-
-IF bFileInfo THEN
-	bFileInfo:= NOT fbFile.M_Info('C:\temp\lo.txt');
-END_IF
-
-
-
-
+      <ST><![CDATA[
 
 
 
