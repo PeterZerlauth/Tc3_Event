@@ -12,7 +12,7 @@ VAR
 	fbDelete:			FB_FileDelete; 
 	eState:				E_FileState;
 	pBuffer:			POINTER TO BYTE;
-	pDisplay:			POINTER TO POINTER TO STRING:= ADR(pBuffer);
+	nBuffer:			UDINT;
 END_VAR
 VAR_INPUT
 	ePath:				E_OpenPath:= E_OpenPath.PATH_GENERIC;
@@ -21,9 +21,6 @@ VAR_OUTPUT
 	bBusy:					BOOL;
 	bError:					BOOL;
 	nErrId:					UDINT;
-END_VAR
-VAR CONSTANT
-	nMaxFileSize:		UDINT:= 1024 * 1024;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbInfo();
@@ -96,20 +93,20 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_Create" Id="{26efe1d9-595f-0507-2f2f-b4311f718a87}">
-      <Declaration><![CDATA[METHOD PUBLIC M_Create : BOOL
+    <Method Name="M_CreateDir" Id="{26efe1d9-595f-0507-2f2f-b4311f718a87}">
+      <Declaration><![CDATA[METHOD PUBLIC M_CreateDir : BOOL
 VAR_INPUT
 	sPathName:		STRING(255);
 END_VAR
 VAR
-	nNextPos: INT;
+	nTemp: INT;
 END_VAR
 VAR_INST
 	nPosition: INT;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[sPathName:= RIGHT(sPathName, LEN(sPathName) - nPosition);
-nTemp := FIND(sPathName, '\');
+        <ST><![CDATA[fbCreateDir();
+nTemp := FIND(RIGHT(sPathName, LEN(sPathName) - nPosition), '\');
 if nTemp <> 0 then
 	IF fbCreateDir.bExecute THEN
 		IF NOT fbCreateDir.bBusy THEN
@@ -118,11 +115,12 @@ if nTemp <> 0 then
 		END_IF
 	ELSE
 		fbCreateDir.bExecute:= TRUE;
-		fbCreateDir.ePath:= ePath;
+		fbCreateDir.ePath:= PATH_GENERIC;
 		fbCreateDir.sPathName:= Left(sPathName, nPosition + nTemp);
 	END_IF
 ELSE
-	M_Create:= TRUE;
+	nPosition:= 0;
+	M_CreateDir:= TRUE;
 END_IF]]></ST>
       </Implementation>
     </Method>
@@ -156,23 +154,15 @@ END_IF]]></ST>
       <Declaration><![CDATA[METHOD PUBLIC M_Info : BOOL
 VAR_INPUT
 	sPathName:		STRING(255);
-END_VAR
-VAR
-	event:				TcEventEntry;
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF fbInfo.bExecute THEN
 	IF fbInfo.bError THEN
+		// no file
 		if fbInfo.nErrID = 1804 then
-			if M_Create(sPathName) then
-				fbInfo.bExecute:= FALSE;
-			end_if
-		else
 			fbInfo.bExecute:= FALSE;
-			bError:= True;
-			nErrId:= fbInfo.nErrID;
+			M_Info:= TRUE;
 		END_IF
-		
 	ELSIF fbInfo.bBusy THEN
 		;
 	ELSE
@@ -183,9 +173,7 @@ ELSE
 	fbInfo.bExecute:= TRUE;
 	fbInfo.sPathName:= sPathName;
 	fbInfo.ePath:= ePath;
-END_IF
-
-]]></ST>
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Open" Id="{a8dc81cc-e694-069e-3edb-de6efac1c222}">
@@ -233,6 +221,8 @@ END_VAR]]></Declaration>
 	END_IF
 ELSE
 	fbRead.bExecute:= TRUE;
+	fbRead.pReadBuff:= pBuffer;
+	fbRead.cbReadLen:= nBuffer;
 END_IF
 
 ]]></ST>

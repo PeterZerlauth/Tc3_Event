@@ -3,6 +3,7 @@
   <POU Name="MAIN" Id="{19c7fd4e-92ee-4c48-b527-6576c9627f78}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	
 	fbLogger:			FB_Logger;
 	fbLoggerProxy:		FB_LoggerProxy;
 	fbEvent: 			FB_Event;
@@ -12,13 +13,25 @@ VAR
 	bError:				BOOL;
 	bCritical:			BOOL;
 	
-	bFileInfo: 				BOOL;
+	fbFile:				FB_File;
+	bFileInfo: 			BOOL;
+	bCrateDir: BOOL;
+	bOpen: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[fbFile();
 
+IF bCrateDir THEN
+	bCrateDir:= NOT fbFile.M_CreateDir('C:\temp\test\test1');
+END_IF 
 
+IF bFileInfo THEN
+	bFileInfo:= NOT fbFile.M_Info('C:\temp\logq.txt');
+END_IF 
 
+IF bOpen THEN
+	bOpen:= NOT fbFile.M_Open('C:\temp\log.txt');
+END_IF 
 
 
 
