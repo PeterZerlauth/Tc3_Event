@@ -11,7 +11,7 @@ VAR_INPUT
 	sMessage:			STRING(255);
 	sDefault:			STRING(255);
 	sArguments:			STRING(255);
-	bActive:			BOOL;
+	bRaised:			BOOL;
 END_VAR
 VAR_OUTPUT
 END_VAR

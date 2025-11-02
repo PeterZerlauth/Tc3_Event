@@ -16,6 +16,18 @@ END_VAR
 
 ]]></ST>
     </Implementation>
+    <Method Name="FB_Exit" Id="{5ffdbfed-bc35-4ea0-a3e2-08b0a045fdd8}">
+      <Declaration><![CDATA[//FB_Exit muss explizit implementiert werden. Wenn es eine Implementierung gibt, dann wird 
+//die Methode aufgerufen, bevor die Steuerung den Code der Funktionsbaustein-Instanz entfernt
+//(impliziter Aufruf. Der Rückgabewert wird nicht ausgewertet.
+METHOD FB_Exit: BOOL
+VAR_INPUT    
+bInCopyCode: BOOL;  // TRUE: Die Exit-Methode wird aufgerufen, um die Instanz zu verlassen, die hinterher kopiert wird Online-Change).  
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[M_Clear();]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="M_Attach" Id="{a672c9f6-c6e5-42cc-9e0b-921d3f608c6a}">
       <Declaration><![CDATA[METHOD M_Attach : BOOL
 VAR_INPUT
@@ -69,6 +81,28 @@ pCurrent^.pNext := 0;
 
 M_Attach := TRUE;
 ]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Clear" Id="{e2bb2554-8db9-48a3-bb8b-1e817023fd88}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Clear : BOOL
+VAR_INPUT
+END_VAR
+VAR
+    pCurrent : POINTER TO ST_LoggerNode;
+    pNext    : POINTER TO ST_LoggerNode;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[pCurrent := pHead;
+
+WHILE pCurrent <> 0 DO
+    pNext := pCurrent^.pNext; // save next pointer
+    __DELETE(pCurrent);       // free current node
+    pCurrent := pNext;        // move to next node
+END_WHILE
+
+pHead := 0;                   // reset head
+M_Clear := TRUE;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Detach" Id="{abdf1d3f-b4ea-47b4-a7bf-8742c13025eb}">

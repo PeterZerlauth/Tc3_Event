@@ -11,10 +11,10 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF fbMessage.bActive THEN
+      <ST><![CDATA[IF fbMessage.bRaised THEN
 	;
 ELSE
-	fbMessage.bActive:= TRUE;
+	fbMessage.bRaised:= TRUE;
 	sMessage:= CONCAT(sMessage, fbMessage.sSource);
 	IF fbMessage.sType <> '' THEN
 		sMessage:= CONCAT(sMessage, ' - ');

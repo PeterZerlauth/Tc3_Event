@@ -3,29 +3,32 @@
   <POU Name="FB_File" Id="{54789f62-498b-04f5-3258-42d49534c4a8}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_File
 VAR
-	fbInfo:			 	FB_FileProperties;
-    fbCreateDir:		FB_CreateDir;
-	fbOpen:				FB_FileOpen;
-	fbRead:				FB_FileRead;
-	fbWrite:			FB_FileWrite;
-	fbClose:			FB_FileClose;
-	fbDelete:			FB_FileDelete; 
-	eState:				E_FileState;
-	pBuffer:			POINTER TO BYTE;
-	nBuffer:			UDINT;
+	fbInfo:			 		FB_FileProperties;
+    fbCreateDir:			FB_CreateDir;
+	fbOpen:					FB_FileOpen;
+	fbLoad:					FB_FileLoad;	
+	fbRead:					FB_FileRead;
+	fbWrite:				FB_FileWrite;
+	fbClose:				FB_FileClose;
+	fbDelete:				FB_FileDelete; 
+	eState:					E_FileState;
+
 END_VAR
 VAR_INPUT
-	ePath:				E_OpenPath:= E_OpenPath.PATH_GENERIC;
+	ePath:					E_OpenPath:= E_OpenPath.PATH_GENERIC;
 END_VAR
 VAR_OUTPUT
 	bBusy:					BOOL;
 	bError:					BOOL;
 	nErrId:					UDINT;
+	pBuffer:				POINTER TO BYTE;
+	nBuffer:				UDINT;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbInfo();
 fbCreateDir();
 fbOpen();
+fbLoad();
 fbRead();
 fbWrite();
 fbClose();
@@ -38,33 +41,10 @@ CASE eState OF
 	E_FileState.Read:;	
 	E_FileState.Write:;	
 	E_FileState.Close:;	
-	
-END_CASE]]></ST>
-    </Implementation>
-    <Method Name="M_Append" Id="{1e5af4d0-f329-067d-0bf2-a3973278c0e5}">
-      <Declaration><![CDATA[METHOD PUBLIC M_Append : BOOL
-VAR_INPUT
-	Text:			STRING(255);
-END_VAR]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[IF fbWrite.bExecute THEN
-	IF fbWrite.bError THEN
-		nErrId:= fbWrite.nErrId;
-		fbWrite.bExecute:= FALSE;
-	ELSIF fbWrite.bBusy THEN
-		;
-	ELSE
-		M_Append:= TRUE;
-		fbWrite.bExecute:= FALSE;
-	END_IF
-ELSE
-	fbWrite.bExecute:= TRUE;
-	fbWrite.pWriteBuff:= ADR(Text);
-	fbWrite.cbWriteLen:= INT_TO_UDINT(Len(Text));
-END_IF
+END_CASE
+
 ]]></ST>
-      </Implementation>
-    </Method>
+    </Implementation>
     <Method Name="M_Close" Id="{c0789999-930f-042f-18a5-7eb9b96ad755}">
       <Declaration><![CDATA[METHOD PUBLIC M_Close : BOOL
 VAR_INPUT
@@ -176,6 +156,31 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
+    <Method Name="M_Load" Id="{ef616619-fd81-46eb-a8e6-e45f38d1e741}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Load : BOOL
+VAR_INPUT
+	sPathName:		STRING(255);
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF fbLoad.bExecute THEN
+	IF fbLoad.bError THEN
+		nErrId:= fbLoad.nErrId;
+		fbLoad.bExecute:= FALSE;
+	ELSIF fbLoad.bBusy THEN
+		;
+	ELSE
+		fbLoad.bExecute:= FALSE;
+		M_Load:= TRUE;
+	END_IF	
+ELSE
+	fbLoad.bExecute:= TRUE;
+	fbLoad.sPathName:= sPathName;
+	fbLoad.pReadBuff:= pBuffer;
+	fbLoad.cbReadLen:= nBuffer;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="M_Open" Id="{a8dc81cc-e694-069e-3edb-de6efac1c222}">
       <Declaration><![CDATA[METHOD PUBLIC M_Open : BOOL
 VAR_INPUT
@@ -206,7 +211,6 @@ END_IF]]></ST>
     <Method Name="M_Read" Id="{b2e3afdd-1ca1-0d8e-0510-561806c5e056}">
       <Declaration><![CDATA[METHOD PUBLIC M_Read : BOOL
 VAR_INPUT
-	Value:		ANY;
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF fbRead.bExecute THEN
@@ -223,9 +227,7 @@ ELSE
 	fbRead.bExecute:= TRUE;
 	fbRead.pReadBuff:= pBuffer;
 	fbRead.cbReadLen:= nBuffer;
-END_IF
-
-]]></ST>
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Write" Id="{190fc925-5e69-0b04-04d9-e18614960a32}">
@@ -246,6 +248,8 @@ END_VAR]]></Declaration>
 	END_IF
 ELSE
 	fbWrite.bExecute:= TRUE;
+	fbWrite.pWriteBuff:= pBuffer;
+	fbWrite.cbWriteLen:= nBuffer;	
 END_IF]]></ST>
       </Implementation>
     </Method>

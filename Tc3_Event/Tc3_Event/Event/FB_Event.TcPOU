@@ -33,31 +33,31 @@ END_VAR
 IF fbVerbose.nTimestamp <> 0 THEN
 	fbVerbose.nTimestamp:= 0;
 ELSE
-	fbVerbose.bActive:= FALSE;
+	fbVerbose.bRaised:= FALSE;
 END_IF
 
 IF fbInfo.nTimestamp <> 0 THEN
 	fbInfo.nTimestamp:= 0;
 ELSE
-	fbInfo.bActive:= FALSE;
+	fbInfo.bRaised:= FALSE;
 END_IF
 
 IF fbWarning.nTimestamp <> 0 THEN
 	fbWarning.nTimestamp:= 0;
 ELSE
-	fbWarning.bActive:= FALSE;
+	fbWarning.bRaised:= FALSE;
 END_IF
 
 IF fbError.nTimestamp <> 0 THEN
 	fbError.nTimestamp:= 0;
 ELSE
-	fbError.bActive:= FALSE;
+	fbError.bRaised:= FALSE;
 END_IF
 
 IF fbCritical.nTimestamp <> 0 THEN
 	fbCritical.nTimestamp:= 0;
 ELSE
-	fbCritical.bActive:= FALSE;
+	fbCritical.bRaised:= FALSE;
 END_IF
 
 ]]></ST>

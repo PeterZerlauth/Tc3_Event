@@ -17,6 +17,11 @@ VAR
 	bFileInfo: 			BOOL;
 	bCrateDir: 			BOOL;
 	bOpen: 				BOOL;
+	bWrite: 			BOOL;
+	bRead: 				BOOL;
+	nHash: UDINT;
+
+	bLoad: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbFile();
@@ -33,6 +38,20 @@ IF bOpen THEN
 	bOpen:= NOT fbFile.M_Open('C:\temp\log.txt');
 END_IF 
 
+IF bOpen THEN
+	bOpen:= NOT fbFile.M_Write(bOpen);
+END_IF 
+
+IF bRead THEN
+	bRead:= NOT fbFile.M_Read();
+END_IF 
+
+IF bLoad THEN
+	bLoad:= NOT fbFile.M_Load('C:\temp\log.txt');
+END_IF 
+
+
+
 
 
 
@@ -48,25 +67,26 @@ IF bVerbose THEN
 	fbEvent.P_Argument.M_AddINT(134052566194980000);
 	fbEvent.P_Argument.M_AddSTRING('mm');
 	fbEvent.M_Verbose('message %s %s');
+	nHash:= F_Hash('message %s %s');
 END_IF
 
 IF bInfo THEN
 	fbEvent.P_Argument.M_AddREAL(33.134581234, 3);
 	fbEvent.P_Argument.M_AddSTRING('mm');
-	fbEvent.M_Info(2263151477, 'message %s %s');
+	fbEvent.M_Info(121769021, 'message %s %s');
 END_IF
 
 IF bWarning THEN
-	fbEvent.M_Warning(292272521, 'message');
-	fbEvent.M_Warning(292272521, 'message');
+	fbEvent.M_Warning(316902404, 'message');
+	fbEvent.M_Warning(316902404, 'message');
 END_IF
 
 IF bError THEN
-	fbEvent.M_Error(292272521, 'message');
+	fbEvent.M_Error(316902404, 'message');
 END_IF
 
 IF bCritical THEN
-	fbEvent.M_Critical(292272521, 'message');
+	fbEvent.M_Critical(316902404, 'message');
 END_IF
 ]]></ST>
     </Implementation>

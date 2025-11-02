@@ -6,16 +6,29 @@ param(
 )
 
 # -----------------------------
-# Config
+# Determine Git repository root dynamically
 # -----------------------------
-$rootFolder = "C:\source\repos\Logger"
-$outputFile = Join-Path -Path $PSScriptRoot -ChildPath "messages.json"
+try {
+    $gitRoot = git rev-parse --show-toplevel 2>$null
+    if (-not $gitRoot) {
+        throw "Not a git repository."
+    }
+    $rootFolder = $gitRoot.Trim()
+} catch {
+    Write-Warning "Cannot determine Git repository root, falling back to script folder."
+    $rootFolder = $PSScriptRoot
+}
+
+$outputFile = Join-Path -Path $rootFolder -ChildPath "messages.json"
 
 # Ensure output folder exists
 $outputFolder = Split-Path $outputFile
 if (-not (Test-Path $outputFolder)) {
     New-Item -Path $outputFolder -ItemType Directory -Force | Out-Null
 }
+
+Write-Host "Using root folder: $rootFolder"
+Write-Host "Output file: $outputFile"
 
 # -----------------------------
 # Load existing messages.json (if available)
@@ -39,7 +52,7 @@ if (Test-Path $outputFile) {
 $files = Get-ChildItem -Path $rootFolder -Recurse -Include "*.TcPOU"
 
 # -----------------------------
-# Function: Find-Hash2 (polynomial rolling hash)
+# Function: Get-UDINTHash (polynomial rolling hash)
 # -----------------------------
 function Get-UDINTHash {
     param([string]$s)
@@ -103,38 +116,39 @@ foreach ($file in $files) {
         if (-not $messages.ContainsKey($id)) {
             $messages[$id] = @{
                 id = $id
-                messages = @{}
+                key = $msgText
+                locale = @{}  # renamed messages -> locale
             }
 
             if ($existingMessages.ContainsKey($idKey)) {
                 $oldMsg = $existingMessages[$idKey]
-                $oldEn = $oldMsg.messages.en
-                $oldTranslations = $oldMsg.messages
+                $oldEn = $oldMsg.locale.en
+                $oldTranslations = $oldMsg.locale
 
                 if ($oldEn -ne $msgText) {
                     Write-Host "  - English text changed for ID $id, resetting translations"
                     foreach ($lang in $Languages) {
                         if ($lang -eq "en") {
-                            $messages[$id].messages[$lang] = $msgText
+                            $messages[$id].locale[$lang] = $msgText
                         } else {
-                            $messages[$id].messages[$lang] = ""
+                            $messages[$id].locale[$lang] = ""
                         }
                     }
                 } else {
                     foreach ($lang in $Languages) {
                         if ($oldTranslations.PSObject.Properties.Name -contains $lang) {
-                            $messages[$id].messages[$lang] = $oldTranslations.$lang
+                            $messages[$id].locale[$lang] = $oldTranslations.$lang
                         } else {
-                            $messages[$id].messages[$lang] = ""
+                            $messages[$id].locale[$lang] = ""
                         }
                     }
                 }
             } else {
                 foreach ($lang in $Languages) {
                     if ($lang -eq "en") {
-                        $messages[$id].messages[$lang] = $msgText
+                        $messages[$id].locale[$lang] = $msgText
                     } else {
-                        $messages[$id].messages[$lang] = ""
+                        $messages[$id].locale[$lang] = ""
                     }
                 }
             }
@@ -152,7 +166,15 @@ foreach ($file in $files) {
 }
 
 # -----------------------------
-# Export all messages to JSON
+# Export all messages to JSON with id, key, locale order
 # -----------------------------
-$messages.Values | Sort-Object -Property id | ConvertTo-Json -Depth 5 | Set-Content -Path $outputFile -Encoding UTF8
+$orderedMessages = $messages.Values | Sort-Object -Property id | ForEach-Object {
+    [PSCustomObject]@{
+        id     = $_.id
+        key    = $_.key
+        locale = $_.locale
+    }
+}
+
+$orderedMessages | ConvertTo-Json -Depth 5 | Set-Content -Path $outputFile -Encoding UTF8
 Write-Host "Extracted $($messages.Count) unique log messages to $outputFile"

@@ -24,19 +24,19 @@ IF bVerbose THEN
 END_IF
 
 IF bInfo THEN
-	fbEvent.M_Info(2276475569, 'Info message');
+	fbEvent.M_Info(359217434, 'Info message');
 END_IF
 
 IF bWarning THEN
-	fbEvent.M_Warning(1791326186, 'Warning message');
+	fbEvent.M_Warning(461989237, 'Warning message');
 END_IF
 
 IF bError THEN
-	fbEvent.M_Info(2276475569, 'Info message');
+	fbEvent.M_Info(359217434, 'Info message');
 END_IF
 
 IF bCritical THEN
-	fbEvent.M_Critical(2626343866, 'Critical message');
+	fbEvent.M_Critical(973218685, 'Critical message');
 END_IF
 ]]></ST>
     </Implementation>

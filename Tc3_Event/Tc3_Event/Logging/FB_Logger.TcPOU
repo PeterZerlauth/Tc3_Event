@@ -26,8 +26,8 @@ IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskT
 	nTimestamp := TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime + 1000000000;
 	nIndex := 0;
 	WHILE nIndex < nMessages DO
-		IF aMessages[nIndex].bActive THEN
-			aMessages[nIndex].bActive:= FALSE;
+		IF aMessages[nIndex].bRaised THEN
+			aMessages[nIndex].bRaised:= FALSE;
 			nIndex := nIndex + 1;
 		ELSE
 			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_Message) * (nMessages - nIndex));
@@ -74,7 +74,7 @@ END_CASE
 // Find
 FOR nIndex := 0 TO nMessages DO
     IF aMessages[nIndex].sMessage = fbMessage.sMessage AND_THEN aMessages[nIndex].sSource = fbMessage.sSource THEN
-        aMessages[nIndex].bActive:= TRUE;
+        aMessages[nIndex].bRaised:= TRUE;
 		M_Log := TRUE;
         RETURN;
     END_IF
@@ -83,7 +83,7 @@ END_FOR
 // else Add
 IF nMessages < 99 THEN
 	nIndex := nMessages;
-	fbMessage.bActive:= TRUE;
+	fbMessage.bRaised:= TRUE;
     aMessages[nMessages]:= fbMessage;;
     nMessages := nMessages + 1;
 	M_Log := TRUE;
