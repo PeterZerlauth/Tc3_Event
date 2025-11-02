@@ -6,12 +6,6 @@ FUNCTION_BLOCK FB_Logger IMPLEMENTS I_Logger
 VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 END_VAR
-VAR_OUTPUT
-    bInfo:					BOOL;
-    bWarning:				BOOL;
-    bError:					BOOL;
-    bCritical:				BOOL;
-END_VAR
 VAR
 	aMessages:				ARRAY[0..99] OF FB_Message; // Message store
     nMessages:				UINT := 0;                     // Message count
@@ -21,24 +15,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// clean up after 1 secound
-IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime THEN // 1 second = 1e9 ns
-	nTimestamp := TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime + 1000000000;
-	nIndex := 0;
-	WHILE nIndex < nMessages DO
-		IF aMessages[nIndex].bRaised THEN
-			aMessages[nIndex].bRaised:= FALSE;
-			nIndex := nIndex + 1;
-		ELSE
-			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_Message) * (nMessages - nIndex));
-			nMessages := nMessages - 1;
-			bInfo:=	FALSE;
-			bWarning:=	FALSE;
-			bError:= FALSE;
-			bCritical:= FALSE;
-		END_IF
-	END_WHILE
-END_IF]]></ST>
+      <ST><![CDATA[]]></ST>
     </Implementation>
     <Method Name="M_Log" Id="{c925afc5-8e57-47da-84bb-210c829a3dd4}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
@@ -53,42 +30,28 @@ END_VAR]]></Declaration>
 	RETURN;
 END_IF
 
-CASE fbMessage.eLogLevel OF
-	E_LogLevel.Info:
-    	bInfo:= TRUE;
-		
-	E_LogLevel.Warning:		
-    	bWarning:= TRUE;
-		
-	E_LogLevel.Error:
-    	bError:= TRUE;
-		
-	E_LogLevel.Critical:
-    	bCritical:= TRUE;
-		
-	ELSE
-		;
-END_CASE
-
-
-// Find
-FOR nIndex := 0 TO nMessages DO
-    IF aMessages[nIndex].sMessage = fbMessage.sMessage AND_THEN aMessages[nIndex].sSource = fbMessage.sSource THEN
-        aMessages[nIndex].bRaised:= TRUE;
-		M_Log := TRUE;
-        RETURN;
-    END_IF
-END_FOR
-
-// else Add
-IF nMessages < 99 THEN
-	nIndex := nMessages;
-	fbMessage.bRaised:= TRUE;
-    aMessages[nMessages]:= fbMessage;;
-    nMessages := nMessages + 1;
-	M_Log := TRUE;
+IF eLogLevel > fbMessage.eLogLevel THEN
+	M_Log:= TRUE;
+	RETURN;
 END_IF
-]]></ST>
+
+
+IF fbMessage.bRaised THEN
+	IF nMessages < 99 THEN
+		nIndex := nMessages;
+		aMessages[nMessages]:= fbMessage;;
+		nMessages := nMessages + 1;
+		M_Log := TRUE;
+	END_IF	
+ELSIF fbMessage.bCleared THEN
+	FOR nIndex := 0 TO nMessages DO
+		IF aMessages[nIndex].sMessage = fbMessage.sMessage AND_THEN aMessages[nIndex].sSource = fbMessage.sSource THEN
+			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_Message) * (nMessages - nIndex));
+			nMessages := nMessages - 1;
+			RETURN;
+		END_IF
+	END_FOR
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_LogLevel" Id="{1c739022-3d6f-4ecb-abf9-2f9944cdc386}">

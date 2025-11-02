@@ -6,6 +6,7 @@ VAR
     eMode: 					SysFile.ACCESS_MODE := SysFile.AM_APPEND_PLUS;
     hFile: 					SysFile.SysTypes.RTS_IEC_HANDLE;
 	Result:					SysFile.SysTypes.RTS_IEC_RESULT;
+	status:					SysFile.SYS_FILE_STATUS;	
 	pResult:				POINTER TO SysFile.SysTypes.RTS_IEC_RESULT:= ADR(Result);
     pBuffer:				POINTER TO BYTE;
     nBuffer:				UDINT;
@@ -97,7 +98,7 @@ VAR_INPUT
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF hFile <> SysFile.SysTypes.RTS_INVALID_HANDLE THEN
-   pResult^:= SysFile.SysFileGetStatus(hFile);
+   status:= SysFile.SysFileGetStatus(hFile);
 END_IF
 
 M_Status:= TRUE;]]></ST>
@@ -113,7 +114,7 @@ END_VAR]]></Declaration>
         <ST><![CDATA[IF hFile <> SysFile.SysTypes.RTS_INVALID_HANDLE THEN
     SysFile.SysFileWrite(hFile := hFile,
                          pbyBuffer := ADR(sValue),
-                         ulSize := len(sValue),
+                         ulSize := INT_TO_LWORD(len(sValue)),
                          pResult := pResult);
 END_IF
 
