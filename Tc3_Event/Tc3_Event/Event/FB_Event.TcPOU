@@ -27,40 +27,70 @@ END_VAR
     <Implementation>
       <ST><![CDATA[fbSymbolInfo();
 
-
-// all events stay alive until mehtod is not called any more
-
-IF fbVerbose.nTimestamp <> 0 THEN
-	fbVerbose.nTimestamp:= 0;
-ELSE
+IF fbVerbose.bRaised THEN
 	fbVerbose.bRaised:= FALSE;
+ELSE
+	IF fbVerbose.bCleared THEN
+		fbVerbose.sMessage:= '';
+	ELSE	
+		fbVerbose.bCleared:= TRUE;
+		IF iLogger <> 0 THEN
+			iLogger.M_Log(fbVerbose);
+		END_IF	
+	END_IF
 END_IF
 
-IF fbInfo.nTimestamp <> 0 THEN
-	fbInfo.nTimestamp:= 0;
-ELSE
+IF fbInfo.bRaised THEN
 	fbInfo.bRaised:= FALSE;
+ELSE
+	IF fbInfo.bCleared THEN
+		fbInfo.sMessage:= '';
+	ELSE	
+		fbInfo.bCleared:= TRUE;
+		IF iLogger <> 0 THEN
+			iLogger.M_Log(fbInfo);
+		END_IF	
+	END_IF
 END_IF
 
-IF fbWarning.nTimestamp <> 0 THEN
-	fbWarning.nTimestamp:= 0;
-ELSE
+IF fbWarning.bRaised THEN
 	fbWarning.bRaised:= FALSE;
+ELSE
+	IF fbWarning.bCleared THEN
+		fbWarning.sMessage:= '';
+	ELSE	
+		fbWarning.bCleared:= TRUE;
+		IF iLogger <> 0 THEN
+			iLogger.M_Log(fbWarning);
+		END_IF	
+	END_IF
 END_IF
 
-IF fbError.nTimestamp <> 0 THEN
-	fbError.nTimestamp:= 0;
-ELSE
+IF fbError.bRaised THEN
 	fbError.bRaised:= FALSE;
-END_IF
-
-IF fbCritical.nTimestamp <> 0 THEN
-	fbCritical.nTimestamp:= 0;
 ELSE
-	fbCritical.bRaised:= FALSE;
+	IF fbError.bCleared THEN
+		fbError.sMessage:= '';
+	ELSE	
+		fbError.bCleared:= TRUE;
+		IF iLogger <> 0 THEN
+			iLogger.M_Log(fbError);
+		END_IF	
+	END_IF
 END_IF
 
-]]></ST>
+IF fbCritical.bRaised THEN
+	fbCritical.bRaised:= FALSE;
+ELSE
+	IF fbCritical.bCleared THEN
+		fbCritical.sMessage:= '';
+	ELSE	
+		fbCritical.bCleared:= TRUE;
+		IF iLogger <> 0 THEN
+			iLogger.M_Log(fbCritical);
+		END_IF	
+	END_IF
+END_IF]]></ST>
     </Implementation>
     <Method Name="FB_Init" Id="{256fe292-0b03-4593-83b5-0da540634dee}">
       <Declaration><![CDATA[//FB_Init ist immer implizit verfügbar und wird primär für die Initialisierung verwendet.
@@ -85,20 +115,27 @@ VAR_INPUT
 	sMessage:			STRING(255);
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbCritical.eLogLevel:= E_LogLevel.Critical;
-fbCritical.nID:= nID;
-fbCritical.nTimestamp:= F_GetSystemTime();
-fbCritical.sMessage:= sMessage;
-fbCritical.sArguments:= fbArguments.P_Value;
-fbCritical.sDefault:= F_Print(sMessage, fbArguments.P_Value);
-fbCritical.sSource:= fbSymbolInfo.SYMNAME;
-fbCritical.sType:= fbSymbolInfo.SYMINFO.symDataType;
-
-IF iLogger = 0 THEN
-	F_Log(fbCritical);
+        <ST><![CDATA[IF fbCritical.sMessage = '' THEN
+	fbCritical.sMessage:= sMessage;
+	fbCritical.eLogLevel:= E_LogLevel.Critical;
+	fbCritical.nID:= nID;
+	fbCritical.nTimestamp:= F_GetSystemTime();
+	fbCritical.sArguments:= fbArguments.P_Value;
+	fbCritical.sDefault:= F_Print(sMessage, fbArguments.P_Value);
+	fbCritical.sSource:= fbSymbolInfo.SYMNAME;
+	fbCritical.sType:= fbSymbolInfo.SYMINFO.symDataType;
+	fbCritical.bRaised:= TRUE;
+	fbCritical.bCleared:= FALSE;
+	
+	IF iLogger = 0 THEN
+		F_Log(fbCritical);
+	ELSE
+		iLogger.M_Log(fbCritical);
+	END_IF
 ELSE
-	iLogger.M_Log(fbCritical);
+	fbCritical.bRaised:= TRUE;
 END_IF
+
 
 fbArguments.M_Clear();]]></ST>
       </Implementation>
@@ -111,19 +148,25 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbError.eLogLevel:= E_LogLevel.Error;
-fbError.nID:= nID;
-fbCritical.nTimestamp:= F_GetSystemTime();
-fbError.sMessage:= sMessage;
-fbError.sArguments:= fbArguments.P_Value;
-fbError.sDefault:= F_Print(sMessage, fbArguments.P_Value);
-fbError.sSource:= fbSymbolInfo.SYMNAME;
-fbError.sType:= fbSymbolInfo.SYMINFO.symDataType;
-
-IF iLogger = 0 THEN
-	F_Log(fbError);
+        <ST><![CDATA[IF fbError.sMessage = '' THEN
+	fbError.sMessage:= sMessage;
+	fbError.eLogLevel:= E_LogLevel.Error;
+	fbError.nID:= nID;
+	fbError.nTimestamp:= F_GetSystemTime();
+	fbError.sArguments:= fbArguments.P_Value;
+	fbError.sDefault:= F_Print(sMessage, fbArguments.P_Value);
+	fbError.sSource:= fbSymbolInfo.SYMNAME;
+	fbError.sType:= fbSymbolInfo.SYMINFO.symDataType;
+	fbError.bRaised:= TRUE;
+	fbError.bCleared:= FALSE;
+	
+	IF iLogger = 0 THEN
+		F_Log(fbError);
+	ELSE
+		iLogger.M_Log(fbError);
+	END_IF
 ELSE
-	iLogger.M_Log(fbError);
+	fbError.bRaised:= TRUE;
 END_IF
 
 fbArguments.M_Clear();]]></ST>
@@ -136,19 +179,25 @@ VAR_INPUT
 	sMessage:			STRING(255);
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbInfo.eLogLevel:= E_LogLevel.Info;
-fbInfo.nID:= nID;
-fbInfo.nTimestamp:= F_GetSystemTime();
-fbInfo.sMessage:= sMessage;
-fbInfo.sArguments:= fbArguments.P_Value;
-fbInfo.sDefault:= F_Print(sMessage, fbArguments.P_Value);
-fbInfo.sSource:= fbSymbolInfo.SYMNAME;
-fbInfo.sType:= fbSymbolInfo.SYMINFO.symDataType;
-
-IF iLogger = 0 THEN
-	F_Log(fbInfo);
+        <ST><![CDATA[IF fbInfo.sMessage = '' THEN
+	fbInfo.sMessage:= sMessage;
+	fbInfo.eLogLevel:= E_LogLevel.Info;
+	fbInfo.nID:= nID;
+	fbInfo.nTimestamp:= F_GetSystemTime();	
+	fbInfo.sArguments:= fbArguments.P_Value;
+	fbInfo.sDefault:= F_Print(sMessage, fbArguments.P_Value);
+	fbInfo.sSource:= fbSymbolInfo.SYMNAME;
+	fbInfo.sType:= fbSymbolInfo.SYMINFO.symDataType;
+	fbInfo.bRaised:= TRUE;
+	fbInfo.bCleared:= FALSE;
+	
+	IF iLogger = 0 THEN
+		F_Log(fbInfo);
+	ELSE
+		iLogger.M_Log(fbInfo);
+	END_IF
 ELSE
-	iLogger.M_Log(fbInfo);
+	fbInfo.bRaised:= TRUE;
 END_IF
 
 fbArguments.M_Clear();]]></ST>
@@ -160,19 +209,25 @@ VAR_INPUT
 	sMessage:			STRING(255);
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbVerbose.eLogLevel:= E_LogLevel.Verbose;
-fbVerbose.nID:= 0;
-fbVerbose.nTimestamp:= F_GetSystemTime();
-fbVerbose.sMessage:= sMessage;
-fbVerbose.sArguments:= fbArguments.P_Value;
-fbVerbose.sDefault:= F_Print(sMessage, fbArguments.P_Value);
-fbVerbose.sSource:= fbSymbolInfo.SYMNAME;
-fbVerbose.sType:= fbSymbolInfo.SYMINFO.symDataType;
-
-IF iLogger = 0 THEN
-	F_Log(fbVerbose);
+        <ST><![CDATA[IF fbVerbose.sMessage = '' THEN
+	fbVerbose.sMessage:= sMessage;
+	fbVerbose.eLogLevel:= E_LogLevel.Verbose;
+	fbVerbose.nID:= 0;
+	fbVerbose.nTimestamp:= F_GetSystemTime();
+	fbVerbose.sArguments:= fbArguments.P_Value;
+	fbVerbose.sDefault:= F_Print(sMessage, fbArguments.P_Value);
+	fbVerbose.sSource:= fbSymbolInfo.SYMNAME;
+	fbVerbose.sType:= fbSymbolInfo.SYMINFO.symDataType;
+	fbVerbose.bRaised:= TRUE;
+	fbVerbose.bCleared:= FALSE;
+	
+	IF iLogger = 0 THEN
+		F_Log(fbVerbose);
+	ELSE
+		iLogger.M_Log(fbVerbose);
+	END_IF
 ELSE
-	iLogger.M_Log(fbVerbose);
+	fbVerbose.bRaised:= TRUE;
 END_IF
 
 fbArguments.M_Clear();]]></ST>
@@ -185,19 +240,25 @@ VAR_INPUT
 	sMessage:			STRING(255);
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbWarning.eLogLevel:= E_LogLevel.Warning;
-fbWarning.nID:= nID;
-fbWarning.nTimestamp:= F_GetSystemTime();
-fbWarning.sMessage:= sMessage;
-fbWarning.sArguments:= fbArguments.P_Value;
-fbWarning.sDefault:= F_Print(sMessage, fbArguments.P_Value);
-fbWarning.sSource:= fbSymbolInfo.SYMNAME;
-fbWarning.sType:= fbSymbolInfo.SYMINFO.symDataType;
-
-IF iLogger = 0 THEN
-	F_Log(fbWarning);
+        <ST><![CDATA[IF fbWarning.sMessage = '' THEN
+	fbWarning.sMessage:= sMessage;
+	fbWarning.eLogLevel:= E_LogLevel.Warning;
+	fbWarning.nID:= nID;
+	fbWarning.nTimestamp:= F_GetSystemTime();
+	fbWarning.sArguments:= fbArguments.P_Value;
+	fbWarning.sDefault:= F_Print(sMessage, fbArguments.P_Value);
+	fbWarning.sSource:= fbSymbolInfo.SYMNAME;
+	fbWarning.sType:= fbSymbolInfo.SYMINFO.symDataType;
+	fbWarning.bRaised:= TRUE;
+	fbWarning.bCleared:= FALSE;
+	
+	IF iLogger = 0 THEN
+		F_Log(fbWarning);
+	ELSE
+		iLogger.M_Log(fbWarning);
+	END_IF
 ELSE
-	iLogger.M_Log(fbWarning);
+	fbWarning.bRaised:= TRUE;
 END_IF
 
 fbArguments.M_Clear();]]></ST>

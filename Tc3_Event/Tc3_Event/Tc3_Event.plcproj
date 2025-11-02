@@ -36,23 +36,20 @@
     <Folder Include="Logging" />
     <Folder Include="Logger" />
     <Folder Include="FileLogger" />
+    <Folder Include="File" />
+    <Folder Include="Message" />
+    <Folder Include="Argument" />
     <Folder Include="Project Information" />
     <Folder Include="Version" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Event\FB_Message.TcPOU">
+    <Compile Include="Argument\FB_Argument.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Event\F_Log.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Event\F_Print.TcPOU">
+    <Compile Include="Argument\I_Argument.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Event\I_Event.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Event\F_Hash.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Event\ST_Events.TcDUT">
@@ -61,22 +58,25 @@
     <Compile Include="FileLogger\FB_FileLogger.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\FB_File.TcPOU">
+    <Compile Include="File\FB_File.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\F_Hash.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\F_InstancePath.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Event\FB_Argument.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Event\FB_Event.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Event\I_Argument.TcIO">
+    <Compile Include="Helpers\F_Log.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Logging\FB_LoggerProxy.TcPOU">
+    <Compile Include="Helpers\F_Print.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Logging\FB_LoggingProvider.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logging\ST_LoggerNode.TcDUT">
@@ -92,6 +92,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logger\ST_Message.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Message\FB_Message.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Project Information\F_GetCompany.TcPOU">
@@ -165,8 +168,8 @@
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-        <Data>
-          <o xml:space="preserve" t="OptionKey">
+  <Data>
+    <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
@@ -309,14 +312,14 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-        </Data>
-        <TypeList>
-          <Type n="Boolean">System.Boolean</Type>
-          <Type n="Hashtable">System.Collections.Hashtable</Type>
-          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-          <Type n="String">System.String</Type>
-        </TypeList>
-      </XmlArchive>
+  </Data>
+  <TypeList>
+    <Type n="Boolean">System.Boolean</Type>
+    <Type n="Hashtable">System.Collections.Hashtable</Type>
+    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+    <Type n="String">System.String</Type>
+  </TypeList>
+</XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>

@@ -7,12 +7,6 @@ VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 	sPathName:				STRING(255):= 'C:\temp\log.txt';
 END_VAR
-VAR_OUTPUT
-    bInfo:					BOOL;
-    bWarning:				BOOL;
-    bError:					BOOL;
-    bCritical:				BOOL;
-END_VAR
 VAR
 	fbFile:					FB_File;
 END_VAR
@@ -26,12 +20,35 @@ VAR_INPUT
 	fbMessage:			FB_Message;
 END_VAR
 VAR
+	sLogLine  : STRING(255);
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[fbFile.M_Open(sPathName);
-fbFile.M_Write(Concat(fbMessage.sDefault, '$R$N'));
-fbFile.M_Close();
-M_Log:= FALSE;]]></ST>
+        <ST><![CDATA[IF fbMessage.bRaised THEN
+    // Convert ULINT timestamp to ISO8601 string (helper function recommended)
+    sLogLine := CONCAT('[', FILETIME64_TO_ISO8601(fbMessage.nTimestamp, 0, FALSE, 4));  
+    sLogLine := CONCAT(sLogLine, '] ');
+
+    // Log level
+    sLogLine := CONCAT(sLogLine, TO_STRING(fbMessage.eLogLevel));
+    sLogLine := CONCAT(sLogLine, ' ');
+
+    // Message ID in brackets
+    sLogLine := CONCAT(sLogLine, '[');
+    sLogLine := CONCAT(sLogLine, ULINT_TO_STRING(fbMessage.nID));
+    sLogLine := CONCAT(sLogLine, '] ');
+
+    // Actual message
+    sLogLine := CONCAT(sLogLine, fbMessage.sDefault);
+
+    // CRLF
+    sLogLine := CONCAT(sLogLine, '$R$N');
+
+    // Write to file
+    fbFile.M_Open(sPathName);
+    fbFile.M_Write(sLogLine);
+    fbFile.M_Close();
+END_IF
+]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_LogLevel" Id="{4a4febf7-9f38-4135-9708-e563fad83f87}">

@@ -100,7 +100,7 @@ END_VAR]]></Declaration>
    pResult^:= SysFile.SysFileGetStatus(hFile);
 END_IF
 
-M_Close:= TRUE;]]></ST>
+M_Status:= TRUE;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Write" Id="{b956b515-594f-440e-be50-f979325c8ffe}">

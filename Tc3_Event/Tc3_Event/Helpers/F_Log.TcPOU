@@ -12,9 +12,6 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF fbMessage.bRaised THEN
-	;
-ELSE
-	fbMessage.bRaised:= TRUE;
 	sMessage:= CONCAT(sMessage, fbMessage.sSource);
 	IF fbMessage.sType <> '' THEN
 		sMessage:= CONCAT(sMessage, ' - ');
@@ -42,7 +39,6 @@ ELSE
 			ADSLOGSTR(ADSLOG_MSGTYPE_ERROR, '%s', sMessage);
 	
 	END_CASE
-
 END_IF]]></ST>
     </Implementation>
   </POU>

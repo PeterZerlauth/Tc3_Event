@@ -5,10 +5,10 @@
 VAR
 	
 
-	fbLoggerProxy:		FB_LoggerProxy;
-	fbLogger:			FB_Logger;
-// 	fbFileLogger:		FB_FileLogger;
-	fbEvent: 			FB_Event;
+	fbLogging:			Tc3_Event.FB_LoggingProvider;
+	fbLogger:			Tc3_Event.FB_Logger;
+	fbFileLogger:		Tc3_Event.FB_FileLogger;
+	fbEvent: 			Tc3_Event.FB_Event;
 	bVerbose:			BOOL;
 	bInfo:				BOOL;
 	bWarning:			BOOL;
@@ -19,16 +19,16 @@ END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 
-fbLoggerProxy.M_Attach(fbLogger);
-// fbLoggerProxy.M_Attach(fbFileLogger);
+fbLogging.M_Add(fbLogger);
+fbLogging.M_Add(fbFileLogger);
+
 
 fbLogger();
-// fbFileLogger();
+fbFileLogger(sPathName:= 'C:\temp\log.txt');
 
-fbEvent.P_Logger:= fbLoggerProxy;
+fbEvent.P_Logger:= fbLogging;
 
 fbEvent();
-
 
 IF bVerbose THEN
 	fbEvent.P_Argument.M_AddINT(134052566194980000);

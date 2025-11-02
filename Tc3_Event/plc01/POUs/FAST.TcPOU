@@ -12,7 +12,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbEvent.P_Logger:= MAIN.fbLoggerProxy;
+      <ST><![CDATA[fbEvent.P_Logger:= MAIN.fbLogging;
 
 fbEvent();
 
