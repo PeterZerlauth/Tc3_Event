@@ -39,14 +39,23 @@ if (Test-Path $outputFile) {
 $files = Get-ChildItem -Path $rootFolder -Recurse -Include "*.TcPOU"
 
 # -----------------------------
-# Function: compute 32-bit UDINT hash
+# Function: Find-Hash2 (polynomial rolling hash)
 # -----------------------------
-function Get-UDINTHash([string]$text) {
-    [uint32]$hash = 5381
-    foreach ($c in $text.ToCharArray()) {
-        $hash = (($hash -shl 5) -bor ($hash -shr 27)) + [uint32][char]$c
+function Get-UDINTHash {
+    param([string]$s)
+
+    $p = 37
+    $m = 1000000009
+    $hash = 0
+    $pPow = 1
+
+    foreach ($ch in $s.ToCharArray()) {
+        $cVal = [int][char]$ch - [int][char]'a' + 1
+        $hash = ($hash + ($cVal * $pPow) % $m) % $m
+        $pPow = ($pPow * $p) % $m
     }
-    return $hash
+
+    return [uint32]$hash
 }
 
 # -----------------------------
@@ -75,17 +84,15 @@ foreach ($file in $files) {
         $msgText = $match.Groups[4].Value.Trim()
         $trailing = $match.Groups[5].Value
 
-        # Parse existing ID
         [uint32]$id = 0
         $hasExistingId = [uint32]::TryParse($idText, [ref]$id)
 
         # Generate new ID if missing or zero
         $computedId = [uint32](Get-UDINTHash $msgText)
         if (-not $hasExistingId -or $id -eq 0) {
-            $oldIdText = $idText
+            Write-Host "  - Generating new ID for message '$msgText': $idText => $computedId"
             $id = $computedId
             $script:modified = $true
-            Write-Host "  - Generating new ID for message '$msgText': $oldIdText => $id"
         } else {
             Write-Host "  - Keeping existing ID for message '$msgText': $id"
         }
@@ -100,7 +107,6 @@ foreach ($file in $files) {
             }
 
             if ($existingMessages.ContainsKey($idKey)) {
-                # Reuse existing message entry
                 $oldMsg = $existingMessages[$idKey]
                 $oldEn = $oldMsg.messages.en
                 $oldTranslations = $oldMsg.messages
@@ -111,29 +117,19 @@ foreach ($file in $files) {
                         if ($lang -eq "en") {
                             $messages[$id].messages[$lang] = $msgText
                         } else {
-                            $messages[$id].messages[$lang] = ""  # reset translation
+                            $messages[$id].messages[$lang] = ""
                         }
                     }
                 } else {
-                    # Keep all existing translations
                     foreach ($lang in $Languages) {
                         if ($oldTranslations.PSObject.Properties.Name -contains $lang) {
-                            # Keep existing translation
                             $messages[$id].messages[$lang] = $oldTranslations.$lang
                         } else {
-                            # Only initialize if it doesn't exist yet
-                            if (-not $messages[$id].messages.ContainsKey($lang)) {
-                                if ($lang -eq "en") {
-                                    $messages[$id].messages[$lang] = $msgText
-                                } else {
-                                    $messages[$id].messages[$lang] = ""
-                                }
-                            }
+                            $messages[$id].messages[$lang] = ""
                         }
                     }
                 }
             } else {
-                # New message ID
                 foreach ($lang in $Languages) {
                     if ($lang -eq "en") {
                         $messages[$id].messages[$lang] = $msgText
@@ -144,14 +140,12 @@ foreach ($file in $files) {
             }
         }
 
-        # Reconstruct log call, preserving original formatting
         return "$prefix`M_$logType($id, '$msgText')$trailing"
     })
 
-    # Write file if modified
     if ($script:modified -or $content -ne $originalContent) {
         Set-Content -Path $file.FullName -Value $content -NoNewline -Encoding UTF8
-        Write-Host "File updated (IDs and/or syntax corrected): $($file.FullName)"
+        Write-Host "File updated: $($file.FullName)"
     } else {
         Write-Host "No changes needed for: $($file.FullName)"
     }
