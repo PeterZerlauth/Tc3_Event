@@ -109,7 +109,7 @@ M_Detach := FALSE;]]></ST>
     <Method Name="M_Log" Id="{eb21a125-c7d6-460d-84cb-3d1cb4ea2fdf}">
       <Declaration><![CDATA[METHOD M_Log : BOOL
 VAR_INPUT
-	stMessage	: ST_Message;
+	fbMessage	: FB_Message;
 END_VAR
 VAR
     pCurrent : POINTER TO ST_LoggerNode:= pHead;
@@ -117,7 +117,7 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[WHILE pCurrent <> 0 DO
-    pCurrent^.iLogger.M_Log(stMessage);
+    pCurrent^.iLogger.M_Log(fbMessage);
     pCurrent := pCurrent^.pNext;
 END_WHILE
 M_Log := TRUE;]]></ST>

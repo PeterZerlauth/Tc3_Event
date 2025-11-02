@@ -6,7 +6,7 @@
     <Method Name="M_Log" Id="{70349284-7301-41be-b202-535da7461a8a}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
-	stMessage:			ST_Message;
+	fbMessage:			FB_Message;
 END_VAR]]></Declaration>
     </Method>
   </Itf>

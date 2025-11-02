@@ -39,10 +39,22 @@
     <Folder Include="Version" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Event\FB_Message.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Event\F_Log.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Event\F_Print.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Event\I_Event.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\F_PrintF.TcPOU">
+    <Compile Include="Event\F_Hash.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Event\ST_Events.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\F_InstancePath.TcPOU">

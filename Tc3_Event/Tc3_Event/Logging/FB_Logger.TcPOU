@@ -13,7 +13,7 @@ VAR_OUTPUT
     bCritical:				BOOL;
 END_VAR
 VAR
-	aMessages:				ARRAY[0..99] OF ST_Message; // Message store
+	aMessages:				ARRAY[0..99] OF FB_Message; // Message store
     nMessages:				UINT := 0;                     // Message count
 	{attribute 'hide'} 
 	nIndex: 				UINT;
@@ -43,17 +43,17 @@ END_IF]]></ST>
     <Method Name="M_Log" Id="{c925afc5-8e57-47da-84bb-210c829a3dd4}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
-	stMessage:			ST_Message;
+	fbMessage:			FB_Message;
 END_VAR
 VAR
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF eLogLevel > stMessage.eLogLevel THEN
+        <ST><![CDATA[IF eLogLevel > fbMessage.eLogLevel THEN
 	M_Log:= TRUE;
 	RETURN;
 END_IF
 
-CASE stMessage.eLogLevel OF
+CASE fbMessage.eLogLevel OF
 	E_LogLevel.Info:
     	bInfo:= TRUE;
 		
@@ -73,7 +73,7 @@ END_CASE
 
 // Find
 FOR nIndex := 0 TO nMessages DO
-    IF aMessages[nIndex].sMessage = stMessage.sMessage AND_THEN aMessages[nIndex].sSource = stMessage.sSource THEN
+    IF aMessages[nIndex].sMessage = fbMessage.sMessage AND_THEN aMessages[nIndex].sSource = fbMessage.sSource THEN
         aMessages[nIndex].bActive:= TRUE;
 		M_Log := TRUE;
         RETURN;
@@ -83,8 +83,8 @@ END_FOR
 // else Add
 IF nMessages < 99 THEN
 	nIndex := nMessages;
-	stMessage.bActive:= TRUE;
-    aMessages[nMessages]:= stMessage;;
+	fbMessage.bActive:= TRUE;
+    aMessages[nMessages]:= fbMessage;;
     nMessages := nMessages + 1;
 	M_Log := TRUE;
 END_IF

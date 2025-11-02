@@ -15,8 +15,8 @@ VAR
 	
 	fbFile:				FB_File;
 	bFileInfo: 			BOOL;
-	bCrateDir: BOOL;
-	bOpen: BOOL;
+	bCrateDir: 			BOOL;
+	bOpen: 				BOOL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbFile();
@@ -39,7 +39,7 @@ END_IF
 fbLoggerProxy.M_Attach(fbLogger);
 fbLogger();
 
-fbEvent.P_Logger:= fbLoggerProxy;
+// fbEvent.P_Logger:= fbLoggerProxy;
 
 fbEvent();
 
@@ -57,6 +57,7 @@ IF bInfo THEN
 END_IF
 
 IF bWarning THEN
+	fbEvent.M_Warning(292272521, 'message');
 	fbEvent.M_Warning(292272521, 'message');
 END_IF
 

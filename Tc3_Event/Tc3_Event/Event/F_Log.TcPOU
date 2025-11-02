@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_Log" Id="{3d8b8d8d-2aeb-485f-a382-76004536aaec}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_Log : BOOL
+VAR_INPUT
+	fbMessage:			REFERENCE TO FB_Message;
+END_VAR
+VAR
+	sMessage:			STRING(255):= 'Logger null | ';
+	ir: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF fbMessage.bActive THEN
+	;
+ELSE
+	fbMessage.bActive:= TRUE;
+	sMessage:= CONCAT(sMessage, fbMessage.sSource);
+	IF fbMessage.sType <> '' THEN
+		sMessage:= CONCAT(sMessage, ' - ');
+		sMessage:= CONCAT(sMessage, fbMessage.sType);		
+	END_IF
+	sMessage:= CONCAT(sMessage, ' |');
+	IF fbMessage.nID <> 0 THEN
+		sMessage:= CONCAT(sMessage, ' ID: ');
+		sMessage:= CONCAT(sMessage, UDINT_TO_STRING(fbMessage.nID));		
+		sMessage:= CONCAT(sMessage, ' ');
+	END_IF
+	sMessage:= CONCAT(sMessage, TO_STRING(fbMessage.eLogLevel));
+	sMessage:= CONCAT(sMessage, ': ');
+	sMessage:= CONCAT(sMessage, fbMessage.sDefault);
+	
+	CASE fbMessage.eLogLevel OF
+		
+		E_LogLevel.Verbose, E_LogLevel.Info:
+			ADSLOGSTR(ADSLOG_MSGTYPE_HINT, '%s', sMessage);
+			
+		E_LogLevel.Warning:
+			ADSLOGSTR(ADSLOG_MSGTYPE_WARN, '%s', sMessage);
+	
+		E_LogLevel.Error, E_LogLevel.Critical:
+			ADSLOGSTR(ADSLOG_MSGTYPE_ERROR, '%s', sMessage);
+	
+	END_CASE
+
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

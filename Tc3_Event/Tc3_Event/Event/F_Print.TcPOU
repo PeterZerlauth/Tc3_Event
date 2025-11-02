@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="F_PrintF" Id="{bd1ae1ff-de92-4fbf-9c28-b97df594421e}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION F_PrintF : STRING(255)
+  <POU Name="F_Print" Id="{bd1ae1ff-de92-4fbf-9c28-b97df594421e}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_Print : STRING(255)
 VAR_INPUT
     sMessage:				STRING(255);
     sArguments:				STRING(255);	// Arguments are separated by $R 
@@ -15,7 +15,7 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// replace placeholders with arguments
-F_PrintF := sMessage;
+F_Print := sMessage;
 
 IF sArguments = '' THEN
     RETURN;
@@ -26,9 +26,9 @@ WHILE nPosition > 0 DO
     
     sArg := LEFT(sArguments, nPosition - 1);
     
-    nPlaceholder := FIND(F_PrintF, '%s');
+    nPlaceholder := FIND(F_Print, '%s');
     IF nPlaceholder > 0 THEN
-        F_PrintF := REPLACE(F_PrintF, sArg, 2, nPlaceholder);
+        F_Print := REPLACE(F_Print, sArg, 2, nPlaceholder);
     ELSE
         RETURN;
     END_IF

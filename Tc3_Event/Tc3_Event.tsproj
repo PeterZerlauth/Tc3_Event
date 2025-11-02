@@ -185,10 +185,10 @@
 				<Cpu CpuId="31"/>
 			</Settings>
 			<Tasks>
-				<Task Id="3" Priority="20" CycleTime="200000" AmsPort="350" AdtTasks="true">
+				<Task Id="3" CreateSymbols="true" Priority="20" CycleTime="200000" AmsPort="350" AdtTasks="true">
 					<Name>SlowTask</Name>
 				</Task>
-				<Task Id="4" Priority="1" CycleTime="10000" AmsPort="351" AdtTasks="true">
+				<Task Id="4" CreateSymbols="true" Priority="1" CycleTime="10000" AmsPort="351" AdtTasks="true">
 					<Name>FastTask</Name>
 				</Task>
 			</Tasks>
@@ -198,7 +198,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{90CE2844-1A87-435D-8A79-619DCCF6A970}" Name="plc01" PrjFilePath="plc01\plc01.plcproj" TmcFilePath="plc01\plc01.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{4128ABC3-254B-ABE0-5459-1A4A1EDB6ADA}" TmcPath="plc01\plc01.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{3A937E35-8150-6428-BDFD-6E0216AACBB2}" TmcPath="plc01\plc01.tmc">
 					<Name>plc01 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>
