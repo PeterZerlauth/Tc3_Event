@@ -1,20 +1,22 @@
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
+# Normalize line endings
 * text=auto
 
-*.ps1 linguist-generated=false
+# Ignore PowerShell scripts in GitHub language stats
+*.ps1 linguist-generated=true
 
-# Force GitHub to treat TwinCAT files as Structured Text
-*.st linguist-language=StructuredText
-*.TcPOU linguist-language=StructuredText
-*.TcDUT linguist-language=StructuredText
-*.TcGVL linguist-language=StructuredText
-*.TcTTO linguist-language=StructuredText
-*.TcIO linguist-language=StructuredText
-*.TcGVL linguist-language=StructuredText
-*.TcPlcProj linguist-language=StructuredText
-
+# Treat TwinCAT 3 files as Structured Text for syntax highlighting
+*.st     linguist-language=StructuredText
+*.TcPOU  linguist-language=StructuredText
+*.TcDUT  linguist-language=StructuredText
+*.TcGVL  linguist-language=StructuredText
+*.TcTTO  linguist-language=StructuredText
+*.TcIO   linguist-language=StructuredText
+*.TcVIS  linguist-language=StructuredText
+*.TcPRJ  linguist-language=XML
+*.tsproj linguist-language=XML
 
 
 ###############################################################################
