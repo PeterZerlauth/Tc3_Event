@@ -68,12 +68,14 @@ METHOD PUBLIC M_Read : BOOL
 VAR_INPUT
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[
-IF pBuffer = 0 THEN
-	nBuffer:= LWORD_TO_UDINT(SysFile.SysFileGetSizeByHandle(hFile, pResult));
-	pBuffer:= __NEW(BYTE, nBuffer);
-	SysFile.SysFileRead(hFile, pBuffer, nBuffer, pResult );
+        <ST><![CDATA[IF pBuffer <> 0 THEN
+	__DELETE(pBuffer);
+	nBuffer:= 0;
 END_IF
+
+nBuffer:= M_GetSize();
+pBuffer:= __NEW(BYTE, nBuffer);
+SysFile.SysFileRead(hFile, pBuffer, nBuffer, pResult );
 
 M_Read := TRUE;
 ]]></ST>
@@ -86,6 +88,19 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[SysFile.SysFileGetSizeByHandle(hFile, pResult);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Status" Id="{8f0ab01f-d98a-40bc-9f73-79c89b4ed20b}">
+      <Declaration><![CDATA[// Closes the currently opened file.
+METHOD PUBLIC M_Status : BOOL
+VAR_INPUT
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF hFile <> SysFile.SysTypes.RTS_INVALID_HANDLE THEN
+   pResult^:= SysFile.SysFileGetStatus(hFile);
+END_IF
+
+M_Close:= TRUE;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Write" Id="{b956b515-594f-440e-be50-f979325c8ffe}">

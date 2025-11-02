@@ -8,7 +8,7 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	pHead:				POINTER TO ST_LoggerNode;
+	stHead    : ST_LoggerNode; // static head element
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -34,52 +34,45 @@ VAR_INPUT
     iLogger : I_Logger;
 END_VAR
 VAR
-    pCurrent : POINTER TO ST_LoggerNode;
+    pHead     : POINTER TO ST_LoggerNode := ADR(stHead);
+    pCurrent  : POINTER TO ST_LoggerNode;
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[// invalid input
 IF iLogger = 0 THEN
-    M_Attach := FALSE;
-    RETURN;
+    RETURN(FALSE);
 END_IF
 
-// first node
-IF pHead = 0 THEN
-    pHead := __NEW(ST_LoggerNode);
-    IF pHead = 0 THEN
-        RETURN;
-    END_IF
+// first node check
+IF pHead^.iLogger = 0 THEN
     pHead^.iLogger := iLogger;
     pHead^.pNext := 0;
-    M_Attach := TRUE;
-    RETURN;
+    RETURN(TRUE);
 END_IF
 
-// traverse list to check duplicates and reach last node
+// traverse list to check duplicates
 pCurrent := pHead;
 WHILE pCurrent^.pNext <> 0 DO
     IF pCurrent^.iLogger = iLogger THEN
-        M_Attach := FALSE; // already attached
-        RETURN;
+        RETURN(FALSE); // already attached
     END_IF
     pCurrent := pCurrent^.pNext;
 END_WHILE
 
-// check last node for duplicate
+// check last node
 IF pCurrent^.iLogger = iLogger THEN
-    RETURN;
+    RETURN(FALSE);
 END_IF
 
-pCurrent^.pNext:= __NEW(ST_LoggerNode);
+// add new node
+pCurrent^.pNext := __NEW(ST_LoggerNode);
 IF pCurrent^.pNext = 0 THEN
-    RETURN;
+    RETURN(FALSE);
 END_IF
-pCurrent := pCurrent^.pNext;
+pCurrent^.pNext^.iLogger := iLogger;
+pCurrent^.pNext^.pNext := 0;
 
-pCurrent^.iLogger:= iLogger;
-pCurrent^.pNext := 0;
-
-M_Attach := TRUE;
+RETURN(TRUE);
 ]]></ST>
       </Implementation>
     </Method>
@@ -93,51 +86,18 @@ VAR
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[pCurrent := pHead;
-
+        <ST><![CDATA[pCurrent := stHead.pNext; // start after head
 WHILE pCurrent <> 0 DO
-    pNext := pCurrent^.pNext; // save next pointer
-    __DELETE(pCurrent);       // free current node
-    pCurrent := pNext;        // move to next node
+    pNext := pCurrent^.pNext; // store next pointer
+    __DELETE(pCurrent);       // free current
+    pCurrent := pNext;
 END_WHILE
 
-pHead := 0;                   // reset head
-M_Clear := TRUE;]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="M_Detach" Id="{abdf1d3f-b4ea-47b4-a7bf-8742c13025eb}">
-      <Declaration><![CDATA[METHOD M_Detach : BOOL
-VAR_INPUT
-	iLogger:			I_Logger;
-END_VAR
-VAR
-    pCurrent : POINTER TO ST_LoggerNode;
-    pPrev : POINTER TO ST_LoggerNode;
-END_VAR]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[// invalid input
-IF iLogger = 0 THEN
-    RETURN;
-END_IF
+stHead.iLogger := 0;
+stHead.pNext := 0;
 
-pCurrent := pHead;
-pPrev := 0;
-WHILE pCurrent <> 0 DO
-    IF pCurrent^.iLogger = iLogger THEN
-        IF pPrev = 0 THEN
-            pHead := pCurrent^.pNext;
-        ELSE
-            pPrev^.pNext := pCurrent^.pNext;
-        END_IF
-        __DELETE(pCurrent);
-        M_Detach := TRUE;
-        RETURN;
-    END_IF
-    pPrev := pCurrent;
-    pCurrent := pCurrent^.pNext;
-END_WHILE
-
-M_Detach := FALSE;]]></ST>
+M_Clear := TRUE;
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Log" Id="{eb21a125-c7d6-460d-84cb-3d1cb4ea2fdf}">
@@ -146,7 +106,7 @@ VAR_INPUT
 	fbMessage	: FB_Message;
 END_VAR
 VAR
-    pCurrent : POINTER TO ST_LoggerNode:= pHead;
+    pCurrent : POINTER TO ST_LoggerNode:= ADR(stHead);
 END_VAR
 ]]></Declaration>
       <Implementation>

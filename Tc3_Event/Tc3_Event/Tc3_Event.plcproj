@@ -33,7 +33,7 @@
   <ItemGroup>
     <Folder Include="Helpers" />
     <Folder Include="Event" />
-    <Folder Include="LoggerProxy" />
+    <Folder Include="Logging" />
     <Folder Include="Logger" />
     <Folder Include="FileLogger" />
     <Folder Include="Project Information" />
@@ -76,10 +76,10 @@
     <Compile Include="Event\I_Argument.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LoggerProxy\FB_LoggerProxy.TcPOU">
+    <Compile Include="Logging\FB_LoggerProxy.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LoggerProxy\ST_LoggerNode.TcDUT">
+    <Compile Include="Logging\ST_LoggerNode.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logger\E_LogLevel.TcDUT">
