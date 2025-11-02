@@ -38,6 +38,7 @@ END_IF
 IF bCritical THEN
 	fbEvent.M_Critical(973218685, 'Critical message');
 END_IF
+
 ]]></ST>
     </Implementation>
   </POU>

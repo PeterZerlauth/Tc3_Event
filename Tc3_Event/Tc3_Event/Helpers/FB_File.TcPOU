@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_File" Id="{879562f4-6da1-45fb-a1f3-48bd69fd0a1e}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_File
+VAR
+    eMode: 					SysFile.ACCESS_MODE := SysFile.AM_APPEND_PLUS;
+    hFile: 					SysFile.SysTypes.RTS_IEC_HANDLE;
+	Result:					SysFile.SysTypes.RTS_IEC_RESULT;
+	pResult:				POINTER TO SysFile.SysTypes.RTS_IEC_RESULT:= ADR(Result);
+    pBuffer:				POINTER TO BYTE;
+    nBuffer:				UDINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="M_Close" Id="{2032b7d9-4eba-4de7-bc38-d769b85ee782}">
+      <Declaration><![CDATA[// Closes the currently opened file.
+METHOD PUBLIC M_Close : BOOL
+VAR_INPUT
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF hFile <> SysFile.SysTypes.RTS_INVALID_HANDLE THEN
+   pResult^:= SysFile.SysFileClose(hFile);
+END_IF
+
+M_Close:= TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Delete" Id="{031610a1-66f5-45ab-8b86-edea27263a7f}">
+      <Declaration><![CDATA[// Delete file
+METHOD PUBLIC M_Delete : BOOL
+VAR_INPUT
+    sFileName : STRING(255);
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[pResult^:= SysFile.SysFileDelete(sFileName);
+M_Delete:= TRUE;
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_GetSize" Id="{da2b00f7-d9aa-4c86-85c6-4fdbc9147466}">
+      <Declaration><![CDATA[METHOD PUBLIC M_GetSize : UDINT
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[M_GetSize:= LWORD_TO_UDINT(SysFile.SysFileGetSizeByHandle(hFile, pResult));
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Open" Id="{6307849d-083a-4a2a-8a54-cacfa983025c}">
+      <Declaration><![CDATA[// Open file
+METHOD PUBLIC M_Open : BOOL
+VAR_INPUT
+    sFileName:				STRING(255);
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[hFile := SysFile.SysFileOpen(sFileName, eMode, pResult);
+
+M_Open := true;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Read" Id="{4210ba0d-c339-4c83-b89a-8d5ea8fd601c}">
+      <Declaration><![CDATA[// Read file
+METHOD PUBLIC M_Read : BOOL
+VAR_INPUT
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+IF pBuffer = 0 THEN
+	nBuffer:= LWORD_TO_UDINT(SysFile.SysFileGetSizeByHandle(hFile, pResult));
+	pBuffer:= __NEW(BYTE, nBuffer);
+	SysFile.SysFileRead(hFile, pBuffer, nBuffer, pResult );
+END_IF
+
+M_Read := TRUE;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Size" Id="{3fcaa98d-265e-4de4-91e2-fd9b15df9b65}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Size : UDINT
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[SysFile.SysFileGetSizeByHandle(hFile, pResult);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Write" Id="{b956b515-594f-440e-be50-f979325c8ffe}">
+      <Declaration><![CDATA[// Writes the contents of the buffer into a file.
+METHOD PUBLIC M_Write : BOOL
+VAR_INPUT
+	sValue:			STRING(255);
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF hFile <> SysFile.SysTypes.RTS_INVALID_HANDLE THEN
+    SysFile.SysFileWrite(hFile := hFile,
+                         pbyBuffer := ADR(sValue),
+                         ulSize := len(sValue),
+                         pResult := pResult);
+END_IF
+
+M_Write:= TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

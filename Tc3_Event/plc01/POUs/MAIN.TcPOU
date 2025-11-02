@@ -4,8 +4,10 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	
-	fbLogger:			FB_Logger;
+
 	fbLoggerProxy:		FB_LoggerProxy;
+	fbLogger:			FB_Logger;
+// 	fbFileLogger:		FB_FileLogger;
 	fbEvent: 			FB_Event;
 	bVerbose:			BOOL;
 	bInfo:				BOOL;
@@ -13,52 +15,17 @@ VAR
 	bError:				BOOL;
 	bCritical:			BOOL;
 	
-	fbFile:				FB_File;
-	bFileInfo: 			BOOL;
-	bCrateDir: 			BOOL;
-	bOpen: 				BOOL;
-	bWrite: 			BOOL;
-	bRead: 				BOOL;
-	nHash: UDINT;
-
-	bLoad: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbFile();
-
-IF bCrateDir THEN
-	bCrateDir:= NOT fbFile.M_CreateDir('C:\temp\test\test1');
-END_IF 
-
-IF bFileInfo THEN
-	bFileInfo:= NOT fbFile.M_Info('C:\temp\logq.txt');
-END_IF 
-
-IF bOpen THEN
-	bOpen:= NOT fbFile.M_Open('C:\temp\log.txt');
-END_IF 
-
-IF bOpen THEN
-	bOpen:= NOT fbFile.M_Write(bOpen);
-END_IF 
-
-IF bRead THEN
-	bRead:= NOT fbFile.M_Read();
-END_IF 
-
-IF bLoad THEN
-	bLoad:= NOT fbFile.M_Load('C:\temp\log.txt');
-END_IF 
-
-
-
-
-
+      <ST><![CDATA[
 
 fbLoggerProxy.M_Attach(fbLogger);
-fbLogger();
+// fbLoggerProxy.M_Attach(fbFileLogger);
 
-// fbEvent.P_Logger:= fbLoggerProxy;
+fbLogger();
+// fbFileLogger();
+
+fbEvent.P_Logger:= fbLoggerProxy;
 
 fbEvent();
 
@@ -67,7 +34,6 @@ IF bVerbose THEN
 	fbEvent.P_Argument.M_AddINT(134052566194980000);
 	fbEvent.P_Argument.M_AddSTRING('mm');
 	fbEvent.M_Verbose('message %s %s');
-	nHash:= F_Hash('message %s %s');
 END_IF
 
 IF bInfo THEN

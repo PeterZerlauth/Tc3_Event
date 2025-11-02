@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_FileLogger" Id="{1f305008-1e9f-45e5-b339-4427cb30dd71}" SpecialFunc="None">
+    <Declaration><![CDATA[// Provide logging 
+FUNCTION_BLOCK FB_FileLogger IMPLEMENTS I_Logger
+VAR_INPUT
+	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
+	sPathName:				STRING(255):= 'C:\temp\log.txt';
+END_VAR
+VAR_OUTPUT
+    bInfo:					BOOL;
+    bWarning:				BOOL;
+    bError:					BOOL;
+    bCritical:				BOOL;
+END_VAR
+VAR
+	fbFile:					FB_File;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="M_Log" Id="{a4f0a602-53fb-4ee6-8de0-ab6af0f15a67}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
+VAR_INPUT
+	fbMessage:			FB_Message;
+END_VAR
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbFile.M_Open(sPathName);
+fbFile.M_Write(Concat(fbMessage.sDefault, '$R$N'));
+fbFile.M_Close();
+M_Log:= FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="P_LogLevel" Id="{4a4febf7-9f38-4135-9708-e563fad83f87}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
+      <Get Name="Get" Id="{fb1589e6-403d-4ff2-b9ef-b07d913d1a98}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[P_LogLevel:= eLogLevel;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{5bac8b9c-61cd-4768-8844-c766134a401d}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[eLogLevel:= P_LogLevel;
+]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+  </POU>
+</TcPlcObject>

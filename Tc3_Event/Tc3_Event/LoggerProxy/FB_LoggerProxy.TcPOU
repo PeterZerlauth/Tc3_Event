@@ -74,7 +74,7 @@ pCurrent^.pNext:= __NEW(ST_LoggerNode);
 IF pCurrent^.pNext = 0 THEN
     RETURN;
 END_IF
-pCurrent^:= pCurrent^.pNext^;
+pCurrent := pCurrent^.pNext;
 
 pCurrent^.iLogger:= iLogger;
 pCurrent^.pNext := 0;
