@@ -12,7 +12,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[// https://peterzerlauth.com/]]></ST>
     </Implementation>
     <Method Name="M_Log" Id="{a4f0a602-53fb-4ee6-8de0-ab6af0f15a67}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL

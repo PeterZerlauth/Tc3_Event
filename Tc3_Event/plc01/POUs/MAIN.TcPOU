@@ -14,46 +14,53 @@ VAR
 	bWarning:			BOOL;
 	bError:				BOOL;
 	bCritical:			BOOL;
-	
+  	exception:			__SYSTEM.ExceptionCode;	
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[// TRY-CATCH block
+__TRY
+	
+//	fbLogging.M_Add(fbLogger);
+// 	fbLogging.M_Add(fbFileLogger);
+	
+	fbLogger();
+// 	fbFileLogger(sPathName:= 'C:\temp\log.txt');
+	
+	fbEvent.P_Logger:= fbLogging;
+	
+	fbEvent();
+	
+	IF bVerbose THEN
+		fbEvent.P_Argument.M_AddINT(134052566194980000);
+		fbEvent.P_Argument.M_AddSTRING('mm');
+		fbEvent.M_Verbose('message %s %s');
+	END_IF
+	
+	IF bInfo THEN
+		fbEvent.P_Argument.M_AddREAL(33.134581234, 3);
+		fbEvent.P_Argument.M_AddSTRING('mm');
+		fbEvent.M_Info(121769021, 'message %s %s');
+	END_IF
+	
+	IF bWarning THEN
+		fbEvent.M_Warning(316902404, 'message');
+		fbEvent.M_Warning(316902404, 'message');
+	END_IF
+	
+	IF bError THEN
+		fbEvent.M_Error(316902404, 'message');
+	END_IF
+	
+	IF bCritical THEN
+		fbEvent.M_Critical(316902404, 'message');
+	END_IF
 
-fbLogging.M_Add(fbLogger);
-fbLogging.M_Add(fbFileLogger);
+ 
+__CATCH(exception)
 
 
-fbLogger();
-fbFileLogger(sPathName:= 'C:\temp\log.txt');
+__ENDTRY
 
-fbEvent.P_Logger:= fbLogging;
-
-fbEvent();
-
-IF bVerbose THEN
-	fbEvent.P_Argument.M_AddINT(134052566194980000);
-	fbEvent.P_Argument.M_AddSTRING('mm');
-	fbEvent.M_Verbose('message %s %s');
-END_IF
-
-IF bInfo THEN
-	fbEvent.P_Argument.M_AddREAL(33.134581234, 3);
-	fbEvent.P_Argument.M_AddSTRING('mm');
-	fbEvent.M_Info(121769021, 'message %s %s');
-END_IF
-
-IF bWarning THEN
-	fbEvent.M_Warning(316902404, 'message');
-	fbEvent.M_Warning(316902404, 'message');
-END_IF
-
-IF bError THEN
-	fbEvent.M_Error(316902404, 'message');
-END_IF
-
-IF bCritical THEN
-	fbEvent.M_Critical(316902404, 'message');
-END_IF
 ]]></ST>
     </Implementation>
   </POU>

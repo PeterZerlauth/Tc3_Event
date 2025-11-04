@@ -4,9 +4,8 @@
     <Declaration><![CDATA[{attribute 'no_explicit_call' := 'do not call this POU directly'} 
 FUNCTION_BLOCK FB_LoggingProvider IMPLEMENTS I_Logger
 VAR
-	{IF (defined (release))}
-    	{attribute 'hide'}
-	{END_IF}
+
+	{attribute 'hide'}
 	nLength:		INT;
 	pList: 			POINTER TO I_Logger;
 	{IF (defined (release))}
@@ -42,7 +41,7 @@ END_VAR
 	// First Item
 	IF pList = 0 THEN
 		nLength:= nLength + 1;
-		pList:= __NEW(POINTER TO I_Logger,DINT_TO_UDINT(nLength));
+		pList:= __NEW(I_Logger, DINT_TO_UDINT(nLength));
 	ELSE
 		// Item already in List
 		IF M_Find(Logger) = -1 THEN
@@ -51,7 +50,7 @@ END_VAR
 			// new Length
 			nLength:= nLength + 1;
 			// new pointer
-			pList:= __NEW(POINTER TO I_Logger,DINT_TO_UDINT(nLength));
+			pList:= __NEW(I_Logger, DINT_TO_UDINT(nLength));
 			// restore
 			Memcpy(pList,pOldList, SIZEOF(POINTER TO I_Logger)*DINT_TO_UDINT(nLength -1));
 			// delete old
@@ -111,9 +110,10 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF Index <= nLength THEN
-	M_Index:= pList[Index];
-END_IF]]></ST>
+        <ST><![CDATA[IF (Index >= 0) AND (Index < nLength) THEN
+	M_Index := pList[Index];
+END_IF
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Log" Id="{179441ef-3445-0ab5-3cfb-99e937e75dd0}">
@@ -153,11 +153,11 @@ END_VAR]]></Declaration>
 			// new Length
 			nLength:= nLength -1;
 			// new pointer
-			pList:= __NEW(POINTER TO I_Logger,DINT_TO_UDINT(nLength));
+			pList:= __NEW(IQueryInterface ,DINT_TO_UDINT(nLength));
 			// restore lower part
-			Memcpy(pList,pOldList, SIZEOF(POINTER TO I_Logger) * DINT_TO_UDINT(nPosition));
+			Memcpy(pList,pOldList, SIZEOF(__SYSTEM.IQueryInterface ) * DINT_TO_UDINT(nPosition));
 			//pList[nPosition]:= iObject;
-			Memcpy(pList + (SIZEOF(POINTER TO I_Logger)*nPosition),pOldList + (SIZEOF(POINTER TO I_Logger)*(nPosition + 1)), SIZEOF(POINTER TO I_Logger) * DINT_TO_UDINT(nLength - nPosition));
+			Memcpy(pList + (SIZEOF(__SYSTEM.IQueryInterface )*nPosition),pOldList + (SIZEOF(__SYSTEM.IQueryInterface )*(nPosition + 1)), SIZEOF(__SYSTEM.IQueryInterface ) * DINT_TO_UDINT(nLength - nPosition));
 			// delete old
 			__DELETE(pOldList);
 		ELSE
@@ -176,7 +176,7 @@ END_IF]]></ST>
     </Method>
     <Property Name="P_Length" Id="{cf1d82fc-0cbb-0b4a-372a-308b43a41775}">
       <Declaration><![CDATA[{attribute 'OPC.UA.DA.Property' := '1'}
-{attribute 'monitoring' := 'call'}
+{attribute 'monitoring' := 'variable'}
 PROPERTY PUBLIC P_Length : DINT
 ]]></Declaration>
       <Get Name="Get" Id="{378639c8-9631-0870-37c8-2847124df936}">

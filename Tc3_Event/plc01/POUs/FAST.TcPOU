@@ -9,36 +9,44 @@ VAR
 	bWarning:			BOOL;
 	bError:				BOOL;
 	bCritical:			BOOL;
+  	exception:			__SYSTEM.ExceptionCode;	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbEvent.P_Logger:= MAIN.fbLogging;
+      <ST><![CDATA[// TRY-CATCH block
+__TRY
 
-fbEvent();
+	fbEvent.P_Logger:= MAIN.fbLogging;
+	
+	fbEvent();
+	
+	
+	IF bVerbose THEN
+		fbEvent.P_Argument.M_AddINT(134052566194980000);
+		fbEvent.P_Argument.M_AddSTRING('mm');
+		fbEvent.M_Verbose('Verbose message %s %s');
+	END_IF
+	
+	IF bInfo THEN
+		fbEvent.M_Info(359217434, 'Info message');
+	END_IF
+	
+	IF bWarning THEN
+		fbEvent.M_Warning(461989237, 'Warning message');
+	END_IF
+	
+	IF bError THEN
+		fbEvent.M_Info(359217434, 'Info message');
+	END_IF
+	
+	IF bCritical THEN
+		fbEvent.M_Critical(973218685, 'Critical message');
+	END_IF
+
+__CATCH(exception)
 
 
-IF bVerbose THEN
-	fbEvent.P_Argument.M_AddINT(134052566194980000);
-	fbEvent.P_Argument.M_AddSTRING('mm');
-	fbEvent.M_Verbose('Verbose message %s %s');
-END_IF
-
-IF bInfo THEN
-	fbEvent.M_Info(359217434, 'Info message');
-END_IF
-
-IF bWarning THEN
-	fbEvent.M_Warning(461989237, 'Warning message');
-END_IF
-
-IF bError THEN
-	fbEvent.M_Info(359217434, 'Info message');
-END_IF
-
-IF bCritical THEN
-	fbEvent.M_Critical(973218685, 'Critical message');
-END_IF
-
+__ENDTRY
 ]]></ST>
     </Implementation>
   </POU>

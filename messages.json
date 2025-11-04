@@ -1,29 +1,5 @@
 ﻿[
     {
-        "id":  973218685,
-        "key":  "Critical message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "Critical message"
-                   }
-    },
-    {
-        "id":  461989237,
-        "key":  "Warning message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "Warning message"
-                   }
-    },
-    {
-        "id":  359217434,
-        "key":  "Info message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "Info message"
-                   }
-    },
-    {
         "id":  121769021,
         "key":  "message %s %s",
         "locale":  {
@@ -37,6 +13,30 @@
         "locale":  {
                        "de":  "",
                        "en":  "message"
+                   }
+    },
+    {
+        "id":  359217434,
+        "key":  "Info message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "Info message"
+                   }
+    },
+    {
+        "id":  973218685,
+        "key":  "Critical message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "Critical message"
+                   }
+    },
+    {
+        "id":  461989237,
+        "key":  "Warning message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "Warning message"
                    }
     }
 ]

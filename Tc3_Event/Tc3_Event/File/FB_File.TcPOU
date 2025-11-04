@@ -12,7 +12,7 @@ VAR
     nBuffer:				UDINT;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[// https://peterzerlauth.com/]]></ST>
     </Implementation>
     <Method Name="M_Close" Id="{2032b7d9-4eba-4de7-bc38-d769b85ee782}">
       <Declaration><![CDATA[// Closes the currently opened file.
@@ -114,7 +114,7 @@ END_VAR]]></Declaration>
         <ST><![CDATA[IF hFile <> SysFile.SysTypes.RTS_INVALID_HANDLE THEN
     SysFile.SysFileWrite(hFile := hFile,
                          pbyBuffer := ADR(sValue),
-                         ulSize := INT_TO_LWORD(len(sValue)),
+                         ulSize := INT_TO_DWORD(len(sValue)),
                          pResult := pResult);
 END_IF
 
