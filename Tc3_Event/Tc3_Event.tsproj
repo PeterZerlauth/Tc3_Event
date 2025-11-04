@@ -211,7 +211,7 @@
 	</DataTypes>
 	<Project ProjectGUID="{1D2625EF-8024-4597-B02E-DC91CE8D752E}" Target64Bit="true" SaveSolutionArchive="true" ShowHideConfigurations="#x6">
 		<System>
-			<Settings MaxCpus="16" PCoreAffinity="255" ECoreAffinity="65280"/>
+			<Settings MaxCpus="32"/>
 			<Tasks>
 				<Task Id="3" CreateSymbols="true" Priority="20" CycleTime="200000" AmsPort="350" AdtTasks="true">
 					<Name>SlowTask</Name>
@@ -226,7 +226,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{90CE2844-1A87-435D-8A79-619DCCF6A970}" Name="plc01" PrjFilePath="plc01\plc01.plcproj" TmcFilePath="plc01\plc01.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{0AE0D43E-8F23-6595-537B-0B9D3D152B96}" TmcPath="plc01\plc01.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{4CBE3D42-5E88-C121-ED3D-025A91249B95}" TmcPath="plc01\plc01.tmc">
 					<Name>plc01 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

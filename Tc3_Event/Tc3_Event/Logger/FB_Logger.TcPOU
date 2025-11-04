@@ -38,19 +38,19 @@ END_IF
 
 IF fbMessage.bRaised THEN
 	IF nMessages < 99 THEN
-		nIndex := nMessages;
 		aMessages[nMessages]:= fbMessage;;
 		nMessages := nMessages + 1;
 		M_Log := TRUE;
 	END_IF	
 ELSIF fbMessage.bCleared THEN
-	FOR nIndex := 0 TO nMessages DO
+	WHILE nIndex < nMessages DO
 		IF aMessages[nIndex].sMessage = fbMessage.sMessage AND_THEN aMessages[nIndex].sSource = fbMessage.sSource THEN
 			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_Message) * (nMessages - nIndex));
 			nMessages := nMessages - 1;
 			RETURN;
 		END_IF
-	END_FOR
+		nIndex := nIndex + 1;
+	END_WHILE
 END_IF]]></ST>
       </Implementation>
     </Method>

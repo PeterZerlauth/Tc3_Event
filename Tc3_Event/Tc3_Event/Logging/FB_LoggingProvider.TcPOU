@@ -4,7 +4,6 @@
     <Declaration><![CDATA[{attribute 'no_explicit_call' := 'do not call this POU directly'} 
 FUNCTION_BLOCK FB_LoggingProvider IMPLEMENTS I_Logger
 VAR
-
 	{attribute 'hide'}
 	nLength:		INT;
 	pList: 			POINTER TO I_Logger;
@@ -30,29 +29,28 @@ END_VAR
     <Method Name="M_Add" Id="{48be3447-76e8-0bc8-0db5-61654f9fc9a9}">
       <Declaration><![CDATA[METHOD PUBLIC M_Add : BOOL
 VAR_INPUT
-	Logger: 	I_Logger;
+	iLogger: 	I_Logger;
 END_VAR
 VAR
 	pOldList: 	POINTER TO I_Logger;
-END_VAR
-]]></Declaration>
+END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF Logger <> 0 THEN
+        <ST><![CDATA[IF iLogger <> 0 THEN
 	// First Item
 	IF pList = 0 THEN
 		nLength:= nLength + 1;
-		pList:= __NEW(I_Logger, DINT_TO_UDINT(nLength));
+		pList:= __NEW(POINTER TO I_Logger, DINT_TO_UDINT(nLength));
 	ELSE
 		// Item already in List
-		IF M_Find(Logger) = -1 THEN
+		IF M_Find(iLogger) = -1 THEN
 			// backup 
 			pOldList:= pList;
 			// new Length
 			nLength:= nLength + 1;
 			// new pointer
-			pList:= __NEW(I_Logger, DINT_TO_UDINT(nLength));
+			pList:= __NEW(POINTER TO I_Logger, DINT_TO_UDINT(nLength));
 			// restore
-			Memcpy(pList,pOldList, SIZEOF(POINTER TO I_Logger)*DINT_TO_UDINT(nLength -1));
+			Memcpy(pList, pOldList, SIZEOF(pList) * DINT_TO_UDINT(nLength -1));
 			// delete old
 			__DELETE(pOldList);
 		ELSE
@@ -64,7 +62,7 @@ END_VAR
 		RETURN;
 	END_IF
 	// add new Object
-	pList[nLength-1]:= Logger;
+	pList[nLength-1]:= iLogger;
 	M_Add:= TRUE;
 ELSE
 	M_Add:= FALSE;	
@@ -85,7 +83,7 @@ M_Clear:= TRUE;]]></ST>
     <Method Name="M_Find" Id="{37f499ab-a90c-0435-0594-f330a6c37cb8}">
       <Declaration><![CDATA[METHOD PUBLIC M_Find : DINT
 VAR_INPUT
-	Logger: 	I_Logger;
+	iLogger: 	I_Logger;
 END_VAR
 VAR
 	nIndex: 	UINT;
@@ -94,7 +92,7 @@ END_VAR]]></Declaration>
         <ST><![CDATA[// Object already in List
 M_Find := -1;
 WHILE nIndex < nLength DO
-    IF (pList[nIndex] = Logger) THEN
+    IF (pList[nIndex] = iLogger) THEN
         M_Find := nIndex;
         RETURN;
     END_IF
@@ -106,14 +104,13 @@ END_WHILE
     <Method Name="M_Index" Id="{c0986c64-83e2-03be-09c2-3f0e829e981d}">
       <Declaration><![CDATA[METHOD PUBLIC M_Index : I_Logger
 VAR_INPUT
-	Index: 	DINT;
+	nIndex: 	DINT;
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF (Index >= 0) AND (Index < nLength) THEN
-	M_Index := pList[Index];
-END_IF
-]]></ST>
+        <ST><![CDATA[IF (nIndex < nLength) THEN
+	M_Index := pList[nIndex];
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Log" Id="{179441ef-3445-0ab5-3cfb-99e937e75dd0}">
@@ -135,29 +132,29 @@ END_WHILE
     <Method Name="M_Remove" Id="{344ce544-0b6b-0e0a-1940-689d2bdbdc8d}">
       <Declaration><![CDATA[METHOD PUBLIC M_Remove : BOOL
 VAR_INPUT
-	Object: 	I_Logger;
+	iLogger: 	I_Logger;
 END_VAR
 VAR
 	pOldList:			POINTER TO I_Logger;
 	nPosition: 			DINT;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF Object <> 0 THEN
+        <ST><![CDATA[IF iLogger <> 0 THEN
 	// First Item
 	IF nLength >= 0 THEN
 		// Item already in List
-		nPosition:= M_Find(Object);
+		nPosition:= M_Find(iLogger);
 		IF nPosition <> -1 THEN
 			// backup 
 			pOldList:= pList;
 			// new Length
 			nLength:= nLength -1;
 			// new pointer
-			pList:= __NEW(IQueryInterface ,DINT_TO_UDINT(nLength));
+			pList:= __NEW(POINTER TO I_Logger ,DINT_TO_UDINT(nLength));
 			// restore lower part
-			Memcpy(pList,pOldList, SIZEOF(__SYSTEM.IQueryInterface ) * DINT_TO_UDINT(nPosition));
+			Memcpy(pList, pOldList, SIZEOF(pList) * DINT_TO_UDINT(nPosition));
 			//pList[nPosition]:= iObject;
-			Memcpy(pList + (SIZEOF(__SYSTEM.IQueryInterface )*nPosition),pOldList + (SIZEOF(__SYSTEM.IQueryInterface )*(nPosition + 1)), SIZEOF(__SYSTEM.IQueryInterface ) * DINT_TO_UDINT(nLength - nPosition));
+			Memcpy(pList + (SIZEOF(pList) * nPosition),pOldList + (SIZEOF(pList)*(nPosition + 1)), SIZEOF(pList) * DINT_TO_UDINT(nLength - nPosition));
 			// delete old
 			__DELETE(pOldList);
 		ELSE

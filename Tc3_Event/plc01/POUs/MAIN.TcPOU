@@ -17,14 +17,14 @@ VAR
   	exception:			__SYSTEM.ExceptionCode;	
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// TRY-CATCH block
+      <ST><![CDATA[
 __TRY
 	
-//	fbLogging.M_Add(fbLogger);
-// 	fbLogging.M_Add(fbFileLogger);
+	fbLogging.M_Add(fbLogger);
+	fbLogging.M_Add(fbFileLogger);
 	
 	fbLogger();
-// 	fbFileLogger(sPathName:= 'C:\temp\log.txt');
+	fbFileLogger(sPathName:= 'C:\temp\log.txt');
 	
 	fbEvent.P_Logger:= fbLogging;
 	
