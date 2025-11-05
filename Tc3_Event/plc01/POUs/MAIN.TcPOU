@@ -3,8 +3,6 @@
   <POU Name="MAIN" Id="{19c7fd4e-92ee-4c48-b527-6576c9627f78}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	
-
 	fbLogging:			Tc3_Event.FB_LoggingProvider;
 	fbLogger:			Tc3_Event.FB_Logger;
 	fbFileLogger:		Tc3_Event.FB_FileLogger;

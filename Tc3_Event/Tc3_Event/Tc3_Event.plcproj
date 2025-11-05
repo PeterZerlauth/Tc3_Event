@@ -79,9 +79,6 @@
     <Compile Include="Logging\FB_LoggingProvider.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Logging\ST_LoggerNode.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Logger\E_LogLevel.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -89,9 +86,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logger\I_Logger.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Logger\ST_Message.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Message\FB_Message.TcPOU">
@@ -188,6 +182,12 @@
         <o>
           <v n="Name">"{29BD8D0C-3586-4548-BB48-497B9A01693F}"</v>
           <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+            <v>NamingConventions</v>
+            <o>
+              <v n="Name">"NamingConventions"</v>
+              <d n="SubKeys" t="Hashtable" />
+              <d n="Values" t="Hashtable" />
+            </o>
             <v>Rules</v>
             <o>
               <v n="Name">"Rules"</v>

@@ -5,12 +5,13 @@
 FUNCTION_BLOCK FB_FileLogger IMPLEMENTS I_Logger
 VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
-	sPathName:				STRING(255):= 'C:\temp\log.txt';
+	sPathName:				STRING(255):= 'C:\temp\logger.txt';
 END_VAR
 VAR
 	fbFile:					FB_File;
-END_VAR
-]]></Declaration>
+	aBuffer:				ARRAY[0..99] OF FB_Message;
+    nBuffer:				UINT := 0;                     // Message count
+END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// https://peterzerlauth.com/]]></ST>
     </Implementation>
@@ -20,34 +21,61 @@ VAR_INPUT
 	fbMessage:			FB_Message;
 END_VAR
 VAR
-	sLogLine  : STRING(255);
+	nTimestamp: 	ULINT:= F_GetSystemTime();
+	nIndex: 		INT;
+	sLogLine:		STRING(255);
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF fbMessage.bRaised THEN
-    // Convert ULINT timestamp to ISO8601 string (helper function recommended)
-    sLogLine := CONCAT('[', FILETIME64_TO_ISO8601(fbMessage.nTimestamp, 0, FALSE, 4));  
-    sLogLine := CONCAT(sLogLine, '] ');
-
-    // Log level
-    sLogLine := CONCAT(sLogLine, TO_STRING(fbMessage.eLogLevel));
-    sLogLine := CONCAT(sLogLine, ' ');
-
-    // Message ID in brackets
-    sLogLine := CONCAT(sLogLine, '[');
-    sLogLine := CONCAT(sLogLine, ULINT_TO_STRING(fbMessage.nID));
-    sLogLine := CONCAT(sLogLine, '] ');
-
-    // Actual message
-    sLogLine := CONCAT(sLogLine, fbMessage.sDefault);
-
-    // CRLF
-    sLogLine := CONCAT(sLogLine, '$R$N');
-
-    // Write to file
-    fbFile.M_Open(sPathName);
-    fbFile.M_Write(sLogLine);
-    fbFile.M_Close();
+        <ST><![CDATA[// Log Level
+IF eLogLevel > fbMessage.eLogLevel THEN
+	M_Log:= TRUE;
+	RETURN;
 END_IF
+
+// Remove expired messages (>1 s old)
+nIndex := 0;
+WHILE nIndex < nBuffer DO
+    IF (nTimestamp - aBuffer[nIndex].nTimestamp) > 1_000_000 THEN // 1 s = 1e6 µs
+        MEMMOVE(ADR(aBuffer[nIndex]), ADR(aBuffer[nIndex + 1]), SIZEOF(FB_Message) * (nBuffer - nIndex - 1));
+        nBuffer := nBuffer - 1;
+    ELSE
+        nIndex := nIndex + 1;
+    END_IF
+END_WHILE
+
+// Skip if message already in buffer
+FOR nIndex := 0 TO nBuffer - 1 DO
+    IF (aBuffer[nIndex].nID = fbMessage.nID)
+       AND (aBuffer[nIndex].sDefault = fbMessage.sDefault) THEN
+	   aBuffer[nIndex].nTimestamp:= fbMessage.nTimestamp;
+        M_Log := TRUE;
+        RETURN;
+    END_IF
+END_FOR
+
+// Add new message
+IF nBuffer < 99 THEN
+    aBuffer[nBuffer] := fbMessage;
+    aBuffer[nBuffer].nTimestamp := nTimestamp;
+    nBuffer := nBuffer + 1;
+END_IF
+
+// Format log line
+sLogLine := CONCAT('[', FILETIME64_TO_ISO8601(nTimestamp, 0, FALSE, 3));
+sLogLine := CONCAT(sLogLine, '] ');
+sLogLine := CONCAT(sLogLine, TO_STRING(fbMessage.eLogLevel));
+sLogLine := CONCAT(sLogLine, ' [');
+sLogLine := CONCAT(sLogLine, UDINT_TO_STRING(fbMessage.nID));
+sLogLine := CONCAT(sLogLine, '] ');
+sLogLine := CONCAT(sLogLine, fbMessage.sDefault);
+sLogLine := CONCAT(sLogLine, '$R$N');
+
+// Write once per new message
+fbFile.M_Open(sPathName);
+fbFile.M_Write(sLogLine);
+fbFile.M_Close();
+
+M_Log := TRUE;
 ]]></ST>
       </Implementation>
     </Method>

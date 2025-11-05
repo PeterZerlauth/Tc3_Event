@@ -7,39 +7,39 @@ VAR_INPUT
 END_VAR
 VAR
 	sMessage:			STRING(255):= 'Logger null | ';
-	ir: INT;
+
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF fbMessage.bRaised THEN
-	sMessage:= CONCAT(sMessage, fbMessage.sSource);
-	IF fbMessage.sType <> '' THEN
-		sMessage:= CONCAT(sMessage, ' - ');
-		sMessage:= CONCAT(sMessage, fbMessage.sType);		
-	END_IF
-	sMessage:= CONCAT(sMessage, ' |');
-	IF fbMessage.nID <> 0 THEN
-		sMessage:= CONCAT(sMessage, ' ID: ');
-		sMessage:= CONCAT(sMessage, UDINT_TO_STRING(fbMessage.nID));		
-		sMessage:= CONCAT(sMessage, ' ');
-	END_IF
-	sMessage:= CONCAT(sMessage, TO_STRING(fbMessage.eLogLevel));
-	sMessage:= CONCAT(sMessage, ': ');
-	sMessage:= CONCAT(sMessage, fbMessage.sDefault);
-	
-	CASE fbMessage.eLogLevel OF
-		
-		E_LogLevel.Verbose, E_LogLevel.Info:
-			ADSLOGSTR(ADSLOG_MSGTYPE_HINT, '%s', sMessage);
-			
-		E_LogLevel.Warning:
-			ADSLOGSTR(ADSLOG_MSGTYPE_WARN, '%s', sMessage);
-	
-		E_LogLevel.Error, E_LogLevel.Critical:
-			ADSLOGSTR(ADSLOG_MSGTYPE_ERROR, '%s', sMessage);
-	
-	END_CASE
-END_IF]]></ST>
+      <ST><![CDATA[// 
+// 	sMessage:= CONCAT(sMessage, fbMessage.sSource);
+// 	IF fbMessage.sType <> '' THEN
+// 		sMessage:= CONCAT(sMessage, ' - ');
+// 		sMessage:= CONCAT(sMessage, fbMessage.sType);		
+// 	END_IF
+// 	sMessage:= CONCAT(sMessage, ' |');
+// 	IF fbMessage.nID <> 0 THEN
+// 		sMessage:= CONCAT(sMessage, ' ID: ');
+// 		sMessage:= CONCAT(sMessage, UDINT_TO_STRING(fbMessage.nID));		
+// 		sMessage:= CONCAT(sMessage, ' ');
+// 	END_IF
+// 	sMessage:= CONCAT(sMessage, TO_STRING(fbMessage.eLogLevel));
+// 	sMessage:= CONCAT(sMessage, ': ');
+// 	sMessage:= CONCAT(sMessage, fbMessage.sDefault);
+// 	
+// 	CASE fbMessage.eLogLevel OF
+// 		
+// 		E_LogLevel.Verbose, E_LogLevel.Info:
+// 			ADSLOGSTR(ADSLOG_MSGTYPE_HINT, '%s', sMessage);
+// 			
+// 		E_LogLevel.Warning:
+// 			ADSLOGSTR(ADSLOG_MSGTYPE_WARN, '%s', sMessage);
+// 	
+// 		E_LogLevel.Error, E_LogLevel.Critical:
+// 			ADSLOGSTR(ADSLOG_MSGTYPE_ERROR, '%s', sMessage);
+// 	
+// 	END_CASE
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

@@ -6,7 +6,7 @@
     <Method Name="M_AddBOOL" Id="{4a4232c5-0b26-4f8c-ad4a-57193de9aa82}">
       <Declaration><![CDATA[METHOD PUBLIC M_AddBOOL : I_Argument
 VAR_INPUT
-	nValue:				LINT;
+	bValue:				BOOL;
 END_VAR]]></Declaration>
     </Method>
     <Method Name="M_AddINT" Id="{99a67206-55c1-420d-bfe5-b508362e690a}">

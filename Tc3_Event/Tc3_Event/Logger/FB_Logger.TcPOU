@@ -7,7 +7,7 @@ VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 END_VAR
 VAR
-	aMessages:				ARRAY[0..99] OF FB_Message; // Message store
+	aMessages:				ARRAY[0..99] OF FB_Message; 	// Message store
     nMessages:				UINT := 0;                     // Message count
 	{attribute 'hide'} 
 	nIndex: 				UINT;
@@ -15,7 +15,22 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// https://peterzerlauth.com/]]></ST>
+      <ST><![CDATA[// https://peterzerlauth.com/
+
+IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime THEN // 1 second = 1e9 ns
+	nTimestamp := TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime + 1000000000;
+	nIndex:= 0;
+	WHILE nIndex < nMessages DO
+		IF aMessages[nIndex].bActive THEN
+			aMessages[nIndex].bActive:= FALSE;
+			nIndex := nIndex + 1;
+		ELSE
+			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(FB_Message) * (nMessages - nIndex));
+			nMessages := nMessages - 1;
+			RETURN;
+		END_IF
+	END_WHILE
+END_IF]]></ST>
     </Implementation>
     <Method Name="M_Log" Id="{c925afc5-8e57-47da-84bb-210c829a3dd4}">
       <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
@@ -30,28 +45,24 @@ END_VAR]]></Declaration>
 	RETURN;
 END_IF
 
-IF eLogLevel > fbMessage.eLogLevel THEN
-	M_Log:= TRUE;
+IF nMessages > 99 THEN 
 	RETURN;
 END_IF
 
+// Skip if same sMessage already exists
+nIndex := 0;
+WHILE nIndex < nMessages DO
+    IF aMessages[nIndex].sDefault = fbMessage.sDefault THEN
+		aMessages[nIndex].bActive:= TRUE;
+        M_Log := TRUE;
+        RETURN; // message already in buffer
+    END_IF
+    nIndex := nIndex + 1;
+END_WHILE
 
-IF fbMessage.bRaised THEN
-	IF nMessages < 99 THEN
-		aMessages[nMessages]:= fbMessage;;
-		nMessages := nMessages + 1;
-		M_Log := TRUE;
-	END_IF	
-ELSIF fbMessage.bCleared THEN
-	WHILE nIndex < nMessages DO
-		IF aMessages[nIndex].sMessage = fbMessage.sMessage AND_THEN aMessages[nIndex].sSource = fbMessage.sSource THEN
-			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(ST_Message) * (nMessages - nIndex));
-			nMessages := nMessages - 1;
-			RETURN;
-		END_IF
-		nIndex := nIndex + 1;
-	END_WHILE
-END_IF]]></ST>
+aMessages[nMessages]:= fbMessage;;
+nMessages := nMessages + 1;
+M_Log := TRUE;]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_LogLevel" Id="{1c739022-3d6f-4ecb-abf9-2f9944cdc386}">
