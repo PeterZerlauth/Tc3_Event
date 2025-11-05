@@ -7,38 +7,58 @@ VAR_INPUT
 END_VAR
 VAR
 	sMessage:			STRING(255):= 'Logger null | ';
-
-END_VAR
-]]></Declaration>
+    nIndex:				INT;
+    nNow:				ULINT:= F_GetSystemTime();
+END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// 
-// 	sMessage:= CONCAT(sMessage, fbMessage.sSource);
-// 	IF fbMessage.sType <> '' THEN
-// 		sMessage:= CONCAT(sMessage, ' - ');
-// 		sMessage:= CONCAT(sMessage, fbMessage.sType);		
-// 	END_IF
-// 	sMessage:= CONCAT(sMessage, ' |');
-// 	IF fbMessage.nID <> 0 THEN
-// 		sMessage:= CONCAT(sMessage, ' ID: ');
-// 		sMessage:= CONCAT(sMessage, UDINT_TO_STRING(fbMessage.nID));		
-// 		sMessage:= CONCAT(sMessage, ' ');
-// 	END_IF
-// 	sMessage:= CONCAT(sMessage, TO_STRING(fbMessage.eLogLevel));
-// 	sMessage:= CONCAT(sMessage, ': ');
-// 	sMessage:= CONCAT(sMessage, fbMessage.sDefault);
-// 	
-// 	CASE fbMessage.eLogLevel OF
-// 		
-// 		E_LogLevel.Verbose, E_LogLevel.Info:
-// 			ADSLOGSTR(ADSLOG_MSGTYPE_HINT, '%s', sMessage);
-// 			
-// 		E_LogLevel.Warning:
-// 			ADSLOGSTR(ADSLOG_MSGTYPE_WARN, '%s', sMessage);
-// 	
-// 		E_LogLevel.Error, E_LogLevel.Critical:
-// 			ADSLOGSTR(ADSLOG_MSGTYPE_ERROR, '%s', sMessage);
-// 	
-// 	END_CASE
+      <ST><![CDATA[
+// --- Build log line
+sMessage := CONCAT('Logger null | ', fbMessage.sSource);
+sMessage := CONCAT(sMessage, ': ');
+sMessage := CONCAT(sMessage, fbMessage.sDefault);
+
+// --- Keep active
+nIndex := 0;
+WHILE nIndex < nBuffer DO
+    IF aBuffer[nIndex].sDefault = fbMessage.sDefault THEN
+		aBuffer[nIndex].bActive:= TRUE;
+        F_Log := TRUE;
+        RETURN;
+    END_IF
+    nIndex := nIndex + 1;
+END_WHILE
+
+// --- Add to buffer ---
+IF nBuffer < UPPER_BOUND(aBuffer, 1) THEN
+    aBuffer[nBuffer] := fbMessage;
+    aBuffer[nBuffer].nTimestamp := nNow;
+    nBuffer := nBuffer + 1;
+END_IF
+
+// --- Log message ---
+CASE fbMessage.eLogLevel OF
+    E_LogLevel.Verbose, E_LogLevel.Info:
+        ADSLOGSTR(ADSLOG_MSGTYPE_HINT, '%s', sMessage);
+    E_LogLevel.Warning:
+        ADSLOGSTR(ADSLOG_MSGTYPE_WARN, '%s', sMessage);
+    E_LogLevel.Error, E_LogLevel.Critical:
+        ADSLOGSTR(ADSLOG_MSGTYPE_ERROR, '%s', sMessage);
+END_CASE
+
+// --- Remove outdated messages (>1 s old) ---
+nIndex := 0;
+WHILE nIndex < nBuffer DO
+    IF (nNow - aBuffer[nIndex].nTimestamp) > 1_000_000_000 THEN // 1 s = 1e9 ns
+        MEMMOVE(ADR(aBuffer[nIndex]), ADR(aBuffer[nIndex + 1]),
+                SIZEOF(FB_Message) * (nBuffer - nIndex - 1));
+        nBuffer := nBuffer - 1;
+    ELSE
+        nIndex := nIndex + 1;
+    END_IF
+END_WHILE
+
+
+F_Log := TRUE;
 ]]></ST>
     </Implementation>
   </POU>

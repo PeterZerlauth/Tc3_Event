@@ -39,6 +39,7 @@
     <Folder Include="File" />
     <Folder Include="Message" />
     <Folder Include="Argument" />
+    <Folder Include="GLV" />
     <Folder Include="Project Information" />
     <Folder Include="Version" />
   </ItemGroup>
@@ -60,6 +61,10 @@
     </Compile>
     <Compile Include="File\FB_File.TcPOU">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GLV\GVL.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
     </Compile>
     <Compile Include="Helpers\F_Hash.TcPOU">
       <SubType>Code</SubType>
