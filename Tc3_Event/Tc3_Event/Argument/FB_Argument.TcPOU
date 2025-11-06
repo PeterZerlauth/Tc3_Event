@@ -20,7 +20,7 @@ VAR_INPUT
 	bValue:				BOOL;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[sValue:= BOOL_TO_STRING(bValue);			// convert
+        <ST><![CDATA[sValue:= CONCAT(sValue, BOOL_TO_STRING(bValue));			// convert
 sValue:= CONCAT(sValue, '$R');				// add separator
 M_AddBOOL:= THIS^;]]></ST>
       </Implementation>
@@ -34,7 +34,7 @@ VAR
 	sTemp: 			STRING;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[sValue:= CONCAT(LINT_TO_STRING(nValue), '$R');	// add new arg
+        <ST><![CDATA[sValue:= CONCAT(sValue, CONCAT(LINT_TO_STRING(nValue), '$R'));	// add new arg
 M_AddINT:= THIS^;]]></ST>
       </Implementation>
     </Method>
@@ -48,7 +48,7 @@ VAR
 	sTemp: 			STRING;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[sValue:= CONCAT(LREAL_TO_FMTSTR(fValue, nDecimals, TRUE), '$R');				// add new arg
+        <ST><![CDATA[sValue:= CONCAT(sValue, CONCAT(LREAL_TO_FMTSTR(fValue, nDecimals, TRUE), '$R'));				// add new arg
 M_AddREAL:= THIS^;]]></ST>
       </Implementation>
     </Method>
@@ -59,7 +59,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[sValue:= CONCAT(sValue, '$R');				// add separator 
+        <ST><![CDATA[sValue:= CONCAT(sValue, CONCAT(sValue, '$R'));				// add separator 
 M_AddSTRING:= THIS^;]]></ST>
       </Implementation>
     </Method>
@@ -70,7 +70,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[sValue:= CONCAT(TIME_TO_STRING(tValue), '$R');				// add separator
+        <ST><![CDATA[sValue:= CONCAT(sValue, CONCAT(TIME_TO_STRING(tValue), '$R'));				// add separator
 M_AddTIME:= THIS^;]]></ST>
       </Implementation>
     </Method>
