@@ -1,30 +1,14 @@
 ﻿[
     {
-        "id":  121769021,
-        "key":  "message %s %s",
+        "id":  828536003,
+        "key":  "I message %s %s",
         "locale":  {
                        "de":  "",
-                       "en":  "message %s %s"
+                       "en":  "I message %s %s"
                    }
     },
     {
-        "id":  316902404,
-        "key":  "message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "message"
-                   }
-    },
-    {
-        "id":  359217434,
-        "key":  "Info message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "Info message"
-                   }
-    },
-    {
-        "id":  973218685,
+        "id":  662973879,
         "key":  "Critical message",
         "locale":  {
                        "de":  "",
@@ -32,7 +16,39 @@
                    }
     },
     {
-        "id":  461989237,
+        "id":  475719235,
+        "key":  "E message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "E message"
+                   }
+    },
+    {
+        "id":  608464798,
+        "key":  "Info message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "Info message"
+                   }
+    },
+    {
+        "id":  475719233,
+        "key":  "C message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "C message"
+                   }
+    },
+    {
+        "id":  475719253,
+        "key":  "W message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "W message"
+                   }
+    },
+    {
+        "id":  588739376,
         "key":  "Warning message",
         "locale":  {
                        "de":  "",

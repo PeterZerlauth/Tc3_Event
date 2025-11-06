@@ -15,6 +15,7 @@ VAR
     {attribute 'noinit'} 
     sInstancePath:				STRING(255);
 	fbSymbolInfo: 				PLC_ReadSymInfoByNameEx;
+	fbSystemTime: 				FB_LocalSystemTime;
 	fbVerbose:					FB_Message;
 	fbInfo:						FB_Message;
 	fbWarning:					FB_Message;
@@ -24,7 +25,9 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbSymbolInfo();]]></ST>
+      <ST><![CDATA[fbSymbolInfo();
+fbSystemTime();
+]]></ST>
     </Implementation>
     <Method Name="FB_Init" Id="{256fe292-0b03-4593-83b5-0da540634dee}">
       <Declaration><![CDATA[//FB_Init ist immer implizit verfügbar und wird primär für die Initialisierung verwendet.
@@ -39,7 +42,8 @@ END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[fbSymbolInfo.SYMNAME:= F_InstancePath(sInstancePath);
 fbSymbolInfo.PORT:= TwinCAT_SystemInfoVarList._AppInfo.AdsPort;
-fbSymbolInfo.START:= TRUE;]]></ST>
+fbSymbolInfo.START:= TRUE;
+fbSystemTime.bEnable:= TRUE;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Critical" Id="{7b4c91bf-8e3c-413c-a148-e271617106d9}">
@@ -57,7 +61,7 @@ fbCritical.bActive:= TRUE;
 fbCritical.sMessage:= sMessage;
 fbCritical.eLogLevel:= E_LogLevel.Critical;
 fbCritical.nID:= nID;
-fbCritical.nTimestamp:= F_GetSystemTime();
+fbCritical.nTimestamp:= SYSTEMTIME_TO_FILETIME64(fbSystemTime.systemTime);
 fbCritical.sArguments:= fbArguments.P_Value;
 fbCritical.sDefault:= F_Print(sMessage, fbArguments.P_Value);
 fbCritical.sSource:= fbSymbolInfo.SYMNAME;
@@ -88,7 +92,7 @@ fbError.bActive:= TRUE;
 fbError.sMessage:= sMessage;
 fbError.eLogLevel:= E_LogLevel.Error;
 fbError.nID:= nID;
-fbError.nTimestamp:= F_GetSystemTime();
+fbError.nTimestamp:= SYSTEMTIME_TO_FILETIME64(fbSystemTime.systemTime);
 fbError.sArguments:= fbArguments.P_Value;
 fbError.sDefault:= F_Print(sMessage, fbArguments.P_Value);
 fbError.sSource:= fbSymbolInfo.SYMNAME;
@@ -118,7 +122,7 @@ fbInfo.bActive:= TRUE;
 fbInfo.sMessage:= sMessage;
 fbInfo.eLogLevel:= E_LogLevel.Info;
 fbInfo.nID:= nID;
-fbInfo.nTimestamp:= F_GetSystemTime();	
+fbInfo.nTimestamp:= SYSTEMTIME_TO_FILETIME64(fbSystemTime.systemTime);
 fbInfo.sArguments:= fbArguments.P_Value;
 fbInfo.sDefault:= F_Print(sMessage, fbArguments.P_Value);
 fbInfo.sSource:= fbSymbolInfo.SYMNAME;
@@ -147,7 +151,7 @@ fbVerbose.bActive:= TRUE;
 fbVerbose.sMessage:= sMessage;
 fbVerbose.eLogLevel:= E_LogLevel.Verbose;
 fbVerbose.nID:= 0;
-fbVerbose.nTimestamp:= F_GetSystemTime();
+fbVerbose.nTimestamp:= SYSTEMTIME_TO_FILETIME64(fbSystemTime.systemTime);
 fbVerbose.sArguments:= fbArguments.P_Value;
 fbVerbose.sDefault:= F_Print(sMessage, fbArguments.P_Value);
 fbVerbose.sSource:= fbSymbolInfo.SYMNAME;
@@ -177,7 +181,7 @@ fbWarning.bActive:= TRUE;
 fbWarning.sMessage:= sMessage;
 fbWarning.eLogLevel:= E_LogLevel.Warning;
 fbWarning.nID:= nID;
-fbWarning.nTimestamp:= F_GetSystemTime();
+fbWarning.nTimestamp:= SYSTEMTIME_TO_FILETIME64(fbSystemTime.systemTime);
 fbWarning.sArguments:= fbArguments.P_Value;
 fbWarning.sDefault:= F_Print(sMessage, fbArguments.P_Value);
 fbWarning.sSource:= fbSymbolInfo.SYMNAME;

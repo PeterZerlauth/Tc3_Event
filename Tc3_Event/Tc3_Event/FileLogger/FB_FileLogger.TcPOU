@@ -72,7 +72,7 @@ sLogLine := CONCAT(sLogLine, '$R$N');
 
 // Write once per new message
 fbFile.M_Open(sPathName);
-fbFile.M_Write(sLogLine);
+fbFile.M_Write(ADR(sLogLine), LEN(sLogLine));
 fbFile.M_Close();
 
 M_Log := TRUE;

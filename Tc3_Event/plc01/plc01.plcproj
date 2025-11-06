@@ -19,9 +19,9 @@
     <DeploymentEvents>
       <Events>
         <Event>
-          <CommandType RunAsAdmin="false">Execute</CommandType>
+          <CommandType>Copy</CommandType>
           <DeploymentType>ActivateConfiguration</DeploymentType>
-          <Command1>powershell.exe -ExecutionPolicy Bypass -NoProfile -WindowStyle Hidden -File "%SOLUTIONPATH%\script\export.ps1"</Command1>
+          <Command1 />
           <Command2 />
         </Event>
         <Event>
@@ -47,10 +47,10 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\development\FC_Error.TcPOU">
+    <Compile Include="POUs\FAST.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FAST.TcPOU">
+    <Compile Include="POUs\FB_Test.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -60,7 +60,6 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
-    <Folder Include="POUs\development" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

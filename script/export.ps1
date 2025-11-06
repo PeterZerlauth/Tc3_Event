@@ -55,20 +55,23 @@ $files = Get-ChildItem -Path $rootFolder -Recurse -Include "*.TcPOU"
 # Function: Get-UDINTHash (polynomial rolling hash)
 # -----------------------------
 function Get-UDINTHash {
-    param([string]$s)
+    param([string]$s)
 
-    $p = 37
-    $m = 1000000009
-    $hash = 0
-    $pPow = 1
 
-    foreach ($ch in $s.ToCharArray()) {
-        $cVal = [int][char]$ch - [int][char]'a' + 1
-        $hash = ($hash + ($cVal * $pPow) % $m) % $m
-        $pPow = ($pPow * $p) % $m
-    }
+    [int64]$p = 37
+    [int64]$m = 1000000009
+    [int64]$hash = 0
+    [int64]$pPow = 1
 
-    return [uint32]$hash
+    foreach ($ch in $s.ToCharArray()) {
+        
+        [int64]$cVal = [int][char]$ch 
+        $hash = ($hash + ($cVal * $pPow) % $m) % $m
+        $pPow = ($pPow * $p) % $m
+    }
+
+    # which can be safely cast to [uint32].
+    return [uint32]$hash
 }
 
 # -----------------------------

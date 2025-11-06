@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_Message" Id="{84167246-7318-466e-9219-bf236e6d60e2}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_Message
+    <Declaration><![CDATA[{attribute 'analysis' := '-33'}
+FUNCTION_BLOCK FB_Message
 VAR_INPUT
 	eLogLevel:			E_LogLevel;
 	nID:				UDINT;
-	nTimestamp:			ULINT;	
+	nTimestamp:			Tc2_Utilities.T_FILETIME64;	
 	sSource:			STRING(255);
 	sType:				STRING(255);
 	sMessage:			STRING(255);

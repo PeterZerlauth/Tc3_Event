@@ -6,12 +6,7 @@ VAR
 	fbLogging:			Tc3_Event.FB_LoggingProvider;
 	fbLogger:			Tc3_Event.FB_Logger;
 	fbFileLogger:		Tc3_Event.FB_FileLogger;
-	fbEvent: 			Tc3_Event.FB_Event;
-	bVerbose:			BOOL;
-	bInfo:				BOOL;
-	bWarning:			BOOL;
-	bError:				BOOL;
-	bCritical:			BOOL;
+	fbTest:				FB_Test;
   	exception:			__SYSTEM.ExceptionCode;	
 END_VAR]]></Declaration>
     <Implementation>
@@ -24,42 +19,14 @@ __TRY
 	fbLogger();
 	fbFileLogger(sPathName:= 'C:\temp\log.txt');
 	
-	fbEvent.P_Logger:= fbLogging;
+	fbTest.P_Event.P_Logger:= fbLogging;
 	
-	fbEvent();
-	
-	IF bVerbose THEN
-		fbEvent.P_Argument.M_AddINT(134052566194980000);
-		fbEvent.P_Argument.M_AddSTRING('mm');
-		fbEvent.M_Verbose('message %s %s');
-	END_IF
-	
-	IF bInfo THEN
-		fbEvent.P_Argument.M_AddREAL(33.134581234, 3);
-		fbEvent.P_Argument.M_AddSTRING('mm');
-		fbEvent.M_Info(121769021, 'message %s %s');
-	END_IF
-	
-	IF bWarning THEN
-		fbEvent.M_Warning(316902404, 'message');
-		fbEvent.M_Warning(316902404, 'message');
-	END_IF
-	
-	IF bError THEN
-		fbEvent.M_Error(316902404, 'message');
-	END_IF
-	
-	IF bCritical THEN
-		fbEvent.M_Critical(316902404, 'message');
-	END_IF
+	fbTest();
 
- 
 __CATCH(exception)
 
 
-__ENDTRY
-
-]]></ST>
+__ENDTRY]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
