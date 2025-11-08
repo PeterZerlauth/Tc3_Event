@@ -1,18 +1,18 @@
 ﻿[
     {
+        "id":  475719253,
+        "key":  "W message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "W message"
+                   }
+    },
+    {
         "id":  828536003,
         "key":  "I message %s %s",
         "locale":  {
                        "de":  "",
                        "en":  "I message %s %s"
-                   }
-    },
-    {
-        "id":  662973879,
-        "key":  "Critical message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "Critical message"
                    }
     },
     {
@@ -24,35 +24,11 @@
                    }
     },
     {
-        "id":  608464798,
-        "key":  "Info message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "Info message"
-                   }
-    },
-    {
         "id":  475719233,
         "key":  "C message",
         "locale":  {
                        "de":  "",
                        "en":  "C message"
-                   }
-    },
-    {
-        "id":  475719253,
-        "key":  "W message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "W message"
-                   }
-    },
-    {
-        "id":  588739376,
-        "key":  "Warning message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "Warning message"
                    }
     }
 ]

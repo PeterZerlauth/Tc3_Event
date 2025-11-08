@@ -41,7 +41,7 @@ IF bError THEN
 END_IF
 
 IF bCritical THEN
-	fbEvent.M_Critical(0, 'C message'); ///839384782
+	fbEvent.M_Critical(475719233, 'C message'); ///839384782
 END_IF
 ]]></ST>
     </Implementation>
