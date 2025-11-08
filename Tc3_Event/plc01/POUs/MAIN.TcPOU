@@ -10,8 +10,7 @@ VAR
   	exception:			__SYSTEM.ExceptionCode;	
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-__TRY
+      <ST><![CDATA[__TRY
 	
 	fbLogging.M_Add(fbLogger);
 	fbLogging.M_Add(fbFileLogger);
