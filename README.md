@@ -38,11 +38,17 @@ END_IF
 ## Advanced Usage
 
 ```iecst
+PROGRAM MAIN
+VAR
+	fbLogger:			FB_Logger;
+END_VAR
+
+fbLogger();
 
 // Different log levels
 // Verbose logging with parameters
 
-fbLogger.M_AddINT(counter);
+fbLogger.M_AddINT(1);
 fbLogger.M_AddSTRING('cycles');
 fbLogger.M_Verbose('Process completed: %s %s');
 
