@@ -22,7 +22,9 @@ $RegexVariable       = '(?<Variable>\S*)\s*:\s*(?<Type>[A-z_.]*)'
  
 $overview = @();
 $TypesOverview = @();
+$SourceOverview = @() # <--- ADD THIS LINE
 $global:TypesMap = @{} # Ensure global map is initialized
+
  
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Entrypoint for documentation
