@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_TestFast" Id="{ac478935-082b-4a26-8ace-9a48a4324c7d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TestFast
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	fbEvent: 			Tc3_Event.FB_Event;
+	bVerbose:			BOOL;
+	bInfo:				BOOL;
+	bWarning:			BOOL;
+	bError:				BOOL;
+	bCritical:			BOOL;
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbEvent();
+
+IF bVerbose THEN
+	fbEvent.P_Argument.M_AddINT(134052566194980000);
+	fbEvent.P_Argument.M_AddSTRING('mm');
+	fbEvent.M_Verbose('V message %s %s');
+END_IF
+
+IF bInfo THEN
+	fbEvent.P_Argument.M_AddREAL(33.134581234, 3);
+	fbEvent.P_Argument.M_AddSTRING('mm');
+	fbEvent.M_Info(828536003, 'I message %s %s');
+END_IF
+
+IF bWarning THEN
+	fbEvent.M_Warning(475719253, 'W message');
+	fbEvent.M_Warning(475719253, 'W message');
+END_IF
+
+IF bError THEN
+	fbEvent.M_Error(475719235, 'E message');
+END_IF
+
+IF bCritical THEN
+	fbEvent.M_Critical(0, 'C message'); ///839384782
+END_IF
+]]></ST>
+    </Implementation>
+    <Property Name="P_Event" Id="{63fbb4c9-9e22-4943-b7c2-35f7dcebbab1}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_Event : reference to FB_event]]></Declaration>
+      <Get Name="Get" Id="{26df797a-6ac5-4d0e-a3a7-1cfc9121b495}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[P_Event ref= fbEvent;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>

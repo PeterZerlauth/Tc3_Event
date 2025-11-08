@@ -6,7 +6,7 @@ VAR
 	fbLogging:			Tc3_Event.FB_LoggingProvider;
 	fbLogger:			Tc3_Event.FB_Logger;
 	fbFileLogger:		Tc3_Event.FB_FileLogger;
-	fbTest:				FB_Test;
+	fbTest:				FB_TestSlow;
   	exception:			__SYSTEM.ExceptionCode;	
 END_VAR]]></Declaration>
     <Implementation>

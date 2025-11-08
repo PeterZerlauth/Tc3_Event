@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="FB_Test" Id="{8cd1133b-3477-41c9-9026-b27d8cb7f6d2}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_Test
+  <POU Name="FB_TestSlow" Id="{8cd1133b-3477-41c9-9026-b27d8cb7f6d2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TestSlow
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -17,35 +17,32 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-	
-	fbEvent();
-	
-	IF bVerbose THEN
-		fbEvent.P_Argument.M_AddINT(134052566194980000);
-		fbEvent.P_Argument.M_AddSTRING('mm');
-		fbEvent.M_Verbose('V message %s %s');
-	END_IF
-	
-	IF bInfo THEN
-		fbEvent.P_Argument.M_AddREAL(33.134581234, 3);
-		fbEvent.P_Argument.M_AddSTRING('mm');
-		fbEvent.M_Info(828536003, 'I message %s %s');
-	END_IF
-	
-	IF bWarning THEN
-		fbEvent.M_Warning(475719253, 'W message');
-		fbEvent.M_Warning(475719253, 'W message');
-	END_IF
-	
-	IF bError THEN
-		fbEvent.M_Error(475719235, 'E message');
-	END_IF
-	
-	IF bCritical THEN
-		fbEvent.M_Critical(0, 'C message'); ///839384782
-	END_IF
- 
+      <ST><![CDATA[fbEvent();
+
+IF bVerbose THEN
+	fbEvent.P_Argument.M_AddINT(134052566194980000);
+	fbEvent.P_Argument.M_AddSTRING('mm');
+	fbEvent.M_Verbose('V message %s %s');
+END_IF
+
+IF bInfo THEN
+	fbEvent.P_Argument.M_AddREAL(33.134581234, 3);
+	fbEvent.P_Argument.M_AddSTRING('mm');
+	fbEvent.M_Info(828536003, 'I message %s %s');
+END_IF
+
+IF bWarning THEN
+	fbEvent.M_Warning(475719253, 'W message');
+	fbEvent.M_Warning(475719253, 'W message');
+END_IF
+
+IF bError THEN
+	fbEvent.M_Error(475719235, 'E message');
+END_IF
+
+IF bCritical THEN
+	fbEvent.M_Critical(0, 'C message'); ///839384782
+END_IF
 ]]></ST>
     </Implementation>
     <Property Name="P_Event" Id="{1b280b73-a5c7-4186-ac99-29403b5a1044}">

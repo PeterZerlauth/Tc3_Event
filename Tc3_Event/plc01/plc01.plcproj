@@ -50,7 +50,10 @@
     <Compile Include="POUs\FAST.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FB_Test.TcPOU">
+    <Compile Include="POUs\FB_TestSlow.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\FB_TestFast.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
