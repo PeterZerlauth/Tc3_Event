@@ -59,7 +59,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[sValue:= CONCAT(sValue, CONCAT(sValue, '$R'));				// add separator 
+        <ST><![CDATA[THIS^.sValue:= CONCAT(THIS^.sValue, CONCAT(sValue, '$R'));				// add separator 
 M_AddSTRING:= THIS^;]]></ST>
       </Implementation>
     </Method>

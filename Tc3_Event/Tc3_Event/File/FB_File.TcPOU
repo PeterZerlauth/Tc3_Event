@@ -3,7 +3,6 @@
   <POU Name="FB_File" Id="{879562f4-6da1-45fb-a1f3-48bd69fd0a1e}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_File
 VAR_INPUT
-    eMode: 					SysFile.ACCESS_MODE := SysFile.AM_APPEND_PLUS;
 END_VAR
 VAR_OUTPUT
     pBuffer:				POINTER TO BYTE;
@@ -28,11 +27,15 @@ METHOD PUBLIC M_Close : BOOL
 VAR_INPUT
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF hFile <> SysFile.SysTypes.RTS_INVALID_HANDLE THEN
-   pResult^:= SysFile.SysFileClose(hFile);
-END_IF
-
-M_Close:= TRUE;]]></ST>
+        <ST><![CDATA[IF hFile <> 0 THEN
+   nResult:= SysFile.SysFileClose(hFile);
+   IF nResult = 0 THEN
+	   hFile:= 0;
+	   M_Close:= TRUE;
+   ELSE
+	    bError := TRUE;
+   END_IF
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Delete" Id="{031610a1-66f5-45ab-8b86-edea27263a7f}">
@@ -63,20 +66,15 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[
-bError := FALSE;
-nResult := 0; 
-
-// CHANGED: Added guard condition
-IF NOT bOpen OR hFile = SysFile.SysTypes.RTS_INVALID_HANDLE THEN
-    bError := TRUE;
-    nResult := 16#FFFF; // Custom error: File not open
-    M_GetSize := 0;
+        <ST><![CDATA[IF hFile = SysFile.SysTypes.RTS_INVALID_HANDLE THEN
     RETURN;
 END_IF
 
 M_GetSize:= LWORD_TO_UDINT(SysFile.SysFileGetSizeByHandle(hFile, pResult));
-bError := (nResult <> 0);]]></ST>
+
+IF nResult <> 0 THEN
+	bError := TRUE;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Open" Id="{6307849d-083a-4a2a-8a54-cacfa983025c}">
@@ -84,12 +82,23 @@ bError := (nResult <> 0);]]></ST>
 METHOD PUBLIC M_Open : BOOL
 VAR_INPUT
     sFileName:				STRING(255);
+	eMode: 					SysFile.ACCESS_MODE := SysFile.AM_APPEND_PLUS;
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[hFile := SysFile.SysFileOpen(sFileName, eMode, pResult);
+        <ST><![CDATA[IF hFile = 0 THEN
+	hFile := SysFile.SysFileOpen(sFileName, eMode, pResult);
+	IF hFile = SysFile.SysTypes.RTS_INVALID_HANDLE  THEN
+		bError := TRUE;
+		RETURN;
+	END_IF
 
-M_Open := true;]]></ST>
+   if nResult = 0 then
+	   M_Open:= TRUE;
+   ELSE
+	    bError := TRUE;
+   END_IF
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Read" Id="{4210ba0d-c339-4c83-b89a-8d5ea8fd601c}">
@@ -167,36 +176,23 @@ END_IF]]></ST>
       <Declaration><![CDATA[// Writes the contents of the buffer into a file.
 METHOD PUBLIC M_Write : BOOL
 VAR_INPUT
-	pWriteBuffer:	POINTER TO BYTE;
-    nWriteSize:     UDINT;
+	pBuffer:	POINTER TO BYTE;
+    nSize:     	UDINT;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[bError := FALSE;
-nResult := 0; 
-
-// CHANGED: Added guard conditions
-IF NOT bOpen OR hFile = SysFile.SysTypes.RTS_INVALID_HANDLE THEN
-    bError := TRUE;
-    nResult := 16#FFFF; // Custom error: File not open
-    M_Write := FALSE;
+        <ST><![CDATA[IF pBuffer = 0 OR nSize = 0 THEN
     RETURN;
 END_IF
 
-IF pWriteBuffer = 0 OR nWriteSize = 0 THEN
-    bError := TRUE;
-    nResult := 16#FFFE; // Custom error: Invalid buffer
-    M_Write := FALSE;
-    RETURN;
+IF hFile <> 0 THEN
+	SysFile.SysFileWrite(hFile := hFile, pbyBuffer := pBuffer, ulSize := nSize, pResult := pResult);
 END_IF
 
-// CHANGED: Use new inputs for the write call
-SysFile.SysFileWrite(hFile := hFile,
-                     pbyBuffer := pWriteBuffer,
-                     ulSize := nWriteSize,
-                     pResult := pResult);
-
-bError := (nResult <> 0);
-M_Write := NOT bError; // CHANGED: Return actual success]]></ST>
+IF nResult = 0 THEN
+	M_Write := TRUE;
+ELSE
+	bError:= TRUE;
+END_IF]]></ST>
       </Implementation>
     </Method>
   </POU>

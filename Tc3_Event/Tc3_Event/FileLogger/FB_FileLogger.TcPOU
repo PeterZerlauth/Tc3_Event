@@ -5,7 +5,7 @@
 FUNCTION_BLOCK FB_FileLogger IMPLEMENTS I_Logger
 VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
-	sPathName:				STRING(255):= 'C:\temp\logger.txt';
+	sPathName:				STRING(255):= 'C:\tempx\logger.txt';
 END_VAR
 VAR
 	fbFile:					FB_File;
@@ -21,7 +21,7 @@ VAR_INPUT
 	fbMessage:			FB_Message;
 END_VAR
 VAR
-	nTimestamp: 	ULINT:= F_GetSystemTime();
+	nTimestamp: 	Tc2_Utilities.T_FILETIME64;
 	nIndex: 		INT;
 	sLogLine:		STRING(255);
 END_VAR]]></Declaration>
@@ -31,6 +31,8 @@ IF eLogLevel > fbMessage.eLogLevel THEN
 	M_Log:= TRUE;
 	RETURN;
 END_IF
+
+nTimestamp:= fbMessage.nTimestamp;
 
 // Remove expired messages (>1 s old)
 nIndex := 0;

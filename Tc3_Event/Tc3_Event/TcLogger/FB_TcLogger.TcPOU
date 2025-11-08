@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_TcLogger" Id="{c4bb1a5e-d8ae-49cb-90d9-702eaf5363d5}" SpecialFunc="None">
+    <Declaration><![CDATA[// Provide logging 
+FUNCTION_BLOCK FB_TcLogger IMPLEMENTS I_Logger
+VAR_INPUT
+	eLogLevel:				E_LogLevel:= E_LogLevel.Info;
+END_VAR
+VAR
+	fbSourceInfo:			FB_TcSourceInfo;
+	aAlarm:					ARRAY[0..99] OF FB_TcAlarm; 	// Message store
+    nMessages:				UINT := 0;                     // Message count
+	{attribute 'hide'} 
+	nIndex: 				UINT;
+	nTimestamp:				LINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// https://peterzerlauth.com/
+
+// IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime THEN // 1 second = 1e9 ns
+// 	nTimestamp := TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime + 1000000000;
+// 	nIndex:= 0;
+// 	WHILE nIndex < nMessages DO
+// 		IF aAlarm[nIndex]. THEN
+// 			aAlarm[nIndex].bActive:= FALSE;
+// 			nIndex := nIndex + 1;
+// 		ELSE
+// 			MEMMOVE(ADR(aAlarm[nIndex]), ADR(aAlarm[nIndex + 1]), SIZEOF(FB_Message) * (nMessages - nIndex));
+// 			nMessages := nMessages - 1;
+// 			RETURN;
+// 		END_IF
+// 	END_WHILE
+// END_IF]]></ST>
+    </Implementation>
+    <Method Name="M_Log" Id="{6fe90735-819e-4754-991c-316c9aee4d7c}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
+VAR_INPUT
+	fbMessage:			FB_Message;
+END_VAR
+VAR
+	sArgument:			STRING;
+	nPosition: 			INT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF eLogLevel > fbMessage.eLogLevel THEN
+	M_Log:= TRUE;
+	RETURN;
+END_IF
+
+IF nMessages > 99 THEN 
+	RETURN;
+END_IF
+
+// Skip if same sMessage already exists
+nIndex := 0;
+WHILE nIndex < nMessages DO
+    IF aAlarm[nIndex].EqualsToEventEntry(TC_EVENT_CLASSES.Tc3_Event, fbMessage.nID, LogLevel_To_TcEventSeverity(fbMessage.eLogLevel))  THEN
+        M_Log := TRUE;
+        RETURN; // message already in buffer
+    END_IF
+    nIndex := nIndex + 1;
+END_WHILE
+
+fbSourceInfo.Clear();
+fbSourceInfo.sName:= fbMessage.sSource;
+aAlarm[nMessages].Create(TC_EVENT_CLASSES.Tc3_Event,  fbMessage.nID, LogLevel_To_TcEventSeverity(fbMessage.eLogLevel), FALSE, fbSourceInfo);
+aAlarm[nMessages].ipArguments.Clear();
+
+nPosition := FIND('$R', fbMessage.sArguments);
+WHILE nPosition > 0 DO
+    sArgument := LEFT(fbMessage.sArguments, nPosition - 1);
+    aAlarm[nMessages].ipArguments.AddString(sArgument);
+    fbMessage.sArguments:= RIGHT(fbMessage.sArguments, LEN(fbMessage.sArguments) - (nPosition + 1));
+    nPosition := FIND('$R', fbMessage.sArguments);
+END_WHILE;
+
+aAlarm[nMessages].Raise(fbMessage.nTimestamp);
+
+nMessages := nMessages + 1;
+M_Log := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="P_LogLevel" Id="{f86a40a0-98fd-40f4-a32f-52729e621278}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
+      <Get Name="Get" Id="{65712a2e-9ca7-492d-83fc-203b71a5ffed}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[P_LogLevel:= eLogLevel;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{a818a2a2-1395-45f7-a05b-b64f5da416d8}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[eLogLevel:= P_LogLevel;
+]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+  </POU>
+</TcPlcObject>

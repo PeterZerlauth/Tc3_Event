@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="LogLevel_To_TcEventSeverity" Id="{2125d2a6-85a2-44a9-b27f-c4f068813b29}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION LogLevel_To_TcEventSeverity : TcEventSeverity
+VAR_INPUT
+	eLogLevel:				E_LogLevel;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE eLogLevel OF
+	E_LogLevel.Verbose:
+		LogLevel_To_TcEventSeverity:= TcEventSeverity.Verbose;
+		
+	E_LogLevel.Info:
+		LogLevel_To_TcEventSeverity:= TcEventSeverity.Info;
+		
+	E_LogLevel.Warning:
+		LogLevel_To_TcEventSeverity:= TcEventSeverity.Warning;
+		
+	E_LogLevel.Error:
+		LogLevel_To_TcEventSeverity:= TcEventSeverity.Error;
+		
+	E_LogLevel.Critical:
+		LogLevel_To_TcEventSeverity:= TcEventSeverity.Critical;
+		
+END_CASE]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
