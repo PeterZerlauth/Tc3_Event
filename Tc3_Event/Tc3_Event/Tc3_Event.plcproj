@@ -40,6 +40,7 @@
     <Folder Include="Message" />
     <Folder Include="Argument" />
     <Folder Include="Global Variables" />
+    <Folder Include="script" />
     <Folder Include="Project Information" />
     <Folder Include="Version" />
   </ItemGroup>
@@ -163,6 +164,11 @@
     <None Include="Tc3_Event.tmc">
       <SubType>Content</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="script\export.ps1">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>
