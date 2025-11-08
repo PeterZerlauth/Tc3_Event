@@ -25,8 +25,7 @@ $TypesOverview = @();
 $SourceOverview = @() # <--- ADD THIS LINE
 $global:TypesMap = @{} # Ensure global map is initialized
 
- 
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Entrypoint for documentation
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function New-Documentation
@@ -80,15 +79,10 @@ function New-Documentation
       }
       if ($FileType.contains("POU"))
       {
-        # --- NEW ---
-        # Call the new, improved XML-based function
         $Content = Read-SourceFile-XML -Path $strPath -File $strFile
-        # --- END NEW ---
       }
       if ($FileType.contains("GVL"))
       {
-        # GVLs are also XML, this would need a similar new function
-        # For now, use the old one as a fallback
         $Content = Read-SourceFile -Path $strPath -File $strFile
       }
      
@@ -115,11 +109,13 @@ function New-Documentation
  
       if ($FileType.contains("DUT"))
       {
-        $global:TypesOverview += "$strSubfolder\$FileNew";
+        # --- FIX: Use forward slashes for the link path ---
+        $global:TypesOverview += ("$strSubfolder\$FileNew").Replace("\", "/")
       }
       if ($FileType.contains("POU"))
       {
-        $global:SourceOverview += "$strSubfolder\$FileNew";
+        # --- FIX: Use forward slashes for the link path ---
+        $global:SourceOverview += ("$strSubfolder\$FileNew").Replace("\", "/")
       }
      
       Set-Content -Path "$FolderNew\$FileNew" -Value $Content -Encoding UTF8   
@@ -127,6 +123,7 @@ function New-Documentation
     }
  
 }
+
  
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Entrypoint for documentation
@@ -187,7 +184,6 @@ function New-Overview
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # NEW HELPER: Parses ST declaration text into Markdown tables
-# This replaces the old Read-Variables function
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function Convert-DeclarationToMarkdown {
     param([string]$Declaration)
@@ -238,8 +234,8 @@ function Convert-DeclarationToMarkdown {
             # Linkify the Type if it's in our global map
             $linkedType = $varType
             if ($global:TypesMap.ContainsKey($varType)) {
-                # Create a relative path. Assumes Types and Source are siblings
-                $relativePath = $global:TypesMap[$varType].Replace("Types\", "../Types/") 
+                # --- FIX: Replace forward slashes, not backslashes ---
+                $relativePath = $global:TypesMap[$varType].Replace("Types/", "../Types/") 
                 $linkedType = "[$varType]($relativePath)"
             }
 
@@ -299,7 +295,6 @@ function Convert-DeclarationToMarkdown {
 
     return $md
 }
-
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # NEW Read-SourceFile function.
