@@ -73,46 +73,60 @@ Messages for the HMI can be quickly and easily exported during “Activate Confi
 ```json
 [
     {
-        "id": 292272521,
-        "messages": {
-            "de": "",
-            "en": "message"
-        }
+        "id":  828536003,
+        "key":  "I message %s %s",
+        "locale":  {
+                       "de":  "",
+                       "en":  "I message %s %s"
+                   }
     },
     {
-        "id": 2626343866,
-        "messages": {
-            "de": "",
-            "en": "Critical message"
-        }
+        "id":  662973879,
+        "key":  "Critical message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "Critical message"
+                   }
     },
     {
-        "id": 2276475569,
-        "messages": {
-            "de": "",
-            "en": "Info message"
-        }
+        "id":  475719235,
+        "key":  "E message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "E message"
+                   }
     },
     {
-        "id": 2263151477,
-        "messages": {
-            "de": "",
-            "en": "message %s %s"
-        }
+        "id":  608464798,
+        "key":  "Info message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "Info message"
+                   }
     },
     {
-        "id": 1791326186,
-        "messages": {
-            "de": "",
-            "en": "Warning message"
-        }
+        "id":  475719233,
+        "key":  "C message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "C message"
+                   }
     },
     {
-        "id": 2621541999,
-        "messages": {
-            "de": "",
-            "en": "Error message"
-        }
+        "id":  475719253,
+        "key":  "W message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "W message"
+                   }
+    },
+    {
+        "id":  588739376,
+        "key":  "Warning message",
+        "locale":  {
+                       "de":  "",
+                       "en":  "Warning message"
+                   }
     }
 ]
 ```
