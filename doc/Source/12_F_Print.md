@@ -1,20 +1,9 @@
 ﻿[[_TOC_]]
 
-## F_Print
+# F_Print
 
-returns : STRING(255)  
-  
-#### Description  
-single argument  
-Position of the $R delimiter  
-Position of the %s placeholder  
- 
-#### Input  
-|Name |Type |Comment| 
-|---- |---- |----   | 
-|sMessage |STRING || 
-|sArguments |STRING |Arguments are separated by $R | 
+---\n
+## 📜 Declaration (Variables)
 
-#### Output  
-- 
+
 

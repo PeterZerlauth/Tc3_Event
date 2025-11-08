@@ -1,29 +1,18 @@
 ﻿[[_TOC_]]
 
-## FB_TestSlow
+# FB_TestSlow
 
-returns : -   
-#### Description  
- 
-#### Input  
-- 
-#### Output  
-- 
-### Method P_Event  
-returns : -   
-#### Description  
- 
-#### Input  
-- 
-#### Output  
-- 
-### Method Get  
-returns : reference  
-  
-#### Description  
- 
-#### Input  
-- 
-#### Output  
-- 
+---\n
+## 📜 Declaration (Variables)
+
+
+
+---\n
+## 💎 Properties
+
+### ### P_Event
+
+**Type:** $propType`n
+* **Get:** Available
+
 

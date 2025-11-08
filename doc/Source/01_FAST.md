@@ -1,12 +1,9 @@
 ﻿[[_TOC_]]
 
-## FAST
+# FAST
 
-returns : -   
-#### Description  
- 
-#### Input  
-- 
-#### Output  
-- 
+---\n
+## 📜 Declaration (Variables)
+
+
 

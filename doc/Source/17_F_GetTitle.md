@@ -1,14 +1,9 @@
 ﻿[[_TOC_]]
 
-## F_GetTitle
+# F_GetTitle
 
-returns : WSTRING  
-  
-#### Description  
-This function has been automatically generated from the project information.  
- 
-#### Input  
-- 
-#### Output  
-- 
+---\n
+## 📜 Declaration (Variables)
+
+
 

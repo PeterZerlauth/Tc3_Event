@@ -1,100 +1,46 @@
 ﻿[[_TOC_]]
 
-## FB_Argument
+# FB_Argument
 
-returns : -   
-#### Description  
- 
-#### Input  
-- 
-#### Output  
-- 
-### Method M_AddBOOL  
-returns : I_Argument  
-  
-#### Description  
- 
-#### Input  
-|Name |Type |Comment| 
-|---- |---- |----   | 
-|bValue |BOOL || 
+---\n
+## 📜 Declaration (Variables)
 
-#### Output  
-- 
-### Method M_AddINT  
-returns : I_Argument  
-  
-#### Description  
- 
-#### Input  
-|Name |Type |Comment| 
-|---- |---- |----   | 
-|nValue |LINT || 
 
-#### Output  
-- 
-### Method M_AddREAL  
-returns : I_Argument  
-  
-#### Description  
- 
-#### Input  
-|Name |Type |Comment| 
-|---- |---- |----   | 
-|fValue |LREAL || 
-|nDecimals |USINT || 
 
-#### Output  
-- 
-### Method M_AddSTRING  
-returns : I_Argument  
-  
-#### Description  
- 
-#### Input  
-|Name |Type |Comment| 
-|---- |---- |----   | 
-|sValue |STRING || 
+---\n
+## ⚙️ Methods
 
-#### Output  
-- 
-### Method M_AddTIME  
-returns : I_Argument  
-  
-#### Description  
- 
-#### Input  
-|Name |Type |Comment| 
-|---- |---- |----   | 
-|tValue |TIME || 
+### ### M_AddBOOL
 
-#### Output  
-- 
-### Method M_Clear  
-returns : I_Argument  
-  
-#### Description  
- 
-#### Input  
-- 
-#### Output  
-- 
-### Method P_Value  
-returns : I_Argument  
-  
-#### Description  
- 
-#### Input  
-- 
-#### Output  
-- 
-### Method Get  
-returns : string(255)]]></Declaration>  
-  
-#### Description  
- 
-#### Input  
-- 
-#### Output  
-- 
+**Returns:** (None)
+
+### ### M_AddINT
+
+**Returns:** (None)
+
+### ### M_AddREAL
+
+**Returns:** (None)
+
+### ### M_AddSTRING
+
+**Returns:** (None)
+
+### ### M_AddTIME
+
+**Returns:** (None)
+
+### ### M_Clear
+
+**Returns:** (None)
+
+
+---\n
+## 💎 Properties
+
+### ### P_Value
+
+**Type:** $propType`n
+* **Get:** Available
+
 

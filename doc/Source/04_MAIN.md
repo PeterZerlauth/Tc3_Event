@@ -1,12 +1,9 @@
 ﻿[[_TOC_]]
 
-## MAIN
+# MAIN
 
-returns : -   
-#### Description  
- 
-#### Input  
-- 
-#### Output  
-- 
+---\n
+## 📜 Declaration (Variables)
+
+
 
