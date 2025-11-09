@@ -6,7 +6,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sInput; Type=STRING(255); Default=; Comment=input string to hash}.Name) | $(@{Name=sInput; Type=STRING(255); Default=; Comment=input string to hash}.Type) | input string to hash |
+| sInput | STRING(255) | input string to hash |
 
 ### VAR
 | Name | Type | Description |

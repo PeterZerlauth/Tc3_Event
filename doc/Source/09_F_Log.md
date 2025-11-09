@@ -6,7 +6,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=fbMessage; Type=REFERENCE; Default=; Comment=}.Name) | $(@{Name=fbMessage; Type=REFERENCE; Default=; Comment=}.Type) |  |
+| fbMessage | REFERENCE |  |
 
 ### VAR
 | Name | Type | Description |

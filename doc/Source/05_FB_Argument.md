@@ -20,7 +20,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=bValue; Type=BOOL; Default=; Comment=}.Name) | $(@{Name=bValue; Type=BOOL; Default=; Comment=}.Type) |  |
+| bValue | BOOL |  |
 
 ### ### M_AddINT
 
@@ -29,7 +29,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nValue; Type=LINT; Default=; Comment=}.Name) | $(@{Name=nValue; Type=LINT; Default=; Comment=}.Type) |  |
+| nValue | LINT |  |
 
 ### VAR
 | Name | Type | Description |
@@ -43,8 +43,8 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=fValue; Type=LREAL; Default=; Comment=}.Name) | $(@{Name=fValue; Type=LREAL; Default=; Comment=}.Type) |  |
-| $(@{Name=nDecimals; Type=USINT; Default=; Comment=}.Name) | $(@{Name=nDecimals; Type=USINT; Default=; Comment=}.Type) |  |
+| fValue | LREAL |  |
+| nDecimals | USINT |  |
 
 ### VAR
 | Name | Type | Description |
@@ -58,7 +58,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sValue; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sValue; Type=STRING(255); Default=; Comment=}.Type) |  |
+| sValue | STRING(255) |  |
 
 ### ### M_AddTIME
 
@@ -67,7 +67,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=tValue; Type=TIME; Default=; Comment=}.Name) | $(@{Name=tValue; Type=TIME; Default=; Comment=}.Type) |  |
+| tValue | TIME |  |
 
 ### ### M_Clear
 

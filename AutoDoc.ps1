@@ -284,13 +284,13 @@ function Convert-DeclarationToMarkdown {
              $md += "| Name | Type | Default | Description |`n"
              $md += "| :--- | :--- | :--- | :--- |`n"
              foreach ($var in $inputs.Values) {
-                  $md += "| `$($var.Name)` | `$($var.Type)` | `$($var.Default)` | $($var.Comment) |`n"
+                  $md += "| $($var.Name) | $($var.Type) | $($var.Default) | $($var.Comment) |`n"
               }
         } else {
              $md += "| Name | Type | Description |`n"
              $md += "| :--- | :--- | :--- |`n"
              foreach ($var in $inputs.Values) { 
-                $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"
+                $md += "| $($var.Name) | $($var.Type) | $($var.Comment) |`n"
              }
         }
         $md += "`n"
@@ -301,7 +301,7 @@ function Convert-DeclarationToMarkdown {
         $md += "| Name | Type | Description |`n"
         $md += "| :--- | :--- | :--- |`n"
         foreach ($var in $outputs.Values) { 
-            $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"
+            $md += "| $($var.Name) | $($var.Type) | $($var.Comment) |`n"
         }
         $md += "`n"
     }

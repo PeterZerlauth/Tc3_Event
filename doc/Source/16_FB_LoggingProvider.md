@@ -21,7 +21,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=bInCopyCode; Type=BOOL; Default=; Comment=if TRUE, the exit method is called for exiting an instance that is copied afterwards (online change).}.Name) | $(@{Name=bInCopyCode; Type=BOOL; Default=; Comment=if TRUE, the exit method is called for exiting an instance that is copied afterwards (online change).}.Type) | if TRUE, the exit method is called for exiting an instance that is copied afterwards (online change). |
+| bInCopyCode | BOOL | if TRUE, the exit method is called for exiting an instance that is copied afterwards (online change). |
 
 ### ### M_Add
 
@@ -30,7 +30,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=iLogger; Type=I_Logger; Default=; Comment=}.Name) | $(@{Name=iLogger; Type=I_Logger; Default=; Comment=}.Type) |  |
+| iLogger | I_Logger |  |
 
 ### VAR
 | Name | Type | Description |
@@ -48,7 +48,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=iLogger; Type=I_Logger; Default=; Comment=}.Name) | $(@{Name=iLogger; Type=I_Logger; Default=; Comment=}.Type) |  |
+| iLogger | I_Logger |  |
 
 ### VAR
 | Name | Type | Description |
@@ -62,7 +62,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nIndex; Type=DINT; Default=; Comment=}.Name) | $(@{Name=nIndex; Type=DINT; Default=; Comment=}.Type) |  |
+| nIndex | DINT |  |
 
 ### ### M_Log
 
@@ -71,7 +71,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=fbMessage; Type=FB_Message; Default=; Comment=}.Name) | $(@{Name=fbMessage; Type=FB_Message; Default=; Comment=}.Type) |  |
+| fbMessage | FB_Message |  |
 
 ### VAR
 | Name | Type | Description |
@@ -85,7 +85,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=iLogger; Type=I_Logger; Default=; Comment=}.Name) | $(@{Name=iLogger; Type=I_Logger; Default=; Comment=}.Type) |  |
+| iLogger | I_Logger |  |
 
 ### VAR
 | Name | Type | Description |

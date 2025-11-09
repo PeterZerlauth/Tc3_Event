@@ -6,8 +6,8 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
-| $(@{Name=sArguments; Type=STRING(255); Default=; Comment=Arguments are separated by $R}.Name) | $(@{Name=sArguments; Type=STRING(255); Default=; Comment=Arguments are separated by $R}.Type) | Arguments are separated by $R |
+| sMessage | STRING(255) |  |
+| sArguments | STRING(255) | Arguments are separated by $R |
 
 ### VAR
 | Name | Type | Description |

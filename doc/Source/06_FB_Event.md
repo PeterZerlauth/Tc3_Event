@@ -6,12 +6,12 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=iLogger; Type=I_Logger; Default=; Comment=}.Name) | $(@{Name=iLogger; Type=I_Logger; Default=; Comment=}.Type) |  |
+| iLogger | I_Logger |  |
 
 ### VAR_OUTPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=fbArguments; Type=FB_Argument; Default=; Comment=}.Name) | $(@{Name=fbArguments; Type=FB_Argument; Default=; Comment=}.Type) |  |
+| fbArguments | FB_Argument |  |
 
 ### VAR
 | Name | Type | Description |
@@ -42,8 +42,8 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=bInitRetains; Type=BOOL; Default=; Comment=TRUE: Die Retain-Variablen werden initialisiert (Reset warm / Reset kalt)}.Name) | $(@{Name=bInitRetains; Type=BOOL; Default=; Comment=TRUE: Die Retain-Variablen werden initialisiert (Reset warm / Reset kalt)}.Type) | TRUE: Die Retain-Variablen werden initialisiert (Reset warm / Reset kalt) |
-| $(@{Name=bInCopyCode; Type=BOOL; Default=; Comment=}.Name) | $(@{Name=bInCopyCode; Type=BOOL; Default=; Comment=}.Type) |  |
+| bInitRetains | BOOL | TRUE: Die Retain-Variablen werden initialisiert (Reset warm / Reset kalt) |
+| bInCopyCode | BOOL |  |
 
 ### ### M_Critical
 
@@ -52,8 +52,8 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nID; Type=UDINT; Default=; Comment=}.Name) | $(@{Name=nID; Type=UDINT; Default=; Comment=}.Type) |  |
-| $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
+| nID | UDINT |  |
+| sMessage | STRING(255) |  |
 
 ### ### M_Error
 
@@ -62,8 +62,8 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nID; Type=UDINT; Default=; Comment=}.Name) | $(@{Name=nID; Type=UDINT; Default=; Comment=}.Type) |  |
-| $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
+| nID | UDINT |  |
+| sMessage | STRING(255) |  |
 
 ### ### M_Info
 
@@ -72,8 +72,8 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nID; Type=UDINT; Default=; Comment=}.Name) | $(@{Name=nID; Type=UDINT; Default=; Comment=}.Type) |  |
-| $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
+| nID | UDINT |  |
+| sMessage | STRING(255) |  |
 
 ### ### M_Reset
 
@@ -85,7 +85,7 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
+| sMessage | STRING(255) |  |
 
 ### ### M_Warning
 
@@ -94,8 +94,8 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nID; Type=UDINT; Default=; Comment=}.Name) | $(@{Name=nID; Type=UDINT; Default=; Comment=}.Type) |  |
-| $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
+| nID | UDINT |  |
+| sMessage | STRING(255) |  |
 
 
 
