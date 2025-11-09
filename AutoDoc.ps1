@@ -168,10 +168,10 @@ function New-Overview
 
     $temp = New-Item -Path $Destination -Name "00_Overview.md" -Force
  
-    $strContent = "[[_TOC_]]`n`n" # Added TOC back
+    $strContent = "" # Added TOC back
 
     # --- Function Blocks ---
-    $strContent += "# 🧱 Functionblocks`n`n"
+    $strContent += "# Functionblocks`n`n"
     $index = 1
     foreach($element in ($global:FunctionBlocks | Sort-Object))
     {
@@ -187,7 +187,7 @@ function New-Overview
     }
  
     # --- Functions ---
-    $strContent += "`n`n---\n`n# ⚙️ Functions`n`n"
+    $strContent += "`n`n`n# Functions`n`n"
     $index = 1
     foreach($element in ($global:Functions | Sort-Object))
     {
@@ -203,7 +203,7 @@ function New-Overview
     }
 
     # --- Datatypes ---
-    $strContent += "`n`n---\n`n# 📚 Datatypes`n`n"
+    $strContent += "`n`n`n# Datatypes`n`n"
     $index = 1
     foreach($element in ($global:TypesOverview | Sort-Object))
     {
@@ -315,14 +315,14 @@ function Convert-DeclarationToMarkdown {
              $md += "| :--- | :--- | :--- | :--- |`n"
              foreach ($var in $inputs.Values) {
                   # <--- CHANGE: Added backticks for robust markdown table
-                  $md += "| `$($var.Name)` | `$($var.Type)` | `$($var.Default)` | $($var.Comment) |`n"
+                  $md += "| $($var.Name) | $($var.Type) | $($var.Default) | $($var.Comment) |`n"
               }
         } else {
              $md += "| Name | Type | Description |`n"
              $md += "| :--- | :--- | :--- |`n"
              foreach ($var in $inputs.Values) { 
                 # <--- CHANGE: Added backticks
-                $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"
+                $md += "| $($var.Name) | $($var.Type) | $($var.Comment) |`n"
              }
         }
         $md += "`n"
@@ -334,7 +334,7 @@ function Convert-DeclarationToMarkdown {
         $md += "| :--- | :--- | :--- |`n"
         foreach ($var in $outputs.Values) { 
             # <--- CHANGE: Added backticks
-            $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"
+            $md += "| $($var.Name) | $($var.Type) | $($var.Comment) |`n"
         }
         $md += "`n"
     }
@@ -345,7 +345,7 @@ function Convert-DeclarationToMarkdown {
         $md += "| :--- | :--- | :--- |`n"
         foreach ($var in $vars.Values) { 
             # <--- CHANGE: Added backticks
-            $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"     
+            $md += "| $($var.Name) | $($var.Type) | $($var.Comment) |`n"     
         }
             $md += "`n"
      }
@@ -375,7 +375,7 @@ function Read-SourceFile-XML
     
     # --- Build Header ---
     # <--- CHANGE: Added TOC and horizontal rules for readability
-    $strContent = "[[_TOC_]]`n`n# $pouName`n"
+    $strContent = "# $pouName`n"
     if ($pouImplements) {
         $strContent += "> **Implements:** `$pouImplements``n"
     }
@@ -385,7 +385,7 @@ function Read-SourceFile-XML
     # --- Parse Main Declaration ---
     # The CDATA section is just text, so we pass it to our ST parser
     $mainDeclarationText = $pou.Declaration.'#cdata-section'
-    $strContent += "## 📜 Declaration (Variables)`n`n" # Added emoji
+    $strContent += "## Declaration (Variables)`n`n" # Added emoji
     $strContent += Convert-DeclarationToMarkdown -Declaration $mainDeclarationText
     $strContent += "`n"
 
@@ -396,7 +396,7 @@ function Read-SourceFile-XML
 
     # --- Parse Methods ---
     if ($pou.Method) {
-        $strContent += "`n---\n`n## ⚙️ Methods`n`n" # Added HR/emoji
+        $strContent += "`n---\n`n## Methods`n`n" # Added HR/emoji
         foreach ($method in $pou.Method) {
             $methodName = $method.Name
             $methodDeclarationText = $method.Declaration.'#cdata-section'

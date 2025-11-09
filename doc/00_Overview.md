@@ -1,6 +1,4 @@
-﻿[[_TOC_]]
-
-# 🧱 Functionblocks
+﻿# Functionblocks
 
  1. [Source/Tc3_Event/plc01/POUs/FAST](Source/Tc3_Event/plc01/POUs/01_FAST.md)
  2. [Source/Tc3_Event/plc01/POUs/FB_TestFast](Source/Tc3_Event/plc01/POUs/02_FB_TestFast.md)
@@ -19,8 +17,8 @@
  15. [Source/Tc3_Event/Tc3_Event/Project Information/F_GetVersion](Source/Tc3_Event/Tc3_Event/Project Information/20_F_GetVersion.md)
 
 
----\n
-# ⚙️ Functions
+
+# Functions
 
  1. [Source/Tc3_Event/Tc3_Event/Helpers/F_Hash](Source/Tc3_Event/Tc3_Event/Helpers/07_F_Hash.md)
  2. [Source/Tc3_Event/Tc3_Event/Helpers/F_InstancePath](Source/Tc3_Event/Tc3_Event/Helpers/08_F_InstancePath.md)
@@ -29,8 +27,8 @@
  5. [Source/Tc3_Event/Tc3_Event/Helpers/LogLevel_To_TcEventSeverity](Source/Tc3_Event/Tc3_Event/Helpers/11_LogLevel_To_TcEventSeverity.md)
 
 
----\n
-# 📚 Datatypes
+
+# Datatypes
 
  1. [Types/Tc3_Event/Tc3_Event/Event/ST_Events](Types/Tc3_Event/Tc3_Event/Event/01_ST_Events.md)
  2. [Types/Tc3_Event/Tc3_Event/Helpers/File/E_FileState](Types/Tc3_Event/Tc3_Event/Helpers/File/02_E_FileState.md)

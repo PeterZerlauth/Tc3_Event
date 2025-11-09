@@ -1,19 +1,17 @@
-﻿[[_TOC_]]
-
-# F_InstancePath
+﻿# F_InstancePath
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sInstancePath; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sInstancePath; Type=STRING(255); Default=; Comment=}.Type) |  |
+| sInstancePath | STRING(255) |  |
 
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nPosition; Type=INT; Default=; Comment=}.Name) | $(@{Name=nPosition; Type=INT; Default=; Comment=}.Type) |  |
+| nPosition | INT |  |
 
 
 

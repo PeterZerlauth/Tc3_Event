@@ -1,36 +1,34 @@
-﻿[[_TOC_]]
-
-# FB_Event
+﻿# FB_Event
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=iLogger; Type=I_Logger; Default=; Comment=}.Name) | $(@{Name=iLogger; Type=I_Logger; Default=; Comment=}.Type) |  |
+| iLogger | I_Logger |  |
 
 ### VAR_OUTPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=fbArguments; Type=FB_Argument; Default=; Comment=}.Name) | $(@{Name=fbArguments; Type=FB_Argument; Default=; Comment=}.Type) |  |
+| fbArguments | FB_Argument |  |
 
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sInstancePath; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sInstancePath; Type=STRING(255); Default=; Comment=}.Type) |  |
-| $(@{Name=fbSymbolInfo; Type=PLC_ReadSymInfoByNameEx; Default=; Comment=}.Name) | $(@{Name=fbSymbolInfo; Type=PLC_ReadSymInfoByNameEx; Default=; Comment=}.Type) |  |
-| $(@{Name=fbSystemTime; Type=FB_LocalSystemTime; Default=; Comment=}.Name) | $(@{Name=fbSystemTime; Type=FB_LocalSystemTime; Default=; Comment=}.Type) |  |
-| $(@{Name=fbVerbose; Type=FB_Message; Default=; Comment=}.Name) | $(@{Name=fbVerbose; Type=FB_Message; Default=; Comment=}.Type) |  |
-| $(@{Name=fbInfo; Type=FB_Message; Default=; Comment=}.Name) | $(@{Name=fbInfo; Type=FB_Message; Default=; Comment=}.Type) |  |
-| $(@{Name=fbWarning; Type=FB_Message; Default=; Comment=}.Name) | $(@{Name=fbWarning; Type=FB_Message; Default=; Comment=}.Type) |  |
-| $(@{Name=fbError; Type=FB_Message; Default=; Comment=}.Name) | $(@{Name=fbError; Type=FB_Message; Default=; Comment=}.Type) |  |
-| $(@{Name=fbCritical; Type=FB_Message; Default=; Comment=}.Name) | $(@{Name=fbCritical; Type=FB_Message; Default=; Comment=}.Type) |  |
+| sInstancePath | STRING(255) |  |
+| fbSymbolInfo | PLC_ReadSymInfoByNameEx |  |
+| fbSystemTime | FB_LocalSystemTime |  |
+| fbVerbose | FB_Message |  |
+| fbInfo | FB_Message |  |
+| fbWarning | FB_Message |  |
+| fbError | FB_Message |  |
+| fbCritical | FB_Message |  |
 
 
 
 ---\n
-## ⚙️ Methods
+## Methods
 
 ### FB_Init
 
@@ -44,8 +42,8 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=bInitRetains; Type=BOOL; Default=; Comment=TRUE: Die Retain-Variablen werden initialisiert (Reset warm / Reset kalt)}.Name) | $(@{Name=bInitRetains; Type=BOOL; Default=; Comment=TRUE: Die Retain-Variablen werden initialisiert (Reset warm / Reset kalt)}.Type) | TRUE: Die Retain-Variablen werden initialisiert (Reset warm / Reset kalt) |
-| $(@{Name=bInCopyCode; Type=BOOL; Default=; Comment=}.Name) | $(@{Name=bInCopyCode; Type=BOOL; Default=; Comment=}.Type) |  |
+| bInitRetains | BOOL | TRUE: Die Retain-Variablen werden initialisiert (Reset warm / Reset kalt) |
+| bInCopyCode | BOOL |  |
 
 ### M_Critical
 
@@ -54,8 +52,8 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nID; Type=UDINT; Default=; Comment=}.Name) | $(@{Name=nID; Type=UDINT; Default=; Comment=}.Type) |  |
-| $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
+| nID | UDINT |  |
+| sMessage | STRING(255) |  |
 
 ### M_Error
 
@@ -64,8 +62,8 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nID; Type=UDINT; Default=; Comment=}.Name) | $(@{Name=nID; Type=UDINT; Default=; Comment=}.Type) |  |
-| $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
+| nID | UDINT |  |
+| sMessage | STRING(255) |  |
 
 ### M_Info
 
@@ -74,8 +72,8 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nID; Type=UDINT; Default=; Comment=}.Name) | $(@{Name=nID; Type=UDINT; Default=; Comment=}.Type) |  |
-| $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
+| nID | UDINT |  |
+| sMessage | STRING(255) |  |
 
 ### M_Reset
 
@@ -87,7 +85,7 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
+| sMessage | STRING(255) |  |
 
 ### M_Warning
 
@@ -96,8 +94,8 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nID; Type=UDINT; Default=; Comment=}.Name) | $(@{Name=nID; Type=UDINT; Default=; Comment=}.Type) |  |
-| $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
+| nID | UDINT |  |
+| sMessage | STRING(255) |  |
 
 
 ---\n

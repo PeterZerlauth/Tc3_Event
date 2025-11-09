@@ -1,27 +1,25 @@
-﻿[[_TOC_]]
-
-# FB_FileLogger
+﻿# FB_FileLogger
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=eLogLevel; Type=[E_LogLevel](../Types/03_E_LogLevel.md); Default=; Comment=Provide logging}.Name) | $(@{Name=eLogLevel; Type=[E_LogLevel](../Types/03_E_LogLevel.md); Default=; Comment=Provide logging}.Type) | Provide logging |
-| $(@{Name=sPathName; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sPathName; Type=STRING(255); Default=; Comment=}.Type) |  |
+| eLogLevel | [E_LogLevel](../Types/03_E_LogLevel.md) | Provide logging |
+| sPathName | STRING(255) |  |
 
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=fbFile; Type=FB_File; Default=; Comment=}.Name) | $(@{Name=fbFile; Type=FB_File; Default=; Comment=}.Type) |  |
-| $(@{Name=aBuffer; Type=ARRAY; Default=; Comment=}.Name) | $(@{Name=aBuffer; Type=ARRAY; Default=; Comment=}.Type) |  |
-| $(@{Name=nBuffer; Type=UINT; Default=; Comment=}.Name) | $(@{Name=nBuffer; Type=UINT; Default=; Comment=}.Type) |  |
+| fbFile | FB_File |  |
+| aBuffer | ARRAY |  |
+| nBuffer | UINT |  |
 
 
 
 ---\n
-## ⚙️ Methods
+## Methods
 
 ### M_Log
 
@@ -30,14 +28,14 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=fbMessage; Type=FB_Message; Default=; Comment=}.Name) | $(@{Name=fbMessage; Type=FB_Message; Default=; Comment=}.Type) |  |
+| fbMessage | FB_Message |  |
 
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nTimestamp; Type=Tc2_Utilities.T_FILETIME64; Default=; Comment=}.Name) | $(@{Name=nTimestamp; Type=Tc2_Utilities.T_FILETIME64; Default=; Comment=}.Type) |  |
-| $(@{Name=nIndex; Type=uINT; Default=; Comment=}.Name) | $(@{Name=nIndex; Type=uINT; Default=; Comment=}.Type) |  |
-| $(@{Name=sLogLine; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sLogLine; Type=STRING(255); Default=; Comment=}.Type) |  |
+| nTimestamp | Tc2_Utilities.T_FILETIME64 |  |
+| nIndex | uINT |  |
+| sLogLine | STRING(255) |  |
 
 ### M_Reset
 

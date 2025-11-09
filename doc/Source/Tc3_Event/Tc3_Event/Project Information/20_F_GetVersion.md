@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# F_GetVersion
+﻿# F_GetVersion
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 
 

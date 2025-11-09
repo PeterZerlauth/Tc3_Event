@@ -1,30 +1,28 @@
-﻿[[_TOC_]]
-
-# FB_File
+﻿# FB_File
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_OUTPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=pBuffer; Type=POINTER; Default=; Comment=}.Name) | $(@{Name=pBuffer; Type=POINTER; Default=; Comment=}.Type) |  |
-| $(@{Name=nBuffer; Type=UDINT; Default=; Comment=}.Name) | $(@{Name=nBuffer; Type=UDINT; Default=; Comment=}.Type) |  |
-| $(@{Name=bError; Type=BOOL; Default=; Comment=}.Name) | $(@{Name=bError; Type=BOOL; Default=; Comment=}.Type) |  |
+| pBuffer | POINTER |  |
+| nBuffer | UDINT |  |
+| bError | BOOL |  |
 
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sFileName; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sFileName; Type=STRING(255); Default=; Comment=}.Type) |  |
-| $(@{Name=eMode; Type=SysFile.ACCESS_MODE; Default=; Comment=}.Name) | $(@{Name=eMode; Type=SysFile.ACCESS_MODE; Default=; Comment=}.Type) |  |
-| $(@{Name=hFile; Type=SysFile.SysTypes.RTS_IEC_HANDLE; Default=; Comment=}.Name) | $(@{Name=hFile; Type=SysFile.SysTypes.RTS_IEC_HANDLE; Default=; Comment=}.Type) |  |
-| $(@{Name=nResult; Type=SysFile.SysTypes.RTS_IEC_RESULT; Default=; Comment=}.Name) | $(@{Name=nResult; Type=SysFile.SysTypes.RTS_IEC_RESULT; Default=; Comment=}.Type) |  |
-| $(@{Name=pResult; Type=POINTER; Default=; Comment=}.Name) | $(@{Name=pResult; Type=POINTER; Default=; Comment=}.Type) |  |
+| sFileName | STRING(255) |  |
+| eMode | SysFile.ACCESS_MODE |  |
+| hFile | SysFile.SysTypes.RTS_IEC_HANDLE |  |
+| nResult | SysFile.SysTypes.RTS_IEC_RESULT |  |
+| pResult | POINTER |  |
 
 
 
 ---\n
-## ⚙️ Methods
+## Methods
 
 ### FB_Exit
 
@@ -37,7 +35,7 @@ die Methode aufgerufen, bevor die Steuerung den Code der Funktionsbaustein-Insta
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=bInCopyCode; Type=BOOL; Default=; Comment=TRUE: Die Exit-Methode wird aufgerufen, um die Instanz zu verlassen, die hinterher kopiert wird Online-Change).}.Name) | $(@{Name=bInCopyCode; Type=BOOL; Default=; Comment=TRUE: Die Exit-Methode wird aufgerufen, um die Instanz zu verlassen, die hinterher kopiert wird Online-Change).}.Type) | TRUE: Die Exit-Methode wird aufgerufen, um die Instanz zu verlassen, die hinterher kopiert wird Online-Change). |
+| bInCopyCode | BOOL | TRUE: Die Exit-Methode wird aufgerufen, um die Instanz zu verlassen, die hinterher kopiert wird Online-Change). |
 
 ### M_Close
 
@@ -54,7 +52,7 @@ Delete file
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sFileName; Type=STRING(255); Default=; Comment=Delete file}.Name) | $(@{Name=sFileName; Type=STRING(255); Default=; Comment=Delete file}.Type) | Delete file |
+| sFileName | STRING(255) | Delete file |
 
 ### M_GetSize
 
@@ -69,8 +67,8 @@ Open file
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sFileName; Type=STRING(255); Default=; Comment=Open file}.Name) | $(@{Name=sFileName; Type=STRING(255); Default=; Comment=Open file}.Type) | Open file |
-| $(@{Name=eMode; Type=SysFile.ACCESS_MODE; Default=; Comment=}.Name) | $(@{Name=eMode; Type=SysFile.ACCESS_MODE; Default=; Comment=}.Type) |  |
+| sFileName | STRING(255) | Open file |
+| eMode | SysFile.ACCESS_MODE |  |
 
 ### M_Read
 
@@ -89,7 +87,7 @@ Read file
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nState; Type=SysFile.SYS_FILE_STATUS; Default=; Comment=}.Name) | $(@{Name=nState; Type=SysFile.SYS_FILE_STATUS; Default=; Comment=}.Type) |  |
+| nState | SysFile.SYS_FILE_STATUS |  |
 
 ### M_Write
 
@@ -100,7 +98,7 @@ Writes the contents of the buffer into a file.
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=pBuffer; Type=POINTER; Default=; Comment=Writes the contents of the buffer into a file.}.Name) | $(@{Name=pBuffer; Type=POINTER; Default=; Comment=Writes the contents of the buffer into a file.}.Type) | Writes the contents of the buffer into a file. |
-| $(@{Name=nSize; Type=UDINT; Default=; Comment=}.Name) | $(@{Name=nSize; Type=UDINT; Default=; Comment=}.Type) |  |
+| pBuffer | POINTER | Writes the contents of the buffer into a file. |
+| nSize | UDINT |  |
 
 

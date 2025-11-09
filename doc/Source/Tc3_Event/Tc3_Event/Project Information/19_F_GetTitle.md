@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# F_GetTitle
+﻿# F_GetTitle
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 
 
