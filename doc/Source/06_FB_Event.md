@@ -30,7 +30,7 @@
 
 ## Methods
 
-### ### FB_Init
+### FB_Init
 
 **Returns:** BOOL (Implicit)
 
@@ -45,7 +45,7 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 | bInitRetains | BOOL | TRUE: Die Retain-Variablen werden initialisiert (Reset warm / Reset kalt) |
 | bInCopyCode | BOOL |  |
 
-### ### M_Critical
+### M_Critical
 
 **Returns:** (None)
 
@@ -55,7 +55,7 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 | nID | UDINT |  |
 | sMessage | STRING(255) |  |
 
-### ### M_Error
+### M_Error
 
 **Returns:** (None)
 
@@ -65,7 +65,7 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 | nID | UDINT |  |
 | sMessage | STRING(255) |  |
 
-### ### M_Info
+### M_Info
 
 **Returns:** (None)
 
@@ -75,10 +75,10 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 | nID | UDINT |  |
 | sMessage | STRING(255) |  |
 
-### ### M_Reset
+### M_Reset
 
 **Returns:** $(System.Collections.Hashtable['Return'])`n
-### ### M_Verbose
+### M_Verbose
 
 **Returns:** (None)
 
@@ -87,7 +87,7 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 | :--- | :--- | :--- |
 | sMessage | STRING(255) |  |
 
-### ### M_Warning
+### M_Warning
 
 **Returns:** (None)
 
@@ -101,12 +101,12 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 
 ##Properties
 
-### ### P_Argument
+### P_Argument
 
 **Type:** $propType`n
 * **Get:** Available
 
-### ### P_Logger
+### P_Logger
 
 **Type:** $propType`n
 * **Get:** Available

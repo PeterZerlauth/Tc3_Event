@@ -13,7 +13,7 @@
 
 ## Methods
 
-### ### M_AddBOOL
+### M_AddBOOL
 
 **Returns:** (None)
 
@@ -22,7 +22,7 @@
 | :--- | :--- | :--- |
 | bValue | BOOL |  |
 
-### ### M_AddINT
+### M_AddINT
 
 **Returns:** (None)
 
@@ -36,7 +36,7 @@
 | :--- | :--- | :--- |
 | sTemp | STRING |  |
 
-### ### M_AddREAL
+### M_AddREAL
 
 **Returns:** (None)
 
@@ -51,7 +51,7 @@
 | :--- | :--- | :--- |
 | sTemp | STRING |  |
 
-### ### M_AddSTRING
+### M_AddSTRING
 
 **Returns:** (None)
 
@@ -60,7 +60,7 @@
 | :--- | :--- | :--- |
 | sValue | STRING(255) |  |
 
-### ### M_AddTIME
+### M_AddTIME
 
 **Returns:** (None)
 
@@ -69,7 +69,7 @@
 | :--- | :--- | :--- |
 | tValue | TIME |  |
 
-### ### M_Clear
+### M_Clear
 
 **Returns:** (None)
 
@@ -77,7 +77,7 @@
 
 ##Properties
 
-### ### P_Value
+### P_Value
 
 **Type:** $propType`n
 * **Get:** Available

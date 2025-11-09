@@ -24,7 +24,7 @@
 
 ## Methods
 
-### ### FB_Exit
+### FB_Exit
 
 **Returns:** (None)
 
@@ -37,13 +37,13 @@ die Methode aufgerufen, bevor die Steuerung den Code der Funktionsbaustein-Insta
 | :--- | :--- | :--- |
 | bInCopyCode | BOOL | TRUE: Die Exit-Methode wird aufgerufen, um die Instanz zu verlassen, die hinterher kopiert wird Online-Change). |
 
-### ### M_Close
+### M_Close
 
 **Returns:** (None)
 
 Closes the currently opened file.
 
-### ### M_Delete
+### M_Delete
 
 **Returns:** (None)
 
@@ -54,11 +54,11 @@ Delete file
 | :--- | :--- | :--- |
 | sFileName | STRING(255) | Delete file |
 
-### ### M_GetSize
+### M_GetSize
 
 **Returns:** (None)
 
-### ### M_Open
+### M_Open
 
 **Returns:** (None)
 
@@ -70,17 +70,17 @@ Open file
 | sFileName | STRING(255) | Open file |
 | eMode | SysFile.ACCESS_MODE |  |
 
-### ### M_Read
+### M_Read
 
 **Returns:** (None)
 
 Read file
 
-### ### M_Reset
+### M_Reset
 
 **Returns:** (None)
 
-### ### M_Status
+### M_Status
 
 **Returns:** (None)
 
@@ -89,7 +89,7 @@ Read file
 | :--- | :--- | :--- |
 | nState | SysFile.SYS_FILE_STATUS |  |
 
-### ### M_Write
+### M_Write
 
 **Returns:** (None)
 

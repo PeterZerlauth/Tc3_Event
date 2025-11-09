@@ -21,7 +21,7 @@
 
 ## Methods
 
-### ### M_Log
+### M_Log
 
 **Returns:** (None)
 
@@ -37,14 +37,14 @@
 | nIndex | uINT |  |
 | sLogLine | STRING(255) |  |
 
-### ### M_Reset
+### M_Reset
 
 **Returns:** $(System.Collections.Hashtable['Return'])`n
 
 
 ##Properties
 
-### ### P_LogLevel
+### P_LogLevel
 
 **Type:** $propType`n
 * **Get:** Available

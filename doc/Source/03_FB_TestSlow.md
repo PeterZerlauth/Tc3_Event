@@ -18,7 +18,7 @@
 
 ##Properties
 
-### ### P_Event
+### P_Event
 
 **Type:** $propType`n
 * **Get:** Available

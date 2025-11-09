@@ -360,7 +360,7 @@ function Read-SourceFile-XML
             $methodName = $method.Name
             $methodDeclarationText = $method.Declaration.'#cdata-section'
             
-            $strContent += "### ### $methodName`n`n"
+            $strContent += "### $methodName`n`n"
             
             # Get Return Type from the method declaration
             # <--- FIX: Use double-quotes to expand the $Matches variable
@@ -395,7 +395,7 @@ function Read-SourceFile-XML
             $propName = $prop.Name
             $propDeclarationText = $prop.Declaration.'#cdata-section'
 
-            $strContent += "### ### $propName`n`n"
+            $strContent += "### $propName`n`n"
             
             # Get Property Type
             if ($propDeclarationText -match 'PROPERTY .* : (?<Type>[\w\._]+)') {

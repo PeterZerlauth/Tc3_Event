@@ -15,7 +15,7 @@
 
 ## Methods
 
-### ### FB_exit
+### FB_exit
 
 **Returns:** $(System.Collections.Hashtable['Return'])`n
 ### VAR_INPUT
@@ -23,7 +23,7 @@
 | :--- | :--- | :--- |
 | bInCopyCode | BOOL | if TRUE, the exit method is called for exiting an instance that is copied afterwards (online change). |
 
-### ### M_Add
+### M_Add
 
 **Returns:** (None)
 
@@ -37,11 +37,11 @@
 | :--- | :--- | :--- |
 | pOldList | POINTER |  |
 
-### ### M_Clear
+### M_Clear
 
 **Returns:** (None)
 
-### ### M_Find
+### M_Find
 
 **Returns:** (None)
 
@@ -55,7 +55,7 @@
 | :--- | :--- | :--- |
 | nIndex | UINT |  |
 
-### ### M_Index
+### M_Index
 
 **Returns:** (None)
 
@@ -64,7 +64,7 @@
 | :--- | :--- | :--- |
 | nIndex | DINT |  |
 
-### ### M_Log
+### M_Log
 
 **Returns:** (None)
 
@@ -78,7 +78,7 @@
 | :--- | :--- | :--- |
 | nIndex | INT |  |
 
-### ### M_Remove
+### M_Remove
 
 **Returns:** (None)
 
@@ -93,7 +93,7 @@
 | pOldList | POINTER |  |
 | nPosition | DINT |  |
 
-### ### M_Reset
+### M_Reset
 
 **Returns:** $(System.Collections.Hashtable['Return'])`n
 ### VAR
@@ -105,7 +105,7 @@
 
 ##Properties
 
-### ### P_Length
+### P_Length
 
 **Type:** $propType`n
 * **Get:** Available
