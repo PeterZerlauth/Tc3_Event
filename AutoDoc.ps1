@@ -1,4 +1,19 @@
-﻿cls
+﻿<#
+.SYNOPSIS
+Generates Markdown documentation from TwinCAT PLC sources.
+.DESCRIPTION
+Parses POU, DUT, and GVL definitions and writes markdown files per type.
+.PARAMETER SourcePath
+Path to TwinCAT source folder.
+.PARAMETER OutputPath
+Where to save generated Markdown files.
+.EXAMPLE
+.\AutoDoc.ps1 -SourcePath .\TcProject -OutputPath .\Docs
+Orginal version from
+https://github.com/hooxSoftware/TwincatAutodoc
+#>
+
+cls
 
 $strProject = 'C:\source\repos\Tc3_Logging\Tc3_Event\Tc3_Event' # change this lines for your Project
 $strExport  = 'C:\source\repos\Tc3_Logging\doc' # add folder for the md-files
@@ -58,7 +73,7 @@ function New-Documentation
         Write-Host "Create sources..."
         if ($Subfolder)
         {
-            $strSubfolder = "Source"
+            $strSubfolder = "Tc3_Event"
         }
     }
     if ($FileType.contains("GVL"))
@@ -66,7 +81,7 @@ function New-Documentation
         Write-Host "Create variables..."
         if ($Subfolder)
         {
-            $strSubfolder += "\Variables"
+            $strSubfolder += "\Tc3_Event"
         }
     }
  
@@ -160,6 +175,7 @@ function New-Overview
     )
  
     Write-Host "Create Overview"
+
  
     # Ensure the directory exists
     if (-not (Test-Path $Destination)) {
@@ -575,6 +591,7 @@ function Create-TypeMap
         [string] $Path,
         [switch] $Subfolder      
     )
+    Create-TypeMap
  
     $index = 0
     Write-Host "Create global Type map..."
@@ -618,6 +635,9 @@ function Create-TypeMap
  
     }
 }
+
+
+
  
 # --- Main Execution ---
 Create-TypeMap -Path $strProject -Subfolder
