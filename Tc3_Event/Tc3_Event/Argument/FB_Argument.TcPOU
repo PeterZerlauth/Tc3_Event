@@ -2,33 +2,36 @@
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_Argument" Id="{a8de1bab-544f-463d-b649-c52e572fc35a}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'no_explicit_call' := 'do not call this POU directly'}
+// Store arguments in a single string seperated by $R
 FUNCTION_BLOCK FB_Argument IMPLEMENTS I_Argument
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	sValue:					STRING(255); 
+	sValue:					STRING(255);		// storage for arguments
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
     <Method Name="M_AddBOOL" Id="{6fe5c2f5-9f6f-45ef-a512-7b981b0be320}">
-      <Declaration><![CDATA[METHOD PUBLIC M_AddBOOL : I_Argument
+      <Declaration><![CDATA[// add boolean value to arguments
+METHOD PUBLIC M_AddBOOL : I_Argument
 VAR_INPUT
-	bValue:				BOOL;
+	bValue:				BOOL;		// Boolean input value
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[sValue:= CONCAT(sValue, BOOL_TO_STRING(bValue));			// convert
-sValue:= CONCAT(sValue, '$R');				// add separator
+sValue:= CONCAT(sValue, '$R');								// add separator
 M_AddBOOL:= THIS^;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_AddINT" Id="{0fb61d34-2130-4e2b-8ca3-a66334bd442e}">
-      <Declaration><![CDATA[METHOD PUBLIC M_AddINT : I_Argument
+      <Declaration><![CDATA[// add int value to arguments
+METHOD PUBLIC M_AddINT : I_Argument
 VAR_INPUT
-	nValue:				LINT;
+	nValue:				LINT;		// Integer input value
 END_VAR
 VAR
 	sTemp: 			STRING;
@@ -39,10 +42,11 @@ M_AddINT:= THIS^;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_AddREAL" Id="{ec2078de-d198-403e-9f1d-9aa3713c42cf}">
-      <Declaration><![CDATA[METHOD PUBLIC M_AddREAL : I_Argument
+      <Declaration><![CDATA[// add real value to arguments
+METHOD PUBLIC M_AddREAL : I_Argument
 VAR_INPUT
-	fValue:				LREAL;
-	nDecimals:			USINT;
+	fValue:				LREAL;		// Real input value
+	nDecimals:			USINT;		// Decimals afer .
 END_VAR
 VAR
 	sTemp: 			STRING;
@@ -53,9 +57,10 @@ M_AddREAL:= THIS^;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_AddSTRING" Id="{6ddea08b-8528-414a-b8b0-ca7a04ccfa78}">
-      <Declaration><![CDATA[METHOD PUBLIC M_AddSTRING : I_Argument
+      <Declaration><![CDATA[// add string value to arguments
+METHOD PUBLIC M_AddSTRING : I_Argument
 VAR_INPUT
-	sValue:				STRING(255);
+	sValue:				STRING(255);		// String input value
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -64,9 +69,10 @@ M_AddSTRING:= THIS^;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_AddTIME" Id="{5bf7bbc0-6a06-4191-858d-e9e3e764bb18}">
-      <Declaration><![CDATA[METHOD PUBLIC M_AddTIME : I_Argument
+      <Declaration><![CDATA[// add time value to arguments
+METHOD PUBLIC M_AddTIME : I_Argument
 VAR_INPUT
-	tValue:				TIME;
+	tValue:				TIME;		// Time input value
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -75,7 +81,8 @@ M_AddTIME:= THIS^;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Clear" Id="{1a899f54-f4aa-43d6-ba56-2488949d893d}">
-      <Declaration><![CDATA[METHOD PUBLIC M_Clear : I_Argument
+      <Declaration><![CDATA[// Clear arguments
+METHOD PUBLIC M_Clear : I_Argument
 VAR_INPUT
 END_VAR]]></Declaration>
       <Implementation>
@@ -84,7 +91,8 @@ M_Clear:= THIS^;]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_Value" Id="{364579c4-8829-400e-a5c9-b1603a0f22c8}">
-      <Declaration><![CDATA[PROPERTY PUBLIC P_Value : string(255)]]></Declaration>
+      <Declaration><![CDATA[// Returns the list with arguments
+PROPERTY PUBLIC P_Value : STRING(255)]]></Declaration>
       <Get Name="Get" Id="{a740fb78-092e-4273-9e56-34b846282910}">
         <Declaration><![CDATA[VAR
 END_VAR

@@ -2,12 +2,10 @@
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_Event" Id="{fcfa56ff-d0f1-4149-9de7-6f44354915c6}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'reflection'} 
+// Providing the event logger
 FUNCTION_BLOCK FB_Event IMPLEMENTS I_Event
 VAR_INPUT
-	iLogger:					I_Logger;
-END_VAR
-VAR_OUTPUT
-	fbArguments:				FB_Argument;
+	iLogger:					I_Logger;		// Interface has to be attached to a Valid target
 END_VAR
 VAR
     {attribute 'hide'} 
@@ -16,12 +14,12 @@ VAR
     sInstancePath:				STRING(255);
 	fbSymbolInfo: 				PLC_ReadSymInfoByNameEx;
 	fbSystemTime: 				FB_LocalSystemTime;
+	fbArguments:				FB_Argument;
 	fbVerbose:					FB_Message;
 	fbInfo:						FB_Message;
 	fbWarning:					FB_Message;
 	fbError:					FB_Message;
 	fbCritical:					FB_Message;
-
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -49,8 +47,8 @@ fbSystemTime.bEnable:= TRUE;]]></ST>
     <Method Name="M_Critical" Id="{7b4c91bf-8e3c-413c-a148-e271617106d9}">
       <Declaration><![CDATA[METHOD PUBLIC M_Critical : BOOL
 VAR_INPUT
-	nID:				UDINT;
-	sMessage:			STRING(255);
+	nID:				UDINT;				// Id of the error message
+	sMessage:			STRING(255);		// content of the error message, placeholder %s
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF sMessage = '' THEN
@@ -79,8 +77,8 @@ fbArguments.M_Clear();]]></ST>
     <Method Name="M_Error" Id="{11687e23-ea95-4e4f-aed4-4799ffa1ad84}">
       <Declaration><![CDATA[METHOD PUBLIC M_Error : BOOL
 VAR_INPUT
-	nID:				UDINT;
-	sMessage:			STRING(255);
+	nID:				UDINT;				// Id of the error message
+	sMessage:			STRING(255);		// content of the error message, placeholder %s
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -110,8 +108,8 @@ fbArguments.M_Clear();]]></ST>
     <Method Name="M_Info" Id="{7a920e55-da6d-473b-9aba-119c4de007e0}">
       <Declaration><![CDATA[METHOD PUBLIC M_Info : BOOL
 VAR_INPUT
-	nID:				UDINT;
-	sMessage:			STRING(255);
+	nID:				UDINT;				// Id of the error message
+	sMessage:			STRING(255);		// content of the error message, placeholder %s
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF sMessage = '' THEN
@@ -150,7 +148,7 @@ END_IF]]></ST>
     <Method Name="M_Verbose" Id="{db95e385-16ed-493b-a6a5-28cc6625776b}">
       <Declaration><![CDATA[METHOD PUBLIC M_Verbose : BOOL
 VAR_INPUT
-	sMessage:			STRING(255);
+	sMessage:			STRING(255);		// content of the error message, placeholder %s
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF sMessage = '' THEN
@@ -180,7 +178,7 @@ fbArguments.M_Clear();]]></ST>
       <Declaration><![CDATA[METHOD PUBLIC M_Warning : BOOL
 VAR_INPUT
 	nID:				UDINT;
-	sMessage:			STRING(255);
+	sMessage:			STRING(255);		// content of the error message, placeholder %s
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF sMessage = '' THEN

@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_File" Id="{879562f4-6da1-45fb-a1f3-48bd69fd0a1e}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_File IMPLEMENTS I_File
+    <Declaration><![CDATA[// SysFile from codesys
+FUNCTION_BLOCK FB_File IMPLEMENTS I_File
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -21,20 +22,21 @@ END_VAR
     <Implementation>
       <ST><![CDATA[// https://peterzerlauth.com/]]></ST>
     </Implementation>
-    <Method Name="FB_Exit" Id="{98d0a586-8cfd-42c6-9316-faa787e1f54c}">
-      <Declaration><![CDATA[//FB_Exit muss explizit implementiert werden. Wenn es eine Implementierung gibt, dann wird 
-//die Methode aufgerufen, bevor die Steuerung den Code der Funktionsbaustein-Instanz entfernt
-//(impliziter Aufruf. Der Rückgabewert wird nicht ausgewertet.
+    <Method Name="FB_Exit" Id="{e003c4d3-9794-47f5-a74d-a8a3d7f36901}">
+      <Declaration><![CDATA[//FB_Exit must be implemented explicitly. If there is an implementation, then the
+//method is called before the controller removes the code of the function block instance
+//(implicit call). The return value is not evaluated.
+// Try to close and reset on exit
 METHOD FB_Exit: BOOL
-VAR_INPUT    
-bInCopyCode: BOOL;  // TRUE: Die Exit-Methode wird aufgerufen, um die Instanz zu verlassen, die hinterher kopiert wird Online-Change).  
+VAR_INPUT
+    bInCopyCode: BOOL;  // TRUE: the exit method is called in order to leave the instance which will be copied afterwards (online change).  
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[M_Reset();]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Close" Id="{2032b7d9-4eba-4de7-bc38-d769b85ee782}">
-      <Declaration><![CDATA[// Closes the currently opened file.
+      <Declaration><![CDATA[// Closes the file if opened
 METHOD PUBLIC M_Close : BOOL
 VAR_INPUT
 END_VAR]]></Declaration>
@@ -70,7 +72,8 @@ END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_GetSize" Id="{da2b00f7-d9aa-4c86-85c6-4fdbc9147466}">
-      <Declaration><![CDATA[METHOD PUBLIC M_GetSize : UDINT
+      <Declaration><![CDATA[// Get file size
+METHOD PUBLIC M_GetSize : UDINT
 VAR_INPUT
 END_VAR
 ]]></Declaration>
@@ -86,8 +89,8 @@ END_IF]]></ST>
       <Declaration><![CDATA[// Open file
 METHOD PUBLIC M_Open : BOOL
 VAR_INPUT
-    sFileName:				STRING(255);
-	eMode: 					SysFile.ACCESS_MODE := SysFile.AM_APPEND_PLUS;
+    sFileName:				STRING(255);					// file path
+	eMode: 					SysFile.ACCESS_MODE := SysFile.AM_APPEND_PLUS;	// file mode
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -105,6 +108,10 @@ END_VAR
    ELSE
 	    bError := TRUE;
    END_IF
+ELSE 
+	IF THIS^.sFileName = sFileName THEN
+		M_Open:= TRUE;
+	END_IF
 END_IF]]></ST>
       </Implementation>
     </Method>
@@ -136,7 +143,8 @@ END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Reset" Id="{660bc645-1599-4faa-a426-caca69a6fcc6}">
-      <Declaration><![CDATA[METHOD PUBLIC M_Reset : BOOL
+      <Declaration><![CDATA[// Reset all 
+METHOD PUBLIC M_Reset : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
@@ -153,7 +161,8 @@ M_Reset:= TRUE;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Status" Id="{8f0ab01f-d98a-40bc-9f73-79c89b4ed20b}">
-      <Declaration><![CDATA[METHOD PUBLIC M_Status : E_FileState
+      <Declaration><![CDATA[// File status
+METHOD PUBLIC M_Status : E_FileState
 VAR_INPUT
 END_VAR
 VAR 
@@ -187,7 +196,7 @@ END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Write" Id="{b956b515-594f-440e-be50-f979325c8ffe}">
-      <Declaration><![CDATA[// Writes the contents of the buffer into a file.
+      <Declaration><![CDATA[// Writes content to a file
 METHOD PUBLIC M_Write : BOOL
 VAR_INPUT
 	pBuffer:	POINTER TO BYTE;
@@ -198,7 +207,7 @@ END_VAR]]></Declaration>
     RETURN;
 END_IF
 
-IF hFile <> 0 THEN
+IF hFile > 0 THEN
 	SysFile.SysFileWrite(hFile := hFile, pbyBuffer := pBuffer, ulSize := nSize, pResult := pResult);
 END_IF
 

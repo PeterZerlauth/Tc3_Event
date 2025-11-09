@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
   <POU Name="F_Hash" Id="{2d3e548d-bd41-4058-8175-62ee312380d5}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION F_Hash : UDINT
+    <Declaration><![CDATA[// Calculate hash value 
+FUNCTION F_Hash : UDINT
 VAR_INPUT
-    sInput:					STRING(255);   // input string to hash
+    sInput:					STRING(255);   				// input string to hash
 END_VAR
 VAR
     nLength:				INT := 0;    				// length of the input string

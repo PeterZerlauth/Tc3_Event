@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
   <POU Name="F_Print" Id="{bd1ae1ff-de92-4fbf-9c28-b97df594421e}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION F_Print : STRING(255)
+    <Declaration><![CDATA[// Helper to generate a message with replaced arguments
+FUNCTION F_Print : STRING(255)
 VAR_INPUT
     sMessage:				STRING(255);
     sArguments:				STRING(255);	// Arguments are separated by $R 

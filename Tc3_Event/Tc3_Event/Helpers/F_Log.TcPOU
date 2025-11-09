@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
   <POU Name="F_Log" Id="{3d8b8d8d-2aeb-485f-a382-76004536aaec}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION F_Log : BOOL
+    <Declaration><![CDATA[// Backup logger, if no logger is attached to FB_Event
+FUNCTION F_Log : BOOL
 VAR_INPUT
 	fbMessage:			REFERENCE TO FB_Message;
 END_VAR

@@ -19,6 +19,8 @@ END_VAR
     <Implementation>
       <ST><![CDATA[fbEvent();
 
+// Demonstration of FB_Event usage with various log levels and argument types
+
 IF bVerbose THEN
 	fbEvent.P_Argument.M_AddINT(134052566194980000);
 	fbEvent.P_Argument.M_AddSTRING('mm');

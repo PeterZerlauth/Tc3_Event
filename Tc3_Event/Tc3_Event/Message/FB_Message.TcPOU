@@ -2,6 +2,7 @@
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_Message" Id="{84167246-7318-466e-9219-bf236e6d60e2}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'analysis' := '-33'}
+// Payload for events
 FUNCTION_BLOCK FB_Message
 VAR_INPUT
 	eLogLevel:			E_LogLevel;

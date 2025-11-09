@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
   <POU Name="LogLevel_To_TcEventSeverity" Id="{2125d2a6-85a2-44a9-b27f-c4f068813b29}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION LogLevel_To_TcEventSeverity : TcEventSeverity
+    <Declaration><![CDATA[// Converts internal loglevel to twincat severity
+FUNCTION LogLevel_To_TcEventSeverity : TcEventSeverity
 VAR_INPUT
 	eLogLevel:				E_LogLevel;
 END_VAR
