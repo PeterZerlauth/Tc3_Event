@@ -28,7 +28,7 @@ $global:Functions = @()
 # <--- END CHANGE ---
 $global:TypesMap = @{} # Ensure global map is initialized
 
- # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Entrypoint for documentation
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function New-Documentation
@@ -76,26 +76,20 @@ function New-Documentation
       $strPath = Split-Path -Parent $_.fullname
       $strFile = Split-Path -Leaf $_.fullname
  
-      # <--- CHANGE: Prepare for $ParseResult object from POU ---
       $Content = ""
       $ParseResult = $null
-      # <--- END CHANGE ---
-
+ 
       if ($FileType.contains("DUT"))
       {
         $Content = Read-TypeFile -Path $strPath -File $strFile
       }
       if ($FileType.contains("POU"))
       {
-        # <--- CHANGE: Get object instead of just string
         $ParseResult = Read-SourceFile-XML -Path $strPath -File $strFile
         $Content = $ParseResult.Content
-        # <--- END CHANGE ---
       }
       if ($FileType.contains("GVL"))
       {
-        # GVL parsing was not defined, so we'll just skip it for now
-        # $Content = Read-SourceFile -Path $strPath -File $strFile
         $Content = "# $strFile (GVL)`n`n*Automatic parsing for GVL files is not yet implemented.*"
       }
      
@@ -116,7 +110,6 @@ function New-Documentation
           $FolderNew += $strPath.Replace($Path,"")
       }
  
-      # Ensure the directory exists before creating the file
       if (-not (Test-Path $FolderNew)) {
           New-Item -Path $FolderNew -ItemType Directory -Force | Out-Null
       }
@@ -125,9 +118,17 @@ function New-Documentation
  
       $temp = New-Item -Path $FolderNew -Name $FileNew -Force
  
-      # <--- CHANGE: Use forward slashes and sort into new lists ---
-      $LinkPath = ("$strSubfolder\" + $FileNew.Replace($index.ToString() + "_", $index.ToString("00") + "_")).Replace("\", "/")
+      # <--- CHANGE: Link generation now uses the final $FolderNew path
+      # Get the path of the folder *relative* to the doc root
+      $RelativeFolderPath = $FolderNew.Replace($Destination, "").Replace("\", "/")
+      
+      # Clean up any leading slashes
+      if ($RelativeFolderPath.StartsWith("/")) { $RelativeFolderPath = $RelativeFolderPath.Substring(1) }
 
+      # Create the final link path. $FileNew already has the correct 01_ padding.
+      $LinkPath = "$RelativeFolderPath/$FileNew"
+      # <--- END CHANGE ---
+ 
       if ($FileType.contains("DUT"))
       {
         $global:TypesOverview += $LinkPath
@@ -136,16 +137,14 @@ function New-Documentation
       {
         if ($ParseResult.POUType -eq 'Function') {
             $global:Functions += $LinkPath
-        } else { # Default to FunctionBlock
+        } else {
             $global:FunctionBlocks += $LinkPath
         }
       }
-      # <--- END CHANGE ---
      
       Set-Content -Path "$FolderNew\$FileNew" -Value $Content -Encoding UTF8   
  
     }
- 
 }
 
  
