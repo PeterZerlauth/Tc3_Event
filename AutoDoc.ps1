@@ -235,13 +235,11 @@ function Convert-DeclarationToMarkdown {
         if ($trimmedLine -match $VarRegex) {
             $varName = $Matches['Name']
             $varType = $Matches['Type']
+            $varDefault = ""
 
-            # <--- FIX 1: Check for $null before calling .Trim() ---
-            $varDefault = "" # Default to an empty string
             if ($Matches['Default']) {
                 $varDefault = $Matches['Default'].Trim()
             }
-            # <--- END OF FIX 1 ---
             
             # Use the pending comment *or* the inline comment
             $varComment = $pendingComment
@@ -265,13 +263,11 @@ function Convert-DeclarationToMarkdown {
             }
 
             # Add to the correct dictionary
-            # <--- FIX 2: Use .Contains() instead of .ContainsKey() ---
             switch ($currentSection) {
                 'INPUT'  { if (-not $inputs.Contains($varName)) { $inputs.Add($varName, $varObj) } }
                 'OUTPUT' { if (-not $outputs.Contains($varName)) { $outputs.Add($varName, $varObj) } }
                 'VAR'    { if (-not $vars.Contains($varName)) { $vars.Add($varName, $varObj) } }
             }
-            # <--- END OF FIX 2 ---
 
             $pendingComment = '' # Reset comment after it's "used" by a variable
         }
