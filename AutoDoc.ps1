@@ -1,6 +1,6 @@
 ﻿cls
 
-$strProject = 'C:\source\repos\Tc3_Logging' # change this lines for your Project
+$strProject = 'C:\source\repos\Tc3_Logging\Tc3_Event\Tc3_Event' # change this lines for your Project
 $strExport  = 'C:\source\repos\Tc3_Logging\doc' # add folder for the md-files
  
 # --- Original Regex (some still used by Read-TypeFile) ---
