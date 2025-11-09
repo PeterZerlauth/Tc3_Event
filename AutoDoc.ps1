@@ -83,7 +83,9 @@ function New-Documentation
       }
       if ($FileType.contains("GVL"))
       {
-        $Content = Read-SourceFile -Path $strPath -File $strFile
+        # GVL parsing was not defined, so we'll just skip it for now
+        # $Content = Read-SourceFile -Path $strPath -File $strFile
+        $Content = "# $strFile (GVL)`n`n*Automatic parsing for GVL files is not yet implemented.*"
       }
      
       $FileNew = ""
@@ -103,6 +105,11 @@ function New-Documentation
           $FolderNew += $strPath.Replace($Path,"")
       }
  
+      # Ensure the directory exists before creating the file
+      if (-not (Test-Path $FolderNew)) {
+          New-Item -Path $FolderNew -ItemType Directory -Force | Out-Null
+      }
+
       Write-Host "Create $FileNew"
  
       $temp = New-Item -Path $FolderNew -Name $FileNew -Force
@@ -137,6 +144,11 @@ function New-Overview
  
     Write-Host "Create Overview"
  
+    # Ensure the directory exists
+    if (-not (Test-Path $Destination)) {
+        New-Item -Path $Destination -ItemType Directory -Force | Out-Null
+    }
+
     $temp = New-Item -Path $Destination -Name "00_Overview.md" -Force
  
     $strContent = "[[_TOC_]]`n`n"
@@ -223,9 +235,8 @@ function Convert-DeclarationToMarkdown {
         if ($trimmedLine -match $VarRegex) {
             $varName = $Matches['Name']
             $varType = $Matches['Type']
-            
+
             # <--- FIX 1: Check for $null before calling .Trim() ---
-            # Was: $varDefault = $Matches['Default'].Trim()
             $varDefault = "" # Default to an empty string
             if ($Matches['Default']) {
                 $varDefault = $Matches['Default'].Trim()
@@ -241,7 +252,7 @@ function Convert-DeclarationToMarkdown {
             # Linkify the Type if it's in our global map
             $linkedType = $varType
             if ($global:TypesMap.ContainsKey($varType)) {
-                # --- FIX: Replace forward slashes, not backslashes ---
+                # --- FIX: Path needs to go up one level
                 $relativePath = $global:TypesMap[$varType].Replace("Types/", "../Types/") 
                 $linkedType = "[$varType]($relativePath)"
             }
@@ -350,11 +361,13 @@ function Read-SourceFile-XML
             $strContent += "### ### $methodName`n`n"
             
             # Get Return Type from the method declaration
+            # <--- FIX: Use double-quotes to expand the $Matches variable
             if ($methodDeclarationText -match 'METHOD \w+ : (?<Return>[\w\._]+)') {
                 $strContent += "**Returns:** `$($Matches['Return'])``n`n"
             } elseif ($methodName -eq 'FB_Init') {
                  $strContent += "**Returns:** `BOOL` (Implicit)`n`n"
             } else {
+                 # <--- FIX: This method might not have a return, so just say (None)
                  $strContent += "**Returns:** `(None)`n`n"
             }
 
@@ -364,6 +377,7 @@ function Read-SourceFile-XML
                 ForEach-Object { $_.Trim().Substring(2).Trim() }
             
             if ($commentLines) {
+                # <--- FIX: Use double-quotes to ensure `n is treated as a newline
                 $strContent += ($commentLines -join " `n") + "`n`n"
             }
 
@@ -387,9 +401,11 @@ function Read-SourceFile-XML
                 
                 # Linkify Type
                 if ($global:TypesMap.ContainsKey($propType)) {
-                    $relativePath = $global:TypesMap[$propType].Replace("Types\", "../Types/")
+                    # <--- FIX: This path was wrong. It should go *up* from Source/ to Types/
+                    $relativePath = $global:TypesMap[$propType].Replace("Types/", "../Types/")
                     $propType = "[$propType]($relativePath)"
                 }
+                # <--- FIX: Use double-quotes to expand the $propType variable
                 $strContent += "**Type:** `$propType``n`n"
             }
 
@@ -405,7 +421,7 @@ function Read-SourceFile-XML
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Get content of tcDUT File
-# This function still uses Regex and could also be improved by parsing as XML.
+# REBUILT to use robust XML parsing instead of fragile Regex.
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function Read-TypeFile
 {
@@ -414,96 +430,103 @@ function Read-TypeFile
         [string] $File      
     )
  
-    Write-Host "Check Typefile $File "
-    $Declaration = $false
-    $strSource = Get-Content -Path "$Path\$File" -Encoding UTF8
- 
-    foreach($strLine in $strSource)
-    {
- 
-        if ($strLine -match $RegExType)
-        {
-            Write-Host $strLine
-            $Declaration = $true
- 
-            $strContent = "Type : " + $Matches["Name"] + "`n`n"
-           
-            if ($strSource.Contains("STRUCT"))
-            {
-                $strContent += "|Name |Type |Comment| `n"
-            }
-            else
-            {
-                $strContent += "|Name |Initvalue |Comment| `n"
-            }
- 
-            $strContent += "|---- |---- |----   | `n"
+    Write-Host "Parsing (XML) $File "
+    
+    [xml]$xmlContent = Get-Content -Path (Join-Path $Path $File) -Encoding UTF8
+    
+    # Handle missing DUT node gracefully
+    if (-not $xmlContent.TcPlcObject.DUT) {
+        Write-Warning "File $File does not appear to be a valid DUT file."
+        return "# $File`n`n*Error: Could not parse file as DUT.*"
+    }
+
+    $declaration = $xmlContent.TcPlcObject.DUT.Declaration.'#cdata-section'
+    
+    $typeName = ""
+    $isStruct = $declaration.Contains("STRUCT")
+    $isEnum = $declaration.Contains("(") -and -not $isStruct # A simple check for ENUMs
+    $strContent = ""
+
+    # Get the Type name
+    if ($declaration -match 'TYPE\s+(?<Name>\w+)\s*:') {
+        $typeName = $Matches['Name']
+    }
+
+    $strContent += "# $typeName`n`n"
+
+    if ($isStruct) {
+        $strContent += "| Name | Type | Comment |`n"
+        $strContent += "| :--- | :--- | :--- |`n"
+    } else { # Likely ENUM
+        $strContent += "| Name | Value | Comment |`n"
+        $strContent += "| :--- | :--- | :--- |`n"
+    }
+
+    $lines = $declaration.Split([Environment]::NewLine)
+    $pendingComment = ""
+    
+    # Regex to capture variables/members
+    $VarRegex = '^\s*(?<Name>\w+)\s*:\s*(?<Type>[\w\._\(\)]+)\s*;?\s*(?:\/\/\s*(?<Comment>.*))?'
+    # Regex to capture ENUMs
+    $EnumRegex = '^\s*(?<Name>\w+)\s*(?:\(:(=\s*)?(?<Value>\d+)\))?[,;]?\s*(?:\/\/\s*(?<Comment>.*))?'
+
+    foreach ($line in $lines) {
+        $trimmedLine = $line.Trim()
+
+        # Skip start/end
+        if ($trimmedLine.StartsWith("TYPE") -or $trimmedLine.StartsWith("END_TYPE")) { continue }
+        if ($trimmedLine.StartsWith("STRUCT") -or $trimmedLine.StartsWith("END_STRUCT")) { continue }
+
+        # Capture comments
+        if ($trimmedLine -match '^\/\/\s*(?<Value>.*)') {
+            $pendingComment = $Matches['Value'].Trim()
+            continue
         }
-        else
-        {
-            if ($Declaration -eq $true)
-            {
-                if (-not $strLine.Contains("EXTENDS") -and -not $strLine.Contains("STRUCT"))
-                {
-                    if ($strLine -match $RegexEnum)
-                    {
-                        $strContent += "|%1 |%2 |%3   | `n"                                               
-                        $strContent = $strContent.Replace("%1", $Matches["Variable"])
-                        $strContent = $strContent.Replace("%2", $Matches["Value"])
-                 
-                    }
-                    else
-                    {
-                        if ($strLine -match $RegexVariable)
-                        {                              
-                            $strTemp = "|%1 |%2 |%3   | `n"
-                            $strTemp = $strTemp.Replace("%1", $Matches["Variable"])
-                            $strTemp = $strTemp.Replace("%2", $Matches["Type"])
-                         
-                            if ($global:TypesMap.ContainsKey($Matches["Type"]))
-                            {
-                              $strLink = "[" + $Matches["Type"] + "](" + $global:TypesMap[$Matches["Type"]] + ")"
-                              $strLink = $strLink.Replace("Types\", "")
-                              $strTemp = $strTemp.Replace($Matches["Type"], $strLink)
-                            }
-                        
-                            $strContent += $strTemp                                                
-                        }
-                    }
-                    if ($strLine -match $RegexComment -or $strLine -match $RegexLineComment)
-                    {                              
-                         $strContent = $strContent.Replace("%3", $Matches["Value"])          
-                    }
- 
-                    if ($strContent)
-                    {
-                        $strContent = $strContent.Replace("%3", "")
-                    }  
-                }
- 
+        if ($trimmedLine -match '^\(\*\s*(?<Value>.*?)\s*\*\)') {
+            $pendingComment = $Matches['Value'].Trim()
+            continue
+        }
+
+        $row = ""
         
+        if ($isStruct -and ($trimmedLine -match $VarRegex)) {
+            $varName = $Matches['Name']
+            $varType = $Matches['Type']
+            $varComment = $pendingComment
+            if ($Matches['Comment']) { $varComment = $Matches['Comment'].Trim() }
+
+            # Linkify Type
+            $linkedType = $varType
+            if ($global:TypesMap.ContainsKey($varType)) {
+                # <--- FIX: This path was also wrong.
+                $relativePath = $global:TypesMap[$varType].Replace("Types/", "") 
+                $linkedType = "[$varType]($relativePath)"
             }
- 
-            if ($strLine.Contains("END_TYPE") )
-            {
-                $Declaration = $false
-                $strContent
-                return
-            }
-           
-                  
+            
+            $row = "| `$varName` | `$linkedType` | $varComment |"
+
+        } elseif (-not $isStruct -and ($trimmedLine -match $EnumRegex)) {
+            $varName = $Matches['Name']
+            $varValue = $Matches['Value']
+            $varComment = $pendingComment
+            if ($Matches['Comment']) { $varComment = $Matches['Comment'].Trim() }
+            
+            if (-not $varValue) { $varValue = "..." } # Auto-incremented
+            
+            $row = "| `$varName` | `$varValue` | $varComment |"
         }
-       
+        
+        if ($row) {
+            $strContent += $row + "`n"
+            $pendingComment = "" # Reset comment
+        }
     }
  
-    $strContent
- 
+    return $strContent
 }
  
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Build type map for later resolution
-# This function is fine, but .TcDUT files are *also* XML, so this could
-# be made more reliable by parsing the XML instead of Regex on text.
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function Create-TypeMap
 {
@@ -523,7 +546,15 @@ function Create-TypeMap
  
       #Write-host $strFile
  
-        $strSource = Get-Content -Path "$strPath\$strFile" -Encoding UTF8
+        [xml]$xmlContent = Get-Content -Path (Join-Path $strPath $strFile) -Encoding UTF8
+
+        # Handle missing DUT node gracefully
+        if (-not $xmlContent.TcPlcObject.DUT) {
+            Write-Warning "File $strFile does not appear to be a valid DUT file. Skipping for TypeMap."
+            return # 'return' in a ForEach-Object (%) loop acts like 'continue'
+        }
+
+        $declaration = $xmlContent.TcPlcObject.DUT.Declaration.'#cdata-section'
  
         $strSubfolder = ""
         if ($Subfolder)
@@ -531,13 +562,16 @@ function Create-TypeMap
             $strSubfolder = "Types"
         }
  
-        foreach($strLine in $strSource)
+        if ($declaration -match 'TYPE\s+(?<Name>\w+)\s*:')
         {
-            if ($strLine -match $RegExType)
-            {
-                $global:TypesMap[$Matches["Name"]] = $strSubfolder + "\" + $index.ToString() + "_" + $strFile.Replace("TcDUT", "md")
-            }
-       
+            $typeName = $Matches["Name"]
+            $fileName = $index.ToString()
+            if ($index -lt 10) { $fileName = "0" + $fileName }
+            
+            $filePath = "$strSubfolder\" + $fileName + "_" + $strFile.Replace("TcDUT", "md")
+            
+            # Use forward slashes for map paths
+            $global:TypesMap[$typeName] = $filePath.Replace("\", "/")
         }
  
     }

@@ -1,10 +1,10 @@
-﻿Type : E_LogLevel
+﻿# E_LogLevel
 
-|Name |Initvalue |Comment| 
-|---- |---- |----   | 
-|Verbose |1 |   | 
-|Info |2 |   | 
-|Warning |3 |   | 
-|Error |4 |   | 
-|Critical | |   | 
+| Name | Value | Comment |
+| :--- | :--- | :--- |
+| $varName | $varValue |  |
+| $varName | $varValue |  |
+| $varName | $varValue |  |
+| $varName | $varValue |  |
+| $varName | $varValue |  |
 

@@ -8,7 +8,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=eLogLevel; Type=[E_LogLevel](Types\3_E_LogLevel.md); Default=; Comment=}.Name) | $(@{Name=eLogLevel; Type=[E_LogLevel](Types\3_E_LogLevel.md); Default=; Comment=}.Type) |  |
+| $(@{Name=eLogLevel; Type=[E_LogLevel](../Types/03_E_LogLevel.md); Default=; Comment=}.Name) | $(@{Name=eLogLevel; Type=[E_LogLevel](../Types/03_E_LogLevel.md); Default=; Comment=}.Type) |  |
 | $(@{Name=nID; Type=UDINT; Default=; Comment=}.Name) | $(@{Name=nID; Type=UDINT; Default=; Comment=}.Type) |  |
 | $(@{Name=nTimestamp; Type=Tc2_Utilities.T_FILETIME64; Default=; Comment=}.Name) | $(@{Name=nTimestamp; Type=Tc2_Utilities.T_FILETIME64; Default=; Comment=}.Type) |  |
 | $(@{Name=sSource; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sSource; Type=STRING(255); Default=; Comment=}.Type) |  |

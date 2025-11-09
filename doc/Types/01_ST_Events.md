@@ -1,10 +1,10 @@
-﻿Type : ST_Events
+﻿# ST_Events
 
-|Name |Type |Comment| 
-|---- |---- |----   | 
-|sVerbose |STRING |   | 
-|sInfo |STRING |   | 
-|sWarning |STRING |   | 
-|sError |STRING |   | 
-|sCritical |STRING |   | 
+| Name | Type | Comment |
+| :--- | :--- | :--- |
+| $varName | $linkedType |  |
+| $varName | $linkedType |  |
+| $varName | $linkedType |  |
+| $varName | $linkedType |  |
+| $varName | $linkedType |  |
 

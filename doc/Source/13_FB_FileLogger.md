@@ -8,7 +8,7 @@
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=eLogLevel; Type=[E_LogLevel](Types\3_E_LogLevel.md); Default=; Comment=Provide logging}.Name) | $(@{Name=eLogLevel; Type=[E_LogLevel](Types\3_E_LogLevel.md); Default=; Comment=Provide logging}.Type) | Provide logging |
+| $(@{Name=eLogLevel; Type=[E_LogLevel](../Types/03_E_LogLevel.md); Default=; Comment=Provide logging}.Name) | $(@{Name=eLogLevel; Type=[E_LogLevel](../Types/03_E_LogLevel.md); Default=; Comment=Provide logging}.Type) | Provide logging |
 | $(@{Name=sPathName; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sPathName; Type=STRING(255); Default=; Comment=}.Type) |  |
 
 ### VAR
