@@ -151,8 +151,7 @@ function New-Overview
 
     $temp = New-Item -Path $Destination -Name "00_Overview.md" -Force
  
-    $strContent = "[[_TOC_]]`n`n"
-    $strContent += "# Functionblocks`n`n"
+    $strContent = "# Functionblocks`n`n"
     $index = 1
  
     foreach($element in $global:SourceOverview)
@@ -284,11 +283,15 @@ function Convert-DeclarationToMarkdown {
         if ($hasDefaults) {
              $md += "| Name | Type | Default | Description |`n"
              $md += "| :--- | :--- | :--- | :--- |`n"
-             foreach ($var in $inputs.Values) { $md += "| `$($var.Name)` | `$($var.Type)` | `$($var.Default)` | $($var.Comment) |`n" }
+             foreach ($var in $inputs.Values) {
+                  $md += "| `$($var.Name)` | `$($var.Type)` | `$($var.Default)` | $($var.Comment) |`n"
+              }
         } else {
              $md += "| Name | Type | Description |`n"
              $md += "| :--- | :--- | :--- |`n"
-             foreach ($var in $inputs.Values) { $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n" }
+             foreach ($var in $inputs.Values) { 
+                $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"
+             }
         }
         $md += "`n"
     }
@@ -297,7 +300,9 @@ function Convert-DeclarationToMarkdown {
         $md += "### VAR_OUTPUT`n"
         $md += "| Name | Type | Description |`n"
         $md += "| :--- | :--- | :--- |`n"
-        foreach ($var in $outputs.Values) { $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n" }
+        foreach ($var in $outputs.Values) { 
+            $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"
+        }
         $md += "`n"
     }
 
@@ -305,9 +310,11 @@ function Convert-DeclarationToMarkdown {
         $md += "### VAR`n"
         $md += "| Name | Type | Description |`n"
         $md += "| :--- | :--- | :--- |`n"
-        foreach ($var in $vars.Values) { $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n" }
-        $md += "`n"
-    }
+        foreach ($var in $vars.Values) { 
+            $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"     
+        }
+            $md += "`n"
+     }
 
     return $md
 }
