@@ -79,7 +79,8 @@
 
 ### P_Value
 
-**Type:** $propType`n
+**Type:** string
+
 * **Get:** Available
 
 

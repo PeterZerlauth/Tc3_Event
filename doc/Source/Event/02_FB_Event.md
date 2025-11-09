@@ -103,12 +103,14 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 
 ### P_Argument
 
-**Type:** $propType`n
+**Type:** I_Argument
+
 * **Get:** Available
 
 ### P_Logger
 
-**Type:** $propType`n
+**Type:** I_Logger
+
 * **Get:** Available
 * **Set:** Available
 

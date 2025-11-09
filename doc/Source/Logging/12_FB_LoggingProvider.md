@@ -107,7 +107,8 @@
 
 ### P_Length
 
-**Type:** $propType`n
+**Type:** DINT
+
 * **Get:** Available
 
 

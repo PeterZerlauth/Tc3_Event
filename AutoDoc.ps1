@@ -444,7 +444,7 @@ function Read-SourceFile-XML
                     $relativePath = $global:TypesMap[$propType].Replace("Types/", "../Types/")
                     $propType = "[$propType]($relativePath)"
                 }
-                $strContent += "**Type:** `$propType``n`n"
+                $strContent += "**Type:** $propType`n`n"
             }
 
             if ($prop.Get) { $strContent += "* **Get:** Available`n" }

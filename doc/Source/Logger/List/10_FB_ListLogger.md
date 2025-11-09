@@ -39,7 +39,8 @@
 
 ### P_LogLevel
 
-**Type:** $propType`n
+**Type:** [E_LogLevel](../Types/03_E_LogLevel.md)
+
 * **Get:** Available
 * **Set:** Available
 
