@@ -8,7 +8,6 @@ END_VAR
 VAR
 	sMessage:			STRING(255):= 'Logger null | ';
     nIndex:				UINT;
-    nNow:				ULINT:= F_GetSystemTime();
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[

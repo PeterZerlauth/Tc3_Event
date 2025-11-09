@@ -7,7 +7,7 @@ $strExport  = 'C:\source\repos\Tc3_Logging\doc' # add folder for the md-files
 $RegExBegin           = '<(Method|Action|Property|Get) Name="'
 $RegexName            = '(?s).(.*?)'
 $RegexEnd             = '" Id='
-$Regex                = "(?s)(?=($RegExBegin))($RegExName)(?=($RegExEnd))"
+$Regex                = "(?s)(?=($RegExBegin))($RegExName)(?=($RegexEnd))"
  
 $RegexReturn          = '(?<Method>%Name) *: *(?<Return>\S*)'
 $RegexComment         = '(?<Start>\/\/ *)(?<Value>.*)'
@@ -22,7 +22,10 @@ $RegexVariable       = '(?<Variable>\S*)\s*:\s*(?<Type>[A-z_.]*)'
  
 $overview = @();
 $TypesOverview = @();
-$SourceOverview = @() # <--- ADD THIS LINE
+# <--- CHANGE: Replaced $SourceOverview with two specific lists ---
+$global:FunctionBlocks = @()
+$global:Functions = @()
+# <--- END CHANGE ---
 $global:TypesMap = @{} # Ensure global map is initialized
 
  # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -73,13 +76,21 @@ function New-Documentation
       $strPath = Split-Path -Parent $_.fullname
       $strFile = Split-Path -Leaf $_.fullname
  
+      # <--- CHANGE: Prepare for $ParseResult object from POU ---
+      $Content = ""
+      $ParseResult = $null
+      # <--- END CHANGE ---
+
       if ($FileType.contains("DUT"))
       {
         $Content = Read-TypeFile -Path $strPath -File $strFile
       }
       if ($FileType.contains("POU"))
       {
-        $Content = Read-SourceFile-XML -Path $strPath -File $strFile
+        # <--- CHANGE: Get object instead of just string
+        $ParseResult = Read-SourceFile-XML -Path $strPath -File $strFile
+        $Content = $ParseResult.Content
+        # <--- END CHANGE ---
       }
       if ($FileType.contains("GVL"))
       {
@@ -114,16 +125,22 @@ function New-Documentation
  
       $temp = New-Item -Path $FolderNew -Name $FileNew -Force
  
+      # <--- CHANGE: Use forward slashes and sort into new lists ---
+      $LinkPath = ("$strSubfolder\" + $FileNew.Replace($index.ToString() + "_", $index.ToString("00") + "_")).Replace("\", "/")
+
       if ($FileType.contains("DUT"))
       {
-        # --- FIX: Use forward slashes for the link path ---
-        $global:TypesOverview += ("$strSubfolder\$FileNew").Replace("\", "/")
+        $global:TypesOverview += $LinkPath
       }
       if ($FileType.contains("POU"))
       {
-        # --- FIX: Use forward slashes for the link path ---
-        $global:SourceOverview += ("$strSubfolder\$FileNew").Replace("\", "/")
+        if ($ParseResult.POUType -eq 'Function') {
+            $global:Functions += $LinkPath
+        } else { # Default to FunctionBlock
+            $global:FunctionBlocks += $LinkPath
+        }
       }
+      # <--- END CHANGE ---
      
       Set-Content -Path "$FolderNew\$FileNew" -Value $Content -Encoding UTF8   
  
@@ -134,6 +151,7 @@ function New-Documentation
  
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Entrypoint for documentation
+# <--- CHANGE: Rewritten to support sorted lists ---
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function New-Overview
 {
@@ -151,38 +169,50 @@ function New-Overview
 
     $temp = New-Item -Path $Destination -Name "00_Overview.md" -Force
  
-    $strContent = "# Functionblocks`n`n"
+    $strContent = "[[_TOC_]]`n`n" # Added TOC back
+
+    # --- Function Blocks ---
+    $strContent += "# 🧱 Functionblocks`n`n"
     $index = 1
- 
-    foreach($element in $global:SourceOverview)
+    foreach($element in ($global:FunctionBlocks | Sort-Object))
     {
       $strFunction = $element
       if ($element -match $RegexNumber)
       {
          $strPath = Split-Path -Parent $strFunction
- 
-         $strFunction = $strFunction.Replace($Matches["Index"], "")
-         $strFunction = $strFunction.Replace(".md", "")
-         $strFunction = $strFunction.Replace("$strPath\", "")
+         $strFunction = $strFunction.Replace($Matches["Index"], "").Replace(".md", "").Replace("$strPath/","")
       }
  
       $strContent += " $index. [$strFunction]($element)`n"
       $index++
     }
  
-    $strContent += "`n`n# Datatypes`n`n"
+    # --- Functions ---
+    $strContent += "`n`n---\n`n# ⚙️ Functions`n`n"
     $index = 1
- 
-    foreach($element in $global:TypesOverview)
+    foreach($element in ($global:Functions | Sort-Object))
     {
       $strFunction = $element
       if ($element -match $RegexNumber)
       {
          $strPath = Split-Path -Parent $strFunction
+         $strFunction = $strFunction.Replace($Matches["Index"], "").Replace(".md", "").Replace("$strPath/","")
+      }
  
-         $strFunction = $strFunction.Replace($Matches["Index"], "")
-         $strFunction = $strFunction.Replace(".md", "")
-         $strFunction = $strFunction.Replace("$strPath\", "")
+      $strContent += " $index. [$strFunction]($element)`n"
+      $index++
+    }
+
+    # --- Datatypes ---
+    $strContent += "`n`n---\n`n# 📚 Datatypes`n`n"
+    $index = 1
+    foreach($element in ($global:TypesOverview | Sort-Object))
+    {
+      $strFunction = $element
+      if ($element -match $RegexNumber)
+      {
+         $strPath = Split-Path -Parent $strFunction
+         $strFunction = $strFunction.Replace($Matches["Index"], "").Replace(".md", "").Replace("$strPath/","")
       }
  
       $strContent += " $index. [$strFunction]($element)`n"
@@ -191,6 +221,7 @@ function New-Overview
  
     Set-Content -Path "$Destination\00_Overview.md" -Value $strContent -Encoding UTF8
 }
+# <--- END CHANGE ---
  
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -284,13 +315,15 @@ function Convert-DeclarationToMarkdown {
              $md += "| Name | Type | Default | Description |`n"
              $md += "| :--- | :--- | :--- | :--- |`n"
              foreach ($var in $inputs.Values) {
-                  $md += "| $($var.Name) | $($var.Type) | $($var.Default) | $($var.Comment) |`n"
+                  # <--- CHANGE: Added backticks for robust markdown table
+                  $md += "| `$($var.Name)` | `$($var.Type)` | `$($var.Default)` | $($var.Comment) |`n"
               }
         } else {
              $md += "| Name | Type | Description |`n"
              $md += "| :--- | :--- | :--- |`n"
              foreach ($var in $inputs.Values) { 
-                $md += "| $($var.Name) | $($var.Type) | $($var.Comment) |`n"
+                # <--- CHANGE: Added backticks
+                $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"
              }
         }
         $md += "`n"
@@ -301,7 +334,8 @@ function Convert-DeclarationToMarkdown {
         $md += "| Name | Type | Description |`n"
         $md += "| :--- | :--- | :--- |`n"
         foreach ($var in $outputs.Values) { 
-            $md += "| $($var.Name) | $($var.Type) | $($var.Comment) |`n"
+            # <--- CHANGE: Added backticks
+            $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"
         }
         $md += "`n"
     }
@@ -311,7 +345,8 @@ function Convert-DeclarationToMarkdown {
         $md += "| Name | Type | Description |`n"
         $md += "| :--- | :--- | :--- |`n"
         foreach ($var in $vars.Values) { 
-            $md += "| $($var.Name) | $($var.Type) | $($var.Comment) |`n"     
+            # <--- CHANGE: Added backticks
+            $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"     
         }
             $md += "`n"
      }
@@ -340,22 +375,29 @@ function Read-SourceFile-XML
     $pouImplements = $pou.IMPLEMENTS
     
     # --- Build Header ---
-    $strContent = "# $pouName`n"
+    # <--- CHANGE: Added TOC and horizontal rules for readability
+    $strContent = "[[_TOC_]]`n`n# $pouName`n"
     if ($pouImplements) {
         $strContent += "> **Implements:** `$pouImplements``n"
     }
-    $strContent += "`n`n"
+    $strContent += "`n---\n`n"
+    # <--- END CHANGE ---
 
     # --- Parse Main Declaration ---
     # The CDATA section is just text, so we pass it to our ST parser
     $mainDeclarationText = $pou.Declaration.'#cdata-section'
-    $strContent += "## Declaration (Variables)`n`n"
+    $strContent += "## 📜 Declaration (Variables)`n`n" # Added emoji
     $strContent += Convert-DeclarationToMarkdown -Declaration $mainDeclarationText
     $strContent += "`n"
 
+    # <--- CHANGE: Detect POU Type ---
+    $POUType = 'FunctionBlock' # Default to FB
+    if ($mainDeclarationText.Trim().StartsWith('FUNCTION ')) { $POUType = 'Function' }
+    # <--- END CHANGE ---
+
     # --- Parse Methods ---
     if ($pou.Method) {
-        $strContent += "`n`n## Methods`n`n"
+        $strContent += "`n---\n`n## ⚙️ Methods`n`n" # Added HR/emoji
         foreach ($method in $pou.Method) {
             $methodName = $method.Name
             $methodDeclarationText = $method.Declaration.'#cdata-section'
@@ -363,13 +405,11 @@ function Read-SourceFile-XML
             $strContent += "### $methodName`n`n"
             
             # Get Return Type from the method declaration
-            # <--- FIX: Use double-quotes to expand the $Matches variable
             if ($methodDeclarationText -match 'METHOD \w+ : (?<Return>[\w\._]+)') {
                 $strContent += "**Returns:** `$($Matches['Return'])``n`n"
             } elseif ($methodName -eq 'FB_Init') {
                  $strContent += "**Returns:** `BOOL` (Implicit)`n`n"
             } else {
-                 # <--- FIX: This method might not have a return, so just say (None)
                  $strContent += "**Returns:** `(None)`n`n"
             }
 
@@ -379,7 +419,6 @@ function Read-SourceFile-XML
                 ForEach-Object { $_.Trim().Substring(2).Trim() }
             
             if ($commentLines) {
-                # <--- FIX: Use double-quotes to ensure `n is treated as a newline
                 $strContent += ($commentLines -join " `n") + "`n`n"
             }
 
@@ -390,7 +429,7 @@ function Read-SourceFile-XML
 
     # --- Parse Properties ---
     if ($pou.Property) {
-        $strContent += "`n`n##Properties`n`n"
+        $strContent += "`n---\n`n## 💎 Properties`n`n" # Added HR/emoji
         foreach ($prop in $pou.Property) {
             $propName = $prop.Name
             $propDeclarationText = $prop.Declaration.'#cdata-section'
@@ -403,11 +442,9 @@ function Read-SourceFile-XML
                 
                 # Linkify Type
                 if ($global:TypesMap.ContainsKey($propType)) {
-                    # <--- FIX: This path was wrong. It should go *up* from Source/ to Types/
                     $relativePath = $global:TypesMap[$propType].Replace("Types/", "../Types/")
                     $propType = "[$propType]($relativePath)"
                 }
-                # <--- FIX: Use double-quotes to expand the $propType variable
                 $strContent += "**Type:** `$propType``n`n"
             }
 
@@ -417,7 +454,9 @@ function Read-SourceFile-XML
         }
     }
     
-    return $strContent
+    # <--- CHANGE: Return object with content AND type
+    return [PSCustomObject]@{ Content = $strContent; POUType = $POUType }
+    # <--- END CHANGE ---
 }
  
 
@@ -500,12 +539,12 @@ function Read-TypeFile
             # Linkify Type
             $linkedType = $varType
             if ($global:TypesMap.ContainsKey($varType)) {
-                # <--- FIX: This path was also wrong.
                 $relativePath = $global:TypesMap[$varType].Replace("Types/", "") 
                 $linkedType = "[$varType]($relativePath)"
             }
             
-            $row = "| $varName | $linkedType | $varComment |"
+            # <--- CHANGE: Added backticks
+            $row = "| `$varName` | `$linkedType` | $varComment |"
 
         } elseif (-not $isStruct -and ($trimmedLine -match $EnumRegex)) {
             $varName = $Matches['Name']
@@ -515,7 +554,8 @@ function Read-TypeFile
             
             if (-not $varValue) { $varValue = "..." } # Auto-incremented
             
-            $row = "| $varName | $varValue | $varComment |"
+            # <--- CHANGE: Added backticks
+            $row = "| `$varName` | `$varValue` | $varComment |"
         }
         
         if ($row) {
@@ -567,13 +607,14 @@ function Create-TypeMap
         if ($declaration -match 'TYPE\s+(?<Name>\w+)\s*:')
         {
             $typeName = $Matches["Name"]
-            $fileName = $index.ToString()
-            if ($index -lt 10) { $fileName = "0" + $fileName }
+            $fileName = $index.ToString("00") # <--- CHANGE: Pad with zero
             
             $filePath = "$strSubfolder\" + $fileName + "_" + $strFile.Replace("TcDUT", "md")
             
             # Use forward slashes for map paths
-            $global:TypesMap[$typeName] = $filePath.Replace("\", "/")
+            if (-not $global:TypesMap.ContainsKey($typeName)) {
+                $global:TypesMap.Add($typeName, $filePath.Replace("\", "/"))
+            }
         }
  
     }
@@ -582,8 +623,10 @@ function Create-TypeMap
 # --- Main Execution ---
 Create-TypeMap -Path $strProject -Subfolder
  
-New-Documentation -Path $strProject -FileType "TcDUT" -Destination "$strExport" -Subfolder
+# <--- CHANGE: Added -Structured switch ---
+New-Documentation -Path $strProject -FileType "TcDUT" -Destination "$strExport" -Subfolder -Structured
  
-New-Documentation -Path $strProject -FileType "TcPOU" -Destination "$strExport" -Subfolder
+New-Documentation -Path $strProject -FileType "TcPOU" -Destination "$strExport" -Subfolder -Structured
+# <--- END CHANGE ---
  
 New-Overview -Destination $strExport
