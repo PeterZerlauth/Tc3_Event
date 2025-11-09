@@ -30,15 +30,15 @@
 
 **Returns:** BOOL (Implicit)
 
-FB_Init ist immer implizit verfügbar und wird primär für die Initialisierung verwendet. 
-Der Rückgabewert wird nicht ausgewertet. Für gezielte Einflussnahme können Sie 
-die Methoden explizit deklarieren und darin mit dem Standard-Initialisierungscode 
-zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
+FB_Init is always available implicitly and it is used primarily for initialization. 
+The return value is not evaluated. For a specific influence, you can also declare the 
+methods explicitly and provide additional code there with the standard initialization 
+code. You can evaluate the return value.
 
 ### VAR_INPUT
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| bInitRetains | BOOL | TRUE: Die Retain-Variablen werden initialisiert (Reset warm / Reset kalt) |
+| bInitRetains | BOOL | TRUE: the retain variables are initialized (reset warm / reset cold) |
 | bInCopyCode | BOOL |  |
 
 ### M_Critical

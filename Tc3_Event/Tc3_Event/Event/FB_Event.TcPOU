@@ -27,15 +27,15 @@ END_VAR
 fbSystemTime();
 ]]></ST>
     </Implementation>
-    <Method Name="FB_Init" Id="{256fe292-0b03-4593-83b5-0da540634dee}">
-      <Declaration><![CDATA[//FB_Init ist immer implizit verfügbar und wird primär für die Initialisierung verwendet.
-//Der Rückgabewert wird nicht ausgewertet. Für gezielte Einflussnahme können Sie
-//die Methoden explizit deklarieren und darin mit dem Standard-Initialisierungscode 
-//zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
+    <Method Name="FB_Init" Id="{86bf7a82-ee08-4323-8f31-a4c33f4b211e}">
+      <Declaration><![CDATA[//FB_Init is always available implicitly and it is used primarily for initialization.
+//The return value is not evaluated. For a specific influence, you can also declare the
+//methods explicitly and provide additional code there with the standard initialization
+//code. You can evaluate the return value.
 METHOD FB_Init: BOOL
-VAR_INPUT    
-bInitRetains: BOOL; // TRUE: Die Retain-Variablen werden initialisiert (Reset warm / Reset kalt)    
-bInCopyCode: BOOL:= True;  // TRUE: Die Instanz wird danach in den Kopiercode kopiert (Online-Change)
+VAR_INPUT
+    bInitRetains: BOOL; // TRUE: the retain variables are initialized (reset warm / reset cold)
+    bInCopyCode: BOOL:= TRUE;  // TRUE: the instance will be copied to the copy code afterward (online change)   
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[fbSymbolInfo.SYMNAME:= F_InstancePath(sInstancePath);

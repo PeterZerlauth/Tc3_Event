@@ -12,7 +12,6 @@ Where to save generated Markdown files.
 Orginal version from
 https://github.com/hooxSoftware/TwincatAutodoc
 #>
-﻿﻿cls
 
 $strProject = 'C:\source\repos\Tc3_Event\Tc3_Event\Tc3_Event' # change this lines for your Project
 $strExport  = 'C:\source\repos\Tc3_Event\doc' # add folder for the md-files
