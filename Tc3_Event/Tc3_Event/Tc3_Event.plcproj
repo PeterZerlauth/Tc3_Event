@@ -55,9 +55,6 @@
     <Compile Include="Event\I_Event.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Event\ST_Events.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Global Variables\GVL.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
