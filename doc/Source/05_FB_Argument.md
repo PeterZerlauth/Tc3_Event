@@ -13,7 +13,7 @@
 
 ## Methods
 
-### ### M_AddBOOL
+### M_AddBOOL
 
 **Returns:** (None)
 
