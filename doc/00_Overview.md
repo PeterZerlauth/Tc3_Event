@@ -1,38 +1,31 @@
-﻿[[_TOC_]]
+﻿# Functionblocks
 
-# 🧱 Functionblocks
-
- 1. [FAST](Source/001_FAST.md)
- 2. [FB_TestFast](Source/002_FB_TestFast.md)
- 3. [FB_TestSlow](Source/003_FB_TestSlow.md)
- 4. [MAIN](Source/004_MAIN.md)
- 5. [FB_Argument](Source/005_FB_Argument.md)
- 6. [FB_Event](Source/006_FB_Event.md)
- 7. [FB_File](Source/12_FB_File.md)
- 8. [FB_FileLogger](Source/13_FB_FileLogger.md)
- 9. [FB_ListLogger](Source/14_FB_ListLogger.md)
- 10. [FB_TcLogger](Source/15_FB_TcLogger.md)
- 11. [FB_LoggingProvider](Source/16_FB_LoggingProvider.md)
- 12. [FB_Message](Source/17_FB_Message.md)
- 13. [F_GetCompany](Source/18_F_GetCompany.md)
- 14. [F_GetTitle](Source/19_F_GetTitle.md)
- 15. [F_GetVersion](Source/20_F_GetVersion.md)
-
-
----\n
-# ⚙️ Functions
-
- 1. [F_Hash](Source/007_F_Hash.md)
- 2. [F_InstancePath](Source/008_F_InstancePath.md)
- 3. [F_Log](Source/009_F_Log.md)
- 4. [F_Print](Source/10_F_Print.md)
- 5. [LogLevel_To_TcEventSeverity](Source/11_LogLevel_To_TcEventSeverity.md)
+ 1. [Source/Argument/FB_Argument](Source/Argument/01_FB_Argument.md)
+ 2. [Source/Event/FB_Event](Source/Event/02_FB_Event.md)
+ 3. [Source/Helpers/F_Hash](Source/Helpers/03_F_Hash.md)
+ 4. [Source/Helpers/F_InstancePath](Source/Helpers/04_F_InstancePath.md)
+ 5. [Source/Helpers/F_Log](Source/Helpers/05_F_Log.md)
+ 6. [Source/Helpers/F_Print](Source/Helpers/06_F_Print.md)
+ 7. [Source/Helpers/LogLevel_To_TcEventSeverity](Source/Helpers/07_LogLevel_To_TcEventSeverity.md)
+ 8. [Source/Helpers/File/FB_File](Source/Helpers/File/08_FB_File.md)
+ 9. [Source/Logger/FileLogger/FB_FileLogger](Source/Logger/FileLogger/09_FB_FileLogger.md)
+ 10. [Source/Logger/List/FB_ListLogger](Source/Logger/List/10_FB_ListLogger.md)
+ 11. [Source/Logger/Twincat/FB_TcLogger](Source/Logger/Twincat/11_FB_TcLogger.md)
+ 12. [Source/Logging/FB_LoggingProvider](Source/Logging/12_FB_LoggingProvider.md)
+ 13. [Source/Message/FB_Message](Source/Message/13_FB_Message.md)
+ 14. [Source/Project Information/F_GetCompany](Source/Project Information/14_F_GetCompany.md)
+ 15. [Source/Project Information/F_GetTitle](Source/Project Information/15_F_GetTitle.md)
+ 16. [Source/Project Information/F_GetVersion](Source/Project Information/16_F_GetVersion.md)
 
 
----\n
-# 📚 Datatypes
 
- 1. [ST_Events](Types/001_ST_Events.md)
- 2. [E_FileState](Types/002_E_FileState.md)
- 3. [E_LogLevel](Types/003_E_LogLevel.md)
+# Functions
+
+
+
+
+# Datatypes
+
+ 1. [Types/Helpers/File/E_FileState](Types/Helpers/File/01_E_FileState.md)
+ 2. [Types/Logger/List/E_LogLevel](Types/Logger/List/02_E_LogLevel.md)
 
