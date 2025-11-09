@@ -13,11 +13,11 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sFileName; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sFileName; Type=STRING(255); Default=; Comment=}.Type) |  |
-| $(@{Name=eMode; Type=SysFile.ACCESS_MODE; Default=; Comment=}.Name) | $(@{Name=eMode; Type=SysFile.ACCESS_MODE; Default=; Comment=}.Type) |  |
-| $(@{Name=hFile; Type=SysFile.SysTypes.RTS_IEC_HANDLE; Default=; Comment=}.Name) | $(@{Name=hFile; Type=SysFile.SysTypes.RTS_IEC_HANDLE; Default=; Comment=}.Type) |  |
-| $(@{Name=nResult; Type=SysFile.SysTypes.RTS_IEC_RESULT; Default=; Comment=}.Name) | $(@{Name=nResult; Type=SysFile.SysTypes.RTS_IEC_RESULT; Default=; Comment=}.Type) |  |
-| $(@{Name=pResult; Type=POINTER; Default=; Comment=}.Name) | $(@{Name=pResult; Type=POINTER; Default=; Comment=}.Type) |  |
+| sFileName | STRING(255) |  |
+| eMode | SysFile.ACCESS_MODE |  |
+| hFile | SysFile.SysTypes.RTS_IEC_HANDLE |  |
+| nResult | SysFile.SysTypes.RTS_IEC_RESULT |  |
+| pResult | POINTER |  |
 
 
 
@@ -87,7 +87,7 @@ Read file
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nState; Type=SysFile.SYS_FILE_STATUS; Default=; Comment=}.Name) | $(@{Name=nState; Type=SysFile.SYS_FILE_STATUS; Default=; Comment=}.Type) |  |
+| nState | SysFile.SYS_FILE_STATUS |  |
 
 ### ### M_Write
 

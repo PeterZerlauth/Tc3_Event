@@ -11,9 +11,9 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
-| $(@{Name=nIndex; Type=UINT; Default=; Comment=}.Name) | $(@{Name=nIndex; Type=UINT; Default=; Comment=}.Type) |  |
-| $(@{Name=nNow; Type=ULINT; Default=; Comment=}.Name) | $(@{Name=nNow; Type=ULINT; Default=; Comment=}.Type) |  |
+| sMessage | STRING(255) |  |
+| nIndex | UINT |  |
+| nNow | ULINT |  |
 
 
 

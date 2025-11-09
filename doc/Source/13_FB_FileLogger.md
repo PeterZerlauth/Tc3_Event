@@ -12,9 +12,9 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=fbFile; Type=FB_File; Default=; Comment=}.Name) | $(@{Name=fbFile; Type=FB_File; Default=; Comment=}.Type) |  |
-| $(@{Name=aBuffer; Type=ARRAY; Default=; Comment=}.Name) | $(@{Name=aBuffer; Type=ARRAY; Default=; Comment=}.Type) |  |
-| $(@{Name=nBuffer; Type=UINT; Default=; Comment=}.Name) | $(@{Name=nBuffer; Type=UINT; Default=; Comment=}.Type) |  |
+| fbFile | FB_File |  |
+| aBuffer | ARRAY |  |
+| nBuffer | UINT |  |
 
 
 
@@ -33,9 +33,9 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nTimestamp; Type=Tc2_Utilities.T_FILETIME64; Default=; Comment=}.Name) | $(@{Name=nTimestamp; Type=Tc2_Utilities.T_FILETIME64; Default=; Comment=}.Type) |  |
-| $(@{Name=nIndex; Type=uINT; Default=; Comment=}.Name) | $(@{Name=nIndex; Type=uINT; Default=; Comment=}.Type) |  |
-| $(@{Name=sLogLine; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sLogLine; Type=STRING(255); Default=; Comment=}.Type) |  |
+| nTimestamp | Tc2_Utilities.T_FILETIME64 |  |
+| nIndex | uINT |  |
+| sLogLine | STRING(255) |  |
 
 ### ### M_Reset
 

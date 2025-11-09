@@ -16,14 +16,14 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sInstancePath; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sInstancePath; Type=STRING(255); Default=; Comment=}.Type) |  |
-| $(@{Name=fbSymbolInfo; Type=PLC_ReadSymInfoByNameEx; Default=; Comment=}.Name) | $(@{Name=fbSymbolInfo; Type=PLC_ReadSymInfoByNameEx; Default=; Comment=}.Type) |  |
-| $(@{Name=fbSystemTime; Type=FB_LocalSystemTime; Default=; Comment=}.Name) | $(@{Name=fbSystemTime; Type=FB_LocalSystemTime; Default=; Comment=}.Type) |  |
-| $(@{Name=fbVerbose; Type=FB_Message; Default=; Comment=}.Name) | $(@{Name=fbVerbose; Type=FB_Message; Default=; Comment=}.Type) |  |
-| $(@{Name=fbInfo; Type=FB_Message; Default=; Comment=}.Name) | $(@{Name=fbInfo; Type=FB_Message; Default=; Comment=}.Type) |  |
-| $(@{Name=fbWarning; Type=FB_Message; Default=; Comment=}.Name) | $(@{Name=fbWarning; Type=FB_Message; Default=; Comment=}.Type) |  |
-| $(@{Name=fbError; Type=FB_Message; Default=; Comment=}.Name) | $(@{Name=fbError; Type=FB_Message; Default=; Comment=}.Type) |  |
-| $(@{Name=fbCritical; Type=FB_Message; Default=; Comment=}.Name) | $(@{Name=fbCritical; Type=FB_Message; Default=; Comment=}.Type) |  |
+| sInstancePath | STRING(255) |  |
+| fbSymbolInfo | PLC_ReadSymInfoByNameEx |  |
+| fbSystemTime | FB_LocalSystemTime |  |
+| fbVerbose | FB_Message |  |
+| fbInfo | FB_Message |  |
+| fbWarning | FB_Message |  |
+| fbError | FB_Message |  |
+| fbCritical | FB_Message |  |
 
 
 

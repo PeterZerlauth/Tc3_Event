@@ -11,10 +11,10 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=aMessages; Type=ARRAY; Default=; Comment=}.Name) | $(@{Name=aMessages; Type=ARRAY; Default=; Comment=}.Type) |  |
-| $(@{Name=nMessages; Type=UINT; Default=; Comment=}.Name) | $(@{Name=nMessages; Type=UINT; Default=; Comment=}.Type) |  |
-| $(@{Name=nIndex; Type=UINT; Default=; Comment=}.Name) | $(@{Name=nIndex; Type=UINT; Default=; Comment=}.Type) |  |
-| $(@{Name=nTimestamp; Type=LINT; Default=; Comment=}.Name) | $(@{Name=nTimestamp; Type=LINT; Default=; Comment=}.Type) |  |
+| aMessages | ARRAY |  |
+| nMessages | UINT |  |
+| nIndex | UINT |  |
+| nTimestamp | LINT |  |
 
 
 

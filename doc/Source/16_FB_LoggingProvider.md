@@ -6,9 +6,9 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nLength; Type=INT; Default=; Comment=}.Name) | $(@{Name=nLength; Type=INT; Default=; Comment=}.Type) |  |
-| $(@{Name=pList; Type=POINTER; Default=; Comment=}.Name) | $(@{Name=pList; Type=POINTER; Default=; Comment=}.Type) |  |
-| $(@{Name=aList; Type=POINTER; Default=; Comment=}.Name) | $(@{Name=aList; Type=POINTER; Default=; Comment=}.Type) |  |
+| nLength | INT |  |
+| pList | POINTER |  |
+| aList | POINTER |  |
 
 
 
@@ -35,7 +35,7 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=pOldList; Type=POINTER; Default=; Comment=}.Name) | $(@{Name=pOldList; Type=POINTER; Default=; Comment=}.Type) |  |
+| pOldList | POINTER |  |
 
 ### ### M_Clear
 
@@ -53,7 +53,7 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nIndex; Type=UINT; Default=; Comment=}.Name) | $(@{Name=nIndex; Type=UINT; Default=; Comment=}.Type) |  |
+| nIndex | UINT |  |
 
 ### ### M_Index
 
@@ -76,7 +76,7 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nIndex; Type=INT; Default=; Comment=}.Name) | $(@{Name=nIndex; Type=INT; Default=; Comment=}.Type) |  |
+| nIndex | INT |  |
 
 ### ### M_Remove
 
@@ -90,8 +90,8 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=pOldList; Type=POINTER; Default=; Comment=}.Name) | $(@{Name=pOldList; Type=POINTER; Default=; Comment=}.Type) |  |
-| $(@{Name=nPosition; Type=DINT; Default=; Comment=}.Name) | $(@{Name=nPosition; Type=DINT; Default=; Comment=}.Type) |  |
+| pOldList | POINTER |  |
+| nPosition | DINT |  |
 
 ### ### M_Reset
 
@@ -99,7 +99,7 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nIndex; Type=UINT; Default=; Comment=}.Name) | $(@{Name=nIndex; Type=UINT; Default=; Comment=}.Type) |  |
+| nIndex | UINT |  |
 
 
 

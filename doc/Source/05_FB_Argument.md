@@ -6,7 +6,7 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sValue; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sValue; Type=STRING(255); Default=; Comment=}.Type) |  |
+| sValue | STRING(255) |  |
 
 
 
@@ -34,7 +34,7 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sTemp; Type=STRING; Default=; Comment=}.Name) | $(@{Name=sTemp; Type=STRING; Default=; Comment=}.Type) |  |
+| sTemp | STRING |  |
 
 ### ### M_AddREAL
 
@@ -49,7 +49,7 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=sTemp; Type=STRING; Default=; Comment=}.Name) | $(@{Name=sTemp; Type=STRING; Default=; Comment=}.Type) |  |
+| sTemp | STRING |  |
 
 ### ### M_AddSTRING
 

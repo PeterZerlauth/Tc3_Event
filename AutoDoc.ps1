@@ -311,7 +311,7 @@ function Convert-DeclarationToMarkdown {
         $md += "| Name | Type | Description |`n"
         $md += "| :--- | :--- | :--- |`n"
         foreach ($var in $vars.Values) { 
-            $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"     
+            $md += "| $($var.Name) | $($var.Type) | $($var.Comment) |`n"     
         }
             $md += "`n"
      }

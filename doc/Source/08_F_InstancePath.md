@@ -11,7 +11,7 @@
 ### VAR
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| $(@{Name=nPosition; Type=INT; Default=; Comment=}.Name) | $(@{Name=nPosition; Type=INT; Default=; Comment=}.Type) |  |
+| nPosition | INT |  |
 
 
 
