@@ -5,12 +5,8 @@
 // Provide the functionality to use more than one Logger target
 FUNCTION_BLOCK FB_LoggingProvider IMPLEMENTS I_Logger
 VAR
-	{attribute 'hide'}
 	nLength:		INT;
 	pList: 			POINTER TO I_Logger;
-	{IF (defined (release))}
-    	{attribute 'hide'}
-	{END_IF}
 	aList:			POINTER TO POINTER TO ARRAY [0..24] OF I_Logger:=ADR(pList);
 END_VAR
 ]]></Declaration>

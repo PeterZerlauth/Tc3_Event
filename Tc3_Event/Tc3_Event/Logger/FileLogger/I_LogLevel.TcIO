@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="I_LogLevel" Id="{5951dbeb-3888-41e3-ab33-fed753d46fb0}">
+    <Declaration><![CDATA[INTERFACE I_LogLevel]]></Declaration>
+    <Property Name="P_LogLevel" Id="{944a8488-f95b-4168-92d8-5060d224368b}">
+      <Declaration><![CDATA[{attribute 'OPC.UA.DA.Property' := '1'}
+{attribute 'monitoring' := 'variable'}
+PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
+      <Get Name="Get" Id="{698f5869-1c0f-450a-aee9-79a6d1aa37f0}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{5b8b3842-c3de-46aa-954e-082aa13b617c}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+  </Itf>
+</TcPlcObject>

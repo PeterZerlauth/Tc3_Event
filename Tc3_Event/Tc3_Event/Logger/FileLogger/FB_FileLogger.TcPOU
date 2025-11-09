@@ -2,7 +2,7 @@
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_FileLogger" Id="{1f305008-1e9f-45e5-b339-4427cb30dd71}" SpecialFunc="None">
     <Declaration><![CDATA[// Provide logging 
-FUNCTION_BLOCK FB_FileLogger IMPLEMENTS I_Logger
+FUNCTION_BLOCK FB_FileLogger IMPLEMENTS I_Logger, I_LogLevel
 VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 	sPathName:				STRING(255):= 'C:\tempx\logger.txt';
@@ -93,7 +93,9 @@ END_VAR
       </Implementation>
     </Method>
     <Property Name="P_LogLevel" Id="{4a4febf7-9f38-4135-9708-e563fad83f87}">
-      <Declaration><![CDATA[PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
+      <Declaration><![CDATA[{attribute 'OPC.UA.DA.Property' := '1'}
+{attribute 'monitoring' := 'variable'}
+PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
       <Get Name="Get" Id="{fb1589e6-403d-4ff2-b9ef-b07d913d1a98}">
         <Declaration><![CDATA[VAR
 END_VAR

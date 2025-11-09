@@ -2,7 +2,7 @@
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_TcLogger" Id="{c4bb1a5e-d8ae-49cb-90d9-702eaf5363d5}" SpecialFunc="None">
     <Declaration><![CDATA[// Provide logging 
-FUNCTION_BLOCK FB_TcLogger IMPLEMENTS I_Logger
+FUNCTION_BLOCK FB_TcLogger IMPLEMENTS I_Logger, I_LogLevel
 VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Info;
 END_VAR
@@ -118,7 +118,9 @@ M_Reset:= TRUE;]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_LogLevel" Id="{f86a40a0-98fd-40f4-a32f-52729e621278}">
-      <Declaration><![CDATA[PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
+      <Declaration><![CDATA[{attribute 'OPC.UA.DA.Property' := '1'}
+{attribute 'monitoring' := 'variable'}
+PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
       <Get Name="Get" Id="{65712a2e-9ca7-492d-83fc-203b71a5ffed}">
         <Declaration><![CDATA[VAR
 END_VAR
