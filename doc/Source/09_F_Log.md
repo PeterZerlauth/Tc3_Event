@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# F_Log
+﻿# F_Log
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_INPUT
 | Name | Type | Description |

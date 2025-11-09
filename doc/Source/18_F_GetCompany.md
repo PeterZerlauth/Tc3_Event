@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# F_GetCompany
+﻿# F_GetCompany
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 
 

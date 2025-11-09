@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# FB_TestSlow
+﻿# FB_TestSlow
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR
 | Name | Type | Description |
@@ -18,7 +16,7 @@
 
 
 ---\n
-## 💎 Properties
+##Properties
 
 ### ### P_Event
 

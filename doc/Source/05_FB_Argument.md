@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# FB_Argument
+﻿# FB_Argument
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR
 | Name | Type | Description |
@@ -13,7 +11,7 @@
 
 
 ---\n
-## ⚙️ Methods
+## Methods
 
 ### ### M_AddBOOL
 
@@ -77,7 +75,7 @@
 
 
 ---\n
-## 💎 Properties
+##Properties
 
 ### ### P_Value
 

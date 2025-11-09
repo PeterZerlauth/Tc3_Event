@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# FB_Event
+﻿# FB_Event
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_INPUT
 | Name | Type | Description |
@@ -30,7 +28,7 @@
 
 
 ---\n
-## ⚙️ Methods
+## Methods
 
 ### ### FB_Init
 
@@ -101,7 +99,7 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 
 
 ---\n
-## 💎 Properties
+##Properties
 
 ### ### P_Argument
 

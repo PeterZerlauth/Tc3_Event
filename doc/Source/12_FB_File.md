@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# FB_File
+﻿# FB_File
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_OUTPUT
 | Name | Type | Description |
@@ -24,7 +22,7 @@
 
 
 ---\n
-## ⚙️ Methods
+## Methods
 
 ### ### FB_Exit
 

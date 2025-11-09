@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# FB_Message
+﻿# FB_Message
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_INPUT
 | Name | Type | Description |

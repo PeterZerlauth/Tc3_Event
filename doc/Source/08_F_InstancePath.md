@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# F_InstancePath
+﻿# F_InstancePath
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_INPUT
 | Name | Type | Description |

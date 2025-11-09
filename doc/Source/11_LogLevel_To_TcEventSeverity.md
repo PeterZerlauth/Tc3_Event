@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# LogLevel_To_TcEventSeverity
+﻿# LogLevel_To_TcEventSeverity
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_INPUT
 | Name | Type | Description |

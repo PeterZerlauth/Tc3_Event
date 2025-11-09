@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# FB_LoggingProvider
+﻿# FB_LoggingProvider
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR
 | Name | Type | Description |
@@ -15,7 +13,7 @@
 
 
 ---\n
-## ⚙️ Methods
+## Methods
 
 ### ### FB_exit
 
@@ -105,7 +103,7 @@
 
 
 ---\n
-## 💎 Properties
+##Properties
 
 ### ### P_Length
 

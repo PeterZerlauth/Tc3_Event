@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# F_Hash
+﻿# F_Hash
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_INPUT
 | Name | Type | Description |

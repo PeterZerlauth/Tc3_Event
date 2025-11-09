@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# MAIN
+﻿# MAIN
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR
 | Name | Type | Description |

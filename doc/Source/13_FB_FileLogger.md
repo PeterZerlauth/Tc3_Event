@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# FB_FileLogger
+﻿# FB_FileLogger
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_INPUT
 | Name | Type | Description |
@@ -21,7 +19,7 @@
 
 
 ---\n
-## ⚙️ Methods
+## Methods
 
 ### ### M_Log
 
@@ -44,7 +42,7 @@
 **Returns:** $(System.Collections.Hashtable['Return'])`n
 
 ---\n
-## 💎 Properties
+##Properties
 
 ### ### P_LogLevel
 

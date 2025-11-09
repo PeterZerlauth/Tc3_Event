@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# FAST
+﻿# FAST
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR
 | Name | Type | Description |

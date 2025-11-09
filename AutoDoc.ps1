@@ -337,8 +337,7 @@ function Read-SourceFile-XML
     $pouImplements = $pou.IMPLEMENTS
     
     # --- Build Header ---
-    $strContent = "[[_TOC_]]`n`n"
-    $strContent += "# $pouName`n"
+    $strContent = "# $pouName`n"
     if ($pouImplements) {
         $strContent += "> **Implements:** `$pouImplements``n"
     }
@@ -347,13 +346,13 @@ function Read-SourceFile-XML
     # --- Parse Main Declaration ---
     # The CDATA section is just text, so we pass it to our ST parser
     $mainDeclarationText = $pou.Declaration.'#cdata-section'
-    $strContent += "## 📜 Declaration (Variables)`n`n"
+    $strContent += "## Declaration (Variables)`n`n"
     $strContent += Convert-DeclarationToMarkdown -Declaration $mainDeclarationText
     $strContent += "`n"
 
     # --- Parse Methods ---
     if ($pou.Method) {
-        $strContent += "`n---\n`n## ⚙️ Methods`n`n"
+        $strContent += "`n---\n`n## Methods`n`n"
         foreach ($method in $pou.Method) {
             $methodName = $method.Name
             $methodDeclarationText = $method.Declaration.'#cdata-section'
@@ -388,7 +387,7 @@ function Read-SourceFile-XML
 
     # --- Parse Properties ---
     if ($pou.Property) {
-        $strContent += "`n---\n`n## 💎 Properties`n`n"
+        $strContent += "`n---\n`n##Properties`n`n"
         foreach ($prop in $pou.Property) {
             $propName = $prop.Name
             $propDeclarationText = $prop.Declaration.'#cdata-section'

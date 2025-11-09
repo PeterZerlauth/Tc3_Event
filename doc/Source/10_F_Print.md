@@ -1,9 +1,7 @@
-﻿[[_TOC_]]
-
-# F_Print
+﻿# F_Print
 
 ---\n
-## 📜 Declaration (Variables)
+## Declaration (Variables)
 
 ### VAR_INPUT
 | Name | Type | Description |
