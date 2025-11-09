@@ -5,7 +5,7 @@ It provides structured logging capabilities with reusable Function Blocks, enabl
 
 ---
 
-## ✨ Features
+## Features
 
 - **Simple Implementation** – Easy-to-use Function Blocks for Structured Text (ST).  
 - **Reusable Components** – Modular design for integration across multiple PLC projects.  
@@ -15,6 +15,10 @@ It provides structured logging capabilities with reusable Function Blocks, enabl
 - **Multiple Log Levels** – Supports: `Verbose`, `Info`, `Warning`, `Error`, and `Critical`.  
 - **HMI Integration** – Display structured logs on HMIs in real-time.  
 - **File Logging (Experimental)** – Capture logs to file (currently under development).  
+
+## Documentation
+https://github.com/PeterZerlauth/Tc3_Event/blob/master/doc/00_Overview.md
+
 
 ---
 
