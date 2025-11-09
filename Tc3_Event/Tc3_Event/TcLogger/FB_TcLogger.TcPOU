@@ -81,6 +81,15 @@ nMessages := nMessages + 1;
 M_Log := TRUE;]]></ST>
       </Implementation>
     </Method>
+    <Method Name="M_Reset" Id="{49b80e31-c5f7-4f9f-b087-49844ffe0726}">
+      <Declaration><![CDATA[METHOD M_Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
     <Property Name="P_LogLevel" Id="{f86a40a0-98fd-40f4-a32f-52729e621278}">
       <Declaration><![CDATA[PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
       <Get Name="Get" Id="{65712a2e-9ca7-492d-83fc-203b71a5ffed}">

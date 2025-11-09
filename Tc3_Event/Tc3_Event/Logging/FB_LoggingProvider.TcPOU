@@ -171,6 +171,22 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
+    <Method Name="M_Reset" Id="{1ef4ca52-3820-45a5-a9c2-ebd6113db930}">
+      <Declaration><![CDATA[METHOD M_Reset : BOOL
+VAR_INPUT
+END_VAR
+VAR
+	nIndex: 				UINT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nIndex := 0;
+WHILE nIndex < nLength DO
+    pList[nIndex].M_Reset();
+    nIndex := nIndex + 1;
+END_WHILE
+M_Reset:= TRUE;]]></ST>
+      </Implementation>
+    </Method>
     <Property Name="P_Length" Id="{cf1d82fc-0cbb-0b4a-372a-308b43a41775}">
       <Declaration><![CDATA[{attribute 'OPC.UA.DA.Property' := '1'}
 {attribute 'monitoring' := 'variable'}

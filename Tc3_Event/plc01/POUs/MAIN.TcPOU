@@ -9,23 +9,29 @@ VAR
 	fbTcLogger:			Tc3_Event.FB_TcLogger;
 	fbTest:				FB_TestSlow;
   	exception:			__SYSTEM.ExceptionCode;	
+	bReset: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[__TRY
-	
-	fbLogging.M_Add(fbLogger);
-	fbLogging.M_Add(fbFileLogger);
-	fbLogging.M_Add(fbTcLogger);
+	IF exception = __SYSTEM.ExceptionCode.RTSEXCPT_NOEXCEPTION THEN
+		fbLogging.M_Add(fbLogger);
+		fbLogging.M_Add(fbFileLogger);
+		fbLogging.M_Add(fbTcLogger);
+			
+		fbLogger();
 		
-	fbLogger();
-	fbFileLogger(sPathName:= 'C:\temp\log.txt');
-	
-	fbTest.P_Event.P_Logger:= fbLogging;
-	
-	fbTest();
+		IF bReset THEN
+			fbLogging.M_Reset();
+		END_IF
+		
+		fbFileLogger(sPathName:= 'C:\temp\log.txt');
+		
+		fbTest.P_Event.P_Logger:= fbLogging;
+		
+		fbTest();		
+	END_IF
 
 __CATCH(exception)
-
 
 __ENDTRY]]></ST>
     </Implementation>

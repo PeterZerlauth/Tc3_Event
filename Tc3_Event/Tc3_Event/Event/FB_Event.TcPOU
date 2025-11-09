@@ -137,6 +137,16 @@ END_IF
 fbArguments.M_Clear();]]></ST>
       </Implementation>
     </Method>
+    <Method Name="M_Reset" Id="{3a4a22c9-fd2e-42d4-aaa7-202418505488}">
+      <Declaration><![CDATA[METHOD M_Reset : BOOL
+VAR_INPUT
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF iLogger <> 0 THEN
+	M_Reset:= iLogger.M_Reset();
+END_IF]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="M_Verbose" Id="{db95e385-16ed-493b-a6a5-28cc6625776b}">
       <Declaration><![CDATA[METHOD PUBLIC M_Verbose : BOOL
 VAR_INPUT

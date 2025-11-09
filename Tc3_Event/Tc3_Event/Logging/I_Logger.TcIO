@@ -9,5 +9,11 @@ VAR_INPUT
 	fbMessage:			FB_Message;
 END_VAR]]></Declaration>
     </Method>
+    <Method Name="M_Reset" Id="{39ef31d6-2654-4e8e-884f-b577042c3611}">
+      <Declaration><![CDATA[METHOD M_Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
   </Itf>
 </TcPlcObject>

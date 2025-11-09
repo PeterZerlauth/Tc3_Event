@@ -7,7 +7,7 @@ VAR_INPUT
 END_VAR
 VAR
 	sMessage:			STRING(255):= 'Logger null | ';
-    nIndex:				INT;
+    nIndex:				UINT;
     nNow:				ULINT:= F_GetSystemTime();
 END_VAR]]></Declaration>
     <Implementation>
@@ -49,8 +49,7 @@ END_CASE
 nIndex := 0;
 WHILE nIndex < nBuffer DO
     IF (nNow - aBuffer[nIndex].nTimestamp) > 1_000_000_000 THEN // 1 s = 1e9 ns
-        MEMMOVE(ADR(aBuffer[nIndex]), ADR(aBuffer[nIndex + 1]),
-                SIZEOF(FB_Message) * (nBuffer - nIndex - 1));
+        MEMMOVE(ADR(aBuffer[nIndex]), ADR(aBuffer[nIndex + 1]), SIZEOF(FB_Message) * (nBuffer - nIndex - 1));
         nBuffer := nBuffer - 1;
     ELSE
         nIndex := nIndex + 1;

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_FileState" Id="{608ae20e-c2cd-4a63-b271-1039adb9f421}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+{attribute 'to_string'}
+TYPE E_FileState :
+(
+    OK := 0,             // File could be opened
+    NO_FILE := 1,        // No file available
+    ILLEGAL_POS := 2,    // Illegal position in the file
+    FULL := 3,           // No more space on the filesystem
+    EOF := 4             // End of file reached
+) UDINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

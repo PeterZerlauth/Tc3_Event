@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="I_File" Id="{0398998b-406f-4dc3-884a-bd60146ff034}">
+    <Declaration><![CDATA[INTERFACE I_File
+]]></Declaration>
+    <Method Name="M_Close" Id="{81246933-abb8-43ee-80a3-7db556a2806f}">
+      <Declaration><![CDATA[// close file
+METHOD PUBLIC M_Close : BOOL
+VAR_INPUT
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_Delete" Id="{1ab6a5d3-e618-451b-9a6d-bf65e2d28017}">
+      <Declaration><![CDATA[// Delete file
+METHOD PUBLIC M_Delete : BOOL
+VAR_INPUT
+    sFileName : STRING(255);
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_GetSize" Id="{4536dbc1-2529-4d82-83a4-0005239e6472}">
+      <Declaration><![CDATA[// get file size
+METHOD PUBLIC M_GetSize : UDINT
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_Open" Id="{c3646e36-af69-41b6-8691-3fff7524229e}">
+      <Declaration><![CDATA[// Open file
+METHOD PUBLIC M_Open : BOOL
+VAR_INPUT
+    sFileName:				STRING(255);
+	eMode: 					SysFile.ACCESS_MODE := SysFile.AM_APPEND_PLUS;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_Read" Id="{c1c6e01c-368e-48e5-b6be-1ea452c44e04}">
+      <Declaration><![CDATA[// Read file
+METHOD PUBLIC M_Read : BOOL
+VAR_INPUT
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_Status" Id="{7d1bdc79-1243-4e4d-a54a-8b2b8fe5d17b}">
+      <Declaration><![CDATA[// state of file
+METHOD PUBLIC M_Status : E_FileState
+VAR_INPUT
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="M_Write" Id="{5ca68eff-0689-40be-acb5-491e1faac60d}">
+      <Declaration><![CDATA[// Write file
+METHOD PUBLIC M_Write : BOOL
+VAR_INPUT
+	pBuffer:	POINTER TO BYTE;
+    nSize:     	UDINT;
+END_VAR]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

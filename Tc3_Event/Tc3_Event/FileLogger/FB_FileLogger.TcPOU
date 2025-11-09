@@ -22,7 +22,7 @@ VAR_INPUT
 END_VAR
 VAR
 	nTimestamp: 	Tc2_Utilities.T_FILETIME64;
-	nIndex: 		INT;
+	nIndex: 		uINT;
 	sLogLine:		STRING(255);
 END_VAR]]></Declaration>
       <Implementation>
@@ -46,14 +46,16 @@ WHILE nIndex < nBuffer DO
 END_WHILE
 
 // Skip if message already in buffer
-FOR nIndex := 0 TO nBuffer - 1 DO
+nIndex := 0;
+WHILE nIndex < nBuffer DO
     IF (aBuffer[nIndex].nID = fbMessage.nID)
        AND (aBuffer[nIndex].sDefault = fbMessage.sDefault) THEN
 	   aBuffer[nIndex].nTimestamp:= fbMessage.nTimestamp;
         M_Log := TRUE;
         RETURN;
     END_IF
-END_FOR
+	nIndex := nIndex + 1;
+END_WHILE
 
 // Add new message
 IF nBuffer < 99 THEN
@@ -74,11 +76,20 @@ sLogLine := CONCAT(sLogLine, '$R$N');
 
 // Write once per new message
 fbFile.M_Open(sPathName);
-fbFile.M_Write(ADR(sLogLine), LEN(sLogLine));
+fbFile.M_Write(ADR(sLogLine), INT_TO_UINT(LEN(sLogLine)));
 fbFile.M_Close();
 
 M_Log := TRUE;
 ]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Reset" Id="{1042cdfb-b8e1-4ba1-8773-ad018da168fe}">
+      <Declaration><![CDATA[METHOD M_Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[M_Reset:= true;]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_LogLevel" Id="{4a4febf7-9f38-4135-9708-e563fad83f87}">

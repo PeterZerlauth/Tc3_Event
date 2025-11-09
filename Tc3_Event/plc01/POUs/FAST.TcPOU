@@ -8,12 +8,14 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-__TRY
-
-	fbTest.P_Event.P_Logger:= MAIN.fbLogging;
+      <ST><![CDATA[__TRY
+	IF exception = __SYSTEM.ExceptionCode.RTSEXCPT_NOEXCEPTION THEN
+		fbTest.P_Event.P_Logger:= MAIN.fbLogging;
 	
 	fbTest();
+	
+		
+	END_IF
 
 
 __CATCH(exception)

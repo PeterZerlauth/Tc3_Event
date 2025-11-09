@@ -60,7 +60,13 @@
     <Compile Include="FileLogger\FB_FileLogger.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="File\E_FileState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="File\FB_File.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="File\I_File.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Global Variables\GVL.TcGVL">
@@ -94,7 +100,7 @@
     <Compile Include="Logger\FB_Logger.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Logger\I_Logger.TcIO">
+    <Compile Include="Logging\I_Logger.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Message\FB_Message.TcPOU">

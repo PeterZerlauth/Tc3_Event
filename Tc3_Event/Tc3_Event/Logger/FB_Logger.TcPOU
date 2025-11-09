@@ -22,7 +22,9 @@ IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskT
 	nIndex:= 0;
 	WHILE nIndex < nMessages DO
 		IF aMessages[nIndex].bActive THEN
-			aMessages[nIndex].bActive:= FALSE;
+			IF aMessages[nIndex].eLogLevel <= E_LogLevel.Warning THEN
+				aMessages[nIndex].bActive:= FALSE;
+			END_IF
 			nIndex := nIndex + 1;
 		ELSE
 			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(FB_Message) * (nMessages - nIndex));
@@ -63,6 +65,22 @@ END_WHILE
 aMessages[nMessages]:= fbMessage;;
 nMessages := nMessages + 1;
 M_Log := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Reset" Id="{0333c356-62c7-4c19-9969-864fabc3465d}">
+      <Declaration><![CDATA[METHOD M_Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nIndex := 0;
+WHILE nIndex < nMessages DO
+    IF aMessages[nIndex].bActive = TRUE THEN
+		aMessages[nIndex].bActive:= FALSE;
+    END_IF
+    nIndex := nIndex + 1;
+END_WHILE
+M_Reset:= TRUE;]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_LogLevel" Id="{1c739022-3d6f-4ecb-abf9-2f9944cdc386}">
