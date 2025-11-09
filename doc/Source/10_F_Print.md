@@ -1,6 +1,6 @@
 ﻿# F_Print
 
----\n
+
 ## Declaration (Variables)
 
 ### VAR_INPUT

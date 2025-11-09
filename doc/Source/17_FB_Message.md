@@ -1,6 +1,6 @@
 ﻿# FB_Message
 
----\n
+
 ## Declaration (Variables)
 
 ### VAR_INPUT

@@ -1,6 +1,6 @@
 ﻿# FB_LoggingProvider
 
----\n
+
 ## Declaration (Variables)
 
 ### VAR
@@ -12,7 +12,7 @@
 
 
 
----\n
+
 ## Methods
 
 ### ### FB_exit
@@ -102,7 +102,7 @@
 | $(@{Name=nIndex; Type=UINT; Default=; Comment=}.Name) | $(@{Name=nIndex; Type=UINT; Default=; Comment=}.Type) |  |
 
 
----\n
+
 ##Properties
 
 ### ### P_Length

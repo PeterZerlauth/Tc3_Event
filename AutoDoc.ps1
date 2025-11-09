@@ -344,7 +344,7 @@ function Read-SourceFile-XML
     if ($pouImplements) {
         $strContent += "> **Implements:** `$pouImplements``n"
     }
-    $strContent += "`n---\n`n"
+    $strContent += "`n`n"
 
     # --- Parse Main Declaration ---
     # The CDATA section is just text, so we pass it to our ST parser
@@ -355,7 +355,7 @@ function Read-SourceFile-XML
 
     # --- Parse Methods ---
     if ($pou.Method) {
-        $strContent += "`n---\n`n## Methods`n`n"
+        $strContent += "`n`n## Methods`n`n"
         foreach ($method in $pou.Method) {
             $methodName = $method.Name
             $methodDeclarationText = $method.Declaration.'#cdata-section'
@@ -390,7 +390,7 @@ function Read-SourceFile-XML
 
     # --- Parse Properties ---
     if ($pou.Property) {
-        $strContent += "`n---\n`n##Properties`n`n"
+        $strContent += "`n`n##Properties`n`n"
         foreach ($prop in $pou.Property) {
             $propName = $prop.Name
             $propDeclarationText = $prop.Declaration.'#cdata-section'

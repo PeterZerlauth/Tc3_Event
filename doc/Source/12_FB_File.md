@@ -1,6 +1,6 @@
 ﻿# FB_File
 
----\n
+
 ## Declaration (Variables)
 
 ### VAR_OUTPUT
@@ -21,7 +21,7 @@
 
 
 
----\n
+
 ## Methods
 
 ### ### FB_Exit

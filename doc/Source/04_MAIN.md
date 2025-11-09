@@ -1,6 +1,6 @@
 ﻿# MAIN
 
----\n
+
 ## Declaration (Variables)
 
 ### VAR

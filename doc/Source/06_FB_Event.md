@@ -1,6 +1,6 @@
 ﻿# FB_Event
 
----\n
+
 ## Declaration (Variables)
 
 ### VAR_INPUT
@@ -27,7 +27,7 @@
 
 
 
----\n
+
 ## Methods
 
 ### ### FB_Init
@@ -98,7 +98,7 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Name) | $(@{Name=sMessage; Type=STRING(255); Default=; Comment=}.Type) |  |
 
 
----\n
+
 ##Properties
 
 ### ### P_Argument
