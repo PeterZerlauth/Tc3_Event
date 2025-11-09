@@ -13,9 +13,7 @@ Orginal version from
 https://github.com/hooxSoftware/TwincatAutodoc
 #>
 
-cls
-
-$strProject = 'C:\source\repos\Tc3_Logging\Tc3_Event\Tc3_Event' # change this lines for your Project
+$strProject = 'C:\source\repos\Tc3_Logging' # change this lines for your Project
 $strExport  = 'C:\source\repos\Tc3_Logging\doc' # add folder for the md-files
  
 # --- Original Regex (some still used by Read-TypeFile) ---
@@ -43,7 +41,7 @@ $global:Functions = @()
 # <--- END CHANGE ---
 $global:TypesMap = @{} # Ensure global map is initialized
 
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Entrypoint for documentation
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function New-Documentation
@@ -73,7 +71,7 @@ function New-Documentation
         Write-Host "Create sources..."
         if ($Subfolder)
         {
-            $strSubfolder = "Tc3_Event"
+            $strSubfolder = "Source"
         }
     }
     if ($FileType.contains("GVL"))
@@ -81,7 +79,7 @@ function New-Documentation
         Write-Host "Create variables..."
         if ($Subfolder)
         {
-            $strSubfolder += "\Tc3_Event"
+            $strSubfolder += "\Variables"
         }
     }
  
@@ -91,20 +89,26 @@ function New-Documentation
       $strPath = Split-Path -Parent $_.fullname
       $strFile = Split-Path -Leaf $_.fullname
  
+      # <--- CHANGE: Prepare for $ParseResult object from POU ---
       $Content = ""
       $ParseResult = $null
- 
+      # <--- END CHANGE ---
+
       if ($FileType.contains("DUT"))
       {
         $Content = Read-TypeFile -Path $strPath -File $strFile
       }
       if ($FileType.contains("POU"))
       {
+        # <--- CHANGE: Get object instead of just string
         $ParseResult = Read-SourceFile-XML -Path $strPath -File $strFile
         $Content = $ParseResult.Content
+        # <--- END CHANGE ---
       }
       if ($FileType.contains("GVL"))
       {
+        # GVL parsing was not defined, so we'll just skip it for now
+        # $Content = Read-SourceFile -Path $strPath -File $strFile
         $Content = "# $strFile (GVL)`n`n*Automatic parsing for GVL files is not yet implemented.*"
       }
      
@@ -125,6 +129,7 @@ function New-Documentation
           $FolderNew += $strPath.Replace($Path,"")
       }
  
+      # Ensure the directory exists before creating the file
       if (-not (Test-Path $FolderNew)) {
           New-Item -Path $FolderNew -ItemType Directory -Force | Out-Null
       }
@@ -133,17 +138,9 @@ function New-Documentation
  
       $temp = New-Item -Path $FolderNew -Name $FileNew -Force
  
-      # <--- CHANGE: Link generation now uses the final $FolderNew path
-      # Get the path of the folder *relative* to the doc root
-      $RelativeFolderPath = $FolderNew.Replace($Destination, "").Replace("\", "/")
-      
-      # Clean up any leading slashes
-      if ($RelativeFolderPath.StartsWith("/")) { $RelativeFolderPath = $RelativeFolderPath.Substring(1) }
+      # <--- CHANGE: Use forward slashes and sort into new lists ---
+      $LinkPath = ("$strSubfolder\" + $FileNew.Replace($index.ToString() + "_", $index.ToString("00") + "_")).Replace("\", "/")
 
-      # Create the final link path. $FileNew already has the correct 01_ padding.
-      $LinkPath = "$RelativeFolderPath/$FileNew"
-      # <--- END CHANGE ---
- 
       if ($FileType.contains("DUT"))
       {
         $global:TypesOverview += $LinkPath
@@ -152,14 +149,16 @@ function New-Documentation
       {
         if ($ParseResult.POUType -eq 'Function') {
             $global:Functions += $LinkPath
-        } else {
+        } else { # Default to FunctionBlock
             $global:FunctionBlocks += $LinkPath
         }
       }
+      # <--- END CHANGE ---
      
       Set-Content -Path "$FolderNew\$FileNew" -Value $Content -Encoding UTF8   
  
     }
+ 
 }
 
  
@@ -175,7 +174,6 @@ function New-Overview
     )
  
     Write-Host "Create Overview"
-
  
     # Ensure the directory exists
     if (-not (Test-Path $Destination)) {
@@ -184,10 +182,10 @@ function New-Overview
 
     $temp = New-Item -Path $Destination -Name "00_Overview.md" -Force
  
-    $strContent = "" # Added TOC back
+    $strContent = "[[_TOC_]]`n`n" # Added TOC back
 
     # --- Function Blocks ---
-    $strContent += "# Functionblocks`n`n"
+    $strContent += "# 🧱 Functionblocks`n`n"
     $index = 1
     foreach($element in ($global:FunctionBlocks | Sort-Object))
     {
@@ -203,7 +201,7 @@ function New-Overview
     }
  
     # --- Functions ---
-    $strContent += "`n`n`n# Functions`n`n"
+    $strContent += "`n`n---\n`n# ⚙️ Functions`n`n"
     $index = 1
     foreach($element in ($global:Functions | Sort-Object))
     {
@@ -219,7 +217,7 @@ function New-Overview
     }
 
     # --- Datatypes ---
-    $strContent += "`n`n`n# Datatypes`n`n"
+    $strContent += "`n`n---\n`n# 📚 Datatypes`n`n"
     $index = 1
     foreach($element in ($global:TypesOverview | Sort-Object))
     {
@@ -331,14 +329,14 @@ function Convert-DeclarationToMarkdown {
              $md += "| :--- | :--- | :--- | :--- |`n"
              foreach ($var in $inputs.Values) {
                   # <--- CHANGE: Added backticks for robust markdown table
-                  $md += "| $($var.Name) | $($var.Type) | $($var.Default) | $($var.Comment) |`n"
+                  $md += "| `$($var.Name)` | `$($var.Type)` | `$($var.Default)` | $($var.Comment) |`n"
               }
         } else {
              $md += "| Name | Type | Description |`n"
              $md += "| :--- | :--- | :--- |`n"
              foreach ($var in $inputs.Values) { 
                 # <--- CHANGE: Added backticks
-                $md += "| $($var.Name) | $($var.Type) | $($var.Comment) |`n"
+                $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"
              }
         }
         $md += "`n"
@@ -350,7 +348,7 @@ function Convert-DeclarationToMarkdown {
         $md += "| :--- | :--- | :--- |`n"
         foreach ($var in $outputs.Values) { 
             # <--- CHANGE: Added backticks
-            $md += "| $($var.Name) | $($var.Type) | $($var.Comment) |`n"
+            $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"
         }
         $md += "`n"
     }
@@ -361,7 +359,7 @@ function Convert-DeclarationToMarkdown {
         $md += "| :--- | :--- | :--- |`n"
         foreach ($var in $vars.Values) { 
             # <--- CHANGE: Added backticks
-            $md += "| $($var.Name) | $($var.Type) | $($var.Comment) |`n"     
+            $md += "| `$($var.Name)` | `$($var.Type)` | $($var.Comment) |`n"     
         }
             $md += "`n"
      }
@@ -391,17 +389,17 @@ function Read-SourceFile-XML
     
     # --- Build Header ---
     # <--- CHANGE: Added TOC and horizontal rules for readability
-    $strContent = "# $pouName`n"
+    $strContent = "[[_TOC_]]`n`n# $pouName`n"
     if ($pouImplements) {
         $strContent += "> **Implements:** `$pouImplements``n"
     }
-    $strContent += "`n`n"
+    $strContent += "`n---\n`n"
     # <--- END CHANGE ---
 
     # --- Parse Main Declaration ---
     # The CDATA section is just text, so we pass it to our ST parser
     $mainDeclarationText = $pou.Declaration.'#cdata-section'
-    $strContent += "## Declaration (Variables)`n`n" # Added emoji
+    $strContent += "## 📜 Declaration (Variables)`n`n" # Added emoji
     $strContent += Convert-DeclarationToMarkdown -Declaration $mainDeclarationText
     $strContent += "`n"
 
@@ -412,7 +410,7 @@ function Read-SourceFile-XML
 
     # --- Parse Methods ---
     if ($pou.Method) {
-        $strContent += "`n`n## Methods`n`n" # Added HR/emoji
+        $strContent += "`n---\n`n## ⚙️ Methods`n`n" # Added HR/emoji
         foreach ($method in $pou.Method) {
             $methodName = $method.Name
             $methodDeclarationText = $method.Declaration.'#cdata-section'
@@ -444,7 +442,7 @@ function Read-SourceFile-XML
 
     # --- Parse Properties ---
     if ($pou.Property) {
-        $strContent += "`n`n## Properties`n`n" # Added HR/emoji
+        $strContent += "`n---\n`n## 💎 Properties`n`n" # Added HR/emoji
         foreach ($prop in $pou.Property) {
             $propName = $prop.Name
             $propDeclarationText = $prop.Declaration.'#cdata-section'
@@ -460,7 +458,7 @@ function Read-SourceFile-XML
                     $relativePath = $global:TypesMap[$propType].Replace("Types/", "../Types/")
                     $propType = "[$propType]($relativePath)"
                 }
-                $strContent += "**Type:** $propType`n`n"
+                $strContent += "**Type:** `$propType``n`n"
             }
 
             if ($prop.Get) { $strContent += "* **Get:** Available`n" }
@@ -591,7 +589,6 @@ function Create-TypeMap
         [string] $Path,
         [switch] $Subfolder      
     )
-    Create-TypeMap
  
     $index = 0
     Write-Host "Create global Type map..."
@@ -635,9 +632,6 @@ function Create-TypeMap
  
     }
 }
-
-
-
  
 # --- Main Execution ---
 Create-TypeMap -Path $strProject -Subfolder
