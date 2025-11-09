@@ -1,6 +1,6 @@
 ﻿# LogLevel_To_TcEventSeverity
 
----\n
+
 ## Declaration (Variables)
 
 ### VAR_INPUT

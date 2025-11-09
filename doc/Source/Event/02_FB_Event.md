@@ -1,6 +1,6 @@
 ﻿# FB_Event
 
----\n
+
 ## Declaration (Variables)
 
 ### VAR_INPUT
@@ -27,7 +27,7 @@
 
 
 
----\n
+
 ## Methods
 
 ### FB_Init
@@ -98,8 +98,8 @@ zusätzlichen Code bereitstellen. Sie können den Rückgabewert auswerten.
 | sMessage | STRING(255) |  |
 
 
----\n
-## 💎 Properties
+
+## Properties
 
 ### P_Argument
 

@@ -1,6 +1,6 @@
 ﻿# FB_Argument
 
----\n
+
 ## Declaration (Variables)
 
 ### VAR
@@ -10,7 +10,7 @@
 
 
 
----\n
+
 ## Methods
 
 ### M_AddBOOL
@@ -74,8 +74,8 @@
 **Returns:** (None)
 
 
----\n
-## 💎 Properties
+
+## Properties
 
 ### P_Value
 

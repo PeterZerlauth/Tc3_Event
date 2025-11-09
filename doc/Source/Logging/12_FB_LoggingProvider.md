@@ -1,6 +1,6 @@
 ﻿# FB_LoggingProvider
 
----\n
+
 ## Declaration (Variables)
 
 ### VAR
@@ -12,7 +12,7 @@
 
 
 
----\n
+
 ## Methods
 
 ### FB_exit
@@ -102,8 +102,8 @@
 | nIndex | UINT |  |
 
 
----\n
-## 💎 Properties
+
+## Properties
 
 ### P_Length
 

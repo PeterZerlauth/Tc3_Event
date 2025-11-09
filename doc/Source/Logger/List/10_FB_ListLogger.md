@@ -1,6 +1,6 @@
 ﻿# FB_ListLogger
 
----\n
+
 ## Declaration (Variables)
 
 ### VAR_INPUT
@@ -18,7 +18,7 @@
 
 
 
----\n
+
 ## Methods
 
 ### M_Log
@@ -34,8 +34,8 @@
 
 **Returns:** $(System.Collections.Hashtable['Return'])`n
 
----\n
-## 💎 Properties
+
+## Properties
 
 ### P_LogLevel
 

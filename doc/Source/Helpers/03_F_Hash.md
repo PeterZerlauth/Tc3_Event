@@ -1,6 +1,6 @@
 ﻿# F_Hash
 
----\n
+
 ## Declaration (Variables)
 
 ### VAR_INPUT
