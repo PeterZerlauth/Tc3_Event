@@ -505,7 +505,7 @@ function Read-TypeFile
                 $linkedType = "[$varType]($relativePath)"
             }
             
-            $row = "| `$varName` | `$linkedType` | $varComment |"
+            $row = "| $varName | $linkedType | $varComment |"
 
         } elseif (-not $isStruct -and ($trimmedLine -match $EnumRegex)) {
             $varName = $Matches['Name']
