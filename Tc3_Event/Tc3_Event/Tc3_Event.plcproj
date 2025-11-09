@@ -19,7 +19,7 @@
     <Company>www.peterzerlauth.com</Company>
     <Released>false</Released>
     <Title>Tc3_Event</Title>
-    <ProjectVersion>0.0.0.0</ProjectVersion>
+    <ProjectVersion>0.0.0.1</ProjectVersion>
     <DefaultNamespace>Tc3_Event</DefaultNamespace>
     <Placeholder>Tc3_Event</Placeholder>
     <Author>Peter Zerlauth</Author>
@@ -33,14 +33,15 @@
   <ItemGroup>
     <Folder Include="Helpers" />
     <Folder Include="Event" />
+    <Folder Include="Helpers\File" />
+    <Folder Include="Logger\FileLogger" />
+    <Folder Include="Logger\List" />
+    <Folder Include="Logger\Twincat" />
     <Folder Include="Logging" />
     <Folder Include="Logger" />
-    <Folder Include="FileLogger" />
-    <Folder Include="File" />
     <Folder Include="Message" />
     <Folder Include="Argument" />
     <Folder Include="Global Variables" />
-    <Folder Include="TcLogger" />
     <Folder Include="Project Information" />
     <Folder Include="Version" />
   </ItemGroup>
@@ -57,21 +58,18 @@
     <Compile Include="Event\ST_Events.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FileLogger\FB_FileLogger.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="File\E_FileState.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="File\FB_File.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="File\I_File.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Global Variables\GVL.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="Helpers\File\E_FileState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\File\FB_File.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\File\I_File.TcIO">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\F_Hash.TcPOU">
       <SubType>Code</SubType>
@@ -91,13 +89,19 @@
     <Compile Include="Helpers\LogLevel_To_TcEventSeverity.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Logger\FileLogger\FB_FileLogger.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Logger\List\E_LogLevel.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Logger\List\FB_ListLogger.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Logger\Twincat\FB_TcLogger.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Logging\FB_LoggingProvider.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Logger\E_LogLevel.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Logger\FB_Logger.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logging\I_Logger.TcIO">
@@ -117,9 +121,6 @@
     <Compile Include="Project Information\F_GetVersion.TcPOU">
       <SubType>Code</SubType>
       <SystemCall>true</SystemCall>
-    </Compile>
-    <Compile Include="TcLogger\FB_TcLogger.TcPOU">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Version\Global_Version.TcGVL">
       <SubType>Code</SubType>

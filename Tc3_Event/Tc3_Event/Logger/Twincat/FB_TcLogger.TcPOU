@@ -9,24 +9,40 @@ END_VAR
 VAR
 	fbSourceInfo:			FB_TcSourceInfo;
 	aAlarm:					ARRAY[0..99] OF FB_TcAlarm; 	// Message store
-    nMessages:				UINT := 0;                     // Message count
+    nAlarm:					UINT;                     		// Message count
+	bAlarm:					ARRAY[0..99] OF BOOL; 	// Message store
 	{attribute 'hide'} 
 	nIndex: 				UINT;
+	{attribute 'hide'} 
 	nTimestamp:				LINT;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// https://peterzerlauth.com/
 
+// @ToDo
+
+// nIndex := 0;
+// WHILE nIndex < nAlarm DO
+//     IF bAlarm[nIndex] = TRUE THEN
+// 		bAlarm[nIndex]:= FALSE;
+//     END_IF
+//     nIndex := nIndex + 1;
+// END_WHILE
+// M_Reset:= TRUE;
+// // https://peterzerlauth.com/
+// 
 // IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime THEN // 1 second = 1e9 ns
 // 	nTimestamp := TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime + 1000000000;
 // 	nIndex:= 0;
-// 	WHILE nIndex < nMessages DO
-// 		IF aAlarm[nIndex]. THEN
-// 			aAlarm[nIndex].bActive:= FALSE;
+// 	WHILE nIndex < nAlarm DO
+// 		IF bAlarm[nIndex] THEN
+// 			IF aAlarm[nIndex].eSeverity <= LogLevel_To_TcEventSeverity(E_LogLevel.Warning) THEN
+// 				bAlarm[nIndex]:= FALSE;
+// 			END_IF
 // 			nIndex := nIndex + 1;
 // 		ELSE
-// 			MEMMOVE(ADR(aAlarm[nIndex]), ADR(aAlarm[nIndex + 1]), SIZEOF(FB_Message) * (nMessages - nIndex));
+// 			aAlarm[nIndex].Release
 // 			nMessages := nMessages - 1;
 // 			RETURN;
 // 		END_IF
@@ -48,36 +64,40 @@ END_VAR]]></Declaration>
 	RETURN;
 END_IF
 
-IF nMessages > 99 THEN 
+IF nAlarm > 99 THEN 
 	RETURN;
 END_IF
 
 // Skip if same sMessage already exists
 nIndex := 0;
-WHILE nIndex < nMessages DO
+WHILE nIndex < nAlarm DO
     IF aAlarm[nIndex].EqualsToEventEntry(TC_EVENT_CLASSES.Tc3_Event, fbMessage.nID, LogLevel_To_TcEventSeverity(fbMessage.eLogLevel))  THEN
+		bAlarm[nIndex]:= TRUE;
         M_Log := TRUE;
-        RETURN; // message already in buffer
+        RETURN;
     END_IF
     nIndex := nIndex + 1;
 END_WHILE
 
+// prepare
 fbSourceInfo.Clear();
 fbSourceInfo.sName:= fbMessage.sSource;
-aAlarm[nMessages].Create(TC_EVENT_CLASSES.Tc3_Event,  fbMessage.nID, LogLevel_To_TcEventSeverity(fbMessage.eLogLevel), FALSE, fbSourceInfo);
-aAlarm[nMessages].ipArguments.Clear();
+aAlarm[nAlarm].Create(TC_EVENT_CLASSES.Tc3_Event,  fbMessage.nID, LogLevel_To_TcEventSeverity(fbMessage.eLogLevel), FALSE, fbSourceInfo);
+aAlarm[nAlarm].ipArguments.Clear();
 
+// Split and add arguments
 nPosition := FIND('$R', fbMessage.sArguments);
 WHILE nPosition > 0 DO
     sArgument := LEFT(fbMessage.sArguments, nPosition - 1);
-    aAlarm[nMessages].ipArguments.AddString(sArgument);
+    aAlarm[nAlarm].ipArguments.AddString(sArgument);
     fbMessage.sArguments:= RIGHT(fbMessage.sArguments, LEN(fbMessage.sArguments) - (nPosition + 1));
     nPosition := FIND('$R', fbMessage.sArguments);
 END_WHILE;
 
-aAlarm[nMessages].Raise(fbMessage.nTimestamp);
+// Raise alarm
+aAlarm[nAlarm].Raise(fbMessage.nTimestamp);
 
-nMessages := nMessages + 1;
+nAlarm := nAlarm + 1;
 M_Log := TRUE;]]></ST>
       </Implementation>
     </Method>
@@ -87,7 +107,14 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[nIndex := 0;
+WHILE nIndex < nAlarm DO
+    IF bAlarm[nIndex] = TRUE THEN
+		bAlarm[nIndex]:= FALSE;
+    END_IF
+    nIndex := nIndex + 1;
+END_WHILE
+M_Reset:= TRUE;]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_LogLevel" Id="{f86a40a0-98fd-40f4-a32f-52729e621278}">
