@@ -17,8 +17,8 @@ It provides structured logging capabilities with reusable Function Blocks, enabl
 - **File Logging (Experimental)** – Capture logs to file (currently under development).  
 
 ## Documentation
-https://github.com/PeterZerlauth/Tc3_Event/blob/master/doc/00_Overview.md
 
+[docs](doc/00_Overview.md)
 
 ---
 
