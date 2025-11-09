@@ -515,7 +515,7 @@ function Read-TypeFile
             
             if (-not $varValue) { $varValue = "..." } # Auto-incremented
             
-            $row = "| `$varName` | `$varValue` | $varComment |"
+            $row = "| $varName | $varValue | $varComment |"
         }
         
         if ($row) {

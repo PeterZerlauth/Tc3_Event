@@ -2,9 +2,9 @@
 
 | Name | Value | Comment |
 | :--- | :--- | :--- |
-| $varName | $varValue |  |
-| $varName | $varValue |  |
-| $varName | $varValue |  |
-| $varName | $varValue |  |
-| $varName | $varValue |  |
+| Verbose | ... |  |
+| Info | ... |  |
+| Warning | ... |  |
+| Error | ... |  |
+| Critical | ... |  |
 

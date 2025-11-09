@@ -2,9 +2,9 @@
 
 | Name | Value | Comment |
 | :--- | :--- | :--- |
-| $varName | $varValue |  |
-| $varName | $varValue |  |
-| $varName | $varValue |  |
-| $varName | $varValue |  |
-| $varName | $varValue |  |
+| OK | ... |  |
+| NO_FILE | ... |  |
+| ILLEGAL_POS | ... |  |
+| FULL | ... |  |
+| EOF | ... |  |
 
