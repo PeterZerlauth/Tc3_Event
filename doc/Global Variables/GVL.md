@@ -4,4 +4,14 @@
 
 **Source File:** `Global Variables/GVL.TcGVL`
 
-> Details go here...
+## Declaration
+
+```iecst
+{attribute 'no-analysis'}
+VAR_GLOBAL
+  // {attribute 'hide'} 
+	aBuffer:				ARRAY[0..99] OF FB_Message;
+    nBuffer:				UINT := 0;
+END_VAR
+```
+
