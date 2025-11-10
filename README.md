@@ -18,7 +18,7 @@ It provides structured logging capabilities with reusable Function Blocks, enabl
 
 ## Documentation
 
-[docs](doc/00_Overview.md)
+[docs](doc/readme.md)
 
 ---
 
