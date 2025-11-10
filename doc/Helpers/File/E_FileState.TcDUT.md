@@ -1,6 +1,6 @@
 # E_FileState
 
-**Type:** DUT
+**Type:** UNKNOWN
 
 **Source File:** `Helpers/File/E_FileState.TcDUT`
 

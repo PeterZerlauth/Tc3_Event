@@ -1,6 +1,6 @@
 # E_LogLevel
 
-**Type:** DUT
+**Type:** UNKNOWN
 
 **Source File:** `Logger/List/E_LogLevel.TcDUT`
 
