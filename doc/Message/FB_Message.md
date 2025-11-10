@@ -1,9 +1,12 @@
-# FB_Message
+## FB_Message
 
-**Type:** FUNCTION_BLOCK
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Message/FB_Message.TcPOU`
 
+### References / Cross-links
+
+### IEC Code
 ```iec
 {attribute 'analysis' := '-33'}
 // Payload for events
@@ -24,8 +27,3 @@ END_VAR
 VAR
 END_VAR
 ```
-
-### References / Cross-links
-- [FB_Message](Message/FB_Message.md)
-- [E_LogLevel](Logger/List/E_LogLevel.md)
-

@@ -1,9 +1,15 @@
-# FB_ListLogger
+## FB_ListLogger
 
-**Type:** FUNCTION_BLOCK
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Logger/List/FB_ListLogger.TcPOU`
 
+### References / Cross-links
+- [P_LogLevel](../P_LogLevel/P_LogLevel.md)
+- [-](../Functions/- .md)
+- [-](../Functions/- .md)
+
+### IEC Code
 ```iec
 // Provide logging 
 FUNCTION_BLOCK FB_ListLogger IMPLEMENTS I_Logger, I_LogLevel
@@ -21,7 +27,7 @@ VAR
 	nTimestamp:				LINT;
 END_VAR
 
-// --- Implementation ---
+// --- Implementation code ---
 // https://peterzerlauth.com/
 
 IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime THEN // 1 second = 1e9 ns
@@ -48,54 +54,14 @@ VAR_INPUT
 END_VAR
 VAR
 END_VAR
-IF eLogLevel > fbMessage.eLogLevel THEN
-	M_Log:= TRUE;
-	RETURN;
-END_IF
-
-IF nMessages > 99 THEN 
-	RETURN;
-END_IF
-
-// Skip if same sMessage already exists
-nIndex := 0;
-WHILE nIndex < nMessages DO
-    IF aMessages[nIndex].sDefault = fbMessage.sDefault THEN
-		aMessages[nIndex].bActive:= TRUE;
-        M_Log := TRUE;
-        RETURN; // message already in buffer
-    END_IF
-    nIndex := nIndex + 1;
-END_WHILE
-
-aMessages[nMessages]:= fbMessage;;
-nMessages := nMessages + 1;
-M_Log := TRUE;
-END_METHOD
 
 // --- Method: M_Reset ---
 METHOD M_Reset : BOOL
 VAR_INPUT
 END_VAR
-nIndex := 0;
-WHILE nIndex < nMessages DO
-    IF aMessages[nIndex].bActive = TRUE THEN
-		aMessages[nIndex].bActive:= FALSE;
-    END_IF
-    nIndex := nIndex + 1;
-END_WHILE
-M_Reset:= TRUE;
-END_METHOD
 
-// --- Property (read/write): P_LogLevel ---
-PROPERTY P_LogLevel : UNKNOWN
-END_PROPERTY
+// --- Property: P_LogLevel ---
+{attribute 'OPC.UA.DA.Property' := '1'}
+{attribute 'monitoring' := 'variable'}
+PROPERTY PUBLIC P_LogLevel : E_LogLevel
 ```
-
-### References / Cross-links
-- [FB_ListLogger](Logger/List/FB_ListLogger.md)
-- [I_Logger](Logging/I_Logger.md)
-- [I_LogLevel](Logger/FileLogger/I_LogLevel.md)
-- [E_LogLevel](Logger/List/E_LogLevel.md)
-- [FB_Message](Message/FB_Message.md)
-

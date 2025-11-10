@@ -1,9 +1,12 @@
-# E_FileState
+## E_FileState
 
 **Type:** ENUM
 
 **Source File:** `Helpers/File/E_FileState.TcDUT`
 
+### References / Cross-links
+
+### IEC Code
 ```iec
 {attribute 'qualified_only'}
 {attribute 'strict'}
@@ -18,7 +21,3 @@ TYPE E_FileState :
 ) UDINT;
 END_TYPE
 ```
-
-### References / Cross-links
-- [E_FileState](Helpers/File/E_FileState.md)
-

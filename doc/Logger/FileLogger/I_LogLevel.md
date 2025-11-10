@@ -1,13 +1,12 @@
-# I_LogLevel
+## I_LogLevel
 
 **Type:** INTERFACE
 
 **Source File:** `Logger/FileLogger/I_LogLevel.TcIO`
 
+### References / Cross-links
+
+### IEC Code
 ```iec
 INTERFACE I_LogLevel
 ```
-
-### References / Cross-links
-- [I_LogLevel](Logger/FileLogger/I_LogLevel.md)
-

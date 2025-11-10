@@ -1,9 +1,12 @@
-# E_LogLevel
+## E_LogLevel
 
 **Type:** ENUM
 
 **Source File:** `Logger/List/E_LogLevel.TcDUT`
 
+### References / Cross-links
+
+### IEC Code
 ```iec
 {attribute 'qualified_only'}
 {attribute 'strict'}
@@ -18,7 +21,3 @@ TYPE E_LogLevel :
 );
 END_TYPE
 ```
-
-### References / Cross-links
-- [E_LogLevel](Logger/List/E_LogLevel.md)
-
