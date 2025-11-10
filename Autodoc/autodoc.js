@@ -3,19 +3,20 @@ const path = require('path');
 
 // --- Configuration ---
 const SOURCE_DIRECTORY = 'C:/source/repos/Tc3_Event/Tc3_Event/Tc3_Event';
-const OUTPUT_DIRECTORY = 'C:/source/repos/Tc3_Event/doc'; // Output folder
-const OVERVIEW_FILE = 'ProjectOverview.md';
+const OUTPUT_DIRECTORY = 'C:/source/repos/Tc3_Event/doc';
 // --- End Configuration ---
 
-// Map file extensions to general categories
+// Map extensions to general object type
 const objectTypeMap = {
-  '.TcPOU': 'POU',   // FUNCTION / FUNCTION BLOCK will be determined later
-  '.TcDUT': 'DUT',   // STRUCT / ENUM will be determined later
+  '.TcPOU': 'POU',   // FUNCTION vs FUNCTION BLOCK determined later
+  '.TcDUT': 'DUT',   // STRUCT vs ENUM determined later
   '.TcIO': 'INTERFACE',
   '.TcGVL': 'GVL'
 };
 
-// --- Step 1: Recursively find TwinCAT files ---
+// ------------------- Helper Functions -------------------
+
+// Recursively find TwinCAT files
 function findFilesRecursive(dir, rootDir) {
   let results = [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -42,7 +43,7 @@ function findFilesRecursive(dir, rootDir) {
   return results;
 }
 
-// --- Step 2: Determine actual type ---
+// Determine type of each file
 function determineFileType(file) {
   try {
     const content = fs.readFileSync(file.path, 'utf8');
@@ -68,7 +69,7 @@ function determineFileType(file) {
   }
 }
 
-// --- Step 3: Group files by type ---
+// Group files by type
 function mapFiles(files) {
   const grouped = {};
   for (const file of files) {
@@ -79,71 +80,63 @@ function mapFiles(files) {
   return grouped;
 }
 
-// --- Step 4: Generate individual Markdown files ---
-function generateDocs(groupedFiles) {
-  if (!fs.existsSync(OUTPUT_DIRECTORY)) fs.mkdirSync(OUTPUT_DIRECTORY, { recursive: true });
-
-  for (const [type, files] of Object.entries(groupedFiles)) {
-    for (const file of files) {
-      const mdPath = path.join(OUTPUT_DIRECTORY, `${file.name}.md`);
-      const content = `# ${file.name}
-
-**Type:** ${type}  
-**Source file:** \`${file.relativePath}\`  
-
-## Details
-
-> You can add declaration, properties, and methods here later.
-`;
-      fs.writeFileSync(mdPath, content, 'utf8');
-      console.log(`Created ${mdPath}`);
-    }
-  }
-}
-
-// --- Step 5: Generate overview Markdown ---
-function generateOverview(groupedFiles) {
-  let markdown = "# Project Documentation\n\n";
-  markdown += "## 📖 Overview\nThis document provides an overview of the TwinCAT project components.\n\n";
-
-  for (const type of Object.keys(groupedFiles).sort()) {
-    markdown += `### ${type} (${groupedFiles[type].length})\n`;
-    groupedFiles[type].forEach(file => {
-      const safeLink = encodeURI(file.name + '.md');
-      markdown += `* [${file.name}](${safeLink}) — \`${file.relativePath}\`\n`;
-    });
-    markdown += '\n';
-  }
-
-  const overviewPath = path.join(OUTPUT_DIRECTORY, OVERVIEW_FILE);
-  fs.writeFileSync(overviewPath, markdown, 'utf8');
-  console.log(`\nOverview saved to ${overviewPath}`);
-}
-
-// --- Helper: Clear output folder ---
-function clearOutputFolder(folder) {
-  if (!fs.existsSync(folder)) return;
-
-  const entries = fs.readdirSync(folder, { withFileTypes: true });
-  for (const entry of entries) {
-    const fullPath = path.join(folder, entry.name);
-    if (entry.isDirectory()) {
-      clearOutputFolder(fullPath);
-      fs.rmdirSync(fullPath);
-    } else {
-      fs.unlinkSync(fullPath);
-    }
-  }
-}
-
-// --- Main ---
-function main() {
-  // Clear previous documentation
+// Clear output folder
+function clearOutputFolder() {
   if (fs.existsSync(OUTPUT_DIRECTORY)) {
-    console.log(`Clearing output folder: ${OUTPUT_DIRECTORY}`);
-    clearOutputFolder(OUTPUT_DIRECTORY);
+    fs.rmSync(OUTPUT_DIRECTORY, { recursive: true, force: true });
   }
   fs.mkdirSync(OUTPUT_DIRECTORY, { recursive: true });
+}
+
+// Generate individual Markdown files preserving folder structure
+async function generateObjectMarkdown(file) {
+  const category = determineFileType(file);
+
+  const content = `# ${file.name}\n\n` +
+    `**Type:** ${category}\n\n` +
+    `**Source File:** \`${file.relativePath}\`\n\n` +
+    `> Details go here...\n`;
+
+  const outputPath = path.join(OUTPUT_DIRECTORY, file.relativePath + '.md');
+  const outputDir = path.dirname(outputPath);
+  fs.mkdirSync(outputDir, { recursive: true });
+  fs.writeFileSync(outputPath, content, 'utf8');
+
+  console.log(`Created ${outputPath}`);
+}
+
+// Generate project overview
+function generateOverview(groupedFiles) {
+  let md = "# Project Documentation\n\n## 📖 Overview\nThis document provides an overview of the TwinCAT project components.\n\n";
+
+  for (const type of Object.keys(groupedFiles).sort()) {
+    md += `### ${type} (${groupedFiles[type].length})\n`;
+    groupedFiles[type].forEach(file => {
+      const linkPath = encodeURI(file.relativePath + '.md'); // preserve folder structure
+      md += `* [${file.name}](${linkPath}) — \`${file.relativePath}\`\n`;
+    });
+    md += '\n';
+  }
+
+  const overviewPath = path.join(OUTPUT_DIRECTORY, 'ProjectOverview.md');
+  fs.writeFileSync(overviewPath, md, 'utf8');
+  console.log(`Overview generated: ${overviewPath}`);
+}
+
+// Generate all docs
+async function generateDocs(groupedFiles) {
+  const promises = [];
+  for (const type in groupedFiles) {
+    for (const file of groupedFiles[type]) {
+      promises.push(generateObjectMarkdown(file));
+    }
+  }
+  await Promise.all(promises);
+}
+
+// ------------------- Main -------------------
+async function main() {
+  clearOutputFolder();
 
   const files = findFilesRecursive(SOURCE_DIRECTORY, SOURCE_DIRECTORY);
   const groupedFiles = mapFiles(files);
@@ -155,7 +148,7 @@ function main() {
     console.log('');
   }
 
-  generateDocs(groupedFiles);
+  await generateDocs(groupedFiles);
   generateOverview(groupedFiles);
 
   console.log('\n✅ All Markdown docs generated.');

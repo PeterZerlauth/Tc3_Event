@@ -1,8 +1,0 @@
-# F_Print
-
-**Type:** FUNCTION  
-**Source file:** `Helpers/F_Print.TcPOU`  
-
-## Details
-
-> You can add declaration, properties, and methods here later.
