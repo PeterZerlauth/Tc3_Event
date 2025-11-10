@@ -13,7 +13,7 @@
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| fbFile | [FB_File](../../../../13_FB_File.md) |  |
+| fbFile | [FB_File](../../Helpers/File/12_FB_File.md) |  |
 | aBuffer | ARRAY[0..99] |  |
 | nBuffer | UINT |  |
 
@@ -30,7 +30,7 @@
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| fbMessage | [FB_Message](../../../../18_FB_Message.md) |  |
+| fbMessage | [FB_Message](../../Message/18_FB_Message.md) |  |
 
 ### VAR
 

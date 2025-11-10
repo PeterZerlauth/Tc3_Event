@@ -15,12 +15,12 @@
 | sInstancePath | STRING(255) |  |
 | fbSymbolInfo | PLC_ReadSymInfoByNameEx |  |
 | fbSystemTime | FB_LocalSystemTime |  |
-| fbArguments | [FB_Argument](../../../06_FB_Argument.md) |  |
-| fbVerbose | [FB_Message](../../../18_FB_Message.md) |  |
-| fbInfo | [FB_Message](../../../18_FB_Message.md) |  |
-| fbWarning | [FB_Message](../../../18_FB_Message.md) |  |
-| fbError | [FB_Message](../../../18_FB_Message.md) |  |
-| fbCritical | [FB_Message](../../../18_FB_Message.md) |  |
+| fbArguments | [FB_Argument](../Argument/06_FB_Argument.md) |  |
+| fbVerbose | [FB_Message](../Message/18_FB_Message.md) |  |
+| fbInfo | [FB_Message](../Message/18_FB_Message.md) |  |
+| fbWarning | [FB_Message](../Message/18_FB_Message.md) |  |
+| fbError | [FB_Message](../Message/18_FB_Message.md) |  |
+| fbCritical | [FB_Message](../Message/18_FB_Message.md) |  |
 
 
 

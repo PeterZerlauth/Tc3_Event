@@ -30,7 +30,7 @@
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| fbMessage | [FB_Message](../../../../18_FB_Message.md) |  |
+| fbMessage | [FB_Message](../../Message/18_FB_Message.md) |  |
 
 ### M_Reset
 

@@ -471,10 +471,6 @@ function Create-TypeMap {
     }
 }
 
-# -------------------
-# Build POU map (FunctionBlocks / Functions)
-# This lets us link a variable whose type is a FB/Function to the generated .md for that POU.
-# -------------------
 function Create-PouMap {
     param(
         [string] $Path,
@@ -485,10 +481,14 @@ function Create-PouMap {
     $index = 0
     Write-Host "Create global POU map..."
 
-    $pous = Get-ChildItem -Path $Path -Recurse -Filter "*.TcPOU" -ErrorAction SilentlyContinue
+    # Normalize base/destination
+    $basePathFull = [System.IO.Path]::GetFullPath($Path)
+    $destinationFull = [System.IO.Path]::GetFullPath($Destination)
+
+    $pous = Get-ChildItem -Path $basePathFull -Recurse -Filter "*.TcPOU" -ErrorAction SilentlyContinue | Sort-Object FullName
     foreach ($item in $pous) {
         $index++
-        $strPath = Split-Path -Parent $item.FullName
+        $strPath = [System.IO.Path]::GetFullPath((Split-Path -Parent $item.FullName))
         $strFile = Split-Path -Leaf $item.FullName
 
         try {
@@ -508,10 +508,41 @@ function Create-PouMap {
         $strSubfolder = ""
         if ($Subfolder) { $strSubfolder = "Source" }
 
+        # Compute the relative subfolder under the base path (mirrors New-Documentation -Structured logic)
+        $relativeSub = ""
+        if ($strPath.StartsWith($basePathFull, [System.StringComparison]::InvariantCultureIgnoreCase)) {
+            $relativeSub = $strPath.Substring($basePathFull.Length).TrimStart('\','/')
+        } else {
+            try {
+                $fromUri = New-Object System.Uri((($basePathFull.TrimEnd('\') + [IO.Path]::DirectorySeparatorChar)))
+                $toUri   = New-Object System.Uri($strPath)
+                $relUri = $fromUri.MakeRelativeUri($toUri)
+                $relativeSub = [System.Uri]::UnescapeDataString($relUri.ToString()) -replace '/','\'
+            } catch {
+                $relativeSub = ""
+            }
+            $relativeSub = $relativeSub.TrimStart('\','/')
+        }
+
         $fileName = $index.ToString("00")
         $mdFileName = $fileName + "_" + $strFile.Replace("TcPOU","md")
-        $relativePath = if ($strSubfolder) { Join-Path $strSubfolder $mdFileName } else { $mdFileName }
-        $mdFullPath = [System.IO.Path]::GetFullPath((Join-Path $Destination $relativePath))
+
+        # Build the relative path including subfolder and nested path (if any)
+        if ($strSubfolder) {
+            if ($relativeSub) {
+                $relativePath = Join-Path (Join-Path $strSubfolder $relativeSub) $mdFileName
+            } else {
+                $relativePath = Join-Path $strSubfolder $mdFileName
+            }
+        } else {
+            if ($relativeSub) {
+                $relativePath = Join-Path $relativeSub $mdFileName
+            } else {
+                $relativePath = $mdFileName
+            }
+        }
+
+        $mdFullPath = [System.IO.Path]::GetFullPath((Join-Path $destinationFull $relativePath))
 
         if ($pouName -and -not $global:POUMap.ContainsKey($pouName)) {
             $global:POUMap.Add($pouName, $mdFullPath)

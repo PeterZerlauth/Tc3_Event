@@ -6,7 +6,7 @@
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| fbTest | [FB_TestFast](../../../02_FB_TestFast.md) |  |
+| fbTest | [FB_TestFast](03_FB_TestFast.md) |  |
 | exception | __SYSTEM.ExceptionCode |  |
 
 

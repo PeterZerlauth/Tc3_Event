@@ -10,7 +10,7 @@
 | fbLogger | Tc3_Event.FB_ListLogger |  |
 | fbFileLogger | Tc3_Event.FB_FileLogger |  |
 | fbTcLogger | Tc3_Event.FB_TcLogger |  |
-| fbTest | [FB_TestSlow](../../../03_FB_TestSlow.md) |  |
+| fbTest | [FB_TestSlow](04_FB_TestSlow.md) |  |
 | exception | __SYSTEM.ExceptionCode |  |
 | bReset | BOOL |  |
 
