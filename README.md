@@ -16,10 +16,6 @@ It provides structured logging capabilities with reusable Function Blocks, enabl
 - **HMI Integration** – Display structured logs on HMIs in real-time.  
 - **File Logging (Experimental)** – Capture logs to file (currently under development).  
 
-## Documentation
-
-[docs](doc/readme.md)
-
 ---
 
 ## 🚀 Getting Started
