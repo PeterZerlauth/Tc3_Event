@@ -1,6 +1,0 @@
-# F_GetVersion
-
-```iecst
-
-
-```

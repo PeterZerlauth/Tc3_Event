@@ -9,7 +9,7 @@
   ],
   "license": "GPL-3.0-or-later",
   "author": "peter zerlauth",
-  "type": "module",
+  "type": "commonjs",
   "main": "autodoc.js",
   "scripts": {
     "test": "test"
