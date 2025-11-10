@@ -1,33 +1,11 @@
-[[ _TOC_ ]]
-
 ## F_Hash
 
 **Type:** FUNCTION
 
-#### Description  
-Calculate hash value
+**Source File:** `Helpers/F_Hash.TcPOU`
 
-#### Inputs  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| sInput | `STRING(255)` |  | input string to hash |
-
-#### Outputs  
--
-
-#### Locals  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| nLength | `INT` | `= 0` | length of the input string |
-| nPrime | `UDINT` | `= 37` | base for polynomial rolling hash |
-| nModulus | `UDINT` | `= 1000000009` | large prime modulus |
-| nHashValue | `UDINT` | `= 0` | resulting hash |
-| nPowerOfBase | `UDINT` | `= 1` | p^i mod m |
-| nIndex | `INT` |  | loop counter |
-| nChar | `UDINT` |  | numeric value of character |
-
-<details>
-<summary>Raw IEC/ST</summary>
+#### Declaration & Implementation
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 // Calculate hash value 
@@ -45,8 +23,7 @@ VAR
     nChar:					UDINT;       				// numeric value of character
 END_VAR
 
-// --- Implementation ---
-
+// --- Implementation code ---
 // calculate a hash
 nLength := LEN(sInput);
 FOR nIndex := 1 TO nLength DO
@@ -55,6 +32,5 @@ FOR nIndex := 1 TO nLength DO
     nPowerOfBase := (nPowerOfBase * nPrime) MOD nModulus;
 END_FOR
 ```
-
 </details>
 

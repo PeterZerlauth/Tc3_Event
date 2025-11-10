@@ -1,30 +1,11 @@
-[[ _TOC_ ]]
-
 ## F_Print
 
 **Type:** FUNCTION
 
-#### Description  
-Helper to generate a message with replaced arguments
+**Source File:** `Helpers/F_Print.TcPOU`
 
-#### Inputs  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| sMessage | `STRING(255)` |  |  |
-| sArguments | `STRING(255)` |  | Arguments are separated by $R |
-
-#### Outputs  
--
-
-#### Locals  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| sArg | `STRING` |  | single argument |
-| nPosition | `INT` |  | Position of the $R delimiter |
-| nPlaceholder | `INT` |  | Position of the %s placeholder |
-
-<details>
-<summary>Raw IEC/ST</summary>
+#### Declaration & Implementation
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 // Helper to generate a message with replaced arguments
@@ -39,8 +20,7 @@ VAR
     nPlaceholder:			INT;         	// Position of the %s placeholder
 END_VAR
 
-// --- Implementation ---
-
+// --- Implementation code ---
 // replace placeholders with arguments
 F_Print := sMessage;
 
@@ -65,6 +45,5 @@ WHILE nPosition > 0 DO
     
 END_WHILE
 ```
-
 </details>
 

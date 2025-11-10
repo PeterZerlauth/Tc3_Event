@@ -1,10 +1,10 @@
-[[ _TOC_ ]]
-
 ## GVL
 
 **Type:** GVL
 
-#### Declaration
+**Source File:** `Global Variables/GVL.TcGVL`
+
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 {attribute 'no-analysis'}
@@ -14,4 +14,5 @@ VAR_GLOBAL
     nBuffer:				UINT := 0;
 END_VAR
 ```
+</details>
 

@@ -1,20 +1,11 @@
-[[ _TOC_ ]]
-
 ## F_GetCompany
 
 **Type:** FUNCTION
 
-#### Description  
-This function has been automatically generated from the project information.
+**Source File:** `Project Information/F_GetCompany.TcPOU`
 
-#### Inputs  
--
-
-#### Outputs  
--
-
-<details>
-<summary>Raw IEC/ST</summary>
+#### Declaration & Implementation
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 // This function has been automatically generated from the project information.
@@ -26,10 +17,8 @@ VAR_INPUT
 	
 END_VAR
 
-// --- Implementation ---
-
+// --- Implementation code ---
 F_GetCompany := "www.peterzerlauth.com";
 ```
-
 </details>
 

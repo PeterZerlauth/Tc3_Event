@@ -1,29 +1,11 @@
-[[ _TOC_ ]]
-
 ## F_Log
 
 **Type:** FUNCTION
 
-#### Description  
-Backup logger, if no logger is attached to FB_Event
+**Source File:** `Helpers/F_Log.TcPOU`
 
-#### Inputs  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| fbMessage | `REFERENCE TO FB_Message` |  |  |
-
-#### Outputs  
--
-
-#### Locals  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| sMessage | `STRING(255)` | `= 'Logger null | '` |  |
-| nIndex | `UINT` |  |  |
-| nNow | `ULINT` | `= F_GetSystemTime()` |  |
-
-<details>
-<summary>Raw IEC/ST</summary>
+#### Declaration & Implementation
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 // Backup logger, if no logger is attached to FB_Event
@@ -37,8 +19,7 @@ VAR
     nNow:				ULINT:= F_GetSystemTime();
 END_VAR
 
-// --- Implementation ---
-
+// --- Implementation code ---
 // --- Build log line
 sMessage := CONCAT('Logger null | ', fbMessage.sSource);
 sMessage := CONCAT(sMessage, ': ');
@@ -87,6 +68,5 @@ END_WHILE
 
 F_Log := TRUE;
 ```
-
 </details>
 

@@ -1,72 +1,63 @@
-[[ _TOC_ ]]
-
 ## FB_File
 
-**Type:** FUNCTION BLOCK
+**Type:** FUNCTION_BLOCK
 
-#### Description  
-SysFile from codesys
+**Source File:** `Helpers/File/FB_File.TcPOU`
 
-#### Inputs  
--
+#### Declaration & Implementation
+<details><summary>Raw IEC/ST</summary>
 
-#### Outputs  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| pBuffer | `POINTER TO BYTE` |  |  |
-| nBuffer | `UDINT` |  |  |
-| bError | `BOOL` |  |  |
+```iec
+// SysFile from codesys
+{attribute 'no_explicit_call' := 'do not call this POU directly'} 
+FUNCTION_BLOCK FB_File IMPLEMENTS I_File
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+    pBuffer:				POINTER TO BYTE;
+    nBuffer:				UDINT;	
+	bError:					BOOL;
+END_VAR
+VAR
+	sFileName:				STRING(255);
+	eMode: 					SysFile.ACCESS_MODE := SysFile.AM_APPEND_PLUS;
+    hFile: 					SysFile.SysTypes.RTS_IEC_HANDLE;
+	nResult:				SysFile.SysTypes.RTS_IEC_RESULT;
+	{attribute 'hide'} 
+	pResult:				POINTER TO SysFile.SysTypes.RTS_IEC_RESULT:= ADR(nResult);
+END_VAR
 
-#### Locals  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| sFileName | `STRING(255)` |  |  |
-| eMode | `SysFile.ACCESS_MODE` | `= SysFile.AM_APPEND_PLUS` |  |
-| hFile | `SysFile.SysTypes.RTS_IEC_HANDLE` |  |  |
-| nResult | `SysFile.SysTypes.RTS_IEC_RESULT` |  |  |
-| pResult | `POINTER TO SysFile.SysTypes.RTS_IEC_RESULT` | `= ADR(nResult)` |  |
+// --- Implementation code ---
+// https://peterzerlauth.com/
+```
+</details>
 
 ### Methods
 
 #### FB_Exit
-
-returns : `BOOL`  
-
-**Description**  
-FB_Exit must be implemented explicitly. If there is an implementation, then the method is called before the controller removes the code of the function block instance (implicit call). The return value is not evaluated. Try to close and reset on exit
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| bInCopyCode | `BOOL` |  | TRUE: the exit method is called in order to leave the instance which will be copied afterwards (online change). |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+//FB_Exit must be implemented explicitly. If there is an implementation, then the
+//method is called before the controller removes the code of the function block instance
+//(implicit call). The return value is not evaluated.
+// Try to close and reset on exit
+METHOD FB_Exit: BOOL
+VAR_INPUT
+    bInCopyCode: BOOL;  // TRUE: the exit method is called in order to leave the instance which will be copied afterwards (online change).  
+END_VAR
 M_Reset();
 ```
-
 </details>
 
 #### M_Close
-
-returns : `-`  
-
-**Description**  
-Closes the file if opened
-
-**Input**  
--
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+// Closes the file if opened
+METHOD PUBLIC M_Close : BOOL
+VAR_INPUT
+END_VAR
 IF hFile > 0 THEN
    nResult:= SysFile.SysFileClose(hFile);
    IF nResult = 0 THEN
@@ -77,27 +68,17 @@ IF hFile > 0 THEN
    END_IF
 END_IF
 ```
-
 </details>
 
 #### M_Delete
-
-returns : `-`  
-
-**Description**  
-Delete file
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| sFileName | `STRING(255)` |  |  |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+// Delete file
+METHOD PUBLIC M_Delete : BOOL
+VAR_INPUT
+    sFileName : STRING(255);
+END_VAR
 IF hFile > 0 THEN
 	M_Close();
 END_IF
@@ -109,53 +90,34 @@ ELSE
     bError := TRUE;
 END_IF
 ```
-
 </details>
 
 #### M_GetSize
-
-returns : `-`  
-
-**Description**  
-Get file size
-
-**Input**  
--
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+// Get file size
+METHOD PUBLIC M_GetSize : UDINT
+VAR_INPUT
+END_VAR
 M_GetSize:= LWORD_TO_UDINT(SysFile.SysFileGetSize(sFileName, pResult));
 
 IF nResult <> 0 THEN
 	bError := TRUE;
 END_IF
 ```
-
 </details>
 
 #### M_Open
-
-returns : `-`  
-
-**Description**  
-Open file
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| sFileName | `STRING(255)` |  | file path |
-| eMode | `SysFile.ACCESS_MODE` | `= SysFile.AM_APPEND_PLUS` | file mode |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+// Open file
+METHOD PUBLIC M_Open : BOOL
+VAR_INPUT
+    sFileName:				STRING(255);					// file path
+	eMode: 					SysFile.ACCESS_MODE := SysFile.AM_APPEND_PLUS;	// file mode
+END_VAR
 IF hFile = 0 THEN
 	THIS^.eMode:= eMode;
 	hFile := SysFile.SysFileOpen(sFileName, eMode, pResult);
@@ -176,25 +138,16 @@ ELSE
 	END_IF
 END_IF
 ```
-
 </details>
 
 #### M_Read
-
-returns : `-`  
-
-**Description**  
-Read file
-
-**Input**  
--
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+// Read file
+METHOD PUBLIC M_Read : BOOL
+VAR_INPUT
+END_VAR
 IF pBuffer <> 0 THEN
 	__DELETE(pBuffer);
 	nBuffer:= 0;
@@ -215,25 +168,16 @@ ELSE
 	bError:= TRUE;
 END_IF
 ```
-
 </details>
 
 #### M_Reset
-
-returns : `-`  
-
-**Description**  
-Reset all
-
-**Input**  
--
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+// Reset all 
+METHOD PUBLIC M_Reset : BOOL
+VAR_INPUT
+END_VAR
 IF pBuffer <> 0 THEN
 	__DELETE(pBuffer);
 	nBuffer:= 0;
@@ -244,25 +188,19 @@ M_Close();
 bError:= FALSE;
 M_Reset:= TRUE;
 ```
-
 </details>
 
 #### M_Status
-
-returns : `-`  
-
-**Description**  
-File status
-
-**Input**  
--
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+// File status
+METHOD PUBLIC M_Status : E_FileState
+VAR_INPUT
+END_VAR
+VAR 
+	nState:				SysFile.SYS_FILE_STATUS;
+END_VAR
 bError := FALSE;
 nResult := 0; // This function does not use pResult
 
@@ -288,28 +226,18 @@ IF hFile < 0 THEN
    
 END_IF
 ```
-
 </details>
 
 #### M_Write
-
-returns : `-`  
-
-**Description**  
-Writes content to a file
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| pBuffer | `POINTER TO BYTE` |  |  |
-| nSize | `UDINT` |  |  |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+// Writes content to a file
+METHOD PUBLIC M_Write : BOOL
+VAR_INPUT
+	pBuffer:	POINTER TO BYTE;
+    nSize:     	UDINT;
+END_VAR
 IF pBuffer = 0 OR nSize = 0 THEN
     RETURN;
 END_IF
@@ -324,36 +252,5 @@ ELSE
 	bError:= TRUE;
 END_IF
 ```
-
-</details>
-
-<details>
-<summary>Raw IEC/ST</summary>
-
-```iec
-// SysFile from codesys
-{attribute 'no_explicit_call' := 'do not call this POU directly'} 
-FUNCTION_BLOCK FB_File IMPLEMENTS I_File
-VAR_INPUT
-END_VAR
-VAR_OUTPUT
-    pBuffer:				POINTER TO BYTE;
-    nBuffer:				UDINT;	
-	bError:					BOOL;
-END_VAR
-VAR
-	sFileName:				STRING(255);
-	eMode: 					SysFile.ACCESS_MODE := SysFile.AM_APPEND_PLUS;
-    hFile: 					SysFile.SysTypes.RTS_IEC_HANDLE;
-	nResult:				SysFile.SysTypes.RTS_IEC_RESULT;
-	{attribute 'hide'} 
-	pResult:				POINTER TO SysFile.SysTypes.RTS_IEC_RESULT:= ADR(nResult);
-END_VAR
-
-// --- Implementation ---
-
-// https://peterzerlauth.com/
-```
-
 </details>
 

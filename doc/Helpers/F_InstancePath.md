@@ -1,27 +1,11 @@
-[[ _TOC_ ]]
-
 ## F_InstancePath
 
 **Type:** FUNCTION
 
-#### Description  
-Filter instance path, to something useful
+**Source File:** `Helpers/F_InstancePath.TcPOU`
 
-#### Inputs  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| sInstancePath | `STRING(255)` |  |  |
-
-#### Outputs  
--
-
-#### Locals  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| nPosition | `INT` |  |  |
-
-<details>
-<summary>Raw IEC/ST</summary>
+#### Declaration & Implementation
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 // Filter instance path, to something useful
@@ -33,8 +17,7 @@ VAR
     nPosition     : INT;
 END_VAR
 
-// --- Implementation ---
-
+// --- Implementation code ---
 F_InstancePath:= RIGHT(sInstancePath, LEN(sInstancePath) - FIND(sInstancePath, '.'));
 F_InstancePath:= RIGHT(F_InstancePath, LEN(F_InstancePath) - FIND(F_InstancePath, '.'));
 
@@ -45,6 +28,5 @@ FOR nPosition:= LEN(F_InstancePath) TO 1 BY -1 DO
 	END_IF
 END_FOR
 ```
-
 </details>
 

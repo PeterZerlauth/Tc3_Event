@@ -1,30 +1,11 @@
-[[ _TOC_ ]]
-
 ## FB_Message
 
-**Type:** FUNCTION BLOCK
+**Type:** FUNCTION_BLOCK
 
-#### Description  
-- 
+**Source File:** `Message/FB_Message.TcPOU`
 
-#### Inputs  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| eLogLevel | `E_LogLevel` |  |  |
-| nID | `UDINT` |  |  |
-| nTimestamp | `Tc2_Utilities.T_FILETIME64` |  |  |
-| sSource | `STRING(255)` |  |  |
-| sType | `STRING(255)` |  |  |
-| sMessage | `STRING(255)` |  |  |
-| sDefault | `STRING(255)` |  |  |
-| sArguments | `STRING(255)` |  |  |
-| bActive | `BOOL` |  |  |
-
-#### Outputs  
--
-
-<details>
-<summary>Raw IEC/ST</summary>
+#### Declaration & Implementation
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 {attribute 'analysis' := '-33'}
@@ -46,6 +27,5 @@ END_VAR
 VAR
 END_VAR
 ```
-
 </details>
 

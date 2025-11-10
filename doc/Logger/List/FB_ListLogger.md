@@ -1,48 +1,63 @@
-[[ _TOC_ ]]
-
 ## FB_ListLogger
 
-**Type:** FUNCTION BLOCK
+**Type:** FUNCTION_BLOCK
 
-#### Description  
-Provide logging
+**Source File:** `Logger/List/FB_ListLogger.TcPOU`
 
-#### Inputs  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| eLogLevel | `E_LogLevel` | `= E_LogLevel.Verbose` |  |
+#### Declaration & Implementation
+<details><summary>Raw IEC/ST</summary>
 
-#### Outputs  
--
+```iec
+// Provide logging 
+FUNCTION_BLOCK FB_ListLogger IMPLEMENTS I_Logger, I_LogLevel
+VAR_INPUT
+	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
+END_VAR
+VAR
+	{attribute 'OPC.UA.DA.Property' := '1'}
+	aMessages:				ARRAY[0..99] OF FB_Message; 	// Message store
+	{attribute 'OPC.UA.DA.Property' := '1'}
+    nMessages:				UINT := 0;                     // Message count
+	{attribute 'hide'} 
+	nIndex: 				UINT;
+	{attribute 'hide'} 
+	nTimestamp:				LINT;
+END_VAR
 
-#### Locals  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| aMessages | `ARRAY[0..99] OF FB_Message` |  | Message store |
-| nMessages | `UINT` | `= 0` | Message count |
-| nIndex | `UINT` |  |  |
-| nTimestamp | `LINT` |  |  |
+// --- Implementation code ---
+// https://peterzerlauth.com/
+
+IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime THEN // 1 second = 1e9 ns
+	nTimestamp := TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime + 1000000000;
+	nIndex:= 0;
+	WHILE nIndex < nMessages DO
+		IF aMessages[nIndex].bActive THEN
+			IF aMessages[nIndex].eLogLevel <= E_LogLevel.Warning THEN
+				aMessages[nIndex].bActive:= FALSE;
+			END_IF
+			nIndex := nIndex + 1;
+		ELSE
+			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(FB_Message) * (nMessages - nIndex));
+			nMessages := nMessages - 1;
+			RETURN;
+		END_IF
+	END_WHILE
+END_IF
+```
+</details>
 
 ### Methods
 
 #### M_Log
-
-returns : `-`  
-
-**Description**  
--
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| fbMessage | `FB_Message` |  |  |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+METHOD PUBLIC M_Log : BOOL
+VAR_INPUT
+	fbMessage:			FB_Message;
+END_VAR
+VAR
+END_VAR
 IF eLogLevel > fbMessage.eLogLevel THEN
 	M_Log:= TRUE;
 	RETURN;
@@ -67,25 +82,15 @@ aMessages[nMessages]:= fbMessage;;
 nMessages := nMessages + 1;
 M_Log := TRUE;
 ```
-
 </details>
 
 #### M_Reset
-
-returns : `BOOL`  
-
-**Description**  
--
-
-**Input**  
--
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+METHOD M_Reset : BOOL
+VAR_INPUT
+END_VAR
 nIndex := 0;
 WHILE nIndex < nMessages DO
     IF aMessages[nIndex].bActive = TRUE THEN
@@ -95,60 +100,17 @@ WHILE nIndex < nMessages DO
 END_WHILE
 M_Reset:= TRUE;
 ```
-
 </details>
 
 ### Properties
 
-#### P_LogLevel
+#### P_LogLevel (read/write)
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 {attribute 'OPC.UA.DA.Property' := '1'}
 {attribute 'monitoring' := 'variable'}
 PROPERTY PUBLIC P_LogLevel : E_LogLevel
 ```
-
-<details>
-<summary>Raw IEC/ST</summary>
-
-```iec
-// Provide logging 
-FUNCTION_BLOCK FB_ListLogger IMPLEMENTS I_Logger, I_LogLevel
-VAR_INPUT
-	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
-END_VAR
-VAR
-	{attribute 'OPC.UA.DA.Property' := '1'}
-	aMessages:				ARRAY[0..99] OF FB_Message; 	// Message store
-	{attribute 'OPC.UA.DA.Property' := '1'}
-    nMessages:				UINT := 0;                     // Message count
-	{attribute 'hide'} 
-	nIndex: 				UINT;
-	{attribute 'hide'} 
-	nTimestamp:				LINT;
-END_VAR
-
-// --- Implementation ---
-
-// https://peterzerlauth.com/
-
-IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime THEN // 1 second = 1e9 ns
-	nTimestamp := TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime + 1000000000;
-	nIndex:= 0;
-	WHILE nIndex < nMessages DO
-		IF aMessages[nIndex].bActive THEN
-			IF aMessages[nIndex].eLogLevel <= E_LogLevel.Warning THEN
-				aMessages[nIndex].bActive:= FALSE;
-			END_IF
-			nIndex := nIndex + 1;
-		ELSE
-			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(FB_Message) * (nMessages - nIndex));
-			nMessages := nMessages - 1;
-			RETURN;
-		END_IF
-	END_WHILE
-END_IF
-```
-
 </details>
 

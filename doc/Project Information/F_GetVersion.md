@@ -1,20 +1,11 @@
-[[ _TOC_ ]]
-
 ## F_GetVersion
 
 **Type:** FUNCTION
 
-#### Description  
-This function has been automatically generated from the project information.
+**Source File:** `Project Information/F_GetVersion.TcPOU`
 
-#### Inputs  
--
-
-#### Outputs  
--
-
-<details>
-<summary>Raw IEC/ST</summary>
+#### Declaration & Implementation
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 // This function has been automatically generated from the project information.
@@ -26,8 +17,7 @@ VAR_INPUT
 	
 END_VAR
 
-// --- Implementation ---
-
+// --- Implementation code ---
 F_GetVersion.iMajor := 0;
 F_GetVersion.iMinor := 0;
 F_GetVersion.iBuild := 0;
@@ -35,6 +25,5 @@ F_GetVersion.iRevision := 1;
 F_GetVersion.sVersion := '0.0.0.1';
 F_GetVersion.nFlags := 0;
 ```
-
 </details>
 

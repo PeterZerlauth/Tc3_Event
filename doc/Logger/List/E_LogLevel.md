@@ -1,10 +1,10 @@
-[[ _TOC_ ]]
-
 ## E_LogLevel
 
 **Type:** ENUM
 
-#### Declaration
+**Source File:** `Logger/List/E_LogLevel.TcDUT`
+
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 {attribute 'qualified_only'}
@@ -20,4 +20,5 @@ TYPE E_LogLevel :
 );
 END_TYPE
 ```
+</details>
 

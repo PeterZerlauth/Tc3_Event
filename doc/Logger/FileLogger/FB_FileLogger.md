@@ -1,48 +1,45 @@
-[[ _TOC_ ]]
-
 ## FB_FileLogger
 
-**Type:** FUNCTION BLOCK
+**Type:** FUNCTION_BLOCK
 
-#### Description  
-Provide logging
+**Source File:** `Logger/FileLogger/FB_FileLogger.TcPOU`
 
-#### Inputs  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| eLogLevel | `E_LogLevel` | `= E_LogLevel.Verbose` |  |
-| sPathName | `STRING(255)` | `= 'C:\tempx\logger.txt'` |  |
+#### Declaration & Implementation
+<details><summary>Raw IEC/ST</summary>
 
-#### Outputs  
--
+```iec
+// Provide logging 
+FUNCTION_BLOCK FB_FileLogger IMPLEMENTS I_Logger, I_LogLevel
+VAR_INPUT
+	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
+	sPathName:				STRING(255):= 'C:\tempx\logger.txt';
+END_VAR
+VAR
+	fbFile:					FB_File;
+	aBuffer:				ARRAY[0..99] OF FB_Message;
+    nBuffer:				UINT := 0;                     // Message count
+END_VAR
 
-#### Locals  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| fbFile | `FB_File` |  |  |
-| aBuffer | `ARRAY[0..99] OF FB_Message` |  |  |
-| nBuffer | `UINT` | `= 0` | Message count |
+// --- Implementation code ---
+// https://peterzerlauth.com/
+```
+</details>
 
 ### Methods
 
 #### M_Log
-
-returns : `-`  
-
-**Description**  
--
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| fbMessage | `FB_Message` |  |  |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+METHOD PUBLIC M_Log : BOOL
+VAR_INPUT
+	fbMessage:			FB_Message;
+END_VAR
+VAR
+	nTimestamp: 	Tc2_Utilities.T_FILETIME64;
+	nIndex: 		uINT;
+	sLogLine:		STRING(255);
+END_VAR
 // Log Level
 IF eLogLevel > fbMessage.eLogLevel THEN
 	M_Log:= TRUE;
@@ -98,60 +95,28 @@ fbFile.M_Close();
 
 M_Log := TRUE;
 ```
-
 </details>
 
 #### M_Reset
-
-returns : `BOOL`  
-
-**Description**  
--
-
-**Input**  
--
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+METHOD M_Reset : BOOL
+VAR_INPUT
+END_VAR
 M_Reset:= true;
 ```
-
 </details>
 
 ### Properties
 
-#### P_LogLevel
+#### P_LogLevel (read/write)
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 {attribute 'OPC.UA.DA.Property' := '1'}
 {attribute 'monitoring' := 'variable'}
 PROPERTY PUBLIC P_LogLevel : E_LogLevel
 ```
-
-<details>
-<summary>Raw IEC/ST</summary>
-
-```iec
-// Provide logging 
-FUNCTION_BLOCK FB_FileLogger IMPLEMENTS I_Logger, I_LogLevel
-VAR_INPUT
-	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
-	sPathName:				STRING(255):= 'C:\tempx\logger.txt';
-END_VAR
-VAR
-	fbFile:					FB_File;
-	aBuffer:				ARRAY[0..99] OF FB_Message;
-    nBuffer:				UINT := 0;                     // Message count
-END_VAR
-
-// --- Implementation ---
-
-// https://peterzerlauth.com/
-```
-
 </details>
 

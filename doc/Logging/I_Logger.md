@@ -1,36 +1,13 @@
-[[ _TOC_ ]]
-
 ## I_Logger
 
 **Type:** INTERFACE
 
-#### Declaration
+**Source File:** `Logging/I_Logger.TcIO`
+
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 INTERFACE I_Logger
 ```
-
-### Methods
-
-#### M_Log
-
-returns : `-`  
-
-**Description**  
--
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| fbMessage | `FB_Message` |  |  |
-
-#### M_Reset
-
-returns : `BOOL`  
-
-**Description**  
--
-
-**Input**  
--
+</details>
 

@@ -1,20 +1,11 @@
-[[ _TOC_ ]]
-
 ## F_GetTitle
 
 **Type:** FUNCTION
 
-#### Description  
-This function has been automatically generated from the project information.
+**Source File:** `Project Information/F_GetTitle.TcPOU`
 
-#### Inputs  
--
-
-#### Outputs  
--
-
-<details>
-<summary>Raw IEC/ST</summary>
+#### Declaration & Implementation
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 // This function has been automatically generated from the project information.
@@ -26,10 +17,8 @@ VAR_INPUT
 	
 END_VAR
 
-// --- Implementation ---
-
+// --- Implementation code ---
 F_GetTitle := "Tc3_Event";
 ```
-
 </details>
 

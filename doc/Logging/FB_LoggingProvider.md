@@ -1,68 +1,52 @@
-[[ _TOC_ ]]
-
 ## FB_LoggingProvider
 
-**Type:** FUNCTION BLOCK
+**Type:** FUNCTION_BLOCK
 
-#### Description  
-- 
+**Source File:** `Logging/FB_LoggingProvider.TcPOU`
 
-#### Inputs  
--
+#### Declaration & Implementation
+<details><summary>Raw IEC/ST</summary>
 
-#### Outputs  
--
+```iec
+{attribute 'no_explicit_call' := 'do not call this POU directly'} 
+// Provide the functionality to use more than one Logger target
+FUNCTION_BLOCK FB_LoggingProvider IMPLEMENTS I_Logger
+VAR
+	nLength:		INT;
+	pList: 			POINTER TO I_Logger;
+	aList:			POINTER TO POINTER TO ARRAY [0..24] OF I_Logger:=ADR(pList);
+END_VAR
 
-#### Locals  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| nLength | `INT` |  |  |
-| pList | `POINTER TO I_Logger` |  |  |
-| aList | `POINTER TO POINTER TO ARRAY [0..24] OF I_Logger` | `=ADR(pList)` |  |
+// --- Implementation code ---
+// https://peterzerlauth.com/
+```
+</details>
 
 ### Methods
 
 #### FB_exit
-
-returns : `BOOL`  
-
-**Description**  
--
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| bInCopyCode | `BOOL` |  | if TRUE, the exit method is called for exiting an instance that is copied afterwards (online change). |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+METHOD FB_exit : BOOL
+VAR_INPUT
+	bInCopyCode : BOOL; // if TRUE, the exit method is called for exiting an instance that is copied afterwards (online change).
+END_VAR
 M_Clear();
 ```
-
 </details>
 
 #### M_Add
-
-returns : `-`  
-
-**Description**  
--
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| iLogger | `I_Logger` |  |  |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+METHOD PUBLIC M_Add : BOOL
+VAR_INPUT
+	iLogger: 	I_Logger;
+END_VAR
+VAR
+	pOldList: 	POINTER TO I_Logger;
+END_VAR
 IF iLogger <> 0 THEN
 	// First Item
 	IF pList = 0 THEN
@@ -96,54 +80,32 @@ ELSE
 	M_Add:= FALSE;	
 END_IF
 ```
-
 </details>
 
 #### M_Clear
-
-returns : `-`  
-
-**Description**  
--
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| M_Clear | `bool` |  |  |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+METHOD PUBLIC M_Clear : bool
 IF pList <> 0 THEN
 	nLength:= 0;
 	__DELETE(pList);
 END_IF
 M_Clear:= TRUE;
 ```
-
 </details>
 
 #### M_Find
-
-returns : `-`  
-
-**Description**  
--
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| iLogger | `I_Logger` |  |  |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+METHOD PUBLIC M_Find : DINT
+VAR_INPUT
+	iLogger: 	I_Logger;
+END_VAR
+VAR
+	nIndex: 	UINT;
+END_VAR
 // Object already in List
 M_Find := -1;
 WHILE nIndex < nLength DO
@@ -154,78 +116,52 @@ WHILE nIndex < nLength DO
 	nIndex := nIndex + 1;
 END_WHILE
 ```
-
 </details>
 
 #### M_Index
-
-returns : `-`  
-
-**Description**  
--
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| nIndex | `DINT` |  |  |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+METHOD PUBLIC M_Index : I_Logger
+VAR_INPUT
+	nIndex: 	DINT;
+END_VAR
 IF (nIndex < nLength) THEN
 	M_Index := pList[nIndex];
 END_IF
 ```
-
 </details>
 
 #### M_Log
-
-returns : `-`  
-
-**Description**  
--
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| fbMessage | `FB_Message` |  |  |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+METHOD PUBLIC M_Log : BOOL
+VAR_INPUT
+	fbMessage:			FB_Message;
+END_VAR
+VAR
+	nIndex:		INT;
+END_VAR
 WHILE nIndex < nLength DO
     pList[nIndex].M_Log(fbMessage);
 	nIndex := nIndex + 1;
 END_WHILE
 ```
-
 </details>
 
 #### M_Remove
-
-returns : `-`  
-
-**Description**  
--
-
-**Input**  
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| iLogger | `I_Logger` |  |  |
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+METHOD PUBLIC M_Remove : BOOL
+VAR_INPUT
+	iLogger: 	I_Logger;
+END_VAR
+VAR
+	pOldList:			POINTER TO I_Logger;
+	nPosition: 			DINT;
+END_VAR
 IF iLogger <> 0 THEN
 	// First Item
 	IF nLength >= 0 THEN
@@ -257,25 +193,18 @@ ELSE
 	M_Remove:= FALSE;	
 END_IF
 ```
-
 </details>
 
 #### M_Reset
-
-returns : `BOOL`  
-
-**Description**  
--
-
-**Input**  
--
-
-**Implementation**
-
-<details>
-<summary>Raw IEC/ST</summary>
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
+METHOD M_Reset : BOOL
+VAR_INPUT
+END_VAR
+VAR
+	nIndex: 				UINT;
+END_VAR
 nIndex := 0;
 WHILE nIndex < nLength DO
     pList[nIndex].M_Reset();
@@ -283,36 +212,17 @@ WHILE nIndex < nLength DO
 END_WHILE
 M_Reset:= TRUE;
 ```
-
 </details>
 
 ### Properties
 
-#### P_Length
+#### P_Length (read/write)
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 {attribute 'OPC.UA.DA.Property' := '1'}
 {attribute 'monitoring' := 'variable'}
 PROPERTY PUBLIC P_Length : DINT
 ```
-
-<details>
-<summary>Raw IEC/ST</summary>
-
-```iec
-{attribute 'no_explicit_call' := 'do not call this POU directly'} 
-// Provide the functionality to use more than one Logger target
-FUNCTION_BLOCK FB_LoggingProvider IMPLEMENTS I_Logger
-VAR
-	nLength:		INT;
-	pList: 			POINTER TO I_Logger;
-	aList:			POINTER TO POINTER TO ARRAY [0..24] OF I_Logger:=ADR(pList);
-END_VAR
-
-// --- Implementation ---
-
-// https://peterzerlauth.com/
-```
-
 </details>
 

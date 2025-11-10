@@ -1,10 +1,10 @@
-[[ _TOC_ ]]
-
 ## E_FileState
 
 **Type:** ENUM
 
-#### Declaration
+**Source File:** `Helpers/File/E_FileState.TcDUT`
+
+<details><summary>Raw IEC/ST</summary>
 
 ```iec
 {attribute 'qualified_only'}
@@ -20,4 +20,5 @@ TYPE E_FileState :
 ) UDINT;
 END_TYPE
 ```
+</details>
 
