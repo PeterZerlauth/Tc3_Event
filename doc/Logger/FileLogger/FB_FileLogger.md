@@ -7,7 +7,6 @@
 <details>
 <summary>Raw IEC/ST</summary>
 
-```iec
 // Provide logging 
 FUNCTION_BLOCK [FB_FileLogger](Logger/FileLogger/FB_FileLogger.md) IMPLEMENTS [I_Logger](Logging/I_Logger.md), [I_LogLevel](Logger/FileLogger/I_LogLevel.md)
 VAR_INPUT
@@ -41,5 +40,5 @@ END_VAR
 
 // --- Property (read/write): P_LogLevel ---
 PROPERTY P_LogLevel : UNKNOWN
-```
+
 </details>
