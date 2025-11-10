@@ -13,5 +13,17 @@ END_VAR
 VAR
     nPosition     : INT;
 END_VAR
+
+
+// --- Implementation code ---
+F_InstancePath:= RIGHT(sInstancePath, LEN(sInstancePath) - FIND(sInstancePath, '.'));
+F_InstancePath:= RIGHT(F_InstancePath, LEN(F_InstancePath) - FIND(F_InstancePath, '.'));
+
+FOR nPosition:= LEN(F_InstancePath) TO 1 BY -1 DO
+    IF F_InstancePath[nPosition] = 46 THEN
+		F_InstancePath := LEFT(F_InstancePath, nPosition);
+		RETURN;
+	END_IF
+END_FOR
 ```
 

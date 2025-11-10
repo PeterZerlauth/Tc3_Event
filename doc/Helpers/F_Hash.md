@@ -19,5 +19,15 @@ VAR
     nIndex:					INT;         				// loop counter
     nChar:					UDINT;       				// numeric value of character
 END_VAR
+
+
+// --- Implementation code ---
+// calculate a hash
+nLength := LEN(sInput);
+FOR nIndex := 1 TO nLength DO
+    nChar := BYTE_TO_UDINT(sInput[nIndex]) - 98;
+    F_Hash := (F_Hash + (nChar * nPowerOfBase) MOD nModulus) MOD nModulus;
+    nPowerOfBase := (nPowerOfBase * nPrime) MOD nModulus;
+END_FOR
 ```
 

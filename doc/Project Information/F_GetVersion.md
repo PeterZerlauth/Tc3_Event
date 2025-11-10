@@ -13,5 +13,14 @@ FUNCTION F_GetVersion : ST_LibVersion
 VAR_INPUT
 	
 END_VAR
+
+
+// --- Implementation code ---
+F_GetVersion.iMajor := 0;
+F_GetVersion.iMinor := 0;
+F_GetVersion.iBuild := 0;
+F_GetVersion.iRevision := 1;
+F_GetVersion.sVersion := '0.0.0.1';
+F_GetVersion.nFlags := 0;
 ```
 

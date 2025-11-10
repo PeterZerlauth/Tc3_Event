@@ -15,21 +15,19 @@ END_VAR
 VAR
 	sValue:					STRING(255);		// storage for arguments
 END_VAR
-```
 
-## Methods
-
-### M_AddBOOL
-```iec
+// --- Method: M_AddBOOL ---
 // add boolean value to arguments
 METHOD PUBLIC M_AddBOOL : I_Argument
 VAR_INPUT
 	bValue:				BOOL;		// Boolean input value
 END_VAR
-```
+sValue:= CONCAT(sValue, BOOL_TO_STRING(bValue));			// convert
+sValue:= CONCAT(sValue, '$R');								// add separator
+M_AddBOOL:= THIS^;
+END_METHOD
 
-### M_AddINT
-```iec
+// --- Method: M_AddINT ---
 // add int value to arguments
 METHOD PUBLIC M_AddINT : I_Argument
 VAR_INPUT
@@ -38,10 +36,11 @@ END_VAR
 VAR
 	sTemp: 			STRING;
 END_VAR
-```
+sValue:= CONCAT(sValue, CONCAT(LINT_TO_STRING(nValue), '$R'));	// add new arg
+M_AddINT:= THIS^;
+END_METHOD
 
-### M_AddREAL
-```iec
+// --- Method: M_AddREAL ---
 // add real value to arguments
 METHOD PUBLIC M_AddREAL : I_Argument
 VAR_INPUT
@@ -51,31 +50,41 @@ END_VAR
 VAR
 	sTemp: 			STRING;
 END_VAR
-```
+sValue:= CONCAT(sValue, CONCAT(LREAL_TO_FMTSTR(fValue, nDecimals, TRUE), '$R'));				// add new arg
+M_AddREAL:= THIS^;
+END_METHOD
 
-### M_AddSTRING
-```iec
+// --- Method: M_AddSTRING ---
 // add string value to arguments
 METHOD PUBLIC M_AddSTRING : I_Argument
 VAR_INPUT
 	sValue:				STRING(255);		// String input value
 END_VAR
-```
+THIS^.sValue:= CONCAT(THIS^.sValue, CONCAT(sValue, '$R'));				// add separator 
+M_AddSTRING:= THIS^;
+END_METHOD
 
-### M_AddTIME
-```iec
+// --- Method: M_AddTIME ---
 // add time value to arguments
 METHOD PUBLIC M_AddTIME : I_Argument
 VAR_INPUT
 	tValue:				TIME;		// Time input value
 END_VAR
-```
+sValue:= CONCAT(sValue, CONCAT(TIME_TO_STRING(tValue), '$R'));				// add separator
+M_AddTIME:= THIS^;
+END_METHOD
 
-### M_Clear
-```iec
+// --- Method: M_Clear ---
 // Clear arguments
 METHOD PUBLIC M_Clear : I_Argument
 VAR_INPUT
 END_VAR
+sValue:= '';
+M_Clear:= THIS^;
+END_METHOD
+
+// --- Property (read/write): P_Value ---
+PROPERTY P_Value : UNKNOWN
+END_PROPERTY
 ```
 

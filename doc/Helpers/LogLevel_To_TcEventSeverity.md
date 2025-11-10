@@ -12,5 +12,25 @@ VAR_INPUT
 END_VAR
 VAR
 END_VAR
+
+
+// --- Implementation code ---
+CASE eLogLevel OF
+	E_LogLevel.Verbose:
+		LogLevel_To_TcEventSeverity:= TcEventSeverity.Verbose;
+		
+	E_LogLevel.Info:
+		LogLevel_To_TcEventSeverity:= TcEventSeverity.Info;
+		
+	E_LogLevel.Warning:
+		LogLevel_To_TcEventSeverity:= TcEventSeverity.Warning;
+		
+	E_LogLevel.Error:
+		LogLevel_To_TcEventSeverity:= TcEventSeverity.Error;
+		
+	E_LogLevel.Critical:
+		LogLevel_To_TcEventSeverity:= TcEventSeverity.Critical;
+		
+END_CASE
 ```
 

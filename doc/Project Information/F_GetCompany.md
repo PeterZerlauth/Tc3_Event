@@ -13,5 +13,9 @@ FUNCTION F_GetCompany : WSTRING
 VAR_INPUT
 	
 END_VAR
+
+
+// --- Implementation code ---
+F_GetCompany := "www.peterzerlauth.com";
 ```
 

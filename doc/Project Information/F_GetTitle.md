@@ -13,5 +13,9 @@ FUNCTION F_GetTitle : WSTRING
 VAR_INPUT
 	
 END_VAR
+
+
+// --- Implementation code ---
+F_GetTitle := "Tc3_Event";
 ```
 

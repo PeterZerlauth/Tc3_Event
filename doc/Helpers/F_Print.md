@@ -16,5 +16,31 @@ VAR
     nPosition:				INT;         	// Position of the $R delimiter
     nPlaceholder:			INT;         	// Position of the %s placeholder
 END_VAR
+
+
+// --- Implementation code ---
+// replace placeholders with arguments
+F_Print := sMessage;
+
+IF sArguments = '' THEN
+    RETURN;
+END_IF
+
+nPosition := FIND(sArguments, '$R');
+WHILE nPosition > 0 DO
+    
+    sArg := LEFT(sArguments, nPosition - 1);
+    
+    nPlaceholder := FIND(F_Print, '%s');
+    IF nPlaceholder > 0 THEN
+        F_Print := REPLACE(F_Print, sArg, 2, nPlaceholder);
+    ELSE
+        RETURN;
+    END_IF
+	
+    sArguments := DELETE(sArguments, nPosition, 1);
+    nPosition := FIND(sArguments, '$R');
+    
+END_WHILE
 ```
 
