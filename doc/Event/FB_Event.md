@@ -8,7 +8,7 @@ Providing the event logger
 ## Inputs
 | Name | Type | Description |
 | --- | --- | --- |
-| `iLogger` | `I` |  |
+| `iLogger` | `I_Logger` | Interface has to be attached to a Valid target |
 
 ## Local Variables
 | Name | Type | Description |
