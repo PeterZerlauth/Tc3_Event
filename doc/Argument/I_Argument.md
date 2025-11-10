@@ -1,13 +1,13 @@
-## I_Argument
+# I_Argument
 
 **Type:** INTERFACE
 
 **Source File:** `Argument/I_Argument.TcIO`
 
-<details><summary>Raw IEC/ST</summary>
+<details>
+<summary>Raw IEC/ST</summary>
 
 ```iec
-INTERFACE I_Argument
+INTERFACE [I_Argument](Argument/I_Argument.md)
 ```
 </details>
-

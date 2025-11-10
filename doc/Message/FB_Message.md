@@ -1,18 +1,18 @@
-## FB_Message
+# FB_Message
 
-**Type:** FUNCTION_BLOCK
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Message/FB_Message.TcPOU`
 
-#### Declaration & Implementation
-<details><summary>Raw IEC/ST</summary>
+<details>
+<summary>Raw IEC/ST</summary>
 
 ```iec
 {attribute 'analysis' := '-33'}
 // Payload for events
-FUNCTION_BLOCK FB_Message
+FUNCTION_BLOCK [FB_Message](Message/FB_Message.md)
 VAR_INPUT
-	eLogLevel:			E_LogLevel;
+	eLogLevel:			[E_LogLevel](Logger/List/E_LogLevel.md);
 	nID:				UDINT;
 	nTimestamp:			Tc2_Utilities.T_FILETIME64;	
 	sSource:			STRING(255);
@@ -28,4 +28,3 @@ VAR
 END_VAR
 ```
 </details>
-

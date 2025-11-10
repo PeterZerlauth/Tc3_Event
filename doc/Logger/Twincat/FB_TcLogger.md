@@ -1,17 +1,17 @@
-## FB_TcLogger
+# FB_TcLogger
 
-**Type:** FUNCTION_BLOCK
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Logger/Twincat/FB_TcLogger.TcPOU`
 
-#### Declaration & Implementation
-<details><summary>Raw IEC/ST</summary>
+<details>
+<summary>Raw IEC/ST</summary>
 
 ```iec
 // Provide logging 
-FUNCTION_BLOCK FB_TcLogger IMPLEMENTS I_Logger, I_LogLevel
+FUNCTION_BLOCK [FB_TcLogger](Logger/Twincat/FB_TcLogger.md) IMPLEMENTS [I_Logger](Logging/I_Logger.md), [I_LogLevel](Logger/FileLogger/I_LogLevel.md)
 VAR_INPUT
-	eLogLevel:				E_LogLevel:= E_LogLevel.Info;
+	eLogLevel:				[E_LogLevel](Logger/List/E_LogLevel.md):= [E_LogLevel](Logger/List/E_LogLevel.md).Info;
 END_VAR
 VAR
 	fbSourceInfo:			FB_TcSourceInfo;
@@ -44,7 +44,7 @@ END_VAR
 // 	nIndex:= 0;
 // 	WHILE nIndex < nAlarm DO
 // 		IF bAlarm[nIndex] THEN
-// 			IF aAlarm[nIndex].eSeverity <= LogLevel_To_TcEventSeverity(E_LogLevel.Warning) THEN
+// 			IF aAlarm[nIndex].eSeverity <= [LogLevel_To_TcEventSeverity](Helpers/LogLevel_To_TcEventSeverity.md)([E_LogLevel](Logger/List/E_LogLevel.md).Warning) THEN
 // 				bAlarm[nIndex]:= FALSE;
 // 			END_IF
 // 			nIndex := nIndex + 1;
@@ -55,93 +55,23 @@ END_VAR
 // 		END_IF
 // 	END_WHILE
 // END_IF
-```
-</details>
 
-### Methods
-
-#### M_Log
-<details><summary>Raw IEC/ST</summary>
-
-```iec
+// --- Method: M_Log ---
 METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
-	fbMessage:			FB_Message;
+	fbMessage:			[FB_Message](Message/FB_Message.md);
 END_VAR
 VAR
 	sArgument:			STRING;
 	nPosition: 			INT;
 END_VAR
-IF eLogLevel > fbMessage.eLogLevel THEN
-	M_Log:= TRUE;
-	RETURN;
-END_IF
 
-IF nAlarm > 99 THEN 
-	RETURN;
-END_IF
-
-// Skip if same sMessage already exists
-nIndex := 0;
-WHILE nIndex < nAlarm DO
-    IF aAlarm[nIndex].EqualsToEventEntry(TC_EVENT_CLASSES.Tc3_Event, fbMessage.nID, LogLevel_To_TcEventSeverity(fbMessage.eLogLevel))  THEN
-		bAlarm[nIndex]:= TRUE;
-        M_Log := TRUE;
-        RETURN;
-    END_IF
-    nIndex := nIndex + 1;
-END_WHILE
-
-// prepare
-fbSourceInfo.Clear();
-fbSourceInfo.sName:= fbMessage.sSource;
-aAlarm[nAlarm].Create(TC_EVENT_CLASSES.Tc3_Event,  fbMessage.nID, LogLevel_To_TcEventSeverity(fbMessage.eLogLevel), FALSE, fbSourceInfo);
-aAlarm[nAlarm].ipArguments.Clear();
-
-// Split and add arguments
-nPosition := FIND('$R', fbMessage.sArguments);
-WHILE nPosition > 0 DO
-    sArgument := LEFT(fbMessage.sArguments, nPosition - 1);
-    aAlarm[nAlarm].ipArguments.AddString(sArgument);
-    fbMessage.sArguments:= RIGHT(fbMessage.sArguments, LEN(fbMessage.sArguments) - (nPosition + 1));
-    nPosition := FIND('$R', fbMessage.sArguments);
-END_WHILE;
-
-// Raise alarm
-aAlarm[nAlarm].Raise(fbMessage.nTimestamp);
-
-nAlarm := nAlarm + 1;
-M_Log := TRUE;
-```
-</details>
-
-#### M_Reset
-<details><summary>Raw IEC/ST</summary>
-
-```iec
+// --- Method: M_Reset ---
 METHOD M_Reset : BOOL
 VAR_INPUT
 END_VAR
-nIndex := 0;
-WHILE nIndex < nAlarm DO
-    IF bAlarm[nIndex] = TRUE THEN
-		bAlarm[nIndex]:= FALSE;
-    END_IF
-    nIndex := nIndex + 1;
-END_WHILE
-M_Reset:= TRUE;
+
+// --- Property (read/write): P_LogLevel ---
+PROPERTY P_LogLevel : UNKNOWN
 ```
 </details>
-
-### Properties
-
-#### P_LogLevel (read/write)
-<details><summary>Raw IEC/ST</summary>
-
-```iec
-{attribute 'OPC.UA.DA.Property' := '1'}
-{attribute 'monitoring' := 'variable'}
-PROPERTY PUBLIC P_LogLevel : E_LogLevel
-```
-</details>
-

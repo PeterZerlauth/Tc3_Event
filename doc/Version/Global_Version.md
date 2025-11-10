@@ -1,10 +1,11 @@
-## Global_Version
+# Global_Version
 
 **Type:** GVL
 
 **Source File:** `Version/Global_Version.TcGVL`
 
-<details><summary>Raw IEC/ST</summary>
+<details>
+<summary>Raw IEC/ST</summary>
 
 ```iec
 {attribute 'TcGenerated'}
@@ -17,4 +18,3 @@ VAR_GLOBAL CONSTANT
 END_VAR
 ```
 </details>
-

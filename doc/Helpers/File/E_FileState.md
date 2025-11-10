@@ -1,16 +1,17 @@
-## E_FileState
+# E_FileState
 
 **Type:** ENUM
 
 **Source File:** `Helpers/File/E_FileState.TcDUT`
 
-<details><summary>Raw IEC/ST</summary>
+<details>
+<summary>Raw IEC/ST</summary>
 
 ```iec
 {attribute 'qualified_only'}
 {attribute 'strict'}
 {attribute 'to_string'}
-TYPE E_FileState :
+TYPE [E_FileState](Helpers/File/E_FileState.md) :
 (
     OK := 0,             // File could be opened
     NO_FILE := 1,        // No file available
@@ -21,4 +22,3 @@ TYPE E_FileState :
 END_TYPE
 ```
 </details>
-

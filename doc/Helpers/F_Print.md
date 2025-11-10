@@ -1,15 +1,15 @@
-## F_Print
+# F_Print
 
 **Type:** FUNCTION
 
 **Source File:** `Helpers/F_Print.TcPOU`
 
-#### Declaration & Implementation
-<details><summary>Raw IEC/ST</summary>
+<details>
+<summary>Raw IEC/ST</summary>
 
 ```iec
 // Helper to generate a message with replaced arguments
-FUNCTION F_Print : STRING(255)
+FUNCTION [F_Print](Helpers/F_Print.md) : STRING(255)
 VAR_INPUT
     sMessage:				STRING(255);
     sArguments:				STRING(255);	// Arguments are separated by $R 
@@ -22,7 +22,7 @@ END_VAR
 
 // --- Implementation code ---
 // replace placeholders with arguments
-F_Print := sMessage;
+[F_Print](Helpers/F_Print.md) := sMessage;
 
 IF sArguments = '' THEN
     RETURN;
@@ -33,9 +33,9 @@ WHILE nPosition > 0 DO
     
     sArg := LEFT(sArguments, nPosition - 1);
     
-    nPlaceholder := FIND(F_Print, '%s');
+    nPlaceholder := FIND([F_Print](Helpers/F_Print.md), '%s');
     IF nPlaceholder > 0 THEN
-        F_Print := REPLACE(F_Print, sArg, 2, nPlaceholder);
+        [F_Print](Helpers/F_Print.md) := REPLACE([F_Print](Helpers/F_Print.md), sArg, 2, nPlaceholder);
     ELSE
         RETURN;
     END_IF
@@ -46,4 +46,3 @@ WHILE nPosition > 0 DO
 END_WHILE
 ```
 </details>
-

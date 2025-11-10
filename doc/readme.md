@@ -1,6 +1,6 @@
 # Project Documentation
 
-## Overview
+## 📖 Overview
 This document provides an overview of the TwinCAT project components.
 
 ### ENUM (2)
@@ -17,7 +17,7 @@ This document provides an overview of the TwinCAT project components.
 * [F_GetTitle](Project%20Information/F_GetTitle.md)
 * [F_GetVersion](Project%20Information/F_GetVersion.md)
 
-### FUNCTION_BLOCK (8)
+### FUNCTION BLOCK (8)
 * [FB_Argument](Argument/FB_Argument.md)
 * [FB_Event](Event/FB_Event.md)
 * [FB_File](Helpers/File/FB_File.md)

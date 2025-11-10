@@ -1,228 +1,86 @@
-## FB_LoggingProvider
+# FB_LoggingProvider
 
-**Type:** FUNCTION_BLOCK
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Logging/FB_LoggingProvider.TcPOU`
 
-#### Declaration & Implementation
-<details><summary>Raw IEC/ST</summary>
+<details>
+<summary>Raw IEC/ST</summary>
 
 ```iec
 {attribute 'no_explicit_call' := 'do not call this POU directly'} 
 // Provide the functionality to use more than one Logger target
-FUNCTION_BLOCK FB_LoggingProvider IMPLEMENTS I_Logger
+FUNCTION_BLOCK [FB_LoggingProvider](Logging/FB_LoggingProvider.md) IMPLEMENTS [I_Logger](Logging/I_Logger.md)
 VAR
 	nLength:		INT;
-	pList: 			POINTER TO I_Logger;
-	aList:			POINTER TO POINTER TO ARRAY [0..24] OF I_Logger:=ADR(pList);
+	pList: 			POINTER TO [I_Logger](Logging/I_Logger.md);
+	aList:			POINTER TO POINTER TO ARRAY [0..24] OF [I_Logger](Logging/I_Logger.md):=ADR(pList);
 END_VAR
 
 // --- Implementation code ---
 // https://peterzerlauth.com/
-```
-</details>
 
-### Methods
-
-#### FB_exit
-<details><summary>Raw IEC/ST</summary>
-
-```iec
+// --- Method: FB_exit ---
 METHOD FB_exit : BOOL
 VAR_INPUT
 	bInCopyCode : BOOL; // if TRUE, the exit method is called for exiting an instance that is copied afterwards (online change).
 END_VAR
-M_Clear();
-```
-</details>
 
-#### M_Add
-<details><summary>Raw IEC/ST</summary>
-
-```iec
+// --- Method: M_Add ---
 METHOD PUBLIC M_Add : BOOL
 VAR_INPUT
-	iLogger: 	I_Logger;
+	iLogger: 	[I_Logger](Logging/I_Logger.md);
 END_VAR
 VAR
-	pOldList: 	POINTER TO I_Logger;
+	pOldList: 	POINTER TO [I_Logger](Logging/I_Logger.md);
 END_VAR
-IF iLogger <> 0 THEN
-	// First Item
-	IF pList = 0 THEN
-		nLength:= nLength + 1;
-		pList:= __NEW(POINTER TO I_Logger, DINT_TO_UDINT(nLength));
-	ELSE
-		// Item already in List
-		IF M_Find(iLogger) = -1 THEN
-			// backup 
-			pOldList:= pList;
-			// new Length
-			nLength:= nLength + 1;
-			// new pointer
-			pList:= __NEW(POINTER TO I_Logger, DINT_TO_UDINT(nLength));
-			// restore
-			Memcpy(pList, pOldList, SIZEOF(pList) * DINT_TO_UDINT(nLength -1));
-			// delete old
-			__DELETE(pOldList);
-		ELSE
-			M_Add:= FALSE;	
-			RETURN;
-		END_IF
-	END_IF
-	IF pList = 0 THEN
-		RETURN;
-	END_IF
-	// add new Object
-	pList[nLength-1]:= iLogger;
-	M_Add:= TRUE;
-ELSE
-	M_Add:= FALSE;	
-END_IF
-```
-</details>
 
-#### M_Clear
-<details><summary>Raw IEC/ST</summary>
-
-```iec
+// --- Method: M_Clear ---
 METHOD PUBLIC M_Clear : bool
-IF pList <> 0 THEN
-	nLength:= 0;
-	__DELETE(pList);
-END_IF
-M_Clear:= TRUE;
-```
-</details>
 
-#### M_Find
-<details><summary>Raw IEC/ST</summary>
-
-```iec
+// --- Method: M_Find ---
 METHOD PUBLIC M_Find : DINT
 VAR_INPUT
-	iLogger: 	I_Logger;
+	iLogger: 	[I_Logger](Logging/I_Logger.md);
 END_VAR
 VAR
 	nIndex: 	UINT;
 END_VAR
-// Object already in List
-M_Find := -1;
-WHILE nIndex < nLength DO
-    IF (pList[nIndex] = iLogger) THEN
-        M_Find := nIndex;
-        RETURN;
-    END_IF
-	nIndex := nIndex + 1;
-END_WHILE
-```
-</details>
 
-#### M_Index
-<details><summary>Raw IEC/ST</summary>
-
-```iec
-METHOD PUBLIC M_Index : I_Logger
+// --- Method: M_Index ---
+METHOD PUBLIC M_Index : [I_Logger](Logging/I_Logger.md)
 VAR_INPUT
 	nIndex: 	DINT;
 END_VAR
-IF (nIndex < nLength) THEN
-	M_Index := pList[nIndex];
-END_IF
-```
-</details>
 
-#### M_Log
-<details><summary>Raw IEC/ST</summary>
-
-```iec
+// --- Method: M_Log ---
 METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
-	fbMessage:			FB_Message;
+	fbMessage:			[FB_Message](Message/FB_Message.md);
 END_VAR
 VAR
 	nIndex:		INT;
 END_VAR
-WHILE nIndex < nLength DO
-    pList[nIndex].M_Log(fbMessage);
-	nIndex := nIndex + 1;
-END_WHILE
-```
-</details>
 
-#### M_Remove
-<details><summary>Raw IEC/ST</summary>
-
-```iec
+// --- Method: M_Remove ---
 METHOD PUBLIC M_Remove : BOOL
 VAR_INPUT
-	iLogger: 	I_Logger;
+	iLogger: 	[I_Logger](Logging/I_Logger.md);
 END_VAR
 VAR
-	pOldList:			POINTER TO I_Logger;
+	pOldList:			POINTER TO [I_Logger](Logging/I_Logger.md);
 	nPosition: 			DINT;
 END_VAR
-IF iLogger <> 0 THEN
-	// First Item
-	IF nLength >= 0 THEN
-		// Item already in List
-		nPosition:= M_Find(iLogger);
-		IF nPosition <> -1 THEN
-			// backup 
-			pOldList:= pList;
-			// new Length
-			nLength:= nLength -1;
-			// new pointer
-			pList:= __NEW(POINTER TO I_Logger ,DINT_TO_UDINT(nLength));
-			// restore lower part
-			Memcpy(pList, pOldList, SIZEOF(pList) * DINT_TO_UDINT(nPosition));
-			//pList[nPosition]:= iObject;
-			Memcpy(pList + (SIZEOF(pList) * nPosition),pOldList + (SIZEOF(pList)*(nPosition + 1)), SIZEOF(pList) * DINT_TO_UDINT(nLength - nPosition));
-			// delete old
-			__DELETE(pOldList);
-		ELSE
-			M_Remove:= FALSE;	
-			RETURN;
-		END_IF
-	ELSE
-		M_Remove:= FALSE;	
-		RETURN;
-	END_IF
-	M_Remove:= TRUE;
-ELSE
-	M_Remove:= FALSE;	
-END_IF
-```
-</details>
 
-#### M_Reset
-<details><summary>Raw IEC/ST</summary>
-
-```iec
+// --- Method: M_Reset ---
 METHOD M_Reset : BOOL
 VAR_INPUT
 END_VAR
 VAR
 	nIndex: 				UINT;
 END_VAR
-nIndex := 0;
-WHILE nIndex < nLength DO
-    pList[nIndex].M_Reset();
-    nIndex := nIndex + 1;
-END_WHILE
-M_Reset:= TRUE;
+
+// --- Property (read/write): P_Length ---
+PROPERTY P_Length : UNKNOWN
 ```
 </details>
-
-### Properties
-
-#### P_Length (read/write)
-<details><summary>Raw IEC/ST</summary>
-
-```iec
-{attribute 'OPC.UA.DA.Property' := '1'}
-{attribute 'monitoring' := 'variable'}
-PROPERTY PUBLIC P_Length : DINT
-```
-</details>
-

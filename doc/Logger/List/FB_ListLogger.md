@@ -1,21 +1,21 @@
-## FB_ListLogger
+# FB_ListLogger
 
-**Type:** FUNCTION_BLOCK
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Logger/List/FB_ListLogger.TcPOU`
 
-#### Declaration & Implementation
-<details><summary>Raw IEC/ST</summary>
+<details>
+<summary>Raw IEC/ST</summary>
 
 ```iec
 // Provide logging 
-FUNCTION_BLOCK FB_ListLogger IMPLEMENTS I_Logger, I_LogLevel
+FUNCTION_BLOCK [FB_ListLogger](Logger/List/FB_ListLogger.md) IMPLEMENTS [I_Logger](Logging/I_Logger.md), [I_LogLevel](Logger/FileLogger/I_LogLevel.md)
 VAR_INPUT
-	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
+	eLogLevel:				[E_LogLevel](Logger/List/E_LogLevel.md):= [E_LogLevel](Logger/List/E_LogLevel.md).Verbose;
 END_VAR
 VAR
 	{attribute 'OPC.UA.DA.Property' := '1'}
-	aMessages:				ARRAY[0..99] OF FB_Message; 	// Message store
+	aMessages:				ARRAY[0..99] OF [FB_Message](Message/FB_Message.md); 	// Message store
 	{attribute 'OPC.UA.DA.Property' := '1'}
     nMessages:				UINT := 0;                     // Message count
 	{attribute 'hide'} 
@@ -32,85 +32,32 @@ IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskT
 	nIndex:= 0;
 	WHILE nIndex < nMessages DO
 		IF aMessages[nIndex].bActive THEN
-			IF aMessages[nIndex].eLogLevel <= E_LogLevel.Warning THEN
+			IF aMessages[nIndex].eLogLevel <= [E_LogLevel](Logger/List/E_LogLevel.md).Warning THEN
 				aMessages[nIndex].bActive:= FALSE;
 			END_IF
 			nIndex := nIndex + 1;
 		ELSE
-			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(FB_Message) * (nMessages - nIndex));
+			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF([FB_Message](Message/FB_Message.md)) * (nMessages - nIndex));
 			nMessages := nMessages - 1;
 			RETURN;
 		END_IF
 	END_WHILE
 END_IF
-```
-</details>
 
-### Methods
-
-#### M_Log
-<details><summary>Raw IEC/ST</summary>
-
-```iec
+// --- Method: M_Log ---
 METHOD PUBLIC M_Log : BOOL
 VAR_INPUT
-	fbMessage:			FB_Message;
+	fbMessage:			[FB_Message](Message/FB_Message.md);
 END_VAR
 VAR
 END_VAR
-IF eLogLevel > fbMessage.eLogLevel THEN
-	M_Log:= TRUE;
-	RETURN;
-END_IF
 
-IF nMessages > 99 THEN 
-	RETURN;
-END_IF
-
-// Skip if same sMessage already exists
-nIndex := 0;
-WHILE nIndex < nMessages DO
-    IF aMessages[nIndex].sDefault = fbMessage.sDefault THEN
-		aMessages[nIndex].bActive:= TRUE;
-        M_Log := TRUE;
-        RETURN; // message already in buffer
-    END_IF
-    nIndex := nIndex + 1;
-END_WHILE
-
-aMessages[nMessages]:= fbMessage;;
-nMessages := nMessages + 1;
-M_Log := TRUE;
-```
-</details>
-
-#### M_Reset
-<details><summary>Raw IEC/ST</summary>
-
-```iec
+// --- Method: M_Reset ---
 METHOD M_Reset : BOOL
 VAR_INPUT
 END_VAR
-nIndex := 0;
-WHILE nIndex < nMessages DO
-    IF aMessages[nIndex].bActive = TRUE THEN
-		aMessages[nIndex].bActive:= FALSE;
-    END_IF
-    nIndex := nIndex + 1;
-END_WHILE
-M_Reset:= TRUE;
+
+// --- Property (read/write): P_LogLevel ---
+PROPERTY P_LogLevel : UNKNOWN
 ```
 </details>
-
-### Properties
-
-#### P_LogLevel (read/write)
-<details><summary>Raw IEC/ST</summary>
-
-```iec
-{attribute 'OPC.UA.DA.Property' := '1'}
-{attribute 'monitoring' := 'variable'}
-PROPERTY PUBLIC P_LogLevel : E_LogLevel
-```
-</details>
-
