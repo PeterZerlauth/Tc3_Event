@@ -7,38 +7,50 @@
 
 ## Methods
 
-### `M_AddBOOL`
+### `M_AddBOOL` : `I_Argument`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
 | `bValue` | `BOOL` |  |
-### `M_AddINT`
+
+---
+### `M_AddINT` : `I_Argument`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
 | `nValue` | `LINT` |  |
-### `M_AddREAL`
+
+---
+### `M_AddREAL` : `I_Argument`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
 | `fValue` | `LREAL` |  |
-### `M_AddSTRING`
+
+---
+### `M_AddSTRING` : `I_Argument`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
 | `sValue` | `STRING` |  |
-### `M_AddTIME`
+
+---
+### `M_AddTIME` : `I_Argument`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
 | `tValue` | `TIME` |  |
-### `M_Clear`
+
+---
+### `M_Clear` : `I_Argument`
 *No documentation found.*
+
+---
 
 ## Properties
 

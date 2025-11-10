@@ -3,7 +3,7 @@
 **Type:** `FUNCTION BLOCK`
 **Source File:** `Logger/Twincat/FB_TcLogger.TcPOU`
 
-*No documentation found.*
+Provide logging
 
 ## Inputs
 | Name | Type | Description |
@@ -17,7 +17,7 @@
 
 ## Methods
 
-### `M_Log`
+### `M_Log` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -67,7 +67,9 @@ aAlarm[nAlarm].Raise(fbMessage.nTimestamp);
 nAlarm := nAlarm + 1;
 M_Log := TRUE;
 ```
-### `M_Reset`
+
+---
+### `M_Reset` : `BOOL`
 *No documentation found.*
 
 **Implementation:**
@@ -81,6 +83,8 @@ WHILE nIndex < nAlarm DO
 END_WHILE
 M_Reset:= TRUE;
 ```
+
+---
 
 ## Properties
 

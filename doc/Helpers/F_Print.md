@@ -3,7 +3,9 @@
 **Type:** `FUNCTION`
 **Source File:** `Helpers/F_Print.TcPOU`
 
-*No documentation found.*
+Helper to generate a message with replaced arguments
+
+**Returns:** `STRING`
 
 ## Inputs
 | Name | Type | Description |

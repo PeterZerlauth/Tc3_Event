@@ -3,7 +3,9 @@
 **Type:** `FUNCTION`
 **Source File:** `Helpers/LogLevel_To_TcEventSeverity.TcPOU`
 
-*No documentation found.*
+Converts internal loglevel to twincat severity
+
+**Returns:** `TcEventSeverity`
 
 ## Inputs
 | Name | Type | Description |

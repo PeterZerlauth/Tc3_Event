@@ -3,7 +3,7 @@
 **Type:** `FUNCTION BLOCK`
 **Source File:** `Logger/List/FB_ListLogger.TcPOU`
 
-*No documentation found.*
+Provide logging
 
 ## Inputs
 | Name | Type | Description |
@@ -17,7 +17,7 @@
 
 ## Methods
 
-### `M_Log`
+### `M_Log` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -50,7 +50,9 @@ aMessages[nMessages]:= fbMessage;;
 nMessages := nMessages + 1;
 M_Log := TRUE;
 ```
-### `M_Reset`
+
+---
+### `M_Reset` : `BOOL`
 *No documentation found.*
 
 **Implementation:**
@@ -64,6 +66,8 @@ WHILE nIndex < nMessages DO
 END_WHILE
 M_Reset:= TRUE;
 ```
+
+---
 
 ## Properties
 

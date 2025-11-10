@@ -3,12 +3,12 @@
 **Type:** `FUNCTION BLOCK`
 **Source File:** `Argument/FB_Argument.TcPOU`
 
-*No documentation found.*
+Store arguments in a single string seperated by $R
 
 ## Methods
 
-### `M_AddBOOL`
-*No documentation found.*
+### `M_AddBOOL` : `I_Argument`
+add boolean value to arguments
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
@@ -20,8 +20,10 @@ sValue:= CONCAT(sValue, BOOL_TO_STRING(bValue));			// convert
 sValue:= CONCAT(sValue, '$R');								// add separator
 M_AddBOOL:= THIS^;
 ```
-### `M_AddINT`
-*No documentation found.*
+
+---
+### `M_AddINT` : `I_Argument`
+add int value to arguments
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
@@ -32,8 +34,10 @@ M_AddBOOL:= THIS^;
 sValue:= CONCAT(sValue, CONCAT(LINT_TO_STRING(nValue), '$R'));	// add new arg
 M_AddINT:= THIS^;
 ```
-### `M_AddREAL`
-*No documentation found.*
+
+---
+### `M_AddREAL` : `I_Argument`
+add real value to arguments
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
@@ -45,8 +49,10 @@ M_AddINT:= THIS^;
 sValue:= CONCAT(sValue, CONCAT(LREAL_TO_FMTSTR(fValue, nDecimals, TRUE), '$R'));				// add new arg
 M_AddREAL:= THIS^;
 ```
-### `M_AddSTRING`
-*No documentation found.*
+
+---
+### `M_AddSTRING` : `I_Argument`
+add string value to arguments
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
@@ -57,8 +63,10 @@ M_AddREAL:= THIS^;
 THIS^.sValue:= CONCAT(THIS^.sValue, CONCAT(sValue, '$R'));				// add separator 
 M_AddSTRING:= THIS^;
 ```
-### `M_AddTIME`
-*No documentation found.*
+
+---
+### `M_AddTIME` : `I_Argument`
+add time value to arguments
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
@@ -69,8 +77,10 @@ M_AddSTRING:= THIS^;
 sValue:= CONCAT(sValue, CONCAT(TIME_TO_STRING(tValue), '$R'));				// add separator
 M_AddTIME:= THIS^;
 ```
-### `M_Clear`
-*No documentation found.*
+
+---
+### `M_Clear` : `I_Argument`
+Clear arguments
 
 **Implementation:**
 ```iec
@@ -78,8 +88,10 @@ sValue:= '';
 M_Clear:= THIS^;
 ```
 
+---
+
 ## Properties
 
 ### `P_Value`
-*No documentation found.*
+Returns the list with arguments
 

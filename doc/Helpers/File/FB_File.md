@@ -3,7 +3,7 @@
 **Type:** `FUNCTION BLOCK`
 **Source File:** `Helpers/File/FB_File.TcPOU`
 
-*No documentation found.*
+SysFile from codesys
 
 ## Outputs
 | Name | Type | Description |
@@ -13,8 +13,8 @@
 
 ## Methods
 
-### `FB_Exit`
-*No documentation found.*
+### `FB_Exit` : `BOOL`
+FB_Exit must be implemented explicitly. If there is an implementation, then the
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
@@ -24,8 +24,10 @@
 ```iec
 M_Reset();
 ```
-### `M_Close`
-*No documentation found.*
+
+---
+### `M_Close` : `BOOL`
+Closes the file if opened
 
 **Implementation:**
 ```iec
@@ -39,8 +41,10 @@ IF hFile > 0 THEN
    END_IF
 END_IF
 ```
-### `M_Delete`
-*No documentation found.*
+
+---
+### `M_Delete` : `BOOL`
+Delete file
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
@@ -59,8 +63,10 @@ ELSE
     bError := TRUE;
 END_IF
 ```
-### `M_GetSize`
-*No documentation found.*
+
+---
+### `M_GetSize` : `UDINT`
+Get file size
 
 **Implementation:**
 ```iec
@@ -70,8 +76,10 @@ IF nResult <> 0 THEN
 	bError := TRUE;
 END_IF
 ```
-### `M_Open`
-*No documentation found.*
+
+---
+### `M_Open` : `BOOL`
+Open file
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
@@ -100,8 +108,10 @@ ELSE
 	END_IF
 END_IF
 ```
-### `M_Read`
-*No documentation found.*
+
+---
+### `M_Read` : `BOOL`
+Read file
 
 **Implementation:**
 ```iec
@@ -125,8 +135,10 @@ ELSE
 	bError:= TRUE;
 END_IF
 ```
-### `M_Reset`
-*No documentation found.*
+
+---
+### `M_Reset` : `BOOL`
+Reset all
 
 **Implementation:**
 ```iec
@@ -140,8 +152,10 @@ M_Close();
 bError:= FALSE;
 M_Reset:= TRUE;
 ```
-### `M_Status`
-*No documentation found.*
+
+---
+### `M_Status` : `E_FileState`
+File status
 
 **Implementation:**
 ```iec
@@ -170,8 +184,10 @@ IF hFile < 0 THEN
    
 END_IF
 ```
-### `M_Write`
-*No documentation found.*
+
+---
+### `M_Write` : `BOOL`
+Writes content to a file
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
@@ -194,6 +210,8 @@ ELSE
 	bError:= TRUE;
 END_IF
 ```
+
+---
 
 ## Implementation
 ```iec

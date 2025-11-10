@@ -7,12 +7,16 @@
 
 ## Methods
 
-### `M_Log`
+### `M_Log` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
 | `fbMessage` | `FB_Message` |  |
-### `M_Reset`
+
+---
+### `M_Reset` : `BOOL`
 *No documentation found.*
+
+---
 

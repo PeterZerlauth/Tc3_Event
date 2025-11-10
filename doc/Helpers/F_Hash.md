@@ -3,7 +3,9 @@
 **Type:** `FUNCTION`
 **Source File:** `Helpers/F_Hash.TcPOU`
 
-*No documentation found.*
+Calculate hash value
+
+**Returns:** `UDINT`
 
 ## Inputs
 | Name | Type | Description |

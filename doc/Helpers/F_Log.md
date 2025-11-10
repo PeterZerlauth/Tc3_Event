@@ -3,7 +3,9 @@
 **Type:** `FUNCTION`
 **Source File:** `Helpers/F_Log.TcPOU`
 
-*No documentation found.*
+Backup logger, if no logger is attached to FB_Event
+
+**Returns:** `BOOL`
 
 ## Inputs
 | Name | Type | Description |

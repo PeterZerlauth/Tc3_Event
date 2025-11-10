@@ -3,7 +3,7 @@
 **Type:** `FUNCTION BLOCK`
 **Source File:** `Message/FB_Message.TcPOU`
 
-*No documentation found.*
+Payload for events
 
 ## Inputs
 | Name | Type | Description |

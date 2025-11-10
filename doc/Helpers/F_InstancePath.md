@@ -3,7 +3,9 @@
 **Type:** `FUNCTION`
 **Source File:** `Helpers/F_InstancePath.TcPOU`
 
-*No documentation found.*
+Filter instance path, to something useful
+
+**Returns:** `STRING`
 
 ## Inputs
 | Name | Type | Description |

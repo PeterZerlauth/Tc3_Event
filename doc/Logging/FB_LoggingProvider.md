@@ -3,7 +3,7 @@
 **Type:** `FUNCTION BLOCK`
 **Source File:** `Logging/FB_LoggingProvider.TcPOU`
 
-*No documentation found.*
+Provide the functionality to use more than one Logger target
 
 ## Local Variables
 | Name | Type | Description |
@@ -13,7 +13,7 @@
 
 ## Methods
 
-### `FB_exit`
+### `FB_exit` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -24,7 +24,9 @@
 ```iec
 M_Clear();
 ```
-### `M_Add`
+
+---
+### `M_Add` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -66,7 +68,9 @@ ELSE
 	M_Add:= FALSE;	
 END_IF
 ```
-### `M_Clear`
+
+---
+### `M_Clear` : `bool`
 *No documentation found.*
 
 **Implementation:**
@@ -77,7 +81,9 @@ IF pList <> 0 THEN
 END_IF
 M_Clear:= TRUE;
 ```
-### `M_Find`
+
+---
+### `M_Find` : `DINT`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -96,7 +102,9 @@ WHILE nIndex < nLength DO
 	nIndex := nIndex + 1;
 END_WHILE
 ```
-### `M_Index`
+
+---
+### `M_Index` : `I_Logger`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -109,7 +117,9 @@ IF (nIndex < nLength) THEN
 	M_Index := pList[nIndex];
 END_IF
 ```
-### `M_Log`
+
+---
+### `M_Log` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -123,7 +133,9 @@ WHILE nIndex < nLength DO
 	nIndex := nIndex + 1;
 END_WHILE
 ```
-### `M_Remove`
+
+---
+### `M_Remove` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -163,7 +175,9 @@ ELSE
 	M_Remove:= FALSE;	
 END_IF
 ```
-### `M_Reset`
+
+---
+### `M_Reset` : `BOOL`
 *No documentation found.*
 
 **Implementation:**
@@ -175,6 +189,8 @@ WHILE nIndex < nLength DO
 END_WHILE
 M_Reset:= TRUE;
 ```
+
+---
 
 ## Properties
 

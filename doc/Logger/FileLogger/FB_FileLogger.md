@@ -3,7 +3,7 @@
 **Type:** `FUNCTION BLOCK`
 **Source File:** `Logger/FileLogger/FB_FileLogger.TcPOU`
 
-*No documentation found.*
+Provide logging
 
 ## Inputs
 | Name | Type | Description |
@@ -19,7 +19,7 @@
 
 ## Methods
 
-### `M_Log`
+### `M_Log` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -83,13 +83,17 @@ fbFile.M_Close();
 
 M_Log := TRUE;
 ```
-### `M_Reset`
+
+---
+### `M_Reset` : `BOOL`
 *No documentation found.*
 
 **Implementation:**
 ```iec
 M_Reset:= true;
 ```
+
+---
 
 ## Properties
 

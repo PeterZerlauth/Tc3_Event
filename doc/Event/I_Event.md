@@ -7,36 +7,46 @@
 
 ## Methods
 
-### `M_Critical`
+### `M_Critical` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
 | `nID` | `UDINT` |  |
-### `M_Error`
+
+---
+### `M_Error` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
 | `nID` | `UDINT` |  |
-### `M_Info`
+
+---
+### `M_Info` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
 | `nID` | `UDINT` |  |
-### `M_Verbose`
+
+---
+### `M_Verbose` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
 | `sMessage` | `STRING` |  |
-### `M_Warning`
+
+---
+### `M_Warning` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
 | `nID` | `UDINT` |  |
+
+---
 
 ## Properties
 

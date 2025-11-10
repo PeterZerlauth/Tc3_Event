@@ -3,7 +3,7 @@
 **Type:** `GVL`
 **Source File:** `Version/Global_Version.TcGVL`
 
-*No documentation found.*
+This function has been automatically generated from the project information.
 
 ## Global Variables
 | Name | Type | Description |

@@ -3,7 +3,9 @@
 **Type:** `FUNCTION`
 **Source File:** `Project Information/F_GetTitle.TcPOU`
 
-*No documentation found.*
+This function has been automatically generated from the project information.
+
+**Returns:** `WSTRING`
 
 ## Implementation
 ```iec

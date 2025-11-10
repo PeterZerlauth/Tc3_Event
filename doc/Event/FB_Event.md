@@ -3,7 +3,7 @@
 **Type:** `FUNCTION BLOCK`
 **Source File:** `Event/FB_Event.TcPOU`
 
-*No documentation found.*
+Providing the event logger
 
 ## Inputs
 | Name | Type | Description |
@@ -17,8 +17,8 @@
 
 ## Methods
 
-### `FB_Init`
-*No documentation found.*
+### `FB_Init` : `BOOL`
+FB_Init is always available implicitly and it is used primarily for initialization.
 **Inputs:**
 | Name | Type | Description |
 | --- | --- | --- |
@@ -32,7 +32,9 @@ fbSymbolInfo.PORT:= TwinCAT_SystemInfoVarList._AppInfo.AdsPort;
 fbSymbolInfo.START:= TRUE;
 fbSystemTime.bEnable:= TRUE;
 ```
-### `M_Critical`
+
+---
+### `M_Critical` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -64,7 +66,9 @@ END_IF
 	
 fbArguments.M_Clear();
 ```
-### `M_Error`
+
+---
+### `M_Error` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -96,7 +100,9 @@ END_IF
 
 fbArguments.M_Clear();
 ```
-### `M_Info`
+
+---
+### `M_Info` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -128,7 +134,9 @@ END_IF
 
 fbArguments.M_Clear();
 ```
-### `M_Reset`
+
+---
+### `M_Reset` : `BOOL`
 *No documentation found.*
 
 **Implementation:**
@@ -137,7 +145,9 @@ IF iLogger <> 0 THEN
 	M_Reset:= iLogger.M_Reset();
 END_IF
 ```
-### `M_Verbose`
+
+---
+### `M_Verbose` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -168,7 +178,9 @@ END_IF
 
 fbArguments.M_Clear();
 ```
-### `M_Warning`
+
+---
+### `M_Warning` : `BOOL`
 *No documentation found.*
 **Inputs:**
 | Name | Type | Description |
@@ -199,6 +211,8 @@ END_IF
 
 fbArguments.M_Clear();
 ```
+
+---
 
 ## Properties
 
