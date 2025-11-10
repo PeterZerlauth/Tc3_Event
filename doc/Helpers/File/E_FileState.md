@@ -4,6 +4,10 @@
 
 **Source File:** `Helpers/File/E_FileState.TcDUT`
 
+### References
+
+- [E_FileState](./Helpers/File/E_FileState.md)
+
 <details>
 <summary>Raw IEC/ST</summary>
 
@@ -11,7 +15,7 @@
 {attribute 'qualified_only'}
 {attribute 'strict'}
 {attribute 'to_string'}
-TYPE [E_FileState](Helpers/File/E_FileState.md) :
+TYPE E_FileState :
 (
     OK := 0,             // File could be opened
     NO_FILE := 1,        // No file available

@@ -9,7 +9,7 @@
 
 ```iec
 // Calculate hash value 
-FUNCTION [F_Hash](Helpers/F_Hash.md) : UDINT
+FUNCTION F_Hash : UDINT
 VAR_INPUT
     sInput:					STRING(255);   				// input string to hash
 END_VAR
@@ -28,7 +28,7 @@ END_VAR
 nLength := LEN(sInput);
 FOR nIndex := 1 TO nLength DO
     nChar := BYTE_TO_UDINT(sInput[nIndex]) - 98;
-    [F_Hash](Helpers/F_Hash.md) := ([F_Hash](Helpers/F_Hash.md) + (nChar * nPowerOfBase) MOD nModulus) MOD nModulus;
+    F_Hash := (F_Hash + (nChar * nPowerOfBase) MOD nModulus) MOD nModulus;
     nPowerOfBase := (nPowerOfBase * nPrime) MOD nModulus;
 END_FOR
 ```

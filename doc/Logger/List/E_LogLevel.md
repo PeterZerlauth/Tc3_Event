@@ -4,6 +4,10 @@
 
 **Source File:** `Logger/List/E_LogLevel.TcDUT`
 
+### References
+
+- [E_LogLevel](./Logger/List/E_LogLevel.md)
+
 <details>
 <summary>Raw IEC/ST</summary>
 
@@ -11,7 +15,7 @@
 {attribute 'qualified_only'}
 {attribute 'strict'}
 {attribute 'to_string'}
-TYPE [E_LogLevel](Logger/List/E_LogLevel.md) :
+TYPE E_LogLevel :
 (
     Verbose 	:= 1,
     Info  		:= 2,

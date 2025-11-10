@@ -12,12 +12,12 @@
 {attribute 'signature_flag' := '1073741824'}
 {attribute 'TcGenerated'}
 {attribute 'no-analysis'}
-FUNCTION [F_GetTitle](Project%20Information/F_GetTitle.md) : WSTRING
+FUNCTION F_GetTitle : WSTRING
 VAR_INPUT
 	
 END_VAR
 
 // --- Implementation code ---
-[F_GetTitle](Project%20Information/F_GetTitle.md) := "Tc3_Event";
+F_GetTitle := "Tc3_Event";
 ```
 </details>

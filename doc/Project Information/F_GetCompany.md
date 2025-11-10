@@ -12,12 +12,12 @@
 {attribute 'signature_flag' := '1073741824'}
 {attribute 'TcGenerated'}
 {attribute 'no-analysis'}
-FUNCTION [F_GetCompany](Project%20Information/F_GetCompany.md) : WSTRING
+FUNCTION F_GetCompany : WSTRING
 VAR_INPUT
 	
 END_VAR
 
 // --- Implementation code ---
-[F_GetCompany](Project%20Information/F_GetCompany.md) := "www.peterzerlauth.com";
+F_GetCompany := "www.peterzerlauth.com";
 ```
 </details>

@@ -4,14 +4,20 @@
 
 **Source File:** `Helpers/F_Log.TcPOU`
 
+### References
+
+- [FB_Event](./Event/FB_Event.md)
+- [FB_Message](./Message/FB_Message.md)
+- [E_LogLevel](./Logger/List/E_LogLevel.md)
+
 <details>
 <summary>Raw IEC/ST</summary>
 
 ```iec
-// Backup logger, if no logger is attached to [FB_Event](Event/FB_Event.md)
-FUNCTION [F_Log](Helpers/F_Log.md) : BOOL
+// Backup logger, if no logger is attached to FB_Event
+FUNCTION F_Log : BOOL
 VAR_INPUT
-	fbMessage:			REFERENCE TO [FB_Message](Message/FB_Message.md);
+	fbMessage:			REFERENCE TO FB_Message;
 END_VAR
 VAR
 	sMessage:			STRING(255):= 'Logger null | ';
@@ -30,7 +36,7 @@ nIndex := 0;
 WHILE nIndex < nBuffer DO
     IF aBuffer[nIndex].sDefault = fbMessage.sDefault THEN
 		aBuffer[nIndex].bActive:= TRUE;
-        [F_Log](Helpers/F_Log.md) := TRUE;
+        F_Log := TRUE;
         RETURN;
     END_IF
     nIndex := nIndex + 1;
@@ -46,11 +52,11 @@ END_IF
 
 // --- Log message ---
 CASE fbMessage.eLogLevel OF
-    [E_LogLevel](Logger/List/E_LogLevel.md).Verbose, [E_LogLevel](Logger/List/E_LogLevel.md).Info:
+    E_LogLevel.Verbose, E_LogLevel.Info:
         ADSLOGSTR(ADSLOG_MSGTYPE_HINT, '%s', sMessage);
-    [E_LogLevel](Logger/List/E_LogLevel.md).Warning:
+    E_LogLevel.Warning:
         ADSLOGSTR(ADSLOG_MSGTYPE_WARN, '%s', sMessage);
-    [E_LogLevel](Logger/List/E_LogLevel.md).Error, [E_LogLevel](Logger/List/E_LogLevel.md).Critical:
+    E_LogLevel.Error, E_LogLevel.Critical:
         ADSLOGSTR(ADSLOG_MSGTYPE_ERROR, '%s', sMessage);
 END_CASE
 
@@ -58,7 +64,7 @@ END_CASE
 nIndex := 0;
 WHILE nIndex < nBuffer DO
     IF (nNow - aBuffer[nIndex].nTimestamp) > 1_000_000_000 THEN // 1 s = 1e9 ns
-        MEMMOVE(ADR(aBuffer[nIndex]), ADR(aBuffer[nIndex + 1]), SIZEOF([FB_Message](Message/FB_Message.md)) * (nBuffer - nIndex - 1));
+        MEMMOVE(ADR(aBuffer[nIndex]), ADR(aBuffer[nIndex + 1]), SIZEOF(FB_Message) * (nBuffer - nIndex - 1));
         nBuffer := nBuffer - 1;
     ELSE
         nIndex := nIndex + 1;
@@ -66,6 +72,6 @@ WHILE nIndex < nBuffer DO
 END_WHILE
 
 
-[F_Log](Helpers/F_Log.md) := TRUE;
+F_Log := TRUE;
 ```
 </details>

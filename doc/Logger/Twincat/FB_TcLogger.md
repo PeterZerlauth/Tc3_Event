@@ -4,14 +4,23 @@
 
 **Source File:** `Logger/Twincat/FB_TcLogger.TcPOU`
 
+### References
+
+- [FB_TcLogger](./Logger/Twincat/FB_TcLogger.md)
+- [I_Logger](./Logging/I_Logger.md)
+- [I_LogLevel](./Logger/FileLogger/I_LogLevel.md)
+- [E_LogLevel](./Logger/List/E_LogLevel.md)
+- FB_TcSourceInfo
+- FB_TcAlarm
+
 <details>
 <summary>Raw IEC/ST</summary>
 
 ```iec
 // Provide logging 
-FUNCTION_BLOCK [FB_TcLogger](Logger/Twincat/FB_TcLogger.md) IMPLEMENTS [I_Logger](Logging/I_Logger.md), [I_LogLevel](Logger/FileLogger/I_LogLevel.md)
+FUNCTION_BLOCK FB_TcLogger IMPLEMENTS I_Logger, I_LogLevel
 VAR_INPUT
-	eLogLevel:				[E_LogLevel](Logger/List/E_LogLevel.md):= [E_LogLevel](Logger/List/E_LogLevel.md).Info;
+	eLogLevel:				E_LogLevel:= E_LogLevel.Info;
 END_VAR
 VAR
 	fbSourceInfo:			FB_TcSourceInfo;
@@ -44,7 +53,7 @@ END_VAR
 // 	nIndex:= 0;
 // 	WHILE nIndex < nAlarm DO
 // 		IF bAlarm[nIndex] THEN
-// 			IF aAlarm[nIndex].eSeverity <= [LogLevel_To_TcEventSeverity](Helpers/LogLevel_To_TcEventSeverity.md)([E_LogLevel](Logger/List/E_LogLevel.md).Warning) THEN
+// 			IF aAlarm[nIndex].eSeverity <= LogLevel_To_TcEventSeverity(E_LogLevel.Warning) THEN
 // 				bAlarm[nIndex]:= FALSE;
 // 			END_IF
 // 			nIndex := nIndex + 1;
@@ -55,23 +64,5 @@ END_VAR
 // 		END_IF
 // 	END_WHILE
 // END_IF
-
-// --- Method: M_Log ---
-METHOD PUBLIC M_Log : BOOL
-VAR_INPUT
-	fbMessage:			[FB_Message](Message/FB_Message.md);
-END_VAR
-VAR
-	sArgument:			STRING;
-	nPosition: 			INT;
-END_VAR
-
-// --- Method: M_Reset ---
-METHOD M_Reset : BOOL
-VAR_INPUT
-END_VAR
-
-// --- Property (read/write): P_LogLevel ---
-PROPERTY P_LogLevel : UNKNOWN
 ```
 </details>

@@ -4,6 +4,10 @@
 
 **Source File:** `Global Variables/GVL.TcGVL`
 
+### References
+
+- [FB_Message](./Message/FB_Message.md)
+
 <details>
 <summary>Raw IEC/ST</summary>
 
@@ -11,7 +15,7 @@
 {attribute 'no-analysis'}
 VAR_GLOBAL
   // {attribute 'hide'} 
-	aBuffer:				ARRAY[0..99] OF [FB_Message](Message/FB_Message.md);
+	aBuffer:				ARRAY[0..99] OF FB_Message;
     nBuffer:				UINT := 0;
 END_VAR
 ```
