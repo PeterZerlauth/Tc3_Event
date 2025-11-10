@@ -4,6 +4,8 @@
 
 **Type:** GVL
 
+#### Declaration
+
 ```iec
 {attribute 'no-analysis'}
 VAR_GLOBAL
@@ -12,3 +14,4 @@ VAR_GLOBAL
     nBuffer:				UINT := 0;
 END_VAR
 ```
+

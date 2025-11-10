@@ -4,6 +4,8 @@
 
 **Type:** ENUM
 
+#### Declaration
+
 ```iec
 {attribute 'qualified_only'}
 {attribute 'strict'}
@@ -18,3 +20,4 @@ TYPE E_LogLevel :
 );
 END_TYPE
 ```
+
