@@ -1,8 +1,8 @@
-# E_LogLevel
+[[ _TOC_ ]]
+
+## E_LogLevel
 
 **Type:** ENUM
-
-**Source File:** `Logger/List/E_LogLevel.TcDUT`
 
 ```iec
 {attribute 'qualified_only'}
@@ -18,4 +18,3 @@ TYPE E_LogLevel :
 );
 END_TYPE
 ```
-

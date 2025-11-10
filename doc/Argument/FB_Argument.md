@@ -1,90 +1,110 @@
-# FB_Argument
+[[ _TOC_ ]]
+
+## FB_Argument
 
 **Type:** FUNCTION BLOCK
 
-**Source File:** `Argument/FB_Argument.TcPOU`
+returns : -
+#### Description  
 
-```iec
-{attribute 'no_explicit_call' := 'do not call this POU directly'}
-// Store arguments in a single string seperated by $R
-FUNCTION_BLOCK FB_Argument IMPLEMENTS I_Argument
-VAR_INPUT
-END_VAR
-VAR_OUTPUT
-END_VAR
-VAR
-	sValue:					STRING(255);		// storage for arguments
-END_VAR
 
-// --- Method: M_AddBOOL ---
-// add boolean value to arguments
-METHOD PUBLIC M_AddBOOL : I_Argument
-VAR_INPUT
-	bValue:				BOOL;		// Boolean input value
-END_VAR
-sValue:= CONCAT(sValue, BOOL_TO_STRING(bValue));			// convert
-sValue:= CONCAT(sValue, '$R');								// add separator
-M_AddBOOL:= THIS^;
-END_METHOD
+#### Input  
+- 
+#### Output  
+- 
+### Method M_AddBOOL  
+returns : -  
+  
+#### Description  
 
-// --- Method: M_AddINT ---
-// add int value to arguments
-METHOD PUBLIC M_AddINT : I_Argument
-VAR_INPUT
-	nValue:				LINT;		// Integer input value
-END_VAR
-VAR
-	sTemp: 			STRING;
-END_VAR
-sValue:= CONCAT(sValue, CONCAT(LINT_TO_STRING(nValue), '$R'));	// add new arg
-M_AddINT:= THIS^;
-END_METHOD
 
-// --- Method: M_AddREAL ---
-// add real value to arguments
-METHOD PUBLIC M_AddREAL : I_Argument
-VAR_INPUT
-	fValue:				LREAL;		// Real input value
-	nDecimals:			USINT;		// Decimals afer .
-END_VAR
-VAR
-	sTemp: 			STRING;
-END_VAR
-sValue:= CONCAT(sValue, CONCAT(LREAL_TO_FMTSTR(fValue, nDecimals, TRUE), '$R'));				// add new arg
-M_AddREAL:= THIS^;
-END_METHOD
+#### Input  
+|Name |Type |Comment|
+|---- |---- |----|
+|M_AddBOOL|I_Argument||
+|bValue|BOOL||
 
-// --- Method: M_AddSTRING ---
-// add string value to arguments
-METHOD PUBLIC M_AddSTRING : I_Argument
-VAR_INPUT
-	sValue:				STRING(255);		// String input value
-END_VAR
-THIS^.sValue:= CONCAT(THIS^.sValue, CONCAT(sValue, '$R'));				// add separator 
-M_AddSTRING:= THIS^;
-END_METHOD
+#### Output  
+- 
+### Method M_AddINT  
+returns : -  
+  
+#### Description  
 
-// --- Method: M_AddTIME ---
-// add time value to arguments
-METHOD PUBLIC M_AddTIME : I_Argument
-VAR_INPUT
-	tValue:				TIME;		// Time input value
-END_VAR
-sValue:= CONCAT(sValue, CONCAT(TIME_TO_STRING(tValue), '$R'));				// add separator
-M_AddTIME:= THIS^;
-END_METHOD
 
-// --- Method: M_Clear ---
-// Clear arguments
-METHOD PUBLIC M_Clear : I_Argument
-VAR_INPUT
-END_VAR
-sValue:= '';
-M_Clear:= THIS^;
-END_METHOD
+#### Input  
+|Name |Type |Comment|
+|---- |---- |----|
+|M_AddINT|I_Argument||
+|nValue|LINT||
+|sTemp|STRING||
 
-// --- Property (read/write): P_Value ---
-PROPERTY P_Value : UNKNOWN
-END_PROPERTY
-```
+#### Output  
+- 
+### Method M_AddREAL  
+returns : -  
+  
+#### Description  
 
+
+#### Input  
+|Name |Type |Comment|
+|---- |---- |----|
+|M_AddREAL|I_Argument||
+|fValue|LREAL||
+|nDecimals|USINT||
+|sTemp|STRING||
+
+#### Output  
+- 
+### Method M_AddSTRING  
+returns : -  
+  
+#### Description  
+
+
+#### Input  
+|Name |Type |Comment|
+|---- |---- |----|
+|M_AddSTRING|I_Argument||
+|sValue|STRING(255)||
+
+#### Output  
+- 
+### Method M_AddTIME  
+returns : -  
+  
+#### Description  
+
+
+#### Input  
+|Name |Type |Comment|
+|---- |---- |----|
+|M_AddTIME|I_Argument||
+|tValue|TIME||
+
+#### Output  
+- 
+### Method M_Clear  
+returns : -  
+  
+#### Description  
+
+
+#### Input  
+|Name |Type |Comment|
+|---- |---- |----|
+|M_Clear|I_Argument||
+
+#### Output  
+- 
+### Property P_Value  
+returns : UNKNOWN  
+  
+#### Description  
+
+
+#### Input  
+- 
+#### Output  
+- 

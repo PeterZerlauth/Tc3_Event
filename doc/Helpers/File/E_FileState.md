@@ -1,8 +1,8 @@
-# E_FileState
+[[ _TOC_ ]]
+
+## E_FileState
 
 **Type:** ENUM
-
-**Source File:** `Helpers/File/E_FileState.TcDUT`
 
 ```iec
 {attribute 'qualified_only'}
@@ -18,4 +18,3 @@ TYPE E_FileState :
 ) UDINT;
 END_TYPE
 ```
-

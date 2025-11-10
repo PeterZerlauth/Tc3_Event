@@ -1,8 +1,8 @@
-# GVL
+[[ _TOC_ ]]
+
+## GVL
 
 **Type:** GVL
-
-**Source File:** `Global Variables/GVL.TcGVL`
 
 ```iec
 {attribute 'no-analysis'}
@@ -12,4 +12,3 @@ VAR_GLOBAL
     nBuffer:				UINT := 0;
 END_VAR
 ```
-
