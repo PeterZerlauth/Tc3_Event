@@ -1,20 +1,8 @@
 # FB_TcLogger
 
-**Type:** FUNCTION BLOCK
+**Type:** FUNCTION_BLOCK
 
 **Source File:** `Logger/Twincat/FB_TcLogger.TcPOU`
-
-### References
-
-- [FB_TcLogger](./Logger/Twincat/FB_TcLogger.md)
-- [I_Logger](./Logging/I_Logger.md)
-- [I_LogLevel](./Logger/FileLogger/I_LogLevel.md)
-- [E_LogLevel](./Logger/List/E_LogLevel.md)
-- FB_TcSourceInfo
-- FB_TcAlarm
-
-<details>
-<summary>Raw IEC/ST</summary>
 
 ```iec
 // Provide logging 
@@ -33,7 +21,7 @@ VAR
 	nTimestamp:				LINT;
 END_VAR
 
-// --- Implementation code ---
+// --- Implementation ---
 // https://peterzerlauth.com/
 
 // @ToDo
@@ -64,5 +52,81 @@ END_VAR
 // 		END_IF
 // 	END_WHILE
 // END_IF
+
+// --- Method: M_Log ---
+METHOD PUBLIC M_Log : BOOL
+VAR_INPUT
+	fbMessage:			FB_Message;
+END_VAR
+VAR
+	sArgument:			STRING;
+	nPosition: 			INT;
+END_VAR
+IF eLogLevel > fbMessage.eLogLevel THEN
+	M_Log:= TRUE;
+	RETURN;
+END_IF
+
+IF nAlarm > 99 THEN 
+	RETURN;
+END_IF
+
+// Skip if same sMessage already exists
+nIndex := 0;
+WHILE nIndex < nAlarm DO
+    IF aAlarm[nIndex].EqualsToEventEntry(TC_EVENT_CLASSES.Tc3_Event, fbMessage.nID, LogLevel_To_TcEventSeverity(fbMessage.eLogLevel))  THEN
+		bAlarm[nIndex]:= TRUE;
+        M_Log := TRUE;
+        RETURN;
+    END_IF
+    nIndex := nIndex + 1;
+END_WHILE
+
+// prepare
+fbSourceInfo.Clear();
+fbSourceInfo.sName:= fbMessage.sSource;
+aAlarm[nAlarm].Create(TC_EVENT_CLASSES.Tc3_Event,  fbMessage.nID, LogLevel_To_TcEventSeverity(fbMessage.eLogLevel), FALSE, fbSourceInfo);
+aAlarm[nAlarm].ipArguments.Clear();
+
+// Split and add arguments
+nPosition := FIND('$R', fbMessage.sArguments);
+WHILE nPosition > 0 DO
+    sArgument := LEFT(fbMessage.sArguments, nPosition - 1);
+    aAlarm[nAlarm].ipArguments.AddString(sArgument);
+    fbMessage.sArguments:= RIGHT(fbMessage.sArguments, LEN(fbMessage.sArguments) - (nPosition + 1));
+    nPosition := FIND('$R', fbMessage.sArguments);
+END_WHILE;
+
+// Raise alarm
+aAlarm[nAlarm].Raise(fbMessage.nTimestamp);
+
+nAlarm := nAlarm + 1;
+M_Log := TRUE;
+END_METHOD
+
+// --- Method: M_Reset ---
+METHOD M_Reset : BOOL
+VAR_INPUT
+END_VAR
+nIndex := 0;
+WHILE nIndex < nAlarm DO
+    IF bAlarm[nIndex] = TRUE THEN
+		bAlarm[nIndex]:= FALSE;
+    END_IF
+    nIndex := nIndex + 1;
+END_WHILE
+M_Reset:= TRUE;
+END_METHOD
+
+// --- Property (read/write): P_LogLevel ---
+PROPERTY P_LogLevel : UNKNOWN
+END_PROPERTY
 ```
-</details>
+
+### References / Cross-links
+- [FB_TcLogger](Logger/Twincat/FB_TcLogger.md)
+- [I_Logger](Logging/I_Logger.md)
+- [I_LogLevel](Logger/FileLogger/I_LogLevel.md)
+- [E_LogLevel](Logger/List/E_LogLevel.md)
+- [FB_Message](Message/FB_Message.md)
+

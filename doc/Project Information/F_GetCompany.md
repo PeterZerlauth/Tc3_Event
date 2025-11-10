@@ -4,9 +4,6 @@
 
 **Source File:** `Project Information/F_GetCompany.TcPOU`
 
-<details>
-<summary>Raw IEC/ST</summary>
-
 ```iec
 // This function has been automatically generated from the project information.
 {attribute 'signature_flag' := '1073741824'}
@@ -17,7 +14,7 @@ VAR_INPUT
 	
 END_VAR
 
-// --- Implementation code ---
+// --- Implementation ---
 F_GetCompany := "www.peterzerlauth.com";
 ```
-</details>
+

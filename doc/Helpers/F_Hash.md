@@ -4,9 +4,6 @@
 
 **Source File:** `Helpers/F_Hash.TcPOU`
 
-<details>
-<summary>Raw IEC/ST</summary>
-
 ```iec
 // Calculate hash value 
 FUNCTION F_Hash : UDINT
@@ -23,7 +20,7 @@ VAR
     nChar:					UDINT;       				// numeric value of character
 END_VAR
 
-// --- Implementation code ---
+// --- Implementation ---
 // calculate a hash
 nLength := LEN(sInput);
 FOR nIndex := 1 TO nLength DO
@@ -32,4 +29,4 @@ FOR nIndex := 1 TO nLength DO
     nPowerOfBase := (nPowerOfBase * nPrime) MOD nModulus;
 END_FOR
 ```
-</details>
+

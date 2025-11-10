@@ -4,9 +4,6 @@
 
 **Source File:** `Helpers/F_InstancePath.TcPOU`
 
-<details>
-<summary>Raw IEC/ST</summary>
-
 ```iec
 // Filter instance path, to something useful
 FUNCTION F_InstancePath : STRING(255)
@@ -17,7 +14,7 @@ VAR
     nPosition     : INT;
 END_VAR
 
-// --- Implementation code ---
+// --- Implementation ---
 F_InstancePath:= RIGHT(sInstancePath, LEN(sInstancePath) - FIND(sInstancePath, '.'));
 F_InstancePath:= RIGHT(F_InstancePath, LEN(F_InstancePath) - FIND(F_InstancePath, '.'));
 
@@ -28,4 +25,4 @@ FOR nPosition:= LEN(F_InstancePath) TO 1 BY -1 DO
 	END_IF
 END_FOR
 ```
-</details>
+

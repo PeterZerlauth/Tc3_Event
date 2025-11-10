@@ -4,13 +4,6 @@
 
 **Source File:** `Helpers/LogLevel_To_TcEventSeverity.TcPOU`
 
-### References
-
-- [E_LogLevel](./Logger/List/E_LogLevel.md)
-
-<details>
-<summary>Raw IEC/ST</summary>
-
 ```iec
 // Converts internal loglevel to twincat severity
 FUNCTION LogLevel_To_TcEventSeverity : TcEventSeverity
@@ -20,7 +13,7 @@ END_VAR
 VAR
 END_VAR
 
-// --- Implementation code ---
+// --- Implementation ---
 CASE eLogLevel OF
 	E_LogLevel.Verbose:
 		LogLevel_To_TcEventSeverity:= TcEventSeverity.Verbose;
@@ -39,4 +32,7 @@ CASE eLogLevel OF
 		
 END_CASE
 ```
-</details>
+
+### References / Cross-links
+- [E_LogLevel](Logger/List/E_LogLevel.md)
+

@@ -4,15 +4,6 @@
 
 **Source File:** `Helpers/F_Log.TcPOU`
 
-### References
-
-- [FB_Event](./Event/FB_Event.md)
-- [FB_Message](./Message/FB_Message.md)
-- [E_LogLevel](./Logger/List/E_LogLevel.md)
-
-<details>
-<summary>Raw IEC/ST</summary>
-
 ```iec
 // Backup logger, if no logger is attached to FB_Event
 FUNCTION F_Log : BOOL
@@ -25,7 +16,7 @@ VAR
     nNow:				ULINT:= F_GetSystemTime();
 END_VAR
 
-// --- Implementation code ---
+// --- Implementation ---
 // --- Build log line
 sMessage := CONCAT('Logger null | ', fbMessage.sSource);
 sMessage := CONCAT(sMessage, ': ');
@@ -74,4 +65,9 @@ END_WHILE
 
 F_Log := TRUE;
 ```
-</details>
+
+### References / Cross-links
+- [FB_Event](Event/FB_Event.md)
+- [FB_Message](Message/FB_Message.md)
+- [E_LogLevel](Logger/List/E_LogLevel.md)
+

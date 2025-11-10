@@ -4,13 +4,6 @@
 
 **Source File:** `Logger/List/E_LogLevel.TcDUT`
 
-### References
-
-- [E_LogLevel](./Logger/List/E_LogLevel.md)
-
-<details>
-<summary>Raw IEC/ST</summary>
-
 ```iec
 {attribute 'qualified_only'}
 {attribute 'strict'}
@@ -25,4 +18,7 @@ TYPE E_LogLevel :
 );
 END_TYPE
 ```
-</details>
+
+### References / Cross-links
+- [E_LogLevel](Logger/List/E_LogLevel.md)
+

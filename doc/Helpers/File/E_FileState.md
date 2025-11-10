@@ -4,13 +4,6 @@
 
 **Source File:** `Helpers/File/E_FileState.TcDUT`
 
-### References
-
-- [E_FileState](./Helpers/File/E_FileState.md)
-
-<details>
-<summary>Raw IEC/ST</summary>
-
 ```iec
 {attribute 'qualified_only'}
 {attribute 'strict'}
@@ -25,4 +18,7 @@ TYPE E_FileState :
 ) UDINT;
 END_TYPE
 ```
-</details>
+
+### References / Cross-links
+- [E_FileState](Helpers/File/E_FileState.md)
+

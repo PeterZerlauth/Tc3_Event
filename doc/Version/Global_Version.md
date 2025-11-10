@@ -4,9 +4,6 @@
 
 **Source File:** `Version/Global_Version.TcGVL`
 
-<details>
-<summary>Raw IEC/ST</summary>
-
 ```iec
 {attribute 'TcGenerated'}
 {attribute 'no-analysis'}
@@ -17,4 +14,4 @@ VAR_GLOBAL CONSTANT
 	stLibVersion_Tc3_Event : ST_LibVersion := (iMajor := 0, iMinor := 0, iBuild := 0, iRevision := 1, nFlags := 0, sVersion := '0.0.0.1');
 END_VAR
 ```
-</details>
+

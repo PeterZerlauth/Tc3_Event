@@ -4,13 +4,6 @@
 
 **Source File:** `Global Variables/GVL.TcGVL`
 
-### References
-
-- [FB_Message](./Message/FB_Message.md)
-
-<details>
-<summary>Raw IEC/ST</summary>
-
 ```iec
 {attribute 'no-analysis'}
 VAR_GLOBAL
@@ -19,4 +12,7 @@ VAR_GLOBAL
     nBuffer:				UINT := 0;
 END_VAR
 ```
-</details>
+
+### References / Cross-links
+- [FB_Message](Message/FB_Message.md)
+

@@ -1,16 +1,8 @@
 # FB_Message
 
-**Type:** FUNCTION BLOCK
+**Type:** FUNCTION_BLOCK
 
 **Source File:** `Message/FB_Message.TcPOU`
-
-### References
-
-- [FB_Message](./Message/FB_Message.md)
-- [E_LogLevel](./Logger/List/E_LogLevel.md)
-
-<details>
-<summary>Raw IEC/ST</summary>
 
 ```iec
 {attribute 'analysis' := '-33'}
@@ -32,4 +24,8 @@ END_VAR
 VAR
 END_VAR
 ```
-</details>
+
+### References / Cross-links
+- [FB_Message](Message/FB_Message.md)
+- [E_LogLevel](Logger/List/E_LogLevel.md)
+

@@ -4,9 +4,6 @@
 
 **Source File:** `Helpers/F_Print.TcPOU`
 
-<details>
-<summary>Raw IEC/ST</summary>
-
 ```iec
 // Helper to generate a message with replaced arguments
 FUNCTION F_Print : STRING(255)
@@ -20,7 +17,7 @@ VAR
     nPlaceholder:			INT;         	// Position of the %s placeholder
 END_VAR
 
-// --- Implementation code ---
+// --- Implementation ---
 // replace placeholders with arguments
 F_Print := sMessage;
 
@@ -45,4 +42,4 @@ WHILE nPosition > 0 DO
     
 END_WHILE
 ```
-</details>
+
