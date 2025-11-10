@@ -4,7 +4,7 @@ const path = require('path');
 // --- Configuration ---
 const SOURCE_DIRECTORY = 'C:/source/repos/Tc3_Event/Tc3_Event/Tc3_Event';
 const OUTPUT_DIRECTORY = 'C:/source/repos/Tc3_Event/doc'; // Output folder for docs
-const OUTPUT_FILE = 'ProjectOverview.md';
+const OVERVIEW_FILE = 'ProjectOverview.md';
 // --- End Configuration ---
 
 // Map TwinCAT file extensions to categories
@@ -21,8 +21,6 @@ if (!fs.existsSync(OUTPUT_DIRECTORY)) {
 
 /**
  * Recursively find TwinCAT files in a folder
- * @param {string} dir
- * @returns {Array<{path:string, ext:string, name:string}>}
  */
 function findFilesRecursive(dir) {
   let results = [];
@@ -50,10 +48,8 @@ function findFilesRecursive(dir) {
 
 /**
  * Generate a Markdown overview from files
- * @param {Array<{path:string, ext:string, name:string}>} files
- * @returns {string}
  */
-function generateMarkdown(files) {
+function generateMarkdownOverview(files) {
   if (!files || files.length === 0) {
     return "> No TwinCAT objects (.TcPOU, .TcIO, .TcDUT) were found.";
   }
@@ -63,11 +59,10 @@ function generateMarkdown(files) {
   for (const { name, ext } of files) {
     const category = objectTypeMap[ext];
     if (!categories[category]) categories[category] = [];
-    const safeLink = encodeURI(name + '.md'); // handles spaces
+    const safeLink = encodeURI(name + '.md');
     categories[category].push(`* [${name}](${safeLink})`);
   }
 
-  // Sort categories and links
   const categoryOrder = ['Interfaces (TcIO)', 'Data Unit Types (TcDUT)', 'Program Organization Units (POUs)'];
   let markdown = "# Project Documentation\n\n";
   markdown += "## 📖 Overview\n";
@@ -84,21 +79,38 @@ function generateMarkdown(files) {
   return markdown.trim();
 }
 
+/**
+ * Generate a separate Markdown file for each object
+ */
+function generateObjectMarkdown(file) {
+  const category = objectTypeMap[file.ext] || 'Unknown';
+  const content = `# ${file.name}\n\n` +
+                  `**Type:** ${category}\n\n` +
+                  `**Source File:** ${file.path}\n\n` +
+                  `> Add details about methods, properties, or interfaces here.\n`;
+
+  const outputPath = path.join(OUTPUT_DIRECTORY, file.name + '.md');
+  fs.writeFileSync(outputPath, content, 'utf8');
+  console.log(`Created ${outputPath}`);
+}
+
 // --- Main ---
 function main() {
   try {
     const files = findFilesRecursive(SOURCE_DIRECTORY);
-    const markdown = generateMarkdown(files);
 
-    // Print to console
-    console.log(markdown);
+    // Generate overview
+    const overviewMarkdown = generateMarkdownOverview(files);
+    const overviewPath = path.join(OUTPUT_DIRECTORY, OVERVIEW_FILE);
+    fs.writeFileSync(overviewPath, overviewMarkdown, 'utf8');
+    console.log(`\nOverview saved to ${overviewPath}`);
 
-    // Write to output folder
-    if (OUTPUT_FILE) {
-      const outputPath = path.join(OUTPUT_DIRECTORY, OUTPUT_FILE);
-      fs.writeFileSync(outputPath, markdown, 'utf8');
-      console.log(`\nOverview saved to ${outputPath}`);
+    // Generate individual files
+    for (const file of files) {
+      generateObjectMarkdown(file);
     }
+
+    console.log(`\n✅ All individual object files created in ${OUTPUT_DIRECTORY}`);
   } catch (err) {
     console.error(`Error: ${err.message}`);
     process.exit(1);
