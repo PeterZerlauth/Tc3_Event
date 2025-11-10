@@ -120,8 +120,31 @@ function generateOverview(groupedFiles) {
   console.log(`\nOverview saved to ${overviewPath}`);
 }
 
+// --- Helper: Clear output folder ---
+function clearOutputFolder(folder) {
+  if (!fs.existsSync(folder)) return;
+
+  const entries = fs.readdirSync(folder, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = path.join(folder, entry.name);
+    if (entry.isDirectory()) {
+      clearOutputFolder(fullPath);
+      fs.rmdirSync(fullPath);
+    } else {
+      fs.unlinkSync(fullPath);
+    }
+  }
+}
+
 // --- Main ---
 function main() {
+  // Clear previous documentation
+  if (fs.existsSync(OUTPUT_DIRECTORY)) {
+    console.log(`Clearing output folder: ${OUTPUT_DIRECTORY}`);
+    clearOutputFolder(OUTPUT_DIRECTORY);
+  }
+  fs.mkdirSync(OUTPUT_DIRECTORY, { recursive: true });
+
   const files = findFilesRecursive(SOURCE_DIRECTORY, SOURCE_DIRECTORY);
   const groupedFiles = mapFiles(files);
 
