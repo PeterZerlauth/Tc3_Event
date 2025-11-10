@@ -16,16 +16,16 @@ INTERFACE I_Event
 PROPERTY PUBLIC P_Argument : I_Argument
 ```
 **Get**
-N/A
+*None*
 ---
 #### P_Logger
 ```st
 PROPERTY PUBLIC P_Logger : I_Logger
 ```
 **Get**
-N/A
+*None*
 **Set**
-N/A
+*None*
 ---
 ### Methods
 

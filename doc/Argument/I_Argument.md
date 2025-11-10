@@ -16,7 +16,7 @@ INTERFACE I_Argument
 PROPERTY PUBLIC P_Value : string(255)
 ```
 **Get**
-N/A
+*None*
 ---
 ### Methods
 

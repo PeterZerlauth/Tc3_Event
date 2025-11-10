@@ -18,8 +18,8 @@ INTERFACE I_LogLevel
 PROPERTY PUBLIC P_LogLevel : E_LogLevel
 ```
 **Get**
-N/A
+*None*
 **Set**
-N/A
+*None*
 ---
 

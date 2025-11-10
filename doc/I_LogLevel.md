@@ -1,25 +1,8 @@
 # I_LogLevel
 
-**Type:** Interfaces (TcIO)
-**Source File:** `Logger/FileLogger/I_LogLevel.TcIO`
+**Type:** INTERFACE  
+**Source file:** `Logger/FileLogger/I_LogLevel.TcIO`  
 
 ## Details
-**Declaration**
-```st
-INTERFACE I_LogLevel
-```
 
-### Properties
-
-#### P_LogLevel
-```st
-{attribute 'OPC.UA.DA.Property' := '1'}
-{attribute 'monitoring' := 'variable'}
-PROPERTY PUBLIC P_LogLevel : E_LogLevel
-```
-**Get**
-N/A
-**Set**
-N/A
----
-
+> You can add declaration, properties, and methods here later.

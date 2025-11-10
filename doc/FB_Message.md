@@ -1,7 +1,8 @@
 # FB_Message
 
-**Type:** Program Organization Units (POUs)
+**Type:** FUNCTION  
+**Source file:** `Message/FB_Message.TcPOU`  
 
-**Source File:** C:\source\repos\Tc3_Event\Tc3_Event\Tc3_Event\Message\FB_Message.TcPOU
+## Details
 
-> Add details about methods, properties, or interfaces here.
+> You can add declaration, properties, and methods here later.

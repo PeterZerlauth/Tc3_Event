@@ -1,7 +1,8 @@
 # F_Hash
 
-**Type:** Program Organization Units (POUs)
+**Type:** FUNCTION  
+**Source file:** `Helpers/F_Hash.TcPOU`  
 
-**Source File:** C:\source\repos\Tc3_Event\Tc3_Event\Tc3_Event\Helpers\F_Hash.TcPOU
+## Details
 
-> Add details about methods, properties, or interfaces here.
+> You can add declaration, properties, and methods here later.

@@ -1,7 +1,8 @@
 # LogLevel_To_TcEventSeverity
 
-**Type:** Program Organization Units (POUs)
+**Type:** FUNCTION  
+**Source file:** `Helpers/LogLevel_To_TcEventSeverity.TcPOU`  
 
-**Source File:** C:\source\repos\Tc3_Event\Tc3_Event\Tc3_Event\Helpers\LogLevel_To_TcEventSeverity.TcPOU
+## Details
 
-> Add details about methods, properties, or interfaces here.
+> You can add declaration, properties, and methods here later.

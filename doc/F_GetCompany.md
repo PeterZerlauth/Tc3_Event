@@ -1,7 +1,8 @@
 # F_GetCompany
 
-**Type:** Program Organization Units (POUs)
+**Type:** FUNCTION  
+**Source file:** `Project Information/F_GetCompany.TcPOU`  
 
-**Source File:** C:\source\repos\Tc3_Event\Tc3_Event\Tc3_Event\Project Information\F_GetCompany.TcPOU
+## Details
 
-> Add details about methods, properties, or interfaces here.
+> You can add declaration, properties, and methods here later.

@@ -1,7 +1,7 @@
-# F_Print
+# GVL
 
-**Type:** FUNCTION  
-**Source file:** `Helpers/F_Print.TcPOU`  
+**Type:** GVL  
+**Source file:** `Global Variables/GVL.TcGVL`  
 
 ## Details
 

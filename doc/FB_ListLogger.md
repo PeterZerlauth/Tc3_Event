@@ -1,7 +1,8 @@
 # FB_ListLogger
 
-**Type:** Program Organization Units (POUs)
+**Type:** FUNCTION  
+**Source file:** `Logger/List/FB_ListLogger.TcPOU`  
 
-**Source File:** C:\source\repos\Tc3_Event\Tc3_Event\Tc3_Event\Logger\List\FB_ListLogger.TcPOU
+## Details
 
-> Add details about methods, properties, or interfaces here.
+> You can add declaration, properties, and methods here later.
