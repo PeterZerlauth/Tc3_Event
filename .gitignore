@@ -42,6 +42,7 @@ LineIDs.dbg.bak
 **/_ModuleInstall/
 **/_Deployment/
 **/_Repository/
+**/Autodoc/
 
 # To include a specific library directory (i.e. third party/custom libs), 
 # use pattern `!/**/_Libraries/<directory name>/` i.e. `!/**/_Libraries/www.tcunit.org/`
