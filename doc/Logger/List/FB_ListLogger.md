@@ -1,0 +1,93 @@
+# FB_ListLogger
+
+**Type:** `FUNCTION BLOCK`
+**Source File:** `Logger/List/FB_ListLogger.TcPOU`
+
+*No documentation found.*
+
+## Inputs
+| Name | Type | Description |
+| --- | --- | --- |
+| `eLogLevel` | `E_LogLevel` |  |
+
+## Local Variables
+| Name | Type | Description |
+| --- | --- | --- |
+| `eLogLevel` | `E_LogLevel` |  |
+
+## Methods
+
+### `M_Log`
+*No documentation found.*
+**Inputs:**
+| Name | Type | Description |
+| --- | --- | --- |
+| `fbMessage` | `FB_Message` |  |
+
+**Implementation:**
+```iec
+IF eLogLevel > fbMessage.eLogLevel THEN
+	M_Log:= TRUE;
+	RETURN;
+END_IF
+
+IF nMessages > 99 THEN 
+	RETURN;
+END_IF
+
+// Skip if same sMessage already exists
+nIndex := 0;
+WHILE nIndex < nMessages DO
+    IF aMessages[nIndex].sDefault = fbMessage.sDefault THEN
+		aMessages[nIndex].bActive:= TRUE;
+        M_Log := TRUE;
+        RETURN; // message already in buffer
+    END_IF
+    nIndex := nIndex + 1;
+END_WHILE
+
+aMessages[nMessages]:= fbMessage;;
+nMessages := nMessages + 1;
+M_Log := TRUE;
+```
+### `M_Reset`
+*No documentation found.*
+
+**Implementation:**
+```iec
+nIndex := 0;
+WHILE nIndex < nMessages DO
+    IF aMessages[nIndex].bActive = TRUE THEN
+		aMessages[nIndex].bActive:= FALSE;
+    END_IF
+    nIndex := nIndex + 1;
+END_WHILE
+M_Reset:= TRUE;
+```
+
+## Properties
+
+### `P_LogLevel`
+*No documentation found.*
+
+## Implementation
+```iec
+// https://peterzerlauth.com/
+
+IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime THEN // 1 second = 1e9 ns
+	nTimestamp := TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime + 1000000000;
+	nIndex:= 0;
+	WHILE nIndex < nMessages DO
+		IF aMessages[nIndex].bActive THEN
+			IF aMessages[nIndex].eLogLevel <= E_LogLevel.Warning THEN
+				aMessages[nIndex].bActive:= FALSE;
+			END_IF
+			nIndex := nIndex + 1;
+		ELSE
+			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(FB_Message) * (nMessages - nIndex));
+			nMessages := nMessages - 1;
+			RETURN;
+		END_IF
+	END_WHILE
+END_IF
+```
