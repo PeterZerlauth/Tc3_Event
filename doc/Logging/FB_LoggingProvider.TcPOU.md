@@ -1,6 +1,6 @@
 # FB_LoggingProvider
 
-**Type:** FUNCTION
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Logging/FB_LoggingProvider.TcPOU`
 

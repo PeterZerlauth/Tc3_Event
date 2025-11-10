@@ -1,6 +1,6 @@
 # FB_File
 
-**Type:** FUNCTION
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Helpers/File/FB_File.TcPOU`
 

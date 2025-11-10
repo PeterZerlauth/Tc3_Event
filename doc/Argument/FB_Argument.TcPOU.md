@@ -1,6 +1,6 @@
 # FB_Argument
 
-**Type:** FUNCTION
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Argument/FB_Argument.TcPOU`
 

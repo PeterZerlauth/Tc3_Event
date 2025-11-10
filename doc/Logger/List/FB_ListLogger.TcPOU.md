@@ -1,6 +1,6 @@
 # FB_ListLogger
 
-**Type:** FUNCTION
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Logger/List/FB_ListLogger.TcPOU`
 

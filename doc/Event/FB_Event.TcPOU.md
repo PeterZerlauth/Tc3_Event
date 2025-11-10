@@ -1,6 +1,6 @@
 # FB_Event
 
-**Type:** FUNCTION
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Event/FB_Event.TcPOU`
 

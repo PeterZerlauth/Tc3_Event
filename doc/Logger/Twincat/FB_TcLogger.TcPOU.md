@@ -1,6 +1,6 @@
 # FB_TcLogger
 
-**Type:** FUNCTION
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Logger/Twincat/FB_TcLogger.TcPOU`
 

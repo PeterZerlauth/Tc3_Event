@@ -1,6 +1,6 @@
 # FB_FileLogger
 
-**Type:** FUNCTION
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Logger/FileLogger/FB_FileLogger.TcPOU`
 

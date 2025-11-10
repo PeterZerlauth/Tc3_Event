@@ -1,6 +1,6 @@
 # FB_Message
 
-**Type:** FUNCTION
+**Type:** FUNCTION BLOCK
 
 **Source File:** `Message/FB_Message.TcPOU`
 
