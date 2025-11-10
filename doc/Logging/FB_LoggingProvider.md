@@ -197,6 +197,13 @@ M_Reset:= TRUE;
 ### `P_Length`
 *No documentation found.*
 
+**Get Implementation:**
+```iec
+P_Length:= nLength;
+```
+
+---
+
 ## Implementation
 ```iec
 // https://peterzerlauth.com/

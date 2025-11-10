@@ -95,3 +95,10 @@ M_Clear:= THIS^;
 ### `P_Value`
 Returns the list with arguments
 
+**Get Implementation:**
+```iec
+P_Value:= sValue;
+```
+
+---
+

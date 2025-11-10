@@ -218,8 +218,26 @@ fbArguments.M_Clear();
 
 ### `P_Argument`
 *No documentation found.*
+
+**Get Implementation:**
+```iec
+P_Argument:= fbArguments;
+```
+
+---
 ### `P_Logger`
 *No documentation found.*
+
+**Get Implementation:**
+```iec
+P_Logger:= iLogger;
+```
+**Set Implementation:**
+```iec
+iLogger:= P_Logger;
+```
+
+---
 
 ## Implementation
 ```iec

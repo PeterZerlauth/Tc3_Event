@@ -74,6 +74,17 @@ M_Reset:= TRUE;
 ### `P_LogLevel`
 *No documentation found.*
 
+**Get Implementation:**
+```iec
+P_LogLevel:= eLogLevel;
+```
+**Set Implementation:**
+```iec
+eLogLevel:= P_LogLevel;
+```
+
+---
+
 ## Implementation
 ```iec
 // https://peterzerlauth.com/
