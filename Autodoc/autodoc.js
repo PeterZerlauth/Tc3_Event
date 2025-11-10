@@ -4,8 +4,7 @@ import { fileURLToPath } from 'url';
 import xml2js from 'xml2js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const SRC_DIR = path.resolve('C:/source/repos/Tc3_Event/Tc3_Event/Tc3_Event');
+const SRC_DIR = path.resolve('C:/source/repos/Tc3_Event/Tc3_Event/Tc3_Event'); // adjust if needed
 const OUT_DIR = path.resolve('C:/source/repos/Tc3_Event/docs');
 
 const parser = new xml2js.Parser();
@@ -13,7 +12,7 @@ const parser = new xml2js.Parser();
 /**
  * Recursively get all XML/POU/DUT files
  */
-async function getAllFiles(dir, exts = ['.TcPOU', '.TcDUT', '.TcPOU.xml', '.TcDUT.xml']) {
+async function getAllFiles(dir, exts = ['.TcPOU', '.TcDUT', '.TcIO']) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   const files = [];
   for (const e of entries) {
@@ -28,7 +27,7 @@ async function getAllFiles(dir, exts = ['.TcPOU', '.TcDUT', '.TcPOU.xml', '.TcDU
 }
 
 /**
- * Parse XML content and return object
+ * Parse XML content
  */
 async function parseXmlFile(file) {
   const data = await fs.readFile(file, 'utf8');
@@ -36,43 +35,75 @@ async function parseXmlFile(file) {
 }
 
 /**
- * Extract FB/FUNCTION/INTERFACE info from parsed XML
+ * Extract main content from POU XML
  */
-function extractPouInfo(xmlObj) {
+function extractPouContent(xmlObj) {
   const pou = xmlObj.TcPlcObject?.POU?.[0];
   if (!pou) return null;
 
-  const name = pou.$.Name;
-  const methods = (pou.Method || []).map(m => m.$.Name);
-  const implementsIntf = pou.$.Implements || (pou.$.SpecialFunc || null);
+  // Full declaration
+  const decl = pou.Declaration?.[0]?._;
+  // Full implementation (ST code)
+  const impl = pou.Implementation?.[0]?.ST?.[0]?._ || '';
+
+  // Methods
+  const methods = (pou.Method || []).map(m => {
+    const name = m.$.Name;
+    const declCode = m.Declaration?.[0]?._ || '';
+    const implCode = m.Implementation?.[0]?.ST?.[0]?._ || '';
+    return { name, declCode, implCode };
+  });
+
+  // Properties
+  const props = (pou.Property || []).map(p => {
+    const name = p.$.Name;
+    const declCode = p.Declaration?.[0]?._ || '';
+    const getCode = p.Get?.[0]?.Implementation?.[0]?.ST?.[0]?._ || '';
+    const setCode = p.Set?.[0]?.Implementation?.[0]?.ST?.[0]?._ || '';
+    return { name, declCode, getCode, setCode };
+  });
+
+  // Determine type
+  let type = 'Unknown';
+  if (decl?.includes('FUNCTION_BLOCK')) type = 'Function Block';
+  else if (decl?.includes('FUNCTION')) type = 'Function';
 
   return {
-    name,
-    type: name.startsWith('FB_') ? 'Function Block' : name.startsWith('F_') ? 'Function' : 'Unknown',
-    implements: implementsIntf,
-    methods
+    name: pou.$.Name,
+    type,
+    declaration: decl,
+    implementation: impl,
+    methods,
+    properties: props
   };
 }
 
 /**
- * Write individual Markdown file
+ * Generate Markdown file
  */
 async function writeMd(info) {
   const mdDir = path.join(OUT_DIR, info.type.replace(' ', '_'));
   await fs.mkdir(mdDir, { recursive: true });
+
   const mdFile = path.join(mdDir, `${info.name}.md`);
+  const lines = [`# ${info.name}`, '', '```iecst', info.declaration || '', info.implementation || '', '```', ''];
 
-  const code = `\`\`\`iecst
-FUNCTION_BLOCK ${info.name}${info.implements ? ' IMPLEMENTS ' + info.implements : ''}
-\`\`\``;
+  // Methods
+  for (const m of info.methods) {
+    lines.push(`## Method ${m.name}`, '', '```iecst', m.declCode, m.implCode, '```', '');
+  }
 
-  const md = [`# ${info.name}`, '', code, ''].join('\n');
-  await fs.writeFile(mdFile, md, 'utf8');
+  // Properties
+  for (const p of info.properties) {
+    lines.push(`## Property ${p.name}`, '', '```iecst', p.declCode, p.getCode, p.setCode, '```', '');
+  }
+
+  await fs.writeFile(mdFile, lines.join('\n'), 'utf8');
   return mdFile;
 }
 
 /**
- * Build README index
+ * Build index README.md
  */
 async function buildIndex(mdFiles) {
   const sections = {};
@@ -81,7 +112,7 @@ async function buildIndex(mdFiles) {
     const type = path.basename(path.dirname(f));
     if (!sections[type]) sections[type] = [];
     const name = path.basename(f, '.md');
-    const rel = path.relative(OUT_DIR, f).replace(/\\/g, '/').split(' ').join('%20');
+    const rel = path.relative(OUT_DIR, f).replace(/\\/g, '/').split(' ').join('%20'); // escape spaces
     sections[type].push(`- [${name}](${rel})`);
   }
 
@@ -102,7 +133,7 @@ async function main() {
   for (const file of files) {
     try {
       const xmlObj = await parseXmlFile(file);
-      const info = extractPouInfo(xmlObj);
+      const info = extractPouContent(xmlObj);
       if (!info) continue;
       const mdFile = await writeMd(info);
       mdFiles.push(mdFile);
