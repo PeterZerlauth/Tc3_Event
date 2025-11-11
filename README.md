@@ -23,7 +23,7 @@ It provides structured logging capabilities with reusable Function Blocks, enabl
 ```iecst
 PROGRAM MAIN
 VAR
-	fbLogger:			FB_Logger;
+	fbEvent:			FB_Event;
 END_VAR
 
 fbLogger();
@@ -40,7 +40,7 @@ END_IF
 ```iecst
 PROGRAM MAIN
 VAR
-	fbLogger:			FB_Logger;
+	fbEvent:			FB_Event;
 END_VAR
 
 fbLogger();
@@ -48,22 +48,22 @@ fbLogger();
 // Different log levels
 // Verbose logging with parameters
 
-fbLogger.M_AddINT(1);
-fbLogger.M_AddSTRING('cycles');
-fbLogger.M_Verbose('Process completed: %s %s');
+fbEvent.M_AddINT(1);
+fbEvent.M_AddSTRING('cycles');
+fbEvent.M_Verbose('Process completed: %s %s');
 
 // Simple info message
-fbLogger.M_Info(2276475569, 'System initialized');
+fbEvent.M_Info(2276475569, 'System initialized');
 
 // Warning with context
-fbLogger.M_AddREAL(33.1345321, 3);
-fbLogger.M_Warning(1791326186, 'High temperature detected < %s °C');
+fbEvent.M_AddREAL(33.1345321, 3);
+fbEvent.M_Warning(1791326186, 'High temperature detected < %s °C');
 
 // Error reporting
-fbLogger.M_Error(2621541999, 'Motor communication failed');
+fbEvent.M_Error(2621541999, 'Motor communication failed');
 
 // Critical error
-fbLogger.M_Critical(2626343866, 'Emergency stop activated');
+fbEvent.M_Critical(2626343866, 'Emergency stop activated');
 
 ```
 ## JSON Export script
