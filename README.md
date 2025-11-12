@@ -140,6 +140,27 @@ Messages for the HMI can be quickly and easily exported during “Activate Confi
 <img width="1271" height="195" alt="image" src="https://github.com/user-attachments/assets/dbc4e062-77dd-4cb7-ab16-48f9eb94d3ca" />
 
 
+```mermaid
+graph TD
+    subgraph Publishers
+        P1[PLC Program A<br/>(Publisher)]
+        P2[PLC Program B<br/>(Publisher)]
+    end
 
+    subgraph Subscribers
+        S1[PLC Program X<br/>(Subscriber)]
+        S2[PLC Program Y<br/>(Subscriber)]
+        S3[HMI<br/>(Subscriber)]
+    end
+
+    EM((FB_EventManager))
+
+    P1 -- "1. PUBLISH(Event)" --> EM
+    P2 -- "1. PUBLISH(Event)" --> EM
+    EM -- "2. NOTIFY Subscribers" --> S1
+    EM -- "2. NOTIFY Subscribers" --> S2
+    EM -- "2. NOTIFY Subscribers" --> S3
+
+    style EM fill:#e6f3ff,stroke:#007bff,stroke-width:3px
 
 
