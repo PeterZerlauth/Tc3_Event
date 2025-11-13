@@ -37,7 +37,7 @@
     <Folder Include="Logger\FileLogger" />
     <Folder Include="Logger\HmiLogger" />
     <Folder Include="Logger\Manager" />
-    <Folder Include="Logger\Twincat" />
+    <Folder Include="Logger\TcLogger" />
     <Folder Include="Logger" />
     <Folder Include="Message" />
     <Folder Include="Argument" />
@@ -83,16 +83,13 @@
     <Compile Include="Helpers\F_Print.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\LogLevel_To_TcEventSeverity.TcPOU">
+    <Compile Include="Helpers\LogLevel_To_Severity.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logger\E_LogLevel.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logger\FileLogger\FB_FileLogger.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Logger\FileLogger\I_LogLevel.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logger\I_Logger.TcIO">
@@ -104,7 +101,7 @@
     <Compile Include="Logger\Manager\FB_LoggerManager.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Logger\Twincat\FB_TcLogger.TcPOU">
+    <Compile Include="Logger\TcLogger\FB_TcLogger.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Message\FB_Message.TcPOU">

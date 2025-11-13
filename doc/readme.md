@@ -11,7 +11,7 @@
 * [F_Log](Helpers/F_Log.md)
 * [F_LogLevel_To_Severity](Helpers/F_LogLevel_To_Severity.md)
 * [F_Print](Helpers/F_Print.md)
-* [LogLevel_To_TcEventSeverity](Helpers/LogLevel_To_TcEventSeverity.md)
+* [LogLevel_To_Severity](Helpers/LogLevel_To_Severity.md)
 * [F_GetCompany](Project%20Information/F_GetCompany.md)
 * [F_GetTitle](Project%20Information/F_GetTitle.md)
 * [F_GetVersion](Project%20Information/F_GetVersion.md)
@@ -23,7 +23,7 @@
 * [FB_FileLogger](Logger/FileLogger/FB_FileLogger.md)
 * [FB_HmiLogger](Logger/HmiLogger/FB_HmiLogger.md)
 * [FB_LoggerManager](Logger/Manager/FB_LoggerManager.md)
-* [FB_TcLogger](Logger/Twincat/FB_TcLogger.md)
+* [FB_TcLogger](Logger/TcLogger/FB_TcLogger.md)
 * [FB_Message](Message/FB_Message.md)
 
 ### GVL (3)
@@ -31,10 +31,9 @@
 * [Parameters](Global%20Variables/Parameters.md)
 * [Global_Version](Version/Global_Version.md)
 
-### INTERFACE (5)
+### INTERFACE (4)
 * [I_Argument](Argument/I_Argument.md)
 * [I_Event](Event/I_Event.md)
 * [I_File](Helpers/File/I_File.md)
-* [I_LogLevel](Logger/FileLogger/I_LogLevel.md)
 * [I_Logger](Logger/I_Logger.md)
 

@@ -3,21 +3,17 @@
   <EventId>
     <Name Id="475719253">Tc3_Event_475719253</Name>
     <DisplayName TxtId=""><![CDATA[W message]]></DisplayName>
-    <Severity>Warning</Severity>
   </EventId>
   <EventId>
     <Name Id="828536003">Tc3_Event_828536003</Name>
     <DisplayName TxtId=""><![CDATA[I message %s %s]]></DisplayName>
-    <Severity>Verbose</Severity>
   </EventId>
   <EventId>
     <Name Id="475719235">Tc3_Event_475719235</Name>
     <DisplayName TxtId=""><![CDATA[E message]]></DisplayName>
-    <Severity>Error</Severity>
   </EventId>
   <EventId>
     <Name Id="475719233">Tc3_Event_475719233</Name>
     <DisplayName TxtId=""><![CDATA[C message]]></DisplayName>
-    <Severity>Critical</Severity>
   </EventId>
 </EventClass>

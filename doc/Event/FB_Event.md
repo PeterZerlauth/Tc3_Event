@@ -242,5 +242,10 @@ iLogger:= P_Logger;
 ## Implementation
 ```iec
 fbSymbolInfo();
-fbSystemTime();
+IF nCycleTime <> TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].CycleTime THEN
+	nCycleTime:= TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].CycleTime;
+	fbSystemTime();
+	nTimestamp:= SYSTEMTIME_TO_FILETIME64(fbSystemTime.systemTime);
+	GVL.nTimestamp:= nTimestamp;	
+END_IF
 ```

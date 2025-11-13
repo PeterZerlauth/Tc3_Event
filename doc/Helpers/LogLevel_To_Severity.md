@@ -1,7 +1,7 @@
-# LogLevel_To_TcEventSeverity
+# LogLevel_To_Severity
 
 **Type:** `FUNCTION`
-**Source File:** `Helpers/LogLevel_To_TcEventSeverity.TcPOU`
+**Source File:** `Helpers/LogLevel_To_Severity.TcPOU`
 
 Converts internal loglevel to twincat severity
 
@@ -21,19 +21,19 @@ Converts internal loglevel to twincat severity
 ```iec
 CASE eLogLevel OF
 	E_LogLevel.Verbose:
-		LogLevel_To_TcEventSeverity:= TcEventSeverity.Verbose;
+		LogLevel_To_Severity:= TcEventSeverity.Verbose;
 		
 	E_LogLevel.Info:
-		LogLevel_To_TcEventSeverity:= TcEventSeverity.Info;
+		LogLevel_To_Severity:= TcEventSeverity.Info;
 		
 	E_LogLevel.Warning:
-		LogLevel_To_TcEventSeverity:= TcEventSeverity.Warning;
+		LogLevel_To_Severity:= TcEventSeverity.Warning;
 		
 	E_LogLevel.Error:
-		LogLevel_To_TcEventSeverity:= TcEventSeverity.Error;
+		LogLevel_To_Severity:= TcEventSeverity.Error;
 		
 	E_LogLevel.Critical:
-		LogLevel_To_TcEventSeverity:= TcEventSeverity.Critical;
+		LogLevel_To_Severity:= TcEventSeverity.Critical;
 		
 END_CASE
 ```

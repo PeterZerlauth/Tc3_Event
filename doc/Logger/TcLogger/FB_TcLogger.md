@@ -1,19 +1,19 @@
 # FB_TcLogger
 
 **Type:** `FUNCTION BLOCK`
-**Source File:** `Logger/Twincat/FB_TcLogger.TcPOU`
+**Source File:** `Logger/TcLogger/FB_TcLogger.TcPOU`
 
-Provide logging
-
-## Inputs
-| Name | Type | Description |
-| --- | --- | --- |
-| `eLogLevel` | `E_LogLevel` |  |
+Provide TwinCAT 3 Eventlogger
 
 ## Local Variables
 | Name | Type | Description |
 | --- | --- | --- |
 | `eLogLevel` | `E_LogLevel` |  |
+| `fbSourceInfo` | `FB_TcSourceInfo` |  |
+| `nAlarm` | `UINT` | Message count |
+| `bAlarm` | `ARRAY` |  |
+| `nIndex` | `UINT` |  |
+| `nTimestamp` | `LINT` |  |
 
 ## Methods
 
@@ -38,7 +38,7 @@ END_IF
 // Skip if same sMessage already exists
 nIndex := 0;
 WHILE nIndex < nAlarm DO
-    IF aAlarm[nIndex].EqualsToEventEntry(TC_EVENT_CLASSES.Tc3_Event, fbMessage.nID, LogLevel_To_TcEventSeverity(fbMessage.eLogLevel))  THEN
+    IF aAlarm[nIndex].EqualsToEventEntry(TC_EVENT_CLASSES.Tc3_Event, fbMessage.nID, LogLevel_To_Severity(fbMessage.eLogLevel))  THEN
 		bAlarm[nIndex]:= TRUE;
         M_Log := TRUE;
         RETURN;
@@ -49,7 +49,7 @@ END_WHILE
 // prepare
 fbSourceInfo.Clear();
 fbSourceInfo.sName:= fbMessage.sSource;
-aAlarm[nAlarm].Create(TC_EVENT_CLASSES.Tc3_Event,  fbMessage.nID, LogLevel_To_TcEventSeverity(fbMessage.eLogLevel), FALSE, fbSourceInfo);
+aAlarm[nAlarm].Create(TC_EVENT_CLASSES.Tc3_Event,  fbMessage.nID, LogLevel_To_Severity(fbMessage.eLogLevel), FALSE, fbSourceInfo);
 aAlarm[nAlarm].ipArguments.Clear();
 
 // Split and add arguments

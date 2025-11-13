@@ -21,10 +21,19 @@ VAR
 	fbError:					FB_Message;
 	fbCritical:					FB_Message;
 END_VAR
+VAR_STAT
+	nCycleTime:					UDINT;
+	nTimestamp:					Tc2_Utilities.T_FILETIME64;		
+END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbSymbolInfo();
-fbSystemTime();
+IF nCycleTime <> TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].CycleTime THEN
+	nCycleTime:= TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].CycleTime;
+	fbSystemTime();
+	nTimestamp:= SYSTEMTIME_TO_FILETIME64(fbSystemTime.systemTime);
+	GVL.nTimestamp:= nTimestamp;	
+END_IF
 ]]></ST>
     </Implementation>
     <Method Name="FB_Init" Id="{86bf7a82-ee08-4323-8f31-a4c33f4b211e}">

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="LogLevel_To_TcEventSeverity" Id="{2125d2a6-85a2-44a9-b27f-c4f068813b29}" SpecialFunc="None">
+  <POU Name="LogLevel_To_Severity" Id="{2125d2a6-85a2-44a9-b27f-c4f068813b29}" SpecialFunc="None">
     <Declaration><![CDATA[// Converts internal loglevel to twincat severity
-FUNCTION LogLevel_To_TcEventSeverity : TcEventSeverity
+FUNCTION LogLevel_To_Severity : TcEventSeverity
 VAR_INPUT
 	eLogLevel:				E_LogLevel;
 END_VAR
@@ -12,19 +12,19 @@ END_VAR
     <Implementation>
       <ST><![CDATA[CASE eLogLevel OF
 	E_LogLevel.Verbose:
-		LogLevel_To_TcEventSeverity:= TcEventSeverity.Verbose;
+		LogLevel_To_Severity:= TcEventSeverity.Verbose;
 		
 	E_LogLevel.Info:
-		LogLevel_To_TcEventSeverity:= TcEventSeverity.Info;
+		LogLevel_To_Severity:= TcEventSeverity.Info;
 		
 	E_LogLevel.Warning:
-		LogLevel_To_TcEventSeverity:= TcEventSeverity.Warning;
+		LogLevel_To_Severity:= TcEventSeverity.Warning;
 		
 	E_LogLevel.Error:
-		LogLevel_To_TcEventSeverity:= TcEventSeverity.Error;
+		LogLevel_To_Severity:= TcEventSeverity.Error;
 		
 	E_LogLevel.Critical:
-		LogLevel_To_TcEventSeverity:= TcEventSeverity.Critical;
+		LogLevel_To_Severity:= TcEventSeverity.Critical;
 		
 END_CASE]]></ST>
     </Implementation>

@@ -19,12 +19,15 @@ END_VAR]]></Declaration>
 		fbLogger.M_Add(fbTcLogger);
 			
 		fbHmiLogger();
+		fbFileLogger.sPathName:= 'C:\temp\log.txt';
+		fbFileLogger();
+		fbTcLogger();
 		
 		IF bReset THEN
 			fbLogger.M_Reset();
 		END_IF
 		
-		fbFileLogger(sPathName:= 'C:\temp\log.txt');
+		
 		
 		fbTest.P_Event.P_Logger:= fbLogger;
 		
@@ -33,7 +36,8 @@ END_VAR]]></Declaration>
 
 __CATCH(exception)
 
-__ENDTRY]]></ST>
+__ENDTRY
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

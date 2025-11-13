@@ -2,10 +2,11 @@
 <TcPlcObject Version="1.1.0.1">
   <GVL Name="GVL" Id="{8c417638-2928-4f7d-b718-658b035f50d1}">
     <Declaration><![CDATA[{attribute 'no-analysis'}
+{attribute 'qualified_only'} 
 VAR_GLOBAL
-  // {attribute 'hide'} 
 	aBuffer:				ARRAY[0..99] OF FB_Message;
     nBuffer:				UINT := 0;
+	nTimestamp:				Tc2_Utilities.T_FILETIME64;		
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

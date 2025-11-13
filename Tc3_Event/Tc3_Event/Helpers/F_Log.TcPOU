@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
   <POU Name="F_Log" Id="{3d8b8d8d-2aeb-485f-a382-76004536aaec}" SpecialFunc="None">
-    <Declaration><![CDATA[// Backup logger, if no logger is attached to FB_Event
+    <Declaration><![CDATA[// Standalone logger, if no logger is attached to FB_Event, nice for tessting
 FUNCTION F_Log : BOOL
 VAR_INPUT
 	fbMessage:			REFERENCE TO FB_Message;
 END_VAR
 VAR
-	sMessage:			STRING(255):= 'Logger null | ';
+	sMessage:			STRING(255):= 'Logger = 0 | ';
     nIndex:				UINT;
-    nNow:				ULINT:= F_GetSystemTime();
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[
@@ -20,9 +19,9 @@ sMessage := CONCAT(sMessage, fbMessage.sDefault);
 
 // --- Keep active
 nIndex := 0;
-WHILE nIndex < nBuffer DO
-    IF aBuffer[nIndex].sDefault = fbMessage.sDefault THEN
-		aBuffer[nIndex].bActive:= TRUE;
+WHILE nIndex < GVL.nBuffer DO
+    IF GVL.aBuffer[nIndex].sDefault = fbMessage.sDefault THEN
+		GVL.aBuffer[nIndex].bActive:= TRUE;
         F_Log := TRUE;
         RETURN;
     END_IF
@@ -30,11 +29,10 @@ WHILE nIndex < nBuffer DO
 END_WHILE
 
 // --- Add to buffer ---
-IF nBuffer < UPPER_BOUND(aBuffer, 1) THEN
-    aBuffer[nBuffer] := fbMessage;
-	// @ToDo
-    aBuffer[nBuffer].nTimestamp := nNow;
-    nBuffer := nBuffer + 1;
+IF GVL.nBuffer < 99 THEN
+    GVL.aBuffer[GVL.nBuffer] := fbMessage;
+    GVL.aBuffer[GVL.nBuffer].nTimestamp := GVL.nTimestamp;
+    GVL.nBuffer := GVL.nBuffer + 1;
 END_IF
 
 // --- Log message ---
@@ -49,10 +47,10 @@ END_CASE
 
 // --- Remove outdated messages (>1 s old) ---
 nIndex := 0;
-WHILE nIndex < nBuffer DO
-    IF (nNow - aBuffer[nIndex].nTimestamp) > 1_000_000_000 THEN // 1 s = 1e9 ns
-        MEMMOVE(ADR(aBuffer[nIndex]), ADR(aBuffer[nIndex + 1]), SIZEOF(FB_Message) * (nBuffer - nIndex - 1));
-        nBuffer := nBuffer - 1;
+WHILE nIndex < GVL.nBuffer DO
+    IF (GVL.nTimestamp - GVL.aBuffer[nIndex].nTimestamp) > 1_000_000_000 THEN // 1 s = 1e9 ns
+        MEMMOVE(ADR(GVL.aBuffer[nIndex]), ADR(GVL.aBuffer[nIndex + 1]), SIZEOF(FB_Message) * (GVL.nBuffer - nIndex - 1));
+        GVL.nBuffer := GVL.nBuffer - 1;
     ELSE
         nIndex := nIndex + 1;
     END_IF

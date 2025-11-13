@@ -8,13 +8,11 @@ Provide logging
 ## Inputs
 | Name | Type | Description |
 | --- | --- | --- |
-| `eLogLevel` | `E_LogLevel` |  |
 | `sPathName` | `STRING` |  |
 
 ## Local Variables
 | Name | Type | Description |
 | --- | --- | --- |
-| `eLogLevel` | `E_LogLevel` |  |
 | `sPathName` | `STRING` |  |
 
 ## Methods
@@ -67,7 +65,26 @@ IF nBuffer < 99 THEN
 END_IF
 
 // Format log line
-sLogLine := CONCAT('[', FILETIME64_TO_ISO8601(nTimestamp, 0, FALSE, 3));
+stTimestamp:= FILETIME64_TO_SYSTEMTIME(nTimestamp);
+
+// Year
+sLogLine := CONCAT('[', WORD_TO_DECSTR(stTimestamp.wYear, 4));
+sLogLine := CONCAT(sLogLine, '-');
+sLogLine := CONCAT(sLogLine, WORD_TO_DECSTR(stTimestamp.wMonth, 2));
+sLogLine := CONCAT(sLogLine, '-');
+sLogLine := CONCAT(sLogLine, WORD_TO_DECSTR(stTimestamp.wDay, 2));
+sLogLine := CONCAT(sLogLine, 'T');
+
+// Time
+sLogLine := CONCAT(sLogLine, WORD_TO_DECSTR(stTimestamp.wHour, 2));
+sLogLine := CONCAT(sLogLine, ':');
+sLogLine := CONCAT(sLogLine, WORD_TO_DECSTR(stTimestamp.wMinute, 2));
+sLogLine := CONCAT(sLogLine, ':');
+sLogLine := CONCAT(sLogLine, WORD_TO_DECSTR(stTimestamp.wSecond, 2));
+sLogLine := CONCAT(sLogLine, '.');
+sLogLine := CONCAT(sLogLine, WORD_TO_DECSTR(stTimestamp.wMilliseconds, 3));
+
+
 sLogLine := CONCAT(sLogLine, '] ');
 sLogLine := CONCAT(sLogLine, TO_STRING(fbMessage.eLogLevel));
 sLogLine := CONCAT(sLogLine, ' [');

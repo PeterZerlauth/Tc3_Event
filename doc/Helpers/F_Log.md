@@ -3,7 +3,7 @@
 **Type:** `FUNCTION`
 **Source File:** `Helpers/F_Log.TcPOU`
 
-Backup logger, if no logger is attached to FB_Event
+Standalone logger, if no logger is attached to FB_Event, nice for tessting
 
 **Returns:** `BOOL`
 
@@ -26,9 +26,9 @@ sMessage := CONCAT(sMessage, fbMessage.sDefault);
 
 // --- Keep active
 nIndex := 0;
-WHILE nIndex < nBuffer DO
-    IF aBuffer[nIndex].sDefault = fbMessage.sDefault THEN
-		aBuffer[nIndex].bActive:= TRUE;
+WHILE nIndex < GVL.nBuffer DO
+    IF GVL.aBuffer[nIndex].sDefault = fbMessage.sDefault THEN
+		GVL.aBuffer[nIndex].bActive:= TRUE;
         F_Log := TRUE;
         RETURN;
     END_IF
@@ -36,11 +36,10 @@ WHILE nIndex < nBuffer DO
 END_WHILE
 
 // --- Add to buffer ---
-IF nBuffer < UPPER_BOUND(aBuffer, 1) THEN
-    aBuffer[nBuffer] := fbMessage;
-	// @ToDo
-    aBuffer[nBuffer].nTimestamp := nNow;
-    nBuffer := nBuffer + 1;
+IF GVL.nBuffer < 99 THEN
+    GVL.aBuffer[GVL.nBuffer] := fbMessage;
+    GVL.aBuffer[GVL.nBuffer].nTimestamp := GVL.nTimestamp;
+    GVL.nBuffer := GVL.nBuffer + 1;
 END_IF
 
 // --- Log message ---
@@ -55,10 +54,10 @@ END_CASE
 
 // --- Remove outdated messages (>1 s old) ---
 nIndex := 0;
-WHILE nIndex < nBuffer DO
-    IF (nNow - aBuffer[nIndex].nTimestamp) > 1_000_000_000 THEN // 1 s = 1e9 ns
-        MEMMOVE(ADR(aBuffer[nIndex]), ADR(aBuffer[nIndex + 1]), SIZEOF(FB_Message) * (nBuffer - nIndex - 1));
-        nBuffer := nBuffer - 1;
+WHILE nIndex < GVL.nBuffer DO
+    IF (GVL.nTimestamp - GVL.aBuffer[nIndex].nTimestamp) > 1_000_000_000 THEN // 1 s = 1e9 ns
+        MEMMOVE(ADR(GVL.aBuffer[nIndex]), ADR(GVL.aBuffer[nIndex + 1]), SIZEOF(FB_Message) * (GVL.nBuffer - nIndex - 1));
+        GVL.nBuffer := GVL.nBuffer - 1;
     ELSE
         nIndex := nIndex + 1;
     END_IF

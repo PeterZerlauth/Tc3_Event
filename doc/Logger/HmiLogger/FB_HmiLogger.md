@@ -5,15 +5,14 @@
 
 Provide logging
 
-## Inputs
-| Name | Type | Description |
-| --- | --- | --- |
-| `eLogLevel` | `E_LogLevel` |  |
-
 ## Local Variables
 | Name | Type | Description |
 | --- | --- | --- |
 | `eLogLevel` | `E_LogLevel` |  |
+| `aMessages` | `ARRAY` |  |
+| `nMessages` | `UINT` |  |
+| `nIndex` | `UINT` |  |
+| `nTimestamp` | `LINT` |  |
 
 ## Methods
 

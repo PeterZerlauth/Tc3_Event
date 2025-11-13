@@ -2,12 +2,12 @@
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_FileLogger" Id="{1f305008-1e9f-45e5-b339-4427cb30dd71}" SpecialFunc="None">
     <Declaration><![CDATA[// Provide logging 
-FUNCTION_BLOCK FB_FileLogger IMPLEMENTS I_Logger, I_LogLevel
+FUNCTION_BLOCK FB_FileLogger IMPLEMENTS I_Logger
 VAR_INPUT
-	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 	sPathName:				STRING(255):= 'C:\tempx\logger.txt';
 END_VAR
 VAR
+	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 	fbFile:					FB_File;
 	aBuffer:				ARRAY[0..99] OF FB_Message;
     nBuffer:				UINT := 0;                     // Message count
@@ -24,6 +24,7 @@ VAR
 	nTimestamp: 	Tc2_Utilities.T_FILETIME64;
 	nIndex: 		uINT;
 	sLogLine:		STRING(255);
+	stTimestamp: Tc2_Utilities.TIMESTRUCT;
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Log Level
@@ -65,7 +66,26 @@ IF nBuffer < 99 THEN
 END_IF
 
 // Format log line
-sLogLine := CONCAT('[', FILETIME64_TO_ISO8601(nTimestamp, 0, FALSE, 3));
+stTimestamp:= FILETIME64_TO_SYSTEMTIME(nTimestamp);
+
+// Year
+sLogLine := CONCAT('[', WORD_TO_DECSTR(stTimestamp.wYear, 4));
+sLogLine := CONCAT(sLogLine, '-');
+sLogLine := CONCAT(sLogLine, WORD_TO_DECSTR(stTimestamp.wMonth, 2));
+sLogLine := CONCAT(sLogLine, '-');
+sLogLine := CONCAT(sLogLine, WORD_TO_DECSTR(stTimestamp.wDay, 2));
+sLogLine := CONCAT(sLogLine, 'T');
+
+// Time
+sLogLine := CONCAT(sLogLine, WORD_TO_DECSTR(stTimestamp.wHour, 2));
+sLogLine := CONCAT(sLogLine, ':');
+sLogLine := CONCAT(sLogLine, WORD_TO_DECSTR(stTimestamp.wMinute, 2));
+sLogLine := CONCAT(sLogLine, ':');
+sLogLine := CONCAT(sLogLine, WORD_TO_DECSTR(stTimestamp.wSecond, 2));
+sLogLine := CONCAT(sLogLine, '.');
+sLogLine := CONCAT(sLogLine, WORD_TO_DECSTR(stTimestamp.wMilliseconds, 3));
+
+
 sLogLine := CONCAT(sLogLine, '] ');
 sLogLine := CONCAT(sLogLine, TO_STRING(fbMessage.eLogLevel));
 sLogLine := CONCAT(sLogLine, ' [');

@@ -216,20 +216,6 @@ try {
         $displayEl.AppendChild($cdata) | Out-Null
         $eventEl.AppendChild($displayEl) | Out-Null
 
-        # Create <Severity> element based on the level
-        # I'm mapping 'Info' to 'Verbose' based on your example.
-        $severityText = switch ($msg.level) {
-            "Info"     { "Verbose" }
-            "Warning"  { "Warning" }
-            "Error"    { "Error" }
-            "Critical" { "Critical" }
-        }
-
-        if (-not [string]::IsNullOrEmpty($severityText)) {
-            $severityEl = $xmlDoc.CreateElement("Severity")
-            $severityEl.InnerText = $severityText
-            $eventEl.AppendChild($severityEl) | Out-Null
-        }
 
         # Add the completed <EventId> to the root
         $rootEl.AppendChild($eventEl) | Out-Null
