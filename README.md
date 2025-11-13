@@ -20,19 +20,39 @@ It provides structured logging capabilities with reusable Function Blocks, enabl
 
 ## 🚀 Getting Started
 
+### Setup Loggers
+```iecst
+PROGRAM MAIN
+VAR
+	fbLogger:			Tc3_Event.FB_LoggerManager;
+	fbHmiLogger:		Tc3_Event.FB_HmiLogger;
+	fbFileLogger:		Tc3_Event.FB_FileLogger;
+	fbTcLogger:			Tc3_Event.FB_TcLogger;
+END_VAR
+
+// Initialise loggers
+fbLogger.M_Add(fbHmiLogger);
+fbLogger.M_Add(fbFileLogger);
+fbLogger.M_Add(fbTcLogger);
+
+```
+
+### Setup Event
 ```iecst
 PROGRAM MAIN
 VAR
 	fbEvent:			FB_Event;
 END_VAR
 
-fbLogger();
+fbEvent();
 
-// send a simple message
+// set event target
+fbEvent.P_Logger:= fbLogger;
+
+// send a simple test message
 IF bVerbose THEN
-	fbEvent.M_Verbose('message');
+	fbEvent.M_Verbose('Verbose');
 END_IF
-
 ```
 
 ## Advanced Usage
@@ -43,11 +63,9 @@ VAR
 	fbEvent:			FB_Event;
 END_VAR
 
-fbLogger();
+fbEvent();
 
 // Different log levels
-// Verbose logging with parameters
-
 fbEvent.M_AddINT(1);
 fbEvent.M_AddSTRING('cycles');
 fbEvent.M_Verbose('Process completed: %s %s');
@@ -130,6 +148,31 @@ Messages for the HMI can be quickly and easily exported during “Activate Confi
     }
 ]
 ```
+```xml
+<EventClass>
+  <EventId>
+    <Name Id="475719253">Tc3_Event_475719253</Name>
+    <DisplayName TxtId=""><![CDATA[W message]]></DisplayName>
+    <Severity>Warning</Severity>
+  </EventId>
+  <EventId>
+    <Name Id="828536003">Tc3_Event_828536003</Name>
+    <DisplayName TxtId=""><![CDATA[I message %s %s]]></DisplayName>
+    <Severity>Verbose</Severity>
+  </EventId>
+  <EventId>
+    <Name Id="475719235">Tc3_Event_475719235</Name>
+    <DisplayName TxtId=""><![CDATA[E message]]></DisplayName>
+    <Severity>Error</Severity>
+  </EventId>
+  <EventId>
+    <Name Id="475719233">Tc3_Event_475719233</Name>
+    <DisplayName TxtId=""><![CDATA[C message]]></DisplayName>
+    <Severity>Critical</Severity>
+  </EventId>
+</EventClass>
+```
+
 <img width="1012" height="323" alt="image" src="https://github.com/user-attachments/assets/6491c5bd-8974-447c-8958-210d7c7f3671" />
 
 
