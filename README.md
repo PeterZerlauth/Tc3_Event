@@ -84,7 +84,7 @@ fbEvent.M_Error(2621541999, 'Motor communication failed');
 fbEvent.M_Critical(2626343866, 'Emergency stop activated');
 
 ```
-## JSON Export script
+## JSON Export
 
 Messages for the HMI can be quickly and easily exported during “Activate Configuration” using a simple PowerShell script
 
@@ -107,47 +107,14 @@ Messages for the HMI can be quickly and easily exported during “Activate Confi
                    }
     },
     {
-        "id":  475719235,
-        "key":  "E message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "E message"
-                   }
+		...
     },
-    {
-        "id":  608464798,
-        "key":  "Info message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "Info message"
-                   }
-    },
-    {
-        "id":  475719233,
-        "key":  "C message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "C message"
-                   }
-    },
-    {
-        "id":  475719253,
-        "key":  "W message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "W message"
-                   }
-    },
-    {
-        "id":  588739376,
-        "key":  "Warning message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "Warning message"
-                   }
-    }
 ]
 ```
+## XML Export
+
+Messages for the Twincat 3 Eventlogger can be quickly and easily exported during “Activate Configuration” using a simple PowerShell script
+
 ```xml
 <EventClass>
   <EventId>
@@ -156,19 +123,7 @@ Messages for the HMI can be quickly and easily exported during “Activate Confi
     <Severity>Warning</Severity>
   </EventId>
   <EventId>
-    <Name Id="828536003">Tc3_Event_828536003</Name>
-    <DisplayName TxtId=""><![CDATA[I message %s %s]]></DisplayName>
-    <Severity>Verbose</Severity>
-  </EventId>
-  <EventId>
-    <Name Id="475719235">Tc3_Event_475719235</Name>
-    <DisplayName TxtId=""><![CDATA[E message]]></DisplayName>
-    <Severity>Error</Severity>
-  </EventId>
-  <EventId>
-    <Name Id="475719233">Tc3_Event_475719233</Name>
-    <DisplayName TxtId=""><![CDATA[C message]]></DisplayName>
-    <Severity>Critical</Severity>
+	...
   </EventId>
 </EventClass>
 ```
