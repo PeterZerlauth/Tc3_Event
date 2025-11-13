@@ -1,7 +1,7 @@
 # Tc3_Event
 
-**Tc3_Event** is a lightweight and efficient event logging framework for **TwinCAT 3** automation projects.  
-It provides structured logging capabilities with reusable Function Blocks, enabling clear visibility of system events, HMI display integration, and file logging.
+**Tc3_Event** is a lightweight and efficient event logging framework for **TwinCAT 3** automation projects.
+It provides structured logging capabilities with reusable Function Blocks, enabling clear visibility of system events, HMI display integration, and File logging.
 
 ---
 
@@ -9,13 +9,13 @@ It provides structured logging capabilities with reusable Function Blocks, enabl
 
 - **Simple Implementation** – Easy-to-use Function Blocks for Structured Text (ST).  
 - **Reusable Components** – Modular design for integration across multiple PLC projects.  
-- **PowerShell Automation** – Script included to generate unique IDs for log messages.  
+- **PowerShell Automation** – Script included to generate unique IDs for log messages.
 - **Event Tracing** – Efficient debugging and issue identification.  
 - **Parameter Support** – Add integers, floats, and strings to log messages dynamically.  
 - **Multiple Log Levels** – Supports: `Verbose`, `Info`, `Warning`, `Error`, and `Critical`.  
 - **HMI Integration** – Display structured logs on HMIs in real-time.  
-- **File Logging (Experimental)** – Capture logs to file (currently under development).  
-
+- **File Logging (Experimental)** – Capture logs to file (currently under development). 
+- **TwinCAT 3 Eventlogger (Experimental)** (currently under development). 
 ---
 
 ## 🚀 Getting Started
