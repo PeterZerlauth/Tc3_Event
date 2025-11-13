@@ -18,7 +18,7 @@ It provides structured logging capabilities with reusable Function Blocks, enabl
 - **TwinCAT 3 Eventlogger (Experimental)** (currently under development). 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Setup Loggers
 ```iecst
@@ -128,10 +128,7 @@ Messages for the Twincat 3 Eventlogger can be quickly and easily exported during
 </EventClass>
 ```
 
-<img width="1012" height="323" alt="image" src="https://github.com/user-attachments/assets/6491c5bd-8974-447c-8958-210d7c7f3671" />
-
-
-## Results
+## Screenshots
 
 <img width="303" height="212" alt="image" src="https://github.com/user-attachments/assets/76e4d475-e2f1-42ff-9ccd-e3bdb786d7bc" />
 <img width="768" height="315" alt="image" src="https://github.com/user-attachments/assets/b2c84339-6437-416f-bf1d-d2c682075724" />
