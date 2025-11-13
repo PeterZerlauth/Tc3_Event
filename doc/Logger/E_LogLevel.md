@@ -1,7 +1,7 @@
 # E_LogLevel
 
 **Type:** `ENUM`
-**Source File:** `Logger/List/E_LogLevel.TcDUT`
+**Source File:** `Logger/E_LogLevel.TcDUT`
 
 *No documentation found.*
 

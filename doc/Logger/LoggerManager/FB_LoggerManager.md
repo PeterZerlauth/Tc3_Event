@@ -1,7 +1,7 @@
-# FB_LoggingProvider
+# FB_LoggerManager
 
 **Type:** `FUNCTION BLOCK`
-**Source File:** `Logging/FB_LoggingProvider.TcPOU`
+**Source File:** `Logger/LoggerManager/FB_LoggerManager.TcPOU`
 
 Provide the functionality to use more than one Logger target
 

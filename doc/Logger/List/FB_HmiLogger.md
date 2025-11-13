@@ -1,7 +1,7 @@
-# FB_ListLogger
+# FB_HmiLogger
 
 **Type:** `FUNCTION BLOCK`
-**Source File:** `Logger/List/FB_ListLogger.TcPOU`
+**Source File:** `Logger/List/FB_HmiLogger.TcPOU`
 
 Provide logging
 

@@ -1,7 +1,7 @@
 # I_Logger
 
 **Type:** `INTERFACE`
-**Source File:** `Logging/I_Logger.TcIO`
+**Source File:** `Logger/LoggerManager/I_Logger.TcIO`
 
 *No documentation found.*
 
