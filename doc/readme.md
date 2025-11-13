@@ -1,10 +1,9 @@
 # Project Documentation
 
 ## Overview
-### ENUM (3)
+### ENUM (2)
 * [E_FileState](Helpers/File/E_FileState.md)
 * [E_LogLevel](Logger/E_LogLevel.md)
-* [E_LogLevel](Logger/HmiLogger/E_LogLevel.md)
 
 ### FUNCTION (9)
 * [F_Hash](Helpers/F_Hash.md)
@@ -17,14 +16,12 @@
 * [F_GetTitle](Project%20Information/F_GetTitle.md)
 * [F_GetVersion](Project%20Information/F_GetVersion.md)
 
-### FUNCTION BLOCK (10)
+### FUNCTION BLOCK (8)
 * [FB_Argument](Argument/FB_Argument.md)
 * [FB_Event](Event/FB_Event.md)
 * [FB_File](Helpers/File/FB_File.md)
 * [FB_FileLogger](Logger/FileLogger/FB_FileLogger.md)
 * [FB_HmiLogger](Logger/HmiLogger/FB_HmiLogger.md)
-* [FB_HmiLogger](Logger/List/FB_HmiLogger.md)
-* [FB_LoggerManager](Logger/LoggerManager/FB_LoggerManager.md)
 * [FB_LoggerManager](Logger/Manager/FB_LoggerManager.md)
 * [FB_TcLogger](Logger/Twincat/FB_TcLogger.md)
 * [FB_Message](Message/FB_Message.md)
@@ -34,11 +31,10 @@
 * [Parameters](Global%20Variables/Parameters.md)
 * [Global_Version](Version/Global_Version.md)
 
-### INTERFACE (6)
+### INTERFACE (5)
 * [I_Argument](Argument/I_Argument.md)
 * [I_Event](Event/I_Event.md)
 * [I_File](Helpers/File/I_File.md)
 * [I_LogLevel](Logger/FileLogger/I_LogLevel.md)
 * [I_Logger](Logger/I_Logger.md)
-* [I_Logger](Logger/LoggerManager/I_Logger.md)
 

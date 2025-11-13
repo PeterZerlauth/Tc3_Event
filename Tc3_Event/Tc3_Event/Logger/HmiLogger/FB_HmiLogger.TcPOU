@@ -2,13 +2,13 @@
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_HmiLogger" Id="{65f70f38-14b4-40c0-9ff9-f567428dadcd}" SpecialFunc="None">
     <Declaration><![CDATA[// Provide logging 
-FUNCTION_BLOCK FB_HmiLogger IMPLEMENTS I_Logger
+FUNCTION_BLOCK FB_HmiLogger IMPLEMENTS I_Logger, I_LogLevel
 VAR_INPUT
+	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 END_VAR
 VAR
-	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 	{attribute 'OPC.UA.DA.Property' := '1'}
-	aMessages:				ARRAY[0..Parameters.nHmiLength - 1] OF FB_Message; 	// Message store
+	aMessages:				ARRAY[0..99] OF FB_Message; 	// Message store
 	{attribute 'OPC.UA.DA.Property' := '1'}
     nMessages:				UINT := 0;                     // Message count
 	{attribute 'hide'} 
@@ -50,7 +50,7 @@ END_VAR]]></Declaration>
 	RETURN;
 END_IF
 
-IF nMessages > Parameters.nHmiLength - 1 THEN 
+IF nMessages > 99 THEN 
 	RETURN;
 END_IF
 

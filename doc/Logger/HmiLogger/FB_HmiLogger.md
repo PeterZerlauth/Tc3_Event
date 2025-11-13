@@ -5,6 +5,16 @@
 
 Provide logging
 
+## Inputs
+| Name | Type | Description |
+| --- | --- | --- |
+| `eLogLevel` | `E_LogLevel` |  |
+
+## Local Variables
+| Name | Type | Description |
+| --- | --- | --- |
+| `eLogLevel` | `E_LogLevel` |  |
+
 ## Methods
 
 ### `M_Log` : `BOOL`
@@ -21,7 +31,7 @@ IF eLogLevel > fbMessage.eLogLevel THEN
 	RETURN;
 END_IF
 
-IF nMessages > Parameters.nHmiLength - 1 THEN 
+IF nMessages > 99 THEN 
 	RETURN;
 END_IF
 

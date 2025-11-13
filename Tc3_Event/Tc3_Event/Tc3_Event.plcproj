@@ -35,7 +35,7 @@
     <Folder Include="Event" />
     <Folder Include="Helpers\File" />
     <Folder Include="Logger\FileLogger" />
-    <Folder Include="Logger\List" />
+    <Folder Include="Logger\HmiLogger" />
     <Folder Include="Logger\Manager" />
     <Folder Include="Logger\Twincat" />
     <Folder Include="Logger" />
@@ -98,7 +98,7 @@
     <Compile Include="Logger\I_Logger.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Logger\List\FB_HmiLogger.TcPOU">
+    <Compile Include="Logger\HmiLogger\FB_HmiLogger.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logger\Manager\FB_LoggerManager.TcPOU">
