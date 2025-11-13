@@ -19,7 +19,7 @@
     <Company>www.peterzerlauth.com</Company>
     <Released>false</Released>
     <Title>Tc3_Event</Title>
-    <ProjectVersion>0.0.0.1</ProjectVersion>
+    <ProjectVersion>0.0.0.2</ProjectVersion>
     <DefaultNamespace>Tc3_Event</DefaultNamespace>
     <Placeholder>Tc3_Event</Placeholder>
     <Author>Peter Zerlauth</Author>
@@ -36,8 +36,8 @@
     <Folder Include="Helpers\File" />
     <Folder Include="Logger\FileLogger" />
     <Folder Include="Logger\List" />
+    <Folder Include="Logger\Manager" />
     <Folder Include="Logger\Twincat" />
-    <Folder Include="Logging" />
     <Folder Include="Logger" />
     <Folder Include="Message" />
     <Folder Include="Argument" />
@@ -86,25 +86,25 @@
     <Compile Include="Helpers\LogLevel_To_TcEventSeverity.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Logger\E_LogLevel.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Logger\FileLogger\FB_FileLogger.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logger\FileLogger\I_LogLevel.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Logger\List\E_LogLevel.TcDUT">
+    <Compile Include="Logger\I_Logger.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Logger\List\FB_ListLogger.TcPOU">
+    <Compile Include="Logger\List\FB_HmiLogger.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Logger\Manager\FB_LoggerManager.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logger\Twincat\FB_TcLogger.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Logging\FB_LoggingProvider.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Logging\I_Logger.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Message\FB_Message.TcPOU">

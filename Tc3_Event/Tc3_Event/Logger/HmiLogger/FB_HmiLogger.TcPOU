@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_HmiLogger" Id="{65f70f38-14b4-40c0-9ff9-f567428dadcd}" SpecialFunc="None">
+    <Declaration><![CDATA[// Provide logging 
+FUNCTION_BLOCK FB_HmiLogger IMPLEMENTS I_Logger
+VAR_INPUT
+END_VAR
+VAR
+	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
+	{attribute 'OPC.UA.DA.Property' := '1'}
+	aMessages:				ARRAY[0..Parameters.nHmiLength - 1] OF FB_Message; 	// Message store
+	{attribute 'OPC.UA.DA.Property' := '1'}
+    nMessages:				UINT := 0;                     // Message count
+	{attribute 'hide'} 
+	nIndex: 				UINT;
+	{attribute 'hide'} 
+	nTimestamp:				LINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// https://peterzerlauth.com/
+
+IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime THEN // 1 second = 1e9 ns
+	nTimestamp := TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskTime + 1000000000;
+	nIndex:= 0;
+	WHILE nIndex < nMessages DO
+		IF aMessages[nIndex].bActive THEN
+			IF aMessages[nIndex].eLogLevel <= E_LogLevel.Warning THEN
+				aMessages[nIndex].bActive:= FALSE;
+			END_IF
+			nIndex := nIndex + 1;
+		ELSE
+			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(FB_Message) * (nMessages - nIndex));
+			nMessages := nMessages - 1;
+			RETURN;
+		END_IF
+	END_WHILE
+END_IF]]></ST>
+    </Implementation>
+    <Method Name="M_Log" Id="{c925afc5-8e57-47da-84bb-210c829a3dd4}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Log : BOOL
+VAR_INPUT
+	fbMessage:			FB_Message;
+END_VAR
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF eLogLevel > fbMessage.eLogLevel THEN
+	M_Log:= TRUE;
+	RETURN;
+END_IF
+
+IF nMessages > Parameters.nHmiLength - 1 THEN 
+	RETURN;
+END_IF
+
+// Skip if same sMessage already exists
+nIndex := 0;
+WHILE nIndex < nMessages DO
+    IF aMessages[nIndex].sDefault = fbMessage.sDefault THEN
+		aMessages[nIndex].bActive:= TRUE;
+        M_Log := TRUE;
+        RETURN; // message already in buffer
+    END_IF
+    nIndex := nIndex + 1;
+END_WHILE
+
+aMessages[nMessages]:= fbMessage;;
+nMessages := nMessages + 1;
+M_Log := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Reset" Id="{0333c356-62c7-4c19-9969-864fabc3465d}">
+      <Declaration><![CDATA[METHOD M_Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nIndex := 0;
+WHILE nIndex < nMessages DO
+    IF aMessages[nIndex].bActive = TRUE THEN
+		aMessages[nIndex].bActive:= FALSE;
+    END_IF
+    nIndex := nIndex + 1;
+END_WHILE
+M_Reset:= TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="P_LogLevel" Id="{1c739022-3d6f-4ecb-abf9-2f9944cdc386}">
+      <Declaration><![CDATA[{attribute 'OPC.UA.DA.Property' := '1'}
+{attribute 'monitoring' := 'variable'}
+PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
+      <Get Name="Get" Id="{92f636fd-e8a2-488e-a20a-d9bd7d8e0a21}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[P_LogLevel:= eLogLevel;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{98e4e2b1-517c-43c2-870d-a5a57ae02ec1}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[eLogLevel:= P_LogLevel;
+]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+  </POU>
+</TcPlcObject>

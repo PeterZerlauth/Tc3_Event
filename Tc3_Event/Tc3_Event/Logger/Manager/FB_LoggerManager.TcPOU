@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="FB_LoggingProvider" Id="{8d6eb986-1a4b-011f-072f-86ab56dd3ee8}" SpecialFunc="None">
+  <POU Name="FB_LoggerManager" Id="{8d6eb986-1a4b-011f-072f-86ab56dd3ee8}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'no_explicit_call' := 'do not call this POU directly'} 
 // Provide the functionality to use more than one Logger target
-FUNCTION_BLOCK FB_LoggingProvider IMPLEMENTS I_Logger
+FUNCTION_BLOCK FB_LoggerManager IMPLEMENTS I_Logger
 VAR
 	nLength:		INT;
 	pList: 			POINTER TO I_Logger;

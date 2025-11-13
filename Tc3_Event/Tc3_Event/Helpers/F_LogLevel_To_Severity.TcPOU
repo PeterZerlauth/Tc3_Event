@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_LogLevel_To_Severity" Id="{2125d2a6-85a2-44a9-b27f-c4f068813b29}" SpecialFunc="None">
+    <Declaration><![CDATA[// Converts internal loglevel to twincat severity
+FUNCTION F_LogLevel_To_Severity : TcEventSeverity
+VAR_INPUT
+	eLogLevel:				E_LogLevel;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE eLogLevel OF
+	E_LogLevel.Verbose:
+		F_LogLevel_To_Severity:= TcEventSeverity.Verbose;
+		
+	E_LogLevel.Info:
+		F_LogLevel_To_Severity:= TcEventSeverity.Info;
+		
+	E_LogLevel.Warning:
+		F_LogLevel_To_Severity:= TcEventSeverity.Warning;
+		
+	E_LogLevel.Error:
+		F_LogLevel_To_Severity:= TcEventSeverity.Error;
+		
+	E_LogLevel.Critical:
+		F_LogLevel_To_Severity:= TcEventSeverity.Critical;
+		
+END_CASE]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

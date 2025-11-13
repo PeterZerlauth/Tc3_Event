@@ -3,8 +3,8 @@
   <POU Name="MAIN" Id="{19c7fd4e-92ee-4c48-b527-6576c9627f78}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	fbLogging:			Tc3_Event.FB_LoggingProvider;
-	fbLogger:			Tc3_Event.FB_ListLogger;
+	fbLogger:			Tc3_Event.FB_LoggerManager;
+	fbHmiLogger:		Tc3_Event.FB_HmiLogger;
 	fbFileLogger:		Tc3_Event.FB_FileLogger;
 	fbTcLogger:			Tc3_Event.FB_TcLogger;
 	fbTest:				FB_TestSlow;
@@ -14,19 +14,19 @@ END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[__TRY
 	IF exception = __SYSTEM.ExceptionCode.RTSEXCPT_NOEXCEPTION THEN
-		fbLogging.M_Add(fbLogger);
-		fbLogging.M_Add(fbFileLogger);
-		fbLogging.M_Add(fbTcLogger);
+		fbLogger.M_Add(fbHmiLogger);
+		fbLogger.M_Add(fbFileLogger);
+		fbLogger.M_Add(fbTcLogger);
 			
-		fbLogger();
+		fbHmiLogger();
 		
 		IF bReset THEN
-			fbLogging.M_Reset();
+			fbLogger.M_Reset();
 		END_IF
 		
 		fbFileLogger(sPathName:= 'C:\temp\log.txt');
 		
-		fbTest.P_Event.P_Logger:= fbLogging;
+		fbTest.P_Event.P_Logger:= fbLogger;
 		
 		fbTest();		
 	END_IF

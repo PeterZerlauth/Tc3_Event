@@ -209,12 +209,27 @@
 			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{16DE55F1-4AA7-4E64-981C-93F8D264090E}" Namespace="Tc3_Event" PersistentType="true">Tc3_Event</Name>
+			<Name GUID="{33E0D9CA-7B58-4945-BD42-DEE36EE1F985}" Namespace="Tc3_Event" PersistentType="true">Tc3_Event</Name>
 			<DisplayName TxtId=""><![CDATA[Tc3_Event]]></DisplayName>
 			<EventId>
-				<Name Id="475719233">Test</Name>
-				<DisplayName TxtId=""><![CDATA[Test custom]]></DisplayName>
+				<Name Id="475719253">Tc3_Event_475719253</Name>
+				<DisplayName TxtId=""><![CDATA[W message]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="828536003">Tc3_Event_828536003</Name>
+				<DisplayName TxtId=""><![CDATA[I message %s %s]]></DisplayName>
 				<Severity>Verbose</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="475719235">Tc3_Event_475719235</Name>
+				<DisplayName TxtId=""><![CDATA[E message]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="475719233">Tc3_Event_475719233</Name>
+				<DisplayName TxtId=""><![CDATA[C message]]></DisplayName>
+				<Severity>Critical</Severity>
 			</EventId>
 			<Hides>
 				<Hide GUID="{D1BF3701-6419-4F2A-A347-A579295C5479}"/>
@@ -223,6 +238,7 @@
 				<Hide GUID="{4BF05006-F596-4E0E-BD62-1934C30B4FB3}"/>
 				<Hide GUID="{A07A117D-5FFE-45AC-B54F-9B68BCBD7C01}"/>
 				<Hide GUID="{2BEA1996-A294-4A83-8129-F4DCD25EBC15}"/>
+				<Hide GUID="{16DE55F1-4AA7-4E64-981C-93F8D264090E}"/>
 			</Hides>
 		</DataType>
 	</DataTypes>
@@ -240,7 +256,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{90CE2844-1A87-435D-8A79-619DCCF6A970}" Name="plc01" PrjFilePath="plc01\plc01.plcproj" TmcFilePath="plc01\plc01.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{8224BB1C-1FC1-6838-AF62-2AE0F3139082}" TmcPath="plc01\plc01.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{1BEA5A65-85CF-6AA9-8125-2592151F4E33}" TmcPath="plc01\plc01.tmc">
 					<Name>plc01 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="FB_ListLogger" Id="{65f70f38-14b4-40c0-9ff9-f567428dadcd}" SpecialFunc="None">
+  <POU Name="FB_HmiLogger" Id="{65f70f38-14b4-40c0-9ff9-f567428dadcd}" SpecialFunc="None">
     <Declaration><![CDATA[// Provide logging 
-FUNCTION_BLOCK FB_ListLogger IMPLEMENTS I_Logger, I_LogLevel
+FUNCTION_BLOCK FB_HmiLogger IMPLEMENTS I_Logger, I_LogLevel
 VAR_INPUT
 	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 END_VAR
