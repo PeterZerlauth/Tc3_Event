@@ -118,11 +118,8 @@ Messages for the Twincat 3 Eventlogger can be quickly and easily exported during
 ```xml
 <EventClass>
   <EventId>
-    <Name Id="475719253">Tc3_Event_475719253</Name>
-    <DisplayName TxtId=""><![CDATA[W message]]></DisplayName>
-  </EventId>
-  <EventId>
-	...
+    <Name Id="828536003">Tc3_Event_828536003</Name>
+    <DisplayName TxtId=""><![CDATA[I message {0} {1}]]></DisplayName>
   </EventId>
 </EventClass>
 ```
