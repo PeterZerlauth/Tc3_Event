@@ -18,7 +18,8 @@ Built for developer productivity and high performance, it helps you maintain cla
 - **Multiple Log Levels** – Supports: `Verbose`, `Info`, `Warning`, `Error`, and `Critical`.  
 - **HMI Integration** – Display structured logs on HMIs in real-time.  
 - **File Logging (Experimental)** – Capture logs to file (currently under development). 
-- **TwinCAT 3 Eventlogger (Experimental)** (currently under development). 
+- **TwinCAT 3 Eventlogger (Experimental)** (currently under development).
+- **Functional Logger**  is included to help developers test and debug their TwinCAT projects.
 ---
 
 ## Getting Started
