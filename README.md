@@ -24,7 +24,7 @@ Built for developer productivity and high performance, it helps you maintain cla
 ## Getting Started
 
 ### Setup Loggers
-```st
+```pascal
 PROGRAM MAIN
 VAR
 	fbLogger:			Tc3_Event.FB_LoggerManager;
@@ -41,7 +41,7 @@ fbLogger.M_Add(fbTcLogger);
 ```
 
 ### Setup Event
-```st
+```pascal
 PROGRAM MAIN
 VAR
 	fbEvent:			FB_Event;
@@ -60,7 +60,7 @@ END_IF
 
 ## Advanced Usage
 
-```st
+```pascal
 PROGRAM MAIN
 VAR
 	fbEvent:			FB_Event;
