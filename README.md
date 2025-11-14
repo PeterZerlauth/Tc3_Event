@@ -1,7 +1,10 @@
 # Tc3_Event
 
-**Tc3_Event** is a lightweight and efficient event logging framework for **TwinCAT 3** automation projects.
-It provides structured logging capabilities with reusable Function Blocks, enabling clear visibility of system events, HMI display integration, and File logging.
+**Tc3_Event** is a lightweight and efficient event logging framework for TwinCAT 3 automation projects. 
+It provides structured logging capabilities through reusable Function Blocks, 
+enabling clear visibility of system events, seamless HMI display integration, 
+and reliable file logging. 
+Built for developer productivity and high performance, it helps you maintain clarity and control in complex automation applications.
 
 ---
 
@@ -15,13 +18,14 @@ It provides structured logging capabilities with reusable Function Blocks, enabl
 - **Multiple Log Levels** – Supports: `Verbose`, `Info`, `Warning`, `Error`, and `Critical`.  
 - **HMI Integration** – Display structured logs on HMIs in real-time.  
 - **File Logging (Experimental)** – Capture logs to file (currently under development). 
-- **TwinCAT 3 Eventlogger (Experimental)** (currently under development). 
+- **TwinCAT 3 Eventlogger (Experimental)** (currently under development).
+- **Functional Logger**  is included to help developers test and debug their TwinCAT projects.
 ---
 
 ## Getting Started
 
 ### Setup Loggers
-```iecst
+```pascal
 PROGRAM MAIN
 VAR
 	fbLogger:			Tc3_Event.FB_LoggerManager;
@@ -38,7 +42,7 @@ fbLogger.M_Add(fbTcLogger);
 ```
 
 ### Setup Event
-```iecst
+```pascal
 PROGRAM MAIN
 VAR
 	fbEvent:			FB_Event;
@@ -57,7 +61,7 @@ END_IF
 
 ## Advanced Usage
 
-```iecst
+```pascal
 PROGRAM MAIN
 VAR
 	fbEvent:			FB_Event;
@@ -107,7 +111,7 @@ Messages for the HMI can be quickly and easily exported during “Activate Confi
                    }
     },
     {
-		...
+		"..."
     },
 ]
 ```
@@ -118,12 +122,10 @@ Messages for the Twincat 3 Eventlogger can be quickly and easily exported during
 ```xml
 <EventClass>
   <EventId>
-    <Name Id="475719253">Tc3_Event_475719253</Name>
-    <DisplayName TxtId=""><![CDATA[W message]]></DisplayName>
+    <Name Id="828536003">Tc3_Event_828536003</Name>
+    <DisplayName TxtId=""><![CDATA[I message {0} {1}]]></DisplayName>
   </EventId>
-  <EventId>
 	...
-  </EventId>
 </EventClass>
 ```
 
