@@ -24,7 +24,7 @@ Built for developer productivity and high performance, it helps you maintain cla
 ## Getting Started
 
 ### Setup Loggers
-```iecst
+```st
 PROGRAM MAIN
 VAR
 	fbLogger:			Tc3_Event.FB_LoggerManager;
@@ -41,7 +41,7 @@ fbLogger.M_Add(fbTcLogger);
 ```
 
 ### Setup Event
-```iecst
+```st
 PROGRAM MAIN
 VAR
 	fbEvent:			FB_Event;
@@ -60,7 +60,7 @@ END_IF
 
 ## Advanced Usage
 
-```iecst
+```st
 PROGRAM MAIN
 VAR
 	fbEvent:			FB_Event;
@@ -110,7 +110,7 @@ Messages for the HMI can be quickly and easily exported during “Activate Confi
                    }
     },
     {
-		...
+		"..."
     },
 ]
 ```
@@ -124,6 +124,7 @@ Messages for the Twincat 3 Eventlogger can be quickly and easily exported during
     <Name Id="828536003">Tc3_Event_828536003</Name>
     <DisplayName TxtId=""><![CDATA[I message {0} {1}]]></DisplayName>
   </EventId>
+	...
 </EventClass>
 ```
 
