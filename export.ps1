@@ -73,6 +73,19 @@ function Get-UDINTHash {
     return [uint32]$hash
 }
 
+function Convert-Placeholders {
+    param([string]$text)
+
+    $script:pIndex = 0
+
+    return ([regex]::Replace($text, '%s', {
+        $current = $script:pIndex
+        $script:pIndex++
+        return "{${current}}"
+    }))
+}
+
+
 # -----------------------------
 # Initialize messages hashtable
 # -----------------------------
@@ -186,7 +199,7 @@ Write-Host "Extracted $($messages.Count) unique log messages to $outputFile"
 # --------------------------------------------------------------------
 # --- ADDED: Export all messages to eventClass.xml ---
 # --------------------------------------------------------------------
-$outputXmlFile = Join-Path -Path $rootFolder -ChildPath "eventClass.xml"
+$outputXmlFile = Join-Path -Path $rootFolder -ChildPath "EventClass.xml"
 
 try {
     # Initialize XML Document
@@ -212,7 +225,8 @@ try {
         $displayEl = $xmlDoc.CreateElement("DisplayName")
         $displayEl.SetAttribute("TxtId", "")
         # Use CDATA for the message text to handle special characters
-        $cdata = $xmlDoc.CreateCDataSection($msg.key)
+        $xmlText = Convert-Placeholders $msg.key.Trim()
+        $cdata = $xmlDoc.CreateCDataSection($xmlText)
         $displayEl.AppendChild($cdata) | Out-Null
         $eventEl.AppendChild($displayEl) | Out-Null
 
