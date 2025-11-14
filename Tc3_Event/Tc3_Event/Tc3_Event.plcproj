@@ -19,7 +19,7 @@
     <Company>www.peterzerlauth.com</Company>
     <Released>false</Released>
     <Title>Tc3_Event</Title>
-    <ProjectVersion>0.0.0.2</ProjectVersion>
+    <ProjectVersion>0.0.0.3</ProjectVersion>
     <DefaultNamespace>Tc3_Event</DefaultNamespace>
     <Placeholder>Tc3_Event</Placeholder>
     <Author>Peter Zerlauth</Author>
@@ -68,6 +68,9 @@
     <Compile Include="Helpers\File\I_File.TcIO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helpers\F_Filter.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Helpers\F_Hash.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -81,6 +84,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\F_Print.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\F_Remove.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\LogLevel_To_Severity.TcPOU">

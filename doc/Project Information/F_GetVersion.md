@@ -12,7 +12,7 @@ This function has been automatically generated from the project information.
 F_GetVersion.iMajor := 0;
 F_GetVersion.iMinor := 0;
 F_GetVersion.iBuild := 0;
-F_GetVersion.iRevision := 2;
-F_GetVersion.sVersion := '0.0.0.2';
+F_GetVersion.iRevision := 3;
+F_GetVersion.sVersion := '0.0.0.3';
 F_GetVersion.nFlags := 0;
 ```

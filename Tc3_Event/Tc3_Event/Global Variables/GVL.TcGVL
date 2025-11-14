@@ -4,9 +4,14 @@
     <Declaration><![CDATA[{attribute 'no-analysis'}
 {attribute 'qualified_only'} 
 VAR_GLOBAL
+	{attribute 'hide'} 
 	aBuffer:				ARRAY[0..99] OF FB_Message;
+	{attribute 'hide'} 
     nBuffer:				UINT := 0;
-	nTimestamp:				Tc2_Utilities.T_FILETIME64;		
+	{attribute 'hide'} 
+	nTimestamp:				Tc2_Utilities.T_FILETIME64;	
+	{attribute 'hide'} 
+	nFunction:				Tc2_Utilities.T_FILETIME64;		
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

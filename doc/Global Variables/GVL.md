@@ -11,4 +11,5 @@
 | `aBuffer` | `ARRAY` |  |
 | `nBuffer` | `UINT` |  |
 | `nTimestamp` | `Tc2_Utilities.T_FILETIME64` |  |
+| `nFunction` | `Tc2_Utilities.T_FILETIME64` |  |
 

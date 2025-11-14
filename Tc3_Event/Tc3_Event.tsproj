@@ -209,8 +209,18 @@
 			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{9E041C2C-EE48-4D45-B8AE-AE47E9B41922}" Namespace="Tc3_Event" PersistentType="true">Tc3_Event</Name>
+			<Name GUID="{6D8F9536-A244-4120-93D4-07BD2525D604}" Namespace="Tc3_Event" PersistentType="true">Tc3_Event</Name>
 			<DisplayName TxtId=""><![CDATA[Tc3_Event]]></DisplayName>
+			<EventId>
+				<Name Id="475719253">Tc3_Event_475719253</Name>
+				<DisplayName TxtId=""><![CDATA[W message]]></DisplayName>
+				<Severity>Verbose</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="828536003">Tc3_Event_828536003</Name>
+				<DisplayName TxtId=""><![CDATA[I message {0} {1}]]></DisplayName>
+				<Severity>Verbose</Severity>
+			</EventId>
 			<EventId>
 				<Name Id="475719235">Tc3_Event_475719235</Name>
 				<DisplayName TxtId=""><![CDATA[E message]]></DisplayName>
@@ -219,16 +229,6 @@
 			<EventId>
 				<Name Id="475719233">Tc3_Event_475719233</Name>
 				<DisplayName TxtId=""><![CDATA[C message]]></DisplayName>
-				<Severity>Verbose</Severity>
-			</EventId>
-			<EventId>
-				<Name Id="475719253">Tc3_Event_475719253</Name>
-				<DisplayName TxtId=""><![CDATA[W message]]></DisplayName>
-				<Severity>Verbose</Severity>
-			</EventId>
-			<EventId>
-				<Name Id="828536003">Tc3_Event_828536003</Name>
-				<DisplayName TxtId=""><![CDATA[I message %s %s]]></DisplayName>
 				<Severity>Verbose</Severity>
 			</EventId>
 			<Hides>
@@ -241,6 +241,7 @@
 				<Hide GUID="{16DE55F1-4AA7-4E64-981C-93F8D264090E}"/>
 				<Hide GUID="{33E0D9CA-7B58-4945-BD42-DEE36EE1F985}"/>
 				<Hide GUID="{C8BB349A-C1FE-42A1-BFF9-26698589029B}"/>
+				<Hide GUID="{9E041C2C-EE48-4D45-B8AE-AE47E9B41922}"/>
 			</Hides>
 		</DataType>
 	</DataTypes>
@@ -258,7 +259,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{90CE2844-1A87-435D-8A79-619DCCF6A970}" Name="plc01" PrjFilePath="plc01\plc01.plcproj" TmcFilePath="plc01\plc01.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{2F2798F6-27D5-C9C0-A62F-672E15923F55}" TmcPath="plc01\plc01.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{4DE00E60-2C5D-4B56-465A-B19E45AEAD37}" TmcPath="plc01\plc01.tmc">
 					<Name>plc01 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

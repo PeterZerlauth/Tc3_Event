@@ -84,7 +84,7 @@ aAlarm[nAlarm].Create(TC_EVENT_CLASSES.Tc3_Event,  fbMessage.nID, LogLevel_To_Se
 aAlarm[nAlarm].ipArguments.Clear();
 
 // Split and add arguments
-nPosition := FIND('$R', fbMessage.sArguments);
+nPosition := FIND(fbMessage.sArguments, '$R');
 WHILE nPosition > 0 DO
     sArgument := LEFT(fbMessage.sArguments, nPosition - 1);
     aAlarm[nAlarm].ipArguments.AddString(sArgument);

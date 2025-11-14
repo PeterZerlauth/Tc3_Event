@@ -1,23 +1,5 @@
 ﻿[
     {
-        "id":  475719235,
-        "key":  "E message",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "E message"
-                   }
-    },
-    {
-        "id":  475719233,
-        "key":  "C message",
-        "level":  "Critical",
-        "locale":  {
-                       "de":  "",
-                       "en":  "C message"
-                   }
-    },
-    {
         "id":  475719253,
         "key":  "W message",
         "level":  "Warning",
@@ -33,6 +15,24 @@
         "locale":  {
                        "de":  "",
                        "en":  "I message %s %s"
+                   }
+    },
+    {
+        "id":  475719235,
+        "key":  "E message",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "E message"
+                   }
+    },
+    {
+        "id":  475719233,
+        "key":  "C message",
+        "level":  "Critical",
+        "locale":  {
+                       "de":  "",
+                       "en":  "C message"
                    }
     }
 ]

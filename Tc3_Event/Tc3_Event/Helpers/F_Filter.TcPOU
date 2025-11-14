@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_Filter" Id="{e2511038-51cb-42c7-9bc5-a0c46a2fc45b}" SpecialFunc="None">
+    <Declaration><![CDATA[// Filter messages, if already existing
+FUNCTION F_Filter : BOOL
+VAR_INPUT
+	fbMessage:			FB_Message; // Input message
+END_VAR
+VAR
+    nIndex:				UINT;	// Index counter
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[nIndex := 0;
+WHILE nIndex < GVL.nBuffer DO
+    IF GVL.aBuffer[nIndex].sDefault = fbMessage.sDefault THEN
+        GVL.aBuffer[nIndex].bActive := TRUE;
+        F_Filter := TRUE;
+        RETURN;  // Message found
+    END_IF
+    nIndex := nIndex + 1;
+END_WHILE
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
