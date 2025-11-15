@@ -1,7 +1,7 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./doc/logo_dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./doc/logo.svg">
-  <img src="./doc/logo.svg" width="420" alt="Tc3_Event Logo">
+  <source media="(prefers-color-scheme: dark)" srcset="./logoDark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./logo.svg">
+  <img src="./logo.svg" width="420" alt="Tc3_Event Logo">
 </picture>
 
 # Tc3_Event: The Essential Event Logging Framework for TwinCAT 3
