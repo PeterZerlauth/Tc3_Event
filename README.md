@@ -1,10 +1,10 @@
 # Tc3_Event
 
-**Tc3_Event** is a lightweight and efficient event logging framework for TwinCAT 3 automation projects. 
-It provides structured logging capabilities through reusable Function Blocks, 
-enabling clear visibility of system events, seamless HMI display integration, 
-and reliable file logging. 
-Built for developer productivity and high performance, it helps you maintain clarity and control in complex automation applications.
+**Tc3_Event** is a lightweight and efficient event logging framework for TwinCAT 3 automation projects.  
+It provides structured logging capabilities through reusable Function Blocks, enabling clear visibility of system events, seamless HMI display integration, and reliable file logging.  
+Built for developer productivity and high performance, it helps you maintain clarity and control in complex automation applications.  
+With automated ID generation, parameterized messages, and consistent formatting, Tc3_Event removes error-prone manual steps and accelerates development cycles by **30–50%**.
+
 
 ---
 
