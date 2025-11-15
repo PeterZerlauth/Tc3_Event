@@ -1,3 +1,4 @@
+![Tc3_Event Logo](./logo.svg)
 # Tc3_Event: The Essential Event Logging Framework for TwinCAT 3
 
 **Tc3_Event** is a **lightweight, high-performance event logging framework** engineered specifically for **TwinCAT 3 automation projects**. 
