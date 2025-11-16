@@ -27,8 +27,6 @@ END_VAR]]></Declaration>
 			fbLogger.M_Reset();
 		END_IF
 		
-		
-		
 		fbTest.P_Event.P_Logger:= fbLogger;
 		
 		fbTest();		
