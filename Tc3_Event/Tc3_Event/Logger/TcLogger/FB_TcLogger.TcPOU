@@ -8,7 +8,7 @@ VAR
 	fbSourceInfo:			FB_TcSourceInfo;
 	aAlarm:					ARRAY[0..99] OF FB_TcAlarm; 	// Message store
     nAlarm:					UINT;                     		// Message count
-	bAlarm:					ARRAY[0..99] OF BOOL; 	// Message store
+	bAlarm:					ARRAY[0..99] OF BOOL; 			// Message store
 	{attribute 'hide'} 
 	nIndex: 				UINT;
 	{attribute 'hide'} 
@@ -89,7 +89,7 @@ WHILE nPosition > 0 DO
     sArgument := LEFT(fbMessage.sArguments, nPosition - 1);
     aAlarm[nAlarm].ipArguments.AddString(sArgument);
     fbMessage.sArguments:= RIGHT(fbMessage.sArguments, LEN(fbMessage.sArguments) - (nPosition + 1));
-    nPosition := FIND('$R', fbMessage.sArguments);
+    nPosition := FIND(fbMessage.sArguments, '$R');
 END_WHILE;
 
 // Raise alarm

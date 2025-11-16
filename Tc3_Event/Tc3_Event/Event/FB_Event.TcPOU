@@ -159,10 +159,23 @@ fbArguments.M_Clear();]]></ST>
     <Method Name="M_Reset" Id="{3a4a22c9-fd2e-42d4-aaa7-202418505488}">
       <Declaration><![CDATA[METHOD M_Reset : BOOL
 VAR_INPUT
+END_VAR
+VAR
+	fbReset:					FB_Message;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF iLogger <> 0 THEN
-	M_Reset:= iLogger.M_Reset();
+        <ST><![CDATA[fbReset.bActive:= TRUE;
+fbReset.sMessage:= 'Reset';
+fbReset.eLogLevel:= E_LogLevel.Error;
+fbReset.nID:= F_Hash(fbReset.sMessage);
+fbReset.nTimestamp:= 0;
+fbReset.sArguments:= '';
+fbReset.sDefault:= '';
+fbReset.sSource:= fbSymbolInfo.SYMNAME;
+fbReset.sType:= fbSymbolInfo.SYMINFO.symDataType;
+
+IF iLogger <> 0 THEN
+	M_Reset:= iLogger.M_Log(fbReset);
 END_IF]]></ST>
       </Implementation>
     </Method>
