@@ -10,6 +10,7 @@ VAR
 	fbTest:				FB_TestSlow;
   	exception:			__SYSTEM.ExceptionCode;	
 	bReset: BOOL;
+	nID: UDINT;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[__TRY
@@ -24,17 +25,20 @@ END_VAR]]></Declaration>
 		fbTcLogger();
 		
 		IF bReset THEN
-			fbLogger.M_Reset();
+			fbTest.P_Event.M_Reset();
 		END_IF
 		
 		fbTest.P_Event.P_Logger:= fbLogger;
 		
 		fbTest();		
+	
+		
 	END_IF
 
 __CATCH(exception)
 
 __ENDTRY
+
 ]]></ST>
     </Implementation>
   </POU>

@@ -165,7 +165,7 @@ VAR
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[fbReset.bActive:= TRUE;
-fbReset.sMessage:= 'Reset';
+fbReset.sMessage:= '###Reset###';
 fbReset.eLogLevel:= E_LogLevel.Error;
 fbReset.nID:= F_Hash(fbReset.sMessage);
 fbReset.nTimestamp:= 0;

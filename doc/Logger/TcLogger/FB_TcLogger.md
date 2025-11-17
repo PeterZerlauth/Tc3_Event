@@ -9,6 +9,7 @@ Provide TwinCAT 3 Eventlogger
 | Name | Type | Description |
 | --- | --- | --- |
 | `eLogLevel` | `E_LogLevel` |  |
+| `eventClass` | `GUID` |  |
 | `fbSourceInfo` | `FB_TcSourceInfo` |  |
 | `nAlarm` | `UINT` | Message count |
 | `bAlarm` | `ARRAY` |  |
@@ -26,6 +27,13 @@ Provide TwinCAT 3 Eventlogger
 
 **Implementation:**
 ```iec
+// 555652537:= F_Hash('###Reset###');
+IF fbMessage.nID = 555652537 THEN
+	// handle reset
+	M_Log:= M_Reset();
+	RETURN;
+END_IF
+
 IF eLogLevel > fbMessage.eLogLevel THEN
 	M_Log:= TRUE;
 	RETURN;
@@ -38,7 +46,7 @@ END_IF
 // Skip if same sMessage already exists
 nIndex := 0;
 WHILE nIndex < nAlarm DO
-    IF aAlarm[nIndex].EqualsToEventEntry(TC_EVENT_CLASSES.Tc3_Event, fbMessage.nID, LogLevel_To_Severity(fbMessage.eLogLevel))  THEN
+    IF aAlarm[nIndex].EqualsToEventEntry(eventClass, fbMessage.nID, LogLevel_To_Severity(fbMessage.eLogLevel))  THEN
 		bAlarm[nIndex]:= TRUE;
         M_Log := TRUE;
         RETURN;
@@ -49,16 +57,16 @@ END_WHILE
 // prepare
 fbSourceInfo.Clear();
 fbSourceInfo.sName:= fbMessage.sSource;
-aAlarm[nAlarm].Create(TC_EVENT_CLASSES.Tc3_Event,  fbMessage.nID, LogLevel_To_Severity(fbMessage.eLogLevel), FALSE, fbSourceInfo);
+aAlarm[nAlarm].Create(eventClass,  fbMessage.nID, LogLevel_To_Severity(fbMessage.eLogLevel), FALSE, fbSourceInfo);
 aAlarm[nAlarm].ipArguments.Clear();
 
 // Split and add arguments
-nPosition := FIND('$R', fbMessage.sArguments);
+nPosition := FIND(fbMessage.sArguments, '$R');
 WHILE nPosition > 0 DO
     sArgument := LEFT(fbMessage.sArguments, nPosition - 1);
     aAlarm[nAlarm].ipArguments.AddString(sArgument);
     fbMessage.sArguments:= RIGHT(fbMessage.sArguments, LEN(fbMessage.sArguments) - (nPosition + 1));
-    nPosition := FIND('$R', fbMessage.sArguments);
+    nPosition := FIND(fbMessage.sArguments, '$R');
 END_WHILE;
 
 // Raise alarm

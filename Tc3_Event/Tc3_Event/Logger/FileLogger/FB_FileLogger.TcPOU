@@ -110,12 +110,12 @@ M_Log := TRUE;
       </Implementation>
     </Method>
     <Method Name="M_Reset" Id="{1042cdfb-b8e1-4ba1-8773-ad018da168fe}">
-      <Declaration><![CDATA[METHOD M_Reset : BOOL
+      <Declaration><![CDATA[METHOD PRIVATE M_Reset : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[M_Reset:= true;]]></ST>
+        <ST><![CDATA[M_Reset:= TRUE;]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_LogLevel" Id="{4a4febf7-9f38-4135-9708-e563fad83f87}">

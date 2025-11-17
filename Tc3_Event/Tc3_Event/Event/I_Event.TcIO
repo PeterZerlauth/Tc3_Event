@@ -24,6 +24,11 @@ VAR_INPUT
 	sMessage:			STRING(255);
 END_VAR]]></Declaration>
     </Method>
+    <Method Name="M_Reset" Id="{0b189a50-27aa-49f7-90f5-20055e5adc34}">
+      <Declaration><![CDATA[METHOD M_Reset : BOOL
+VAR_INPUT
+END_VAR]]></Declaration>
+    </Method>
     <Method Name="M_Verbose" Id="{b412bfba-2470-494c-bd5a-84fb67b788ff}">
       <Declaration><![CDATA[METHOD PUBLIC M_Verbose : BOOL
 VAR_INPUT

@@ -21,10 +21,13 @@ Filter messages, if already existing
 ```iec
 nIndex := 0;
 WHILE nIndex < GVL.nBuffer DO
-    IF GVL.aBuffer[nIndex].sDefault = fbMessage.sDefault THEN
-        GVL.aBuffer[nIndex].bActive := TRUE;
-        F_Filter := TRUE;
-        RETURN;  // Message found
+	// check id first, more performance than a string comparison
+    IF GVL.aBuffer[nIndex].nID = fbMessage.nID THEN
+		IF GVL.aBuffer[nIndex].sSource = fbMessage.sSource THEN
+			GVL.aBuffer[nIndex].bActive := TRUE;
+			F_Filter := TRUE;
+			RETURN;  // Message found
+		END_IF
     END_IF
     nIndex := nIndex + 1;
 END_WHILE

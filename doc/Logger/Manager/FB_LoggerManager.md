@@ -182,12 +182,26 @@ END_IF
 
 **Implementation:**
 ```iec
+fbReset.bActive:= TRUE;
+fbReset.sMessage:= '###Reset###';
+fbReset.eLogLevel:= E_LogLevel.Error;
+fbReset.nID:= F_Hash(fbReset.sMessage);
+fbReset.nTimestamp:= 0;
+fbReset.sArguments:= '';
+fbReset.sDefault:= '';
+fbReset.sSource:= '';
+fbReset.sType:= 'FB_LoggerManager';
+
 nIndex := 0;
+M_Reset:= TRUE;
 WHILE nIndex < nLength DO
-    pList[nIndex].M_Reset();
+    IF pList[nIndex].M_Log(fbReset) THEN
+		;
+	ELSE
+		M_Reset:= FALSE;
+	END_IF
     nIndex := nIndex + 1;
 END_WHILE
-M_Reset:= TRUE;
 ```
 
 ---

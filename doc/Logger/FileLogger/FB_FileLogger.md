@@ -34,38 +34,28 @@ END_IF
 
 nTimestamp:= fbMessage.nTimestamp;
 
-// Remove expired messages (>1 s old)
-nIndex := 0;
-WHILE nIndex < nBuffer DO
-    IF (nTimestamp - aBuffer[nIndex].nTimestamp) > 1_000_000 THEN // 1 s = 1e6 µs
-        MEMMOVE(ADR(aBuffer[nIndex]), ADR(aBuffer[nIndex + 1]), SIZEOF(FB_Message) * (nBuffer - nIndex - 1));
-        nBuffer := nBuffer - 1;
-    ELSE
-        nIndex := nIndex + 1;
-    END_IF
-END_WHILE
-
 // Skip if message already in buffer
 nIndex := 0;
 WHILE nIndex < nBuffer DO
-    IF (aBuffer[nIndex].nID = fbMessage.nID)
-       AND (aBuffer[nIndex].sDefault = fbMessage.sDefault) THEN
-	   aBuffer[nIndex].nTimestamp:= fbMessage.nTimestamp;
-        M_Log := TRUE;
-        RETURN;
+	// check id first, more performance than a string comparison
+    IF aBuffer[nIndex].nID = fbMessage.nID THEN
+		IF aBuffer[nIndex].sSource = fbMessage.sSource THEN
+			aBuffer[nIndex].bActive := TRUE;
+			RETURN;  // Message found
+		END_IF
     END_IF
-	nIndex := nIndex + 1;
+    nIndex := nIndex + 1;
 END_WHILE
+
 
 // Add new message
 IF nBuffer < 99 THEN
     aBuffer[nBuffer] := fbMessage;
-    aBuffer[nBuffer].nTimestamp := nTimestamp;
     nBuffer := nBuffer + 1;
 END_IF
 
 // Format log line
-stTimestamp:= FILETIME64_TO_SYSTEMTIME(nTimestamp);
+stTimestamp:= FILETIME64_TO_SYSTEMTIME(fbMessage.nTimestamp);
 
 // Year
 sLogLine := CONCAT('[', WORD_TO_DECSTR(stTimestamp.wYear, 4));
@@ -98,6 +88,22 @@ fbFile.M_Open(sPathName);
 fbFile.M_Write(ADR(sLogLine), INT_TO_UINT(LEN(sLogLine)));
 fbFile.M_Close();
 
+// Remove expired messages (>1 s old)
+// just once a cycle
+IF nTimestamp <> fbMessage.nTimestamp THEN
+	nTimestamp:= fbMessage.nTimestamp;
+	// Remove outdated messages
+	WHILE nIndex < nBuffer DO
+		IF (nTimestamp - aBuffer[nIndex].nTimestamp) > 1_000_000_000 THEN // 1 s = 1e9 ns
+			// Shift remaining messages down
+			MEMMOVE(ADR(aBuffer[nIndex]), ADR(aBuffer[nIndex + 1]), SIZEOF(FB_Message) * (nBuffer - nIndex - 1));
+			nBuffer := nBuffer - 1;
+		ELSE
+			nIndex := nIndex + 1;
+		END_IF
+	END_WHILE
+END_IF
+
 M_Log := TRUE;
 ```
 
@@ -107,7 +113,7 @@ M_Log := TRUE;
 
 **Implementation:**
 ```iec
-M_Reset:= true;
+M_Reset:= TRUE;
 ```
 
 ---

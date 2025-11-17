@@ -25,6 +25,14 @@ Provide logging
 
 **Implementation:**
 ```iec
+// 555652537:= F_Hash('###Reset###');
+IF fbMessage.nID = 555652537 THEN
+	// handle reset
+	M_Log:= M_Reset();
+	RETURN;
+END_IF
+
+
 IF eLogLevel > fbMessage.eLogLevel THEN
 	M_Log:= TRUE;
 	RETURN;
@@ -37,13 +45,16 @@ END_IF
 // Skip if same sMessage already exists
 nIndex := 0;
 WHILE nIndex < nMessages DO
-    IF aMessages[nIndex].sDefault = fbMessage.sDefault THEN
-		aMessages[nIndex].bActive:= TRUE;
-        M_Log := TRUE;
-        RETURN; // message already in buffer
+    IF aMessages[nIndex].nID = fbMessage.nID THEN
+		IF aMessages[nIndex].sSource = fbMessage.sSource THEN
+			aMessages[nIndex].bActive:= TRUE;
+			M_Log := TRUE;
+			RETURN; // message already in buffer
+		END_IF
     END_IF
     nIndex := nIndex + 1;
 END_WHILE
+
 
 aMessages[nMessages]:= fbMessage;;
 nMessages := nMessages + 1;
@@ -100,7 +111,6 @@ IF nTimestamp < TwinCAT_SystemInfoVarList._TaskInfo[GETCURTASKINDEXEX()].DcTaskT
 		ELSE
 			MEMMOVE(ADR(aMessages[nIndex]), ADR(aMessages[nIndex + 1]), SIZEOF(FB_Message) * (nMessages - nIndex));
 			nMessages := nMessages - 1;
-			RETURN;
 		END_IF
 	END_WHILE
 END_IF

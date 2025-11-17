@@ -42,7 +42,15 @@ END_VAR
 VAR
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF eLogLevel > fbMessage.eLogLevel THEN
+        <ST><![CDATA[// 555652537:= F_Hash('###Reset###');
+IF fbMessage.nID = 555652537 THEN
+	// handle reset
+	M_Log:= M_Reset();
+	RETURN;
+END_IF
+
+
+IF eLogLevel > fbMessage.eLogLevel THEN
 	M_Log:= TRUE;
 	RETURN;
 END_IF
@@ -71,7 +79,7 @@ M_Log := TRUE;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Reset" Id="{0333c356-62c7-4c19-9969-864fabc3465d}">
-      <Declaration><![CDATA[METHOD M_Reset : BOOL
+      <Declaration><![CDATA[METHOD PRIVATE M_Reset : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>

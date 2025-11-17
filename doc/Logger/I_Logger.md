@@ -15,8 +15,4 @@
 | `fbMessage` | `FB_Message` |  |
 
 ---
-### `M_Reset` : `BOOL`
-*No documentation found.*
-
----
 

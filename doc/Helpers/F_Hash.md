@@ -3,7 +3,7 @@
 **Type:** `FUNCTION`
 **Source File:** `Helpers/F_Hash.TcPOU`
 
-Calculate hash value
+Calculate hash value, same as the posershell sript
 
 **Returns:** `UDINT`
 
@@ -19,11 +19,12 @@ Calculate hash value
 
 ## Implementation
 ```iec
-// calculate a hash
-nLength := LEN(sInput);
-FOR nIndex := 1 TO nLength DO
-    nChar := BYTE_TO_UDINT(sInput[nIndex]) - 98;
-    F_Hash := (F_Hash + (nChar * nPowerOfBase) MOD nModulus) MOD nModulus;
-    nPowerOfBase := (nPowerOfBase * nPrime) MOD nModulus;
+nLength:= Len(sInput);
+FOR nIndex := 0 TO nLength DO
+	nValue := sInput[nIndex];
+    nHash := (nHash + (nValue * nPow MOD nModulo)) MOD nModulo;
+    nPow := (nPow * nPower) MOD nModulo;
 END_FOR
+
+F_Hash:= Ulint_to_Udint(nHash);
 ```

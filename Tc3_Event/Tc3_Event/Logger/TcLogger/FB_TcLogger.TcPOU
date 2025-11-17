@@ -5,6 +5,7 @@
 FUNCTION_BLOCK FB_TcLogger IMPLEMENTS I_Logger
 VAR
 	eLogLevel:				E_LogLevel:= E_LogLevel.Info;
+	eventClass:				GUID:= TC_EVENT_CLASSES.Tc3_Event;
 	fbSourceInfo:			FB_TcSourceInfo;
 	aAlarm:					ARRAY[0..99] OF FB_TcAlarm; 	// Message store
     nAlarm:					UINT;                     		// Message count
@@ -57,7 +58,14 @@ VAR
 	nPosition: 			INT;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF eLogLevel > fbMessage.eLogLevel THEN
+        <ST><![CDATA[// 555652537:= F_Hash('###Reset###');
+IF fbMessage.nID = 555652537 THEN
+	// handle reset
+	M_Log:= M_Reset();
+	RETURN;
+END_IF
+
+IF eLogLevel > fbMessage.eLogLevel THEN
 	M_Log:= TRUE;
 	RETURN;
 END_IF
@@ -69,7 +77,7 @@ END_IF
 // Skip if same sMessage already exists
 nIndex := 0;
 WHILE nIndex < nAlarm DO
-    IF aAlarm[nIndex].EqualsToEventEntry(TC_EVENT_CLASSES.Tc3_Event, fbMessage.nID, LogLevel_To_Severity(fbMessage.eLogLevel))  THEN
+    IF aAlarm[nIndex].EqualsToEventEntry(eventClass, fbMessage.nID, LogLevel_To_Severity(fbMessage.eLogLevel))  THEN
 		bAlarm[nIndex]:= TRUE;
         M_Log := TRUE;
         RETURN;
@@ -80,7 +88,7 @@ END_WHILE
 // prepare
 fbSourceInfo.Clear();
 fbSourceInfo.sName:= fbMessage.sSource;
-aAlarm[nAlarm].Create(TC_EVENT_CLASSES.Tc3_Event,  fbMessage.nID, LogLevel_To_Severity(fbMessage.eLogLevel), FALSE, fbSourceInfo);
+aAlarm[nAlarm].Create(eventClass,  fbMessage.nID, LogLevel_To_Severity(fbMessage.eLogLevel), FALSE, fbSourceInfo);
 aAlarm[nAlarm].ipArguments.Clear();
 
 // Split and add arguments
@@ -100,7 +108,7 @@ M_Log := TRUE;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Reset" Id="{49b80e31-c5f7-4f9f-b087-49844ffe0726}">
-      <Declaration><![CDATA[METHOD M_Reset : BOOL
+      <Declaration><![CDATA[METHOD PRIVATE M_Reset : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>

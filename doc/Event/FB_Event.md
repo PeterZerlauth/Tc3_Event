@@ -51,7 +51,11 @@ END_IF
 fbCritical.bActive:= TRUE;
 fbCritical.sMessage:= sMessage;
 fbCritical.eLogLevel:= E_LogLevel.Critical;
-fbCritical.nID:= nID;
+IF nID = 0 THEN
+	fbCritical.nID:= F_Hash(sMessage);
+ELSE
+	fbCritical.nID:= nID;
+END_IF
 fbCritical.nTimestamp:= SYSTEMTIME_TO_FILETIME64(fbSystemTime.systemTime);
 fbCritical.sArguments:= fbArguments.P_Value;
 fbCritical.sDefault:= F_Print(sMessage, fbArguments.P_Value);
@@ -85,7 +89,11 @@ END_IF
 fbError.bActive:= TRUE;
 fbError.sMessage:= sMessage;
 fbError.eLogLevel:= E_LogLevel.Error;
-fbError.nID:= nID;
+IF nID = 0 THEN
+	fbError.nID:= F_Hash(sMessage);
+ELSE
+	fbError.nID:= nID;
+END_IF
 fbError.nTimestamp:= SYSTEMTIME_TO_FILETIME64(fbSystemTime.systemTime);
 fbError.sArguments:= fbArguments.P_Value;
 fbError.sDefault:= F_Print(sMessage, fbArguments.P_Value);
@@ -119,7 +127,11 @@ END_IF
 fbInfo.bActive:= TRUE;
 fbInfo.sMessage:= sMessage;
 fbInfo.eLogLevel:= E_LogLevel.Info;
-fbInfo.nID:= nID;
+IF nID = 0 THEN
+	fbInfo.nID:= F_Hash(sMessage);
+ELSE
+	fbInfo.nID:= nID;
+END_IF
 fbInfo.nTimestamp:= SYSTEMTIME_TO_FILETIME64(fbSystemTime.systemTime);
 fbInfo.sArguments:= fbArguments.P_Value;
 fbInfo.sDefault:= F_Print(sMessage, fbArguments.P_Value);
@@ -141,8 +153,18 @@ fbArguments.M_Clear();
 
 **Implementation:**
 ```iec
+fbReset.bActive:= TRUE;
+fbReset.sMessage:= '###Reset###';
+fbReset.eLogLevel:= E_LogLevel.Error;
+fbReset.nID:= F_Hash(fbReset.sMessage);
+fbReset.nTimestamp:= 0;
+fbReset.sArguments:= '';
+fbReset.sDefault:= '';
+fbReset.sSource:= fbSymbolInfo.SYMNAME;
+fbReset.sType:= fbSymbolInfo.SYMINFO.symDataType;
+
 IF iLogger <> 0 THEN
-	M_Reset:= iLogger.M_Reset();
+	M_Reset:= iLogger.M_Log(fbReset);
 END_IF
 ```
 
@@ -163,7 +185,7 @@ END_IF
 fbVerbose.bActive:= TRUE;
 fbVerbose.sMessage:= sMessage;
 fbVerbose.eLogLevel:= E_LogLevel.Verbose;
-fbVerbose.nID:= 0;
+fbVerbose.nID:= F_Hash(sMessage);
 fbVerbose.nTimestamp:= SYSTEMTIME_TO_FILETIME64(fbSystemTime.systemTime);
 fbVerbose.sArguments:= fbArguments.P_Value;
 fbVerbose.sDefault:= F_Print(sMessage, fbArguments.P_Value);
@@ -196,7 +218,11 @@ END_IF
 fbWarning.bActive:= TRUE;
 fbWarning.sMessage:= sMessage;
 fbWarning.eLogLevel:= E_LogLevel.Warning;
-fbWarning.nID:= nID;
+IF nID = 0 THEN
+	fbWarning.nID:= F_Hash(sMessage);
+ELSE
+	fbWarning.nID:= nID;
+END_IF
 fbWarning.nTimestamp:= SYSTEMTIME_TO_FILETIME64(fbSystemTime.systemTime);
 fbWarning.sArguments:= fbArguments.P_Value;
 fbWarning.sDefault:= F_Print(sMessage, fbArguments.P_Value);
