@@ -28,6 +28,12 @@ and lays the foundation for reliable file logging.
 
 ---
 
+## Documentation
+
+You can find all project documentation, examples, and usage instructions in the [Documentation folder](https://github.com/PeterZerlauth/Tc3_Event/tree/master/doc) of this repository.
+
+---
+
 ## 🚀 Future Roadmap (In Development)
 
 * **Reliable File Logging:** Capturing system events to persistent log files for long-term analysis.
