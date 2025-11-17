@@ -8,9 +8,9 @@ VAR
 	fbFileLogger:		Tc3_Event.FB_FileLogger;
 	fbTcLogger:			Tc3_Event.FB_TcLogger;
 	fbTest:				FB_TestSlow;
+	fbTest1000:			FB_Test1000;
   	exception:			__SYSTEM.ExceptionCode;	
 	bReset: BOOL;
-	nID: UDINT;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[__TRY
@@ -22,7 +22,9 @@ END_VAR]]></Declaration>
 		fbHmiLogger();
 		fbFileLogger.sPathName:= 'C:\temp\log.txt';
 		fbFileLogger();
+		fbTcLogger.P_EventClass:= TC_EVENT_CLASSES.Tc3_Event;
 		fbTcLogger();
+		
 		
 		IF bReset THEN
 			fbTest.P_Event.M_Reset();
@@ -30,8 +32,10 @@ END_VAR]]></Declaration>
 		
 		fbTest.P_Event.P_Logger:= fbLogger;
 		
-		fbTest();		
-	
+		fbTest();	
+		
+		fbTest1000.P_Event.P_Logger:= fbLogger;
+// 		fbTest1000();
 		
 	END_IF
 

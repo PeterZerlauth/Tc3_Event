@@ -5,7 +5,7 @@
 FUNCTION_BLOCK FB_TcLogger IMPLEMENTS I_Logger
 VAR
 	eLogLevel:				E_LogLevel:= E_LogLevel.Info;
-	eventClass:				GUID:= TC_EVENT_CLASSES.Tc3_Event;
+	eventClass:				GUID;
 	fbSourceInfo:			FB_TcSourceInfo;
 	aAlarm:					ARRAY[0..99] OF FB_TcAlarm; 	// Message store
     nAlarm:					UINT;                     		// Message count
@@ -123,6 +123,25 @@ END_WHILE
 M_Reset:= TRUE;]]></ST>
       </Implementation>
     </Method>
+    <Property Name="P_EventClass" Id="{94d20d2c-ce12-4945-b1ea-fbee1216358f}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_EventClass : GUID]]></Declaration>
+      <Get Name="Get" Id="{bffa8c8e-1ead-4f51-9f17-d09495426456}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[P_EventClass:= eventClass;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{703b8aa0-cf49-429a-8e15-955483b39b77}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[eventClass:= P_EventClass;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
     <Property Name="P_LogLevel" Id="{f86a40a0-98fd-40f4-a32f-52729e621278}">
       <Declaration><![CDATA[{attribute 'OPC.UA.DA.Property' := '1'}
 {attribute 'monitoring' := 'variable'}

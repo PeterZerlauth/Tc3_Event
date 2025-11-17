@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_Test1000" Id="{10fc8182-56aa-4c15-8394-db1fa4a2f8e5}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Test1000
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	fbEvent: 			Tc3_Event.FB_Event;
+	bVerbose:			BOOL;
+	bInfo:				BOOL;
+	bWarning:			BOOL;
+	bError:				BOOL;
+	bCritical:			BOOL;
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbEvent.M_Error(370812086, 'sensor valve calibration timeout');
+fbEvent.M_Error(558332778, 'thread motor stack interrupt');
+fbEvent.M_Error(633728672, 'controller buffer checksum driver');
+fbEvent.M_Error(929521634, 'encoder axis firmware pointer');
+fbEvent.M_Error(28727532, 'diagnostic actuator heartbeat module');
+fbEvent.M_Error(266230397, 'voltage limit retry packet');
+fbEvent.M_Error(986691915, 'pressure frame system address');
+fbEvent.M_Error(637878685, 'memory overflow bus logic');
+fbEvent.M_Error(630355306, 'temperature cycle driver lock');
+fbEvent.M_Error(872908747, 'safety register update kernel');
+fbEvent.M_Error(158219915, 'task segment heap offset');
+fbEvent.M_Error(16160503, 'interrupt actuator controller reference');
+fbEvent.M_Error(278934838, 'signal stack ramp calibration');
+fbEvent.M_Error(501600596, 'overflow thread firmware limit');
+fbEvent.M_Error(654680498, 'bus valve checksum driver');
+fbEvent.M_Error(692387387, 'pointer state diagnostic module');
+fbEvent.M_Error(874905154, 'lock frequency heartbeat logic');
+fbEvent.M_Error(432604224, 'module encoder actuator firmware');
+fbEvent.M_Error(784470659, 'sensor driver heap offset');
+fbEvent.M_Error(830380732, 'stack memory interrupt cycle');
+fbEvent.M_Error(577324398, 'ramp valve safety controller');
+fbEvent.M_Error(422762597, 'calibration frame thread packet');
+fbEvent.M_Error(348735929, 'timeout signal update register');
+fbEvent.M_Error(200931548, 'checksum axis kernel logic');
+fbEvent.M_Error(931743797, 'overflow bus motor diagnostic');
+fbEvent.M_Error(216002296, 'state firmware heartbeat actuator');
+fbEvent.M_Error(657120879, 'segment pointer controller interrupt');
+fbEvent.M_Error(237487728, 'limit stack frame driver');
+fbEvent.M_Error(355893677, 'voltage module safety offset');
+fbEvent.M_Error(711832086, 'frequency actuator bus calibration');
+fbEvent.M_Error(353083372, 'thread encoder diagnostic pointer');
+fbEvent.M_Error(861893410, 'system heartbeat stack register');
+fbEvent.M_Error(861160475, 'interrupt ramp module driver');
+fbEvent.M_Error(780525994, 'kernel firmware lock checksum');
+fbEvent.M_Error(996925078, 'task bus actuator logic');
+fbEvent.M_Error(794302768, 'controller segment calibration voltage');
+fbEvent.M_Error(886637610, 'update pointer motor stack');
+fbEvent.M_Error(697355366, 'sensor thread safety module');
+fbEvent.M_Error(249934230, 'limit diagnostic firmware heap');
+fbEvent.M_Error(892784415, 'overflow actuator bus heartbeat');
+fbEvent.M_Error(501252434, 'checksum stack driver pointer');
+fbEvent.M_Error(547217167, 'voltage frame interrupt kernel');
+fbEvent.M_Error(871473160, 'packet ramp module safety');
+fbEvent.M_Error(827384662, 'encoder logic thread register');
+fbEvent.M_Error(376286704, 'task actuator memory diagnostic');
+fbEvent.M_Error(772553840, 'stack heartbeat pointer calibration');
+fbEvent.M_Error(740983660, 'driver frame module limit');
+fbEvent.M_Error(309317926, 'sensor system checksum actuator');
+fbEvent.M_Error(242586769, 'bus stack firmware interrupt');
+fbEvent.M_Error(576295605, 'heap motor controller signal');
+fbEvent.M_Error(23312529, 'offset thread actuator diagnostic');
+fbEvent.M_Error(29278741, 'lock voltage segment heartbeat');
+fbEvent.M_Error(363481784, 'ramp memory pointer module');
+fbEvent.M_Error(321670183, 'encoder bus task firmware');
+fbEvent.M_Error(337678481, 'diagnostic actuator kernel stack');
+fbEvent.M_Error(55631998, 'controller update thread sensor');
+fbEvent.M_Error(382427954, 'frame pointer voltage limit');
+fbEvent.M_Error(16130800, 'safety interrupt bus calibration');
+fbEvent.M_Error(615954434, 'checksum segment actuator driver');
+fbEvent.M_Error(420303512, 'module heartbeat stack firmware');
+fbEvent.M_Error(55300621, 'thread memory diagnostic pointer');
+fbEvent.M_Error(500299279, 'kernel actuator ramp driver');
+fbEvent.M_Error(902920150, 'sensor voltage stack checksum');
+fbEvent.M_Error(328785953, 'controller limit bus firmware');
+fbEvent.M_Error(124996884, 'task pointer motor calibration');
+fbEvent.M_Error(926103071, 'stack actuator diagnostic heartbeat');
+fbEvent.M_Error(676832020, 'driver firmware interrupt module');
+fbEvent.M_Error(857549273, 'heap segment pointer encoder');
+fbEvent.M_Error(197920126, 'update sensor actuator logic');
+fbEvent.M_Error(407661606, 'module stack thread calibration');
+fbEvent.M_Error(835318212, 'bus heartbeat driver segment');
+fbEvent.M_Error(847086279, 'actuator pointer firmware checksum');
+fbEvent.M_Error(118298693, 'controller ramp stack module');
+fbEvent.M_Error(941017660, 'signal thread memory diagnostic');
+fbEvent.M_Error(501699769, 'interrupt actuator bus firmware');
+fbEvent.M_Error(921341538, 'sensor heap pointer limit');
+fbEvent.M_Error(248159770, 'task voltage calibration stack');
+fbEvent.M_Error(200916118, 'checksum module driver actuator');
+fbEvent.M_Error(50143645, 'heap thread ramp kernel');
+fbEvent.M_Error(489977613, 'controller stack sensor firmware');
+fbEvent.M_Error(187958773, 'frame diagnostic actuator pointer');
+fbEvent.M_Error(337189298, 'bus firmware interrupt task');
+fbEvent.M_Error(300489375, 'motor actuator segment heap');
+fbEvent.M_Error(282107066, 'pointer stack driver calibration');
+fbEvent.M_Error(479823138, 'thread module heartbeat sensor');
+fbEvent.M_Error(306579411, 'kernel actuator bus voltage');
+fbEvent.M_Error(666679488, 'checksum pointer stack firmware');
+fbEvent.M_Error(520051735, 'diagnostic actuator ramp driver');
+fbEvent.M_Error(759621472, 'segment heap thread module');
+fbEvent.M_Error(388147844, 'bus sensor firmware pointer');
+fbEvent.M_Error(472512677, 'voltage actuator diagnostic stack');
+fbEvent.M_Error(404057693, 'controller module heartbeat pointer');
+fbEvent.M_Error(404999304, 'lock actuator bus thread');
+fbEvent.M_Error(622860685, 'checksum driver segment firmware');
+fbEvent.M_Error(962125775, 'heap pointer actuator module');
+fbEvent.M_Error(358415303, 'thread firmware bus diagnostic');
+fbEvent.M_Error(452162457, 'sensor stack ramp actuator');
+fbEvent.M_Error(881123846, 'module pointer heartbeat driver');
+fbEvent.M_Error(872559141, 'controller firmware actuator task');
+fbEvent.M_Error(796739922, 'segment bus pointer diagnostic');
+fbEvent.M_Error(809749904, 'stack actuator thread firmware');
+fbEvent.M_Error(639820418, 'driver module bus calibration');
+fbEvent.M_Error(254841642, 'heap sensor pointer actuator');
+fbEvent.M_Error(678303871, 'thread firmware module driver');
+fbEvent.M_Error(468481600, 'controller diagnostic actuator stack');
+fbEvent.M_Error(700449313, 'bus segment pointer firmware');
+fbEvent.M_Error(197989902, 'actuator thread heap driver');
+fbEvent.M_Error(998297800, 'sensor module firmware pointer');
+fbEvent.M_Error(591511353, 'stack diagnostic actuator thread');
+fbEvent.M_Error(339947909, 'driver bus pointer module');
+fbEvent.M_Error(778892556, 'heap actuator thread firmware');
+fbEvent.M_Error(136846198, 'module sensor pointer actuator');
+fbEvent.M_Error(961035730, 'controller stack firmware thread');
+fbEvent.M_Error(865170461, 'segment actuator driver heap');
+fbEvent.M_Error(933074454, 'pointer module thread firmware');
+fbEvent.M_Error(477135830, 'actuator stack sensor driver');
+fbEvent.M_Error(94464907, 'thread module actuator pointer');
+fbEvent.M_Error(463410925, 'firmware heap driver module');
+fbEvent.M_Error(452490275, 'bus pointer thread actuator');
+fbEvent.M_Error(777779758, 'sensor actuator module firmware');
+fbEvent.M_Error(893830772, 'heap driver thread stack');
+fbEvent.M_Error(631611239, 'module actuator bus pointer');
+fbEvent.M_Error(259581970, 'controller thread firmware stack');
+fbEvent.M_Error(474486365, 'actuator segment pointer driver');
+fbEvent.M_Error(863623260, 'thread firmware bus module');
+fbEvent.M_Error(133049907, 'sensor actuator heap pointer');
+fbEvent.M_Error(194918386, 'stack module actuator thread');
+fbEvent.M_Error(816201946, 'driver firmware pointer actuator');
+fbEvent.M_Error(290247548, 'module stack actuator sensor');
+fbEvent.M_Error(25755573, 'thread pointer actuator firmware');
+fbEvent.M_Error(337863343, 'actuator module stack driver');
+fbEvent.M_Error(283444959, 'heap thread actuator module');
+fbEvent.M_Error(76202988, 'bus driver pointer firmware');
+fbEvent.M_Error(647971184, 'sensor actuator stack module');
+fbEvent.M_Error(837040779, 'thread firmware pointer actuator');
+fbEvent.M_Error(736271796, 'module actuator heap driver');
+fbEvent.M_Error(891531744, 'stack sensor actuator thread');
+fbEvent.M_Error(979701770, 'driver module firmware pointer');
+fbEvent.M_Error(538072235, 'actuator bus thread heap');
+fbEvent.M_Error(304294395, 'module pointer actuator sensor');
+fbEvent.M_Error(690540386, 'firmware thread driver actuator');
+fbEvent.M_Error(987934504, 'heap actuator stack module');
+fbEvent.M_Error(528572607, 'pointer sensor actuator bus');
+fbEvent.M_Error(697328175, 'thread module actuator firmware');
+fbEvent.M_Error(102002305, 'actuator heap bus driver');
+fbEvent.M_Error(473867458, 'stack firmware module actuator');
+fbEvent.M_Error(761622421, 'driver thread actuator pointer');
+fbEvent.M_Error(958296786, 'module actuator bus firmware');
+fbEvent.M_Error(210963189, 'heap pointer actuator thread');
+fbEvent.M_Error(51399738, 'sensor module actuator stack');
+fbEvent.M_Error(29992535, 'thread actuator firmware pointer');
+fbEvent.M_Error(53732801, 'bus actuator stack module');
+fbEvent.M_Error(628290301, 'actuator pointer heap driver');
+fbEvent.M_Error(833809804, 'module stack firmware actuator');
+fbEvent.M_Error(540859977, 'thread actuator bus pointer');
+fbEvent.M_Error(237116242, 'heap actuator module firmware');
+fbEvent.M_Error(47386390, 'stack driver actuator thread');
+fbEvent.M_Error(128823355, 'module actuator pointer firmware');
+fbEvent.M_Error(950745785, 'thread actuator heap bus');
+fbEvent.M_Error(506760602, 'actuator firmware stack pointer');
+fbEvent.M_Error(167680888, 'heap module actuator thread');
+fbEvent.M_Error(335171911, 'bus thread actuator firmware');
+fbEvent.M_Error(269922583, 'pointer actuator module stack');
+fbEvent.M_Error(457090056, 'thread actuator driver heap');
+fbEvent.M_Error(526266304, 'actuator stack module pointer');
+fbEvent.M_Error(457484262, 'module actuator firmware bus');
+fbEvent.M_Error(655262105, 'heap actuator pointer stack');
+fbEvent.M_Error(679044067, 'thread actuator module driver');
+fbEvent.M_Error(261119645, 'actuator stack firmware bus');
+fbEvent.M_Error(79561101, 'module actuator pointer thread');
+fbEvent.M_Error(991116572, 'heap actuator stack firmware');
+fbEvent.M_Error(482896808, 'bus module actuator pointer');
+fbEvent.M_Error(694377220, 'thread actuator firmware heap');
+fbEvent.M_Error(694068727, 'actuator stack driver module');
+fbEvent.M_Error(116506835, 'module pointer actuator firmware');
+fbEvent.M_Error(959576498, 'heap actuator thread stack');
+fbEvent.M_Error(531516646, 'stack actuator module pointer');
+fbEvent.M_Error(165221839, 'thread actuator firmware module');
+fbEvent.M_Error(774652654, 'actuator heap bus stack');
+fbEvent.M_Error(86290825, 'pointer actuator module firmware');
+fbEvent.M_Error(760247533, 'thread actuator stack heap');
+fbEvent.M_Error(715471347, 'actuator module firmware pointer');
+fbEvent.M_Error(129269410, 'heap thread actuator bus');
+fbEvent.M_Error(697819932, 'stack actuator pointer module');
+fbEvent.M_Error(313409103, 'module actuator heap firmware');
+fbEvent.M_Error(221703851, 'thread actuator pointer stack');
+fbEvent.M_Error(758776124, 'actuator stack module firmware');
+fbEvent.M_Error(691527425, 'heap actuator thread pointer');
+fbEvent.M_Error(882123900, 'bus actuator firmware stack');
+fbEvent.M_Error(954830422, 'pointer module actuator heap');
+fbEvent.M_Error(6465034, 'thread actuator stack firmware');
+fbEvent.M_Error(314961714, 'actuator heap module pointer');
+fbEvent.M_Error(378812221, 'stack actuator firmware thread');
+fbEvent.M_Error(44738678, 'module pointer actuator heap');
+fbEvent.M_Error(144173985, 'thread actuator firmware stack');
+fbEvent.M_Error(820771522, 'actuator module heap pointer');
+fbEvent.M_Error(991116572, 'heap actuator stack firmware');
+fbEvent.M_Error(330380821, 'thread actuator pointer module');
+fbEvent.M_Error(878847349, 'actuator stack heap firmware');
+fbEvent.M_Error(79561101, 'module actuator pointer thread');
+fbEvent.M_Error(987934504, 'heap actuator stack module');
+fbEvent.M_Error(29992535, 'thread actuator firmware pointer');
+fbEvent.M_Error(445726336, 'actuator module stack heap');
+fbEvent.M_Error(122133757, 'stack actuator firmware pointer');
+fbEvent.M_Error(669974772, 'thread actuator module heap');
+fbEvent.M_Error(820472708, 'actuator heap pointer stack');
+fbEvent.M_Error(234925247, 'module actuator firmware stack');
+fbEvent.M_Error(966303945, 'thread actuator pointer heap');
+fbEvent.M_Error(417800184, 'heap actuator module stack');
+fbEvent.M_Error(879108887, 'stack actuator pointer firmware');
+fbEvent.M_Error(526722250, 'module actuator heap thread');
+fbEvent.M_Error(144173985, 'thread actuator firmware stack');
+fbEvent.M_Error(626119748, 'actuator pointer heap module');
+fbEvent.M_Error(778892556, 'heap actuator thread firmware');
+fbEvent.M_Error(69822199, 'stack module actuator pointer');
+fbEvent.M_Error(222657841, 'thread actuator heap firmware');
+fbEvent.M_Error(907182663, 'actuator module pointer stack');
+]]></ST>
+    </Implementation>
+    <Property Name="P_Event" Id="{c9963adf-3970-4f81-9f65-c4cce93fef12}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_Event : reference to FB_event]]></Declaration>
+      <Get Name="Get" Id="{164e6f1a-62a7-4f2e-8ee2-e70cbc651471}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[P_Event ref= fbEvent;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>

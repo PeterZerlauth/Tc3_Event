@@ -1,11 +1,200 @@
 ﻿[
     {
-        "id":  475719253,
-        "key":  "W message",
-        "level":  "Warning",
+        "id":  242586769,
+        "key":  "bus stack firmware interrupt",
+        "level":  "Error",
         "locale":  {
                        "de":  "",
-                       "en":  "W message"
+                       "en":  "bus stack firmware interrupt"
+                   }
+    },
+    {
+        "id":  165221839,
+        "key":  "thread actuator firmware module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator firmware module"
+                   }
+    },
+    {
+        "id":  457090056,
+        "key":  "thread actuator driver heap",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator driver heap"
+                   }
+    },
+    {
+        "id":  872908747,
+        "key":  "safety register update kernel",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "safety register update kernel"
+                   }
+    },
+    {
+        "id":  197989902,
+        "key":  "actuator thread heap driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator thread heap driver"
+                   }
+    },
+    {
+        "id":  715471347,
+        "key":  "actuator module firmware pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator module firmware pointer"
+                   }
+    },
+    {
+        "id":  697819932,
+        "key":  "stack actuator pointer module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack actuator pointer module"
+                   }
+    },
+    {
+        "id":  16160503,
+        "key":  "interrupt actuator controller reference",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "interrupt actuator controller reference"
+                   }
+    },
+    {
+        "id":  221703851,
+        "key":  "thread actuator pointer stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator pointer stack"
+                   }
+    },
+    {
+        "id":  531516646,
+        "key":  "stack actuator module pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack actuator module pointer"
+                   }
+    },
+    {
+        "id":  902920150,
+        "key":  "sensor voltage stack checksum",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "sensor voltage stack checksum"
+                   }
+    },
+    {
+        "id":  874905154,
+        "key":  "lock frequency heartbeat logic",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "lock frequency heartbeat logic"
+                   }
+    },
+    {
+        "id":  463410925,
+        "key":  "firmware heap driver module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "firmware heap driver module"
+                   }
+    },
+    {
+        "id":  961035730,
+        "key":  "controller stack firmware thread",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "controller stack firmware thread"
+                   }
+    },
+    {
+        "id":  820771522,
+        "key":  "actuator module heap pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator module heap pointer"
+                   }
+    },
+    {
+        "id":  102002305,
+        "key":  "actuator heap bus driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator heap bus driver"
+                   }
+    },
+    {
+        "id":  863623260,
+        "key":  "thread firmware bus module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread firmware bus module"
+                   }
+    },
+    {
+        "id":  468481600,
+        "key":  "controller diagnostic actuator stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "controller diagnostic actuator stack"
+                   }
+    },
+    {
+        "id":  654680498,
+        "key":  "bus valve checksum driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "bus valve checksum driver"
+                   }
+    },
+    {
+        "id":  313409103,
+        "key":  "module actuator heap firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module actuator heap firmware"
+                   }
+    },
+    {
+        "id":  631611239,
+        "key":  "module actuator bus pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module actuator bus pointer"
+                   }
+    },
+    {
+        "id":  630355306,
+        "key":  "temperature cycle driver lock",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "temperature cycle driver lock"
                    }
     },
     {
@@ -18,12 +207,1182 @@
                    }
     },
     {
-        "id":  475719235,
-        "key":  "E message",
+        "id":  893830772,
+        "key":  "heap driver thread stack",
         "level":  "Error",
         "locale":  {
                        "de":  "",
-                       "en":  "E message"
+                       "en":  "heap driver thread stack"
+                   }
+    },
+    {
+        "id":  778892556,
+        "key":  "heap actuator thread firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap actuator thread firmware"
+                   }
+    },
+    {
+        "id":  772553840,
+        "key":  "stack heartbeat pointer calibration",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack heartbeat pointer calibration"
+                   }
+    },
+    {
+        "id":  921341538,
+        "key":  "sensor heap pointer limit",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "sensor heap pointer limit"
+                   }
+    },
+    {
+        "id":  330380821,
+        "key":  "thread actuator pointer module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator pointer module"
+                   }
+    },
+    {
+        "id":  474486365,
+        "key":  "actuator segment pointer driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator segment pointer driver"
+                   }
+    },
+    {
+        "id":  758776124,
+        "key":  "actuator stack module firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator stack module firmware"
+                   }
+    },
+    {
+        "id":  987934504,
+        "key":  "heap actuator stack module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap actuator stack module"
+                   }
+    },
+    {
+        "id":  452490275,
+        "key":  "bus pointer thread actuator",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "bus pointer thread actuator"
+                   }
+    },
+    {
+        "id":  830380732,
+        "key":  "stack memory interrupt cycle",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack memory interrupt cycle"
+                   }
+    },
+    {
+        "id":  16130800,
+        "key":  "safety interrupt bus calibration",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "safety interrupt bus calibration"
+                   }
+    },
+    {
+        "id":  29992535,
+        "key":  "thread actuator firmware pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator firmware pointer"
+                   }
+    },
+    {
+        "id":  304294395,
+        "key":  "module pointer actuator sensor",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module pointer actuator sensor"
+                   }
+    },
+    {
+        "id":  133049907,
+        "key":  "sensor actuator heap pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "sensor actuator heap pointer"
+                   }
+    },
+    {
+        "id":  538072235,
+        "key":  "actuator bus thread heap",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator bus thread heap"
+                   }
+    },
+    {
+        "id":  69822199,
+        "key":  "stack module actuator pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack module actuator pointer"
+                   }
+    },
+    {
+        "id":  669974772,
+        "key":  "thread actuator module heap",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator module heap"
+                   }
+    },
+    {
+        "id":  23312529,
+        "key":  "offset thread actuator diagnostic",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "offset thread actuator diagnostic"
+                   }
+    },
+    {
+        "id":  547217167,
+        "key":  "voltage frame interrupt kernel",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "voltage frame interrupt kernel"
+                   }
+    },
+    {
+        "id":  622860685,
+        "key":  "checksum driver segment firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "checksum driver segment firmware"
+                   }
+    },
+    {
+        "id":  761622421,
+        "key":  "driver thread actuator pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "driver thread actuator pointer"
+                   }
+    },
+    {
+        "id":  986691915,
+        "key":  "pressure frame system address",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "pressure frame system address"
+                   }
+    },
+    {
+        "id":  835318212,
+        "key":  "bus heartbeat driver segment",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "bus heartbeat driver segment"
+                   }
+    },
+    {
+        "id":  457484262,
+        "key":  "module actuator firmware bus",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module actuator firmware bus"
+                   }
+    },
+    {
+        "id":  991116572,
+        "key":  "heap actuator stack firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap actuator stack firmware"
+                   }
+    },
+    {
+        "id":  958296786,
+        "key":  "module actuator bus firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module actuator bus firmware"
+                   }
+    },
+    {
+        "id":  216002296,
+        "key":  "state firmware heartbeat actuator",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "state firmware heartbeat actuator"
+                   }
+    },
+    {
+        "id":  777779758,
+        "key":  "sensor actuator module firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "sensor actuator module firmware"
+                   }
+    },
+    {
+        "id":  655262105,
+        "key":  "heap actuator pointer stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap actuator pointer stack"
+                   }
+    },
+    {
+        "id":  657120879,
+        "key":  "segment pointer controller interrupt",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "segment pointer controller interrupt"
+                   }
+    },
+    {
+        "id":  692387387,
+        "key":  "pointer state diagnostic module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "pointer state diagnostic module"
+                   }
+    },
+    {
+        "id":  348735929,
+        "key":  "timeout signal update register",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "timeout signal update register"
+                   }
+    },
+    {
+        "id":  335171911,
+        "key":  "bus thread actuator firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "bus thread actuator firmware"
+                   }
+    },
+    {
+        "id":  128823355,
+        "key":  "module actuator pointer firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module actuator pointer firmware"
+                   }
+    },
+    {
+        "id":  76202988,
+        "key":  "bus driver pointer firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "bus driver pointer firmware"
+                   }
+    },
+    {
+        "id":  809749904,
+        "key":  "stack actuator thread firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack actuator thread firmware"
+                   }
+    },
+    {
+        "id":  210963189,
+        "key":  "heap pointer actuator thread",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap pointer actuator thread"
+                   }
+    },
+    {
+        "id":  432604224,
+        "key":  "module encoder actuator firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module encoder actuator firmware"
+                   }
+    },
+    {
+        "id":  300489375,
+        "key":  "motor actuator segment heap",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "motor actuator segment heap"
+                   }
+    },
+    {
+        "id":  891531744,
+        "key":  "stack sensor actuator thread",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack sensor actuator thread"
+                   }
+    },
+    {
+        "id":  639820418,
+        "key":  "driver module bus calibration",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "driver module bus calibration"
+                   }
+    },
+    {
+        "id":  29278741,
+        "key":  "lock voltage segment heartbeat",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "lock voltage segment heartbeat"
+                   }
+    },
+    {
+        "id":  472512677,
+        "key":  "voltage actuator diagnostic stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "voltage actuator diagnostic stack"
+                   }
+    },
+    {
+        "id":  94464907,
+        "key":  "thread module actuator pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread module actuator pointer"
+                   }
+    },
+    {
+        "id":  926103071,
+        "key":  "stack actuator diagnostic heartbeat",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack actuator diagnostic heartbeat"
+                   }
+    },
+    {
+        "id":  129269410,
+        "key":  "heap thread actuator bus",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap thread actuator bus"
+                   }
+    },
+    {
+        "id":  358415303,
+        "key":  "thread firmware bus diagnostic",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread firmware bus diagnostic"
+                   }
+    },
+    {
+        "id":  309317926,
+        "key":  "sensor system checksum actuator",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "sensor system checksum actuator"
+                   }
+    },
+    {
+        "id":  489977613,
+        "key":  "controller stack sensor firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "controller stack sensor firmware"
+                   }
+    },
+    {
+        "id":  816201946,
+        "key":  "driver firmware pointer actuator",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "driver firmware pointer actuator"
+                   }
+    },
+    {
+        "id":  626119748,
+        "key":  "actuator pointer heap module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator pointer heap module"
+                   }
+    },
+    {
+        "id":  6465034,
+        "key":  "thread actuator stack firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator stack firmware"
+                   }
+    },
+    {
+        "id":  865170461,
+        "key":  "segment actuator driver heap",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "segment actuator driver heap"
+                   }
+    },
+    {
+        "id":  53732801,
+        "key":  "bus actuator stack module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "bus actuator stack module"
+                   }
+    },
+    {
+        "id":  694377220,
+        "key":  "thread actuator firmware heap",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator firmware heap"
+                   }
+    },
+    {
+        "id":  388147844,
+        "key":  "bus sensor firmware pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "bus sensor firmware pointer"
+                   }
+    },
+    {
+        "id":  118298693,
+        "key":  "controller ramp stack module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "controller ramp stack module"
+                   }
+    },
+    {
+        "id":  591511353,
+        "key":  "stack diagnostic actuator thread",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack diagnostic actuator thread"
+                   }
+    },
+    {
+        "id":  355893677,
+        "key":  "voltage module safety offset",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "voltage module safety offset"
+                   }
+    },
+    {
+        "id":  28727532,
+        "key":  "diagnostic actuator heartbeat module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "diagnostic actuator heartbeat module"
+                   }
+    },
+    {
+        "id":  328785953,
+        "key":  "controller limit bus firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "controller limit bus firmware"
+                   }
+    },
+    {
+        "id":  290247548,
+        "key":  "module stack actuator sensor",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module stack actuator sensor"
+                   }
+    },
+    {
+        "id":  500299279,
+        "key":  "kernel actuator ramp driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "kernel actuator ramp driver"
+                   }
+    },
+    {
+        "id":  998297800,
+        "key":  "sensor module firmware pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "sensor module firmware pointer"
+                   }
+    },
+    {
+        "id":  47386390,
+        "key":  "stack driver actuator thread",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack driver actuator thread"
+                   }
+    },
+    {
+        "id":  187958773,
+        "key":  "frame diagnostic actuator pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "frame diagnostic actuator pointer"
+                   }
+    },
+    {
+        "id":  144173985,
+        "key":  "thread actuator firmware stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator firmware stack"
+                   }
+    },
+    {
+        "id":  339947909,
+        "key":  "driver bus pointer module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "driver bus pointer module"
+                   }
+    },
+    {
+        "id":  996925078,
+        "key":  "task bus actuator logic",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "task bus actuator logic"
+                   }
+    },
+    {
+        "id":  482896808,
+        "key":  "bus module actuator pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "bus module actuator pointer"
+                   }
+    },
+    {
+        "id":  736271796,
+        "key":  "module actuator heap driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module actuator heap driver"
+                   }
+    },
+    {
+        "id":  633728672,
+        "key":  "controller buffer checksum driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "controller buffer checksum driver"
+                   }
+    },
+    {
+        "id":  666679488,
+        "key":  "checksum pointer stack firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "checksum pointer stack firmware"
+                   }
+    },
+    {
+        "id":  44738678,
+        "key":  "module pointer actuator heap",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module pointer actuator heap"
+                   }
+    },
+    {
+        "id":  959576498,
+        "key":  "heap actuator thread stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap actuator thread stack"
+                   }
+    },
+    {
+        "id":  306579411,
+        "key":  "kernel actuator bus voltage",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "kernel actuator bus voltage"
+                   }
+    },
+    {
+        "id":  861160475,
+        "key":  "interrupt ramp module driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "interrupt ramp module driver"
+                   }
+    },
+    {
+        "id":  420303512,
+        "key":  "module heartbeat stack firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module heartbeat stack firmware"
+                   }
+    },
+    {
+        "id":  234925247,
+        "key":  "module actuator firmware stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module actuator firmware stack"
+                   }
+    },
+    {
+        "id":  966303945,
+        "key":  "thread actuator pointer heap",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator pointer heap"
+                   }
+    },
+    {
+        "id":  780525994,
+        "key":  "kernel firmware lock checksum",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "kernel firmware lock checksum"
+                   }
+    },
+    {
+        "id":  907182663,
+        "key":  "actuator module pointer stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator module pointer stack"
+                   }
+    },
+    {
+        "id":  872559141,
+        "key":  "controller firmware actuator task",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "controller firmware actuator task"
+                   }
+    },
+    {
+        "id":  473867458,
+        "key":  "stack firmware module actuator",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack firmware module actuator"
+                   }
+    },
+    {
+        "id":  116506835,
+        "key":  "module pointer actuator firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module pointer actuator firmware"
+                   }
+    },
+    {
+        "id":  194918386,
+        "key":  "stack module actuator thread",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack module actuator thread"
+                   }
+    },
+    {
+        "id":  382427954,
+        "key":  "frame pointer voltage limit",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "frame pointer voltage limit"
+                   }
+    },
+    {
+        "id":  820472708,
+        "key":  "actuator heap pointer stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator heap pointer stack"
+                   }
+    },
+    {
+        "id":  363481784,
+        "key":  "ramp memory pointer module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "ramp memory pointer module"
+                   }
+    },
+    {
+        "id":  886637610,
+        "key":  "update pointer motor stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "update pointer motor stack"
+                   }
+    },
+    {
+        "id":  445726336,
+        "key":  "actuator module stack heap",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator module stack heap"
+                   }
+    },
+    {
+        "id":  404057693,
+        "key":  "controller module heartbeat pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "controller module heartbeat pointer"
+                   }
+    },
+    {
+        "id":  694068727,
+        "key":  "actuator stack driver module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator stack driver module"
+                   }
+    },
+    {
+        "id":  370812086,
+        "key":  "sensor valve calibration timeout",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "sensor valve calibration timeout"
+                   }
+    },
+    {
+        "id":  690540386,
+        "key":  "firmware thread driver actuator",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "firmware thread driver actuator"
+                   }
+    },
+    {
+        "id":  679044067,
+        "key":  "thread actuator module driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator module driver"
+                   }
+    },
+    {
+        "id":  847086279,
+        "key":  "actuator pointer firmware checksum",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator pointer firmware checksum"
+                   }
+    },
+    {
+        "id":  794302768,
+        "key":  "controller segment calibration voltage",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "controller segment calibration voltage"
+                   }
+    },
+    {
+        "id":  576295605,
+        "key":  "heap motor controller signal",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap motor controller signal"
+                   }
+    },
+    {
+        "id":  167680888,
+        "key":  "heap module actuator thread",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap module actuator thread"
+                   }
+    },
+    {
+        "id":  700449313,
+        "key":  "bus segment pointer firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "bus segment pointer firmware"
+                   }
+    },
+    {
+        "id":  577324398,
+        "key":  "ramp valve safety controller",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "ramp valve safety controller"
+                   }
+    },
+    {
+        "id":  931743797,
+        "key":  "overflow bus motor diagnostic",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "overflow bus motor diagnostic"
+                   }
+    },
+    {
+        "id":  857549273,
+        "key":  "heap segment pointer encoder",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap segment pointer encoder"
+                   }
+    },
+    {
+        "id":  879108887,
+        "key":  "stack actuator pointer firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack actuator pointer firmware"
+                   }
+    },
+    {
+        "id":  759621472,
+        "key":  "segment heap thread module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "segment heap thread module"
+                   }
+    },
+    {
+        "id":  647971184,
+        "key":  "sensor actuator stack module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "sensor actuator stack module"
+                   }
+    },
+    {
+        "id":  452162457,
+        "key":  "sensor stack ramp actuator",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "sensor stack ramp actuator"
+                   }
+    },
+    {
+        "id":  697328175,
+        "key":  "thread module actuator firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread module actuator firmware"
+                   }
+    },
+    {
+        "id":  249934230,
+        "key":  "limit diagnostic firmware heap",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "limit diagnostic firmware heap"
+                   }
+    },
+    {
+        "id":  954830422,
+        "key":  "pointer module actuator heap",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "pointer module actuator heap"
+                   }
+    },
+    {
+        "id":  881123846,
+        "key":  "module pointer heartbeat driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module pointer heartbeat driver"
+                   }
+    },
+    {
+        "id":  353083372,
+        "key":  "thread encoder diagnostic pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread encoder diagnostic pointer"
+                   }
+    },
+    {
+        "id":  475719253,
+        "key":  "W message",
+        "level":  "Warning",
+        "locale":  {
+                       "de":  "",
+                       "en":  "W message"
+                   }
+    },
+    {
+        "id":  124996884,
+        "key":  "task pointer motor calibration",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "task pointer motor calibration"
+                   }
+    },
+    {
+        "id":  637878685,
+        "key":  "memory overflow bus logic",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "memory overflow bus logic"
+                   }
+    },
+    {
+        "id":  979701770,
+        "key":  "driver module firmware pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "driver module firmware pointer"
+                   }
+    },
+    {
+        "id":  417800184,
+        "key":  "heap actuator module stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap actuator module stack"
+                   }
+    },
+    {
+        "id":  837040779,
+        "key":  "thread firmware pointer actuator",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread firmware pointer actuator"
+                   }
+    },
+    {
+        "id":  827384662,
+        "key":  "encoder logic thread register",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "encoder logic thread register"
+                   }
+    },
+    {
+        "id":  540859977,
+        "key":  "thread actuator bus pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator bus pointer"
+                   }
+    },
+    {
+        "id":  376286704,
+        "key":  "task actuator memory diagnostic",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "task actuator memory diagnostic"
+                   }
+    },
+    {
+        "id":  878847349,
+        "key":  "actuator stack heap firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator stack heap firmware"
+                   }
+    },
+    {
+        "id":  691527425,
+        "key":  "heap actuator thread pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap actuator thread pointer"
+                   }
+    },
+    {
+        "id":  200931548,
+        "key":  "checksum axis kernel logic",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "checksum axis kernel logic"
+                   }
+    },
+    {
+        "id":  254841642,
+        "key":  "heap sensor pointer actuator",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap sensor pointer actuator"
+                   }
+    },
+    {
+        "id":  283444959,
+        "key":  "heap thread actuator module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap thread actuator module"
+                   }
+    },
+    {
+        "id":  526722250,
+        "key":  "module actuator heap thread",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module actuator heap thread"
+                   }
+    },
+    {
+        "id":  678303871,
+        "key":  "thread firmware module driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread firmware module driver"
+                   }
+    },
+    {
+        "id":  697355366,
+        "key":  "sensor thread safety module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "sensor thread safety module"
+                   }
+    },
+    {
+        "id":  259581970,
+        "key":  "controller thread firmware stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "controller thread firmware stack"
                    }
     },
     {
@@ -33,6 +1392,546 @@
         "locale":  {
                        "de":  "",
                        "en":  "C message"
+                   }
+    },
+    {
+        "id":  51399738,
+        "key":  "sensor module actuator stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "sensor module actuator stack"
+                   }
+    },
+    {
+        "id":  266230397,
+        "key":  "voltage limit retry packet",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "voltage limit retry packet"
+                   }
+    },
+    {
+        "id":  774652654,
+        "key":  "actuator heap bus stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator heap bus stack"
+                   }
+    },
+    {
+        "id":  197920126,
+        "key":  "update sensor actuator logic",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "update sensor actuator logic"
+                   }
+    },
+    {
+        "id":  933074454,
+        "key":  "pointer module thread firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "pointer module thread firmware"
+                   }
+    },
+    {
+        "id":  200916118,
+        "key":  "checksum module driver actuator",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "checksum module driver actuator"
+                   }
+    },
+    {
+        "id":  337189298,
+        "key":  "bus firmware interrupt task",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "bus firmware interrupt task"
+                   }
+    },
+    {
+        "id":  55631998,
+        "key":  "controller update thread sensor",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "controller update thread sensor"
+                   }
+    },
+    {
+        "id":  50143645,
+        "key":  "heap thread ramp kernel",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap thread ramp kernel"
+                   }
+    },
+    {
+        "id":  711832086,
+        "key":  "frequency actuator bus calibration",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "frequency actuator bus calibration"
+                   }
+    },
+    {
+        "id":  520051735,
+        "key":  "diagnostic actuator ramp driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "diagnostic actuator ramp driver"
+                   }
+    },
+    {
+        "id":  892784415,
+        "key":  "overflow actuator bus heartbeat",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "overflow actuator bus heartbeat"
+                   }
+    },
+    {
+        "id":  404999304,
+        "key":  "lock actuator bus thread",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "lock actuator bus thread"
+                   }
+    },
+    {
+        "id":  158219915,
+        "key":  "task segment heap offset",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "task segment heap offset"
+                   }
+    },
+    {
+        "id":  278934838,
+        "key":  "signal stack ramp calibration",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "signal stack ramp calibration"
+                   }
+    },
+    {
+        "id":  962125775,
+        "key":  "heap pointer actuator module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap pointer actuator module"
+                   }
+    },
+    {
+        "id":  882123900,
+        "key":  "bus actuator firmware stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "bus actuator firmware stack"
+                   }
+    },
+    {
+        "id":  136846198,
+        "key":  "module sensor pointer actuator",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module sensor pointer actuator"
+                   }
+    },
+    {
+        "id":  501699769,
+        "key":  "interrupt actuator bus firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "interrupt actuator bus firmware"
+                   }
+    },
+    {
+        "id":  407661606,
+        "key":  "module stack thread calibration",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module stack thread calibration"
+                   }
+    },
+    {
+        "id":  796739922,
+        "key":  "segment bus pointer diagnostic",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "segment bus pointer diagnostic"
+                   }
+    },
+    {
+        "id":  526266304,
+        "key":  "actuator stack module pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator stack module pointer"
+                   }
+    },
+    {
+        "id":  833809804,
+        "key":  "module stack firmware actuator",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module stack firmware actuator"
+                   }
+    },
+    {
+        "id":  501600596,
+        "key":  "overflow thread firmware limit",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "overflow thread firmware limit"
+                   }
+    },
+    {
+        "id":  871473160,
+        "key":  "packet ramp module safety",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "packet ramp module safety"
+                   }
+    },
+    {
+        "id":  269922583,
+        "key":  "pointer actuator module stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "pointer actuator module stack"
+                   }
+    },
+    {
+        "id":  950745785,
+        "key":  "thread actuator heap bus",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator heap bus"
+                   }
+    },
+    {
+        "id":  321670183,
+        "key":  "encoder bus task firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "encoder bus task firmware"
+                   }
+    },
+    {
+        "id":  784470659,
+        "key":  "sensor driver heap offset",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "sensor driver heap offset"
+                   }
+    },
+    {
+        "id":  475719235,
+        "key":  "E message",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "E message"
+                   }
+    },
+    {
+        "id":  222657841,
+        "key":  "thread actuator heap firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator heap firmware"
+                   }
+    },
+    {
+        "id":  79561101,
+        "key":  "module actuator pointer thread",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "module actuator pointer thread"
+                   }
+    },
+    {
+        "id":  628290301,
+        "key":  "actuator pointer heap driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator pointer heap driver"
+                   }
+    },
+    {
+        "id":  237487728,
+        "key":  "limit stack frame driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "limit stack frame driver"
+                   }
+    },
+    {
+        "id":  422762597,
+        "key":  "calibration frame thread packet",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "calibration frame thread packet"
+                   }
+    },
+    {
+        "id":  55300621,
+        "key":  "thread memory diagnostic pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread memory diagnostic pointer"
+                   }
+    },
+    {
+        "id":  25755573,
+        "key":  "thread pointer actuator firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread pointer actuator firmware"
+                   }
+    },
+    {
+        "id":  477135830,
+        "key":  "actuator stack sensor driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator stack sensor driver"
+                   }
+    },
+    {
+        "id":  861893410,
+        "key":  "system heartbeat stack register",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "system heartbeat stack register"
+                   }
+    },
+    {
+        "id":  237116242,
+        "key":  "heap actuator module firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "heap actuator module firmware"
+                   }
+    },
+    {
+        "id":  314961714,
+        "key":  "actuator heap module pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator heap module pointer"
+                   }
+    },
+    {
+        "id":  479823138,
+        "key":  "thread module heartbeat sensor",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread module heartbeat sensor"
+                   }
+    },
+    {
+        "id":  337678481,
+        "key":  "diagnostic actuator kernel stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "diagnostic actuator kernel stack"
+                   }
+    },
+    {
+        "id":  282107066,
+        "key":  "pointer stack driver calibration",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "pointer stack driver calibration"
+                   }
+    },
+    {
+        "id":  929521634,
+        "key":  "encoder axis firmware pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "encoder axis firmware pointer"
+                   }
+    },
+    {
+        "id":  248159770,
+        "key":  "task voltage calibration stack",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "task voltage calibration stack"
+                   }
+    },
+    {
+        "id":  86290825,
+        "key":  "pointer actuator module firmware",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "pointer actuator module firmware"
+                   }
+    },
+    {
+        "id":  528572607,
+        "key":  "pointer sensor actuator bus",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "pointer sensor actuator bus"
+                   }
+    },
+    {
+        "id":  941017660,
+        "key":  "signal thread memory diagnostic",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "signal thread memory diagnostic"
+                   }
+    },
+    {
+        "id":  261119645,
+        "key":  "actuator stack firmware bus",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator stack firmware bus"
+                   }
+    },
+    {
+        "id":  615954434,
+        "key":  "checksum segment actuator driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "checksum segment actuator driver"
+                   }
+    },
+    {
+        "id":  740983660,
+        "key":  "driver frame module limit",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "driver frame module limit"
+                   }
+    },
+    {
+        "id":  760247533,
+        "key":  "thread actuator stack heap",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread actuator stack heap"
+                   }
+    },
+    {
+        "id":  122133757,
+        "key":  "stack actuator firmware pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack actuator firmware pointer"
+                   }
+    },
+    {
+        "id":  337863343,
+        "key":  "actuator module stack driver",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator module stack driver"
+                   }
+    },
+    {
+        "id":  558332778,
+        "key":  "thread motor stack interrupt",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "thread motor stack interrupt"
+                   }
+    },
+    {
+        "id":  501252434,
+        "key":  "checksum stack driver pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "checksum stack driver pointer"
+                   }
+    },
+    {
+        "id":  506760602,
+        "key":  "actuator firmware stack pointer",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "actuator firmware stack pointer"
+                   }
+    },
+    {
+        "id":  676832020,
+        "key":  "driver firmware interrupt module",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "driver firmware interrupt module"
+                   }
+    },
+    {
+        "id":  378812221,
+        "key":  "stack actuator firmware thread",
+        "level":  "Error",
+        "locale":  {
+                       "de":  "",
+                       "en":  "stack actuator firmware thread"
                    }
     }
 ]
