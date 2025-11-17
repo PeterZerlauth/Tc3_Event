@@ -10,7 +10,7 @@ Provide TwinCAT 3 Eventlogger
 | --- | --- | --- |
 | `eLogLevel` | `E_LogLevel` |  |
 | `eventClass` | `GUID` |  |
-| `fbSourceInfo` | `FB_TcSourceInfo` |  |
+| `aAlarm` | `ARRAY` |  |
 | `nAlarm` | `UINT` | Message count |
 | `bAlarm` | `ARRAY` |  |
 | `nIndex` | `UINT` |  |
@@ -96,6 +96,19 @@ M_Reset:= TRUE;
 
 ## Properties
 
+### `P_EventClass`
+*No documentation found.*
+
+**Get Implementation:**
+```iec
+P_EventClass:= eventClass;
+```
+**Set Implementation:**
+```iec
+eventClass:= P_EventClass;
+```
+
+---
 ### `P_LogLevel`
 *No documentation found.*
 
