@@ -1,6 +1,11 @@
 ﻿[
     {
         "locale":  "en",
+        "id":  2222,
+        "key":  "Input %s is in hardware fault"
+    },
+    {
+        "locale":  "en",
         "id":  4807251,
         "key":  "System is in hardware fault"
     },
@@ -86,11 +91,6 @@
     },
     {
         "locale":  "en",
-        "id":  23099603,
-        "key":  "Input %s is in unknown state"
-    },
-    {
-        "locale":  "en",
         "id":  26494080,
         "key":  "Failed to connect to MES system"
     },
@@ -116,11 +116,6 @@
     },
     {
         "locale":  "en",
-        "id":  49093818,
-        "key":  "Conveyor belt jam detected"
-    },
-    {
-        "locale":  "en",
         "id":  50359082,
         "key":  "Conveyor is running"
     },
@@ -143,11 +138,6 @@
         "locale":  "en",
         "id":  53648101,
         "key":  "Pump motor failed to start"
-    },
-    {
-        "locale":  "en",
-        "id":  54053429,
-        "key":  "Conveyor is in software fault"
     },
     {
         "locale":  "en",
@@ -208,11 +198,6 @@
         "locale":  "en",
         "id":  71608016,
         "key":  "Hydraulic system is OK"
-    },
-    {
-        "locale":  "en",
-        "id":  74235841,
-        "key":  "System is in software fault"
     },
     {
         "locale":  "en",
@@ -291,11 +276,6 @@
     },
     {
         "locale":  "en",
-        "id":  103593865,
-        "key":  "Pallet is stuck at location %s"
-    },
-    {
-        "locale":  "en",
         "id":  105663102,
         "key":  "Pump is priming"
     },
@@ -366,11 +346,6 @@
     },
     {
         "locale":  "en",
-        "id":  123253873,
-        "key":  "Gas leak detected in zone %s"
-    },
-    {
-        "locale":  "en",
         "id":  124048137,
         "key":  "Invalid parameter set for drive %s"
     },
@@ -393,11 +368,6 @@
         "locale":  "en",
         "id":  131126122,
         "key":  "Emergency stop source: Pull Cord"
-    },
-    {
-        "locale":  "en",
-        "id":  131986420,
-        "key":  "Safety gate is in unknown state"
     },
     {
         "locale":  "en",
@@ -448,11 +418,6 @@
         "locale":  "en",
         "id":  147243850,
         "key":  "System failed to initialize"
-    },
-    {
-        "locale":  "en",
-        "id":  147297523,
-        "key":  "Pump pressure is below minimum threshold"
     },
     {
         "locale":  "en",
@@ -656,11 +621,6 @@
     },
     {
         "locale":  "en",
-        "id":  219630415,
-        "key":  "Program execution timeout after %s seconds"
-    },
-    {
-        "locale":  "en",
         "id":  220452105,
         "key":  "Spindle is changing tool"
     },
@@ -691,18 +651,8 @@
     },
     {
         "locale":  "en",
-        "id":  235360000,
-        "key":  "Encoder is in unknown state"
-    },
-    {
-        "locale":  "en",
         "id":  235849703,
         "key":  "Spindle is not running"
-    },
-    {
-        "locale":  "en",
-        "id":  236278108,
-        "key":  "I/O Module %s not responding"
     },
     {
         "locale":  "en",
@@ -856,11 +806,6 @@
     },
     {
         "locale":  "en",
-        "id":  288706971,
-        "key":  "Vision system is in software fault"
-    },
-    {
-        "locale":  "en",
         "id":  292450194,
         "key":  "Robot gripper is damaged"
     },
@@ -941,11 +886,6 @@
     },
     {
         "locale":  "en",
-        "id":  328825485,
-        "key":  "System is in user fault"
-    },
-    {
-        "locale":  "en",
         "id":  333901242,
         "key":  "Robot gripper is worn"
     },
@@ -1001,11 +941,6 @@
     },
     {
         "locale":  "en",
-        "id":  358926264,
-        "key":  "Robot gripper is in software fault"
-    },
-    {
-        "locale":  "en",
         "id":  361596979,
         "key":  "Failed to write to database"
     },
@@ -1021,11 +956,6 @@
     },
     {
         "locale":  "en",
-        "id":  368452984,
-        "key":  "Encoder signal lost for axis %s"
-    },
-    {
-        "locale":  "en",
         "id":  368754980,
         "key":  "Input %s is forced"
     },
@@ -1038,11 +968,6 @@
         "locale":  "en",
         "id":  376915595,
         "key":  "System is in power up"
-    },
-    {
-        "locale":  "en",
-        "id":  378641744,
-        "key":  "Valve is in unknown state"
     },
     {
         "locale":  "en",
@@ -1111,11 +1036,6 @@
     },
     {
         "locale":  "en",
-        "id":  399146913,
-        "key":  "HMI connection lost"
-    },
-    {
-        "locale":  "en",
         "id":  400693354,
         "key":  "Pallet not present at location %s"
     },
@@ -1166,11 +1086,6 @@
     },
     {
         "locale":  "en",
-        "id":  420423205,
-        "key":  "Air pressure in main line is low"
-    },
-    {
-        "locale":  "en",
         "id":  422522142,
         "key":  "Main drive overtemperature"
     },
@@ -1201,23 +1116,8 @@
     },
     {
         "locale":  "en",
-        "id":  436578119,
-        "key":  "Cylinder home position not reached"
-    },
-    {
-        "locale":  "en",
-        "id":  438353293,
-        "key":  "Spindle temperature is critical"
-    },
-    {
-        "locale":  "en",
         "id":  443472917,
         "key":  "Robot is in singularity, cannot move"
-    },
-    {
-        "locale":  "en",
-        "id":  444512173,
-        "key":  "Servo drive fault: %s"
     },
     {
         "locale":  "en",
@@ -1266,16 +1166,6 @@
     },
     {
         "locale":  "en",
-        "id":  458833780,
-        "key":  "Pump is in user fault"
-    },
-    {
-        "locale":  "en",
-        "id":  459171370,
-        "key":  "Incorrect fixture detected at station %s"
-    },
-    {
-        "locale":  "en",
         "id":  459468574,
         "key":  "Sensor fault: Short circuit"
     },
@@ -1301,11 +1191,6 @@
     },
     {
         "locale":  "en",
-        "id":  464230505,
-        "key":  "VFD communication timeout"
-    },
-    {
-        "locale":  "en",
         "id":  466230381,
         "key":  "Input %s is on"
     },
@@ -1318,11 +1203,6 @@
         "locale":  "en",
         "id":  466641342,
         "key":  "Axis %s is stopped"
-    },
-    {
-        "locale":  "en",
-        "id":  467874328,
-        "key":  "Lag error 2"
     },
     {
         "locale":  "en",
@@ -1361,18 +1241,8 @@
     },
     {
         "locale":  "en",
-        "id":  479382623,
-        "key":  "Communication with PLC lost"
-    },
-    {
-        "locale":  "en",
         "id":  481638973,
         "key":  "Hydraulic system is in communication fault"
-    },
-    {
-        "locale":  "en",
-        "id":  483231793,
-        "key":  "Spindle is in unknown state"
     },
     {
         "locale":  "en",
@@ -1383,11 +1253,6 @@
         "locale":  "en",
         "id":  488694884,
         "key":  "Axis %s is not enabled"
-    },
-    {
-        "locale":  "en",
-        "id":  488936699,
-        "key":  "Lag error 3"
     },
     {
         "locale":  "en",
@@ -1413,11 +1278,6 @@
         "locale":  "en",
         "id":  503377368,
         "key":  "Flow rate is too low in line %s"
-    },
-    {
-        "locale":  "en",
-        "id":  503791964,
-        "key":  "Encoder is in hardware fault"
     },
     {
         "locale":  "en",
@@ -1516,11 +1376,6 @@
     },
     {
         "locale":  "en",
-        "id":  527358624,
-        "key":  "Lag error"
-    },
-    {
-        "locale":  "en",
         "id":  531330424,
         "key":  "Safety gate is disabled"
     },
@@ -1551,16 +1406,6 @@
     },
     {
         "locale":  "en",
-        "id":  541032397,
-        "key":  "Robot is in user fault"
-    },
-    {
-        "locale":  "en",
-        "id":  552243582,
-        "key":  "PLC is in software fault"
-    },
-    {
-        "locale":  "en",
         "id":  554740636,
         "key":  "E-Stop source: Hardwired"
     },
@@ -1576,28 +1421,13 @@
     },
     {
         "locale":  "en",
-        "id":  559300625,
-        "key":  "Axis 1 following error too large"
-    },
-    {
-        "locale":  "en",
         "id":  564745397,
         "key":  "Encoder is not connected"
     },
     {
         "locale":  "en",
-        "id":  565802479,
-        "key":  "Hydraulic overtemperature detected"
-    },
-    {
-        "locale":  "en",
         "id":  567617912,
         "key":  "Robot gripper failed to open"
-    },
-    {
-        "locale":  "en",
-        "id":  568662666,
-        "key":  "Hydraulic system is in software fault"
     },
     {
         "locale":  "en",
@@ -1658,11 +1488,6 @@
         "locale":  "en",
         "id":  591728841,
         "key":  "Axis %s is not homed"
-    },
-    {
-        "locale":  "en",
-        "id":  592146933,
-        "key":  "System is in unknown state"
     },
     {
         "locale":  "en",
@@ -1743,11 +1568,6 @@
         "locale":  "en",
         "id":  626937195,
         "key":  "Robot is in configuration fault"
-    },
-    {
-        "locale":  "en",
-        "id":  627431620,
-        "key":  "Safety circuit is open"
     },
     {
         "locale":  "en",
@@ -1851,11 +1671,6 @@
     },
     {
         "locale":  "en",
-        "id":  658719314,
-        "key":  "Level sensor in tank %s is faulty"
-    },
-    {
-        "locale":  "en",
         "id":  662248344,
         "key":  "Failed to park robot in home position"
     },
@@ -1868,11 +1683,6 @@
         "locale":  "en",
         "id":  667295922,
         "key":  "VFD undervoltage fault"
-    },
-    {
-        "locale":  "en",
-        "id":  668681807,
-        "key":  "Axis %s is in user fault"
     },
     {
         "locale":  "en",
@@ -1923,11 +1733,6 @@
         "locale":  "en",
         "id":  681586278,
         "key":  "Part quality check failed at station %s"
-    },
-    {
-        "locale":  "en",
-        "id":  684209442,
-        "key":  "Motor S is in unknown state"
     },
     {
         "locale":  "en",
@@ -1998,11 +1803,6 @@
         "locale":  "en",
         "id":  717293661,
         "key":  "PLC is in fault mode"
-    },
-    {
-        "locale":  "en",
-        "id":  719075593,
-        "key":  "Cooling system failure"
     },
     {
         "locale":  "en",
@@ -2101,11 +1901,6 @@
     },
     {
         "locale":  "en",
-        "id":  751663757,
-        "key":  "Spindle is in hardware fault"
-    },
-    {
-        "locale":  "en",
         "id":  752570973,
         "key":  "Lag error 3"
     },
@@ -2146,11 +1941,6 @@
     },
     {
         "locale":  "en",
-        "id":  770125196,
-        "key":  "Part %s not detected at sensor 2"
-    },
-    {
-        "locale":  "en",
         "id":  770266437,
         "key":  "Pump is at speed"
     },
@@ -2171,11 +1961,6 @@
     },
     {
         "locale":  "en",
-        "id":  782034386,
-        "key":  "Robot arm failed to reach target position"
-    },
-    {
-        "locale":  "en",
         "id":  785816840,
         "key":  "Conveyor is in communication fault"
     },
@@ -2191,11 +1976,6 @@
     },
     {
         "locale":  "en",
-        "id":  791296333,
-        "key":  "Air system is in unknown state"
-    },
-    {
-        "locale":  "en",
         "id":  794917286,
         "key":  "Temperature ramp rate too slow"
     },
@@ -2203,11 +1983,6 @@
         "locale":  "en",
         "id":  796761515,
         "key":  "Cylinder B failed to retract"
-    },
-    {
-        "locale":  "en",
-        "id":  798652404,
-        "key":  "Emergency stop pressed"
     },
     {
         "locale":  "en",
@@ -2406,11 +2181,6 @@
     },
     {
         "locale":  "en",
-        "id":  872261152,
-        "key":  "Light curtain is blocked"
-    },
-    {
-        "locale":  "en",
         "id":  873262718,
         "key":  "HMI screen saver is active"
     },
@@ -2526,11 +2296,6 @@
     },
     {
         "locale":  "en",
-        "id":  909253506,
-        "key":  "Motor A overcurrent fault"
-    },
-    {
-        "locale":  "en",
         "id":  909421439,
         "key":  "Conveyor index timeout"
     },
@@ -2633,11 +2398,6 @@
         "locale":  "en",
         "id":  954889344,
         "key":  "Cylinder A pressure sensor fault"
-    },
-    {
-        "locale":  "en",
-        "id":  955082190,
-        "key":  "Input %s is in hardware fault"
     },
     {
         "locale":  "en",

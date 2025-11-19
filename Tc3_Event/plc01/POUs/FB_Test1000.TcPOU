@@ -514,11 +514,11 @@ fbEvent.M_Error(753322197, 'Motor R is in hardware fault');
 fbEvent.M_Error(675446452, 'Air system is in hardware fault');
 fbEvent.M_Error(308713644, 'Valve is in hardware fault');
 fbEvent.M_Error(845540868, 'Safety gate is in hardware fault');
-fbEvent.M_Error(955082190, 'Input %s is in hardware fault');
+fbEvent.M_Error(2222, 'Input %s is in hardware fault');
 fbEvent.M_Error(200774085, 'Encoder is in hardware fault');
 fbEvent.M_Error(955946185, 'Lag error');
 fbEvent.M_Error(204240054, 'Lag error 2');
-fbEvent.M_Error(488936699, 'Lag error 3');]]></ST>
+fbEvent.M_Error(752570973, 'Lag error 3');]]></ST>
     </Implementation>
     <Property Name="P_Event" Id="{c9963adf-3970-4f81-9f65-c4cce93fef12}">
       <Declaration><![CDATA[PROPERTY PUBLIC P_Event : reference to FB_event]]></Declaration>

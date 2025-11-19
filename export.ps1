@@ -44,10 +44,6 @@ param(
     Version = "2.8" # Updated version
     GeneratedBy = "Tc3 Message Extractor (PowerShell)"
 
-    # --- Hash Calculation ---
-    HashSalt = "Tc3MessageHashSalt_v1" # A unique salt to prevent hash collisions across projects
-    Prime = 37
-    Modulus = 1000000009
 
     # --- File Processing ---
     # Regex to find messages: [optional_prefix.]M_(Type)([optional_id], 'message_text')
@@ -134,25 +130,25 @@ try {
 }
 
 # -----------------------------
-# Function: Get-UDINTHash
+# Function: Get-UDINTHash (polynomial rolling hash)
 # -----------------------------
+
 function Get-UDINTHash {
     param([string]$s)
 
-    # Combine text with a salt to ensure uniqueness across different projects
-    $s = "$($script:Config.HashSalt)$s"
-
-    [int64]$p = $script:Config.Prime
-    [int64]$m = $script:Config.Modulus
+    [int64]$p = 37
+    [int64]$m = 1000000009
     [int64]$hash = 0
     [int64]$pPow = 1
 
+
+
     foreach ($ch in $s.ToCharArray()) {
-        [int64]$cVal = [int][char]$ch
+        [int64]$cVal = [int][char]$ch 
         $hash = ($hash + ($cVal * $pPow) % $m) % $m
         $pPow = ($pPow * $p) % $m
     }
-
+    # which can be safely cast to [uint32].
     return [uint32]$hash
 }
 
