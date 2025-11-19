@@ -12,7 +12,31 @@ VAR
 	nTimestamp: 			Tc2_Utilities.T_FILETIME64;
 	aBuffer:				ARRAY[0..99] OF FB_Message;
     nBuffer:				UINT := 0;                     // Message count
-END_VAR]]></Declaration>
+END_VAR
+(*
+    Tc3_Event – TwinCAT 3 Event Logging Framework
+    Copyright (c) Peter Zerlauth
+
+    This component is provided under a Dual Licensing Model:
+
+    1. GPLv3 Open-Source License
+       - Free for personal, educational, and non-commercial use.
+       - Commercial use allowed only if the entire application is published
+         under GPLv3, including all modifications to this code.
+       - Requires full disclosure of source code for derivative works.
+
+    2. Commercial License
+       - Required for integration into proprietary or closed-source products.
+       - Removes all GPLv3 copyleft obligations.
+       - Includes optional warranty, professional support, and long-term
+         maintenance options.
+
+    For commercial licensing, contact:
+        info@peterzerlauth.com
+
+    By using this Function Block you agree to the terms of the selected license.
+*)
+]]></Declaration>
     <Implementation>
       <ST><![CDATA[// https://peterzerlauth.com/]]></ST>
     </Implementation>

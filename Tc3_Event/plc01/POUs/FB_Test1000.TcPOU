@@ -17,7 +17,9 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbEvent.M_Error(832893823, 'Failed to ad recipe: %s %s');
+      <ST><![CDATA[fbEvent();
+
+fbEvent.M_Error(832893823, 'Failed to ad recipe: %s %s');
 fbEvent.M_Error(118851667, 'Gate interlock failed');
 fbEvent.M_Error(697446562, 'Proximity sensor %s is faulty');
 fbEvent.M_Error(810077404, 'System voltage is unstable');

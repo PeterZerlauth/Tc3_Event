@@ -19,7 +19,7 @@
     <Company>www.peterzerlauth.com</Company>
     <Released>false</Released>
     <Title>Tc3_Event</Title>
-    <ProjectVersion>0.0.0.3</ProjectVersion>
+    <ProjectVersion>0.0.0.5</ProjectVersion>
     <DefaultNamespace>Tc3_Event</DefaultNamespace>
     <Placeholder>Tc3_Event</Placeholder>
     <Author>Peter Zerlauth</Author>
@@ -29,6 +29,27 @@
     <VirtualLibrary>true</VirtualLibrary>
     <DocFormat>
     </DocFormat>
+    <Description>Tc3_Event – TwinCAT 3 Event Logging Framework
+    Copyright (c) Peter Zerlauth
+
+    This component is provided under a Dual Licensing Model:
+
+    1. GPLv3 Open-Source License
+       - Free for personal, educational, and non-commercial use.
+       - Commercial use allowed only if the entire application is published
+         under GPLv3, including all modifications to this code.
+       - Requires full disclosure of source code for derivative works.
+
+    2. Commercial License
+       - Required for integration into proprietary or closed-source products.
+       - Removes all GPLv3 copyleft obligations.
+       - Includes optional warranty, professional support, and long-term
+         maintenance options.
+
+    For commercial licensing, contact:
+        info@peterzerlauth.com
+
+    By using this Function Block you agree to the terms of the selected license.</Description>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Helpers" />
@@ -184,8 +205,8 @@
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-  <Data>
-    <o xml:space="preserve" t="OptionKey">
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
@@ -328,14 +349,14 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-  </Data>
-  <TypeList>
-    <Type n="Boolean">System.Boolean</Type>
-    <Type n="Hashtable">System.Collections.Hashtable</Type>
-    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-    <Type n="String">System.String</Type>
-  </TypeList>
-</XmlArchive>
+        </Data>
+        <TypeList>
+          <Type n="Boolean">System.Boolean</Type>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>

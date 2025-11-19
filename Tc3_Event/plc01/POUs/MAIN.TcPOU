@@ -34,7 +34,7 @@ END_VAR]]></Declaration>
 		
 		fbTest();	
 		
-		fbTest1000.P_Event.P_Logger:= fbLogger;
+// 		fbTest1000.P_Event.P_Logger:= fbLogger;
 // 		fbTest1000();
 		
 	END_IF
