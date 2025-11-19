@@ -5,7 +5,7 @@
 ![Platform](https://img.shields.io/badge/Platform-PLC%20Automation-green)
 
 **Tc3_Event** is a lightweight, high-performance event logging framework
-designed for TwinCAT 3 automation projects.\
+designed for TwinCAT 3 automation projects.
 It provides structured, standardized logging for diagnostics, simplifies
 development, and integrates seamlessly with HMIs and SCADA systems.
 
@@ -141,12 +141,10 @@ fbEvent.M_Critical(2626343866, 'Emergency stop activated');
 
 ## 📸 Screenshots
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                                       HMI Integration                                                                             Logger Manager                                                                                Event Trace
-  ----------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------
+------------------------------------------------------------------------
    ![HMI](https://github.com/user-attachments/assets/76e4d475-e2f1-42ff-9ccd-e3bdb786d7bc)   ![Logger](https://github.com/user-attachments/assets/b2c84339-6437-416f-bf1d-d2c682075724)   ![Trace](https://github.com/user-attachments/assets/dbc4e062-77dd-4cb7-ab16-48f9eb94d3ca)
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 ------------------------------------------------------------------------
 
@@ -165,13 +163,6 @@ Pull requests are welcome. For major changes, open an issue first.
 
 ------------------------------------------------------------------------
 
-## 📜 License
-
-This project is licensed under the **GPLv3**. See
-[LICENSE.md](LICENSE.md).
-
-------------------------------------------------------------------------
-
 ## 📝 Dual Licensing Model
 
 Tc3_Event is distributed under a **Dual License Model** to support both
@@ -179,7 +170,7 @@ open-source usage and commercial adoption.
 
 ### 1. Open Source License (GPLv3)
 
--   Free for individuals, academia, and non-commercial use\
+-   Free for individuals, academia, and non-commercial use
 -   Permits commercial use **only if** derivative works remain
     open-source under GPLv3\
 -   Requires full source disclosure of modifications and derivative
@@ -189,14 +180,14 @@ open-source usage and commercial adoption.
 
 A commercial license is required for companies that:
 
--   Integrate Tc3_Event into proprietary, closed-source products\
--   Cannot release their entire application under GPLv3\
--   Need warranty, professional support, or long-term maintenance\
+-   Integrate Tc3_Event into proprietary, closed-source products
+-   Cannot release their entire application under GPLv3
+-   Need warranty, professional support, or long-term maintenance
 -   Require customized licensing or integration rights
 
 The commercial license removes GPLv3 copyleft obligations.
 
 ### Contact for Commercial Licensing
 
-For licensing inquiries, contact:\
+For licensing inquiries, contact:
 **info@peterzerlauth.com**
