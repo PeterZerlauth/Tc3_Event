@@ -123,6 +123,18 @@ fbEvent.M_Critical(2626343866, 'Emergency stop activated');
 ``` bash
 .\export.ps1 -Languages @("en", "de", "es")
 ```
+``` json
+{
+    "locale":  [ "en", "de", "es" ],
+    "Events":  [
+                   {
+                       "id":  "849363082",
+                       "key":  "Input %s is simulated"
+                   }
+  ]
+}
+```
+
 
 ------------------------------------------------------------------------
 
