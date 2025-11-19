@@ -100,22 +100,21 @@ fbEvent.M_Critical(2626343866, 'Emergency stop activated');
 Export messages for HMI during **Activate Configuration** using PowerShell:
 
 ```json
-[
+﻿[
     {
-        "id": 828536003,
-        "key": "I message %s %s",
-        "locale": {
-            "de": "",
-            "en": "I message %s %s"
-        }
+        "locale":  "en",
+        "id":  "00329133",
+        "key":  "Axis %s brake did not release"
     },
     {
-        "id": 662973879,
-        "key": "Critical message",
-        "locale": {
-            "de": "",
-            "en": "Critical message"
-        }
+        "locale":  "en",
+        "id":  "00839218",
+        "key":  "PLC CPU temperature is high"
+    },
+    {
+        "locale":  "en",
+        "id":  "02628015",
+        "key":  "Safety PLC test failed"
     }
 ]
 ```
