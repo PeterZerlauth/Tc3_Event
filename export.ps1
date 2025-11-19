@@ -8,12 +8,13 @@
     This script scans a Git repository for *.TcPOU files to find structured log messages
     (e.g., M_Info(...), M_Warning(...)). It performs the following actions:
     1. Calculates a unique, reproducible hash-based ID for each message if one is not present.
-    2. Updates source files with the calculated ID.
-    3. **NEW:** If an ID collision is detected (same ID for different text), it automatically generates a new unique ID and updates the source file.
+    2. Detects and automatically corrects mismatched message IDs in source files.
+    3. If an ID collision is detected (same ID for different text), it automatically generates a new unique ID and updates the source file.
     4. Generates a 'messages.json' file, MERGING new messages with existing translations.
     5. Reports any new messages found during the run.
     6. Generates an 'EventClass.xml' file for TwinCAT Event Manager integration.
     7. Includes robust error handling, logging, and output validation.
+    8. Formats message IDs with leading zeros in output files for better readability.
 
 .PARAMETER Languages
     An array of language codes (e.g., "en", "de") to include in the output 'messages.json'.
@@ -41,8 +42,9 @@ param(
 # -----------------------------
  $script:Config = @{
     # --- Script Metadata ---
-    Version = "2.8" # Updated version
+    Version = "2.9.5" # Updated version (Configuration cleanup)
     GeneratedBy = "Tc3 Message Extractor (PowerShell)"
+    IdWidth = 8  # Number of digits for formatted IDs (e.g., 00000001)
 
 
     # --- File Processing ---
@@ -51,12 +53,9 @@ param(
     FileFilter = "*.TcPOU"
 
     # --- Placeholder Conversion for XML ---
-    # Maps PLC placeholders to .NET string format placeholders
+    # Defines the PLC placeholders to search for.
     PlaceholderMap = @{
         '%s' = '{0}'
-        '%d' = '{1}'
-        '%i' = '{2}'
-        '%f' = '{3}'
     }
 
     # --- Output Filenames ---
@@ -81,9 +80,20 @@ function Write-Log {
 
     switch ($Level) {
         "Info"    { Write-Host $logEntry -ForegroundColor White }
-        "Warning" { Write-Host $logEntry -ForegroundColor Red } # MODIFIED LINE
+        "Warning" { Write-Host $logEntry -ForegroundColor Yellow }
         "Error"   { Write-Error $logEntry }
     }
+}
+
+# -----------------------------
+# Function: Format-MessageId
+# -----------------------------
+function Format-MessageId {
+    param(
+        [Parameter(Mandatory=$true)]
+        [uint32]$Id
+    )
+    return "{0:D$($script:Config.IdWidth)}" -f $Id
 }
 
 # -----------------------------
@@ -153,24 +163,35 @@ function Get-UDINTHash {
 }
 
 # -----------------------------
-# Function: Convert-Placeholders
+# Function: Convert-Placeholders (ROBUST VERSION)
 # -----------------------------
 function Convert-Placeholders {
     param([string]$text)
 
-    $script:pIndex = 0
-    $placeholders = $script:Config.PlaceholderMap.Keys -join '|'
-    return ([regex]::Replace($text, "($placeholders)", {
+    # Define the pattern of placeholders to look for from the map keys.
+    $placeholderPattern = $script:Config.PlaceholderMap.Keys -join '|'
+    
+    # Use a variable in the local function scope to track the index.
+    # We will access and modify this variable from within the script block.
+    $index = 0
+    
+    # Use a regex replace with a script block to handle each match sequentially.
+    # To ensure the script block can correctly modify the $index variable from the
+    # parent function scope, we use the Get-Variable and Set-Variable cmdlets.
+    return [regex]::Replace($text, "($placeholderPattern)", {
         param($match)
-        $placeholder = $match.Value
-        if ($script:Config.PlaceholderMap.ContainsKey($placeholder)) {
-            $current = $script:pIndex
-            $script:pIndex++
-            # Use the mapped placeholder, but keep the index {0}, {1} etc.
-            return $script:Config.PlaceholderMap[$placeholder] -f $current
-        }
-        return $match.Value # Return original if not in map
-    }))
+        
+        # Get the current value of the index variable from the parent scope.
+        $currentIndex = (Get-Variable -Name 'index' -ValueOnly -Scope 1)
+        
+        # Create the replacement string using the current index.
+        $replacement = "{$currentIndex}"
+        
+        # Increment the index variable in the parent scope for the next match.
+        Set-Variable -Name 'index' -Value ($currentIndex + 1) -Scope 1
+        
+        return $replacement
+    })
 }
 
 # -----------------------------
@@ -178,7 +199,7 @@ function Convert-Placeholders {
 # -----------------------------
  $messages = @{}
 
-# --- NEW: Track processed messages to detect collisions ---
+# --- Track processed messages to detect collisions ---
  $processedMessages = @{}
 
 # -----------------------------
@@ -213,24 +234,32 @@ foreach ($file in $files) {
 
             [uint32]$id = 0
             $hasExistingId = [uint32]::TryParse($idText, [ref]$id)
-            $computedId = [uint32](Get-UDINTHash $msgText)
+            $expectedId = [uint32](Get-UDINTHash $msgText)
 
-            # --- NEW: ID Collision Resolution Logic ---
-            # Check if an ID was provided and if it collides with a different text.
-            if ($hasExistingId -and $processedMessages.ContainsKey($id) -and $processedMessages[$id].key -ne $msgText) {
-                # This is a collision. The provided ID is used by a different message.
-                # We need to resolve this by generating a new ID.
-                $newId = [uint32](Get-UDINTHash "$($msgText)_collision_fix")
-                Write-Log "ID Collision: The provided ID $id for message '$msgText' is already used by a different message. A new ID $newId will be generated and used." -Level Warning
-                $id = $newId
+            # --- ID Validation and Correction Logic ---
+            if (-not $hasExistingId -or $id -eq 0) {
+                # Case 1: No ID provided or ID is 0. Calculate and assign the correct hash.
+                $id = $expectedId
                 $script:modified = $true
-            } elseif (-not $hasExistingId -or $id -eq 0) {
-                # No ID was provided or it was 0, so we use the computed one.
-                $id = $computedId
+                Write-Log "No ID found for message '$msgText'. Assigning new ID: $id." -Level Warning
+            }
+            elseif ($id -ne $expectedId) {
+                # Case 2: ID exists but is incorrect (mismatch).
+                # We need to fix it, but first, check if the correct ID would cause a collision.
+                if ($processedMessages.ContainsKey($expectedId) -and $processedMessages[$expectedId].key -ne $msgText) {
+                    # The correct ID is already taken by a different message. Generate a new unique one.
+                    $newId = [uint32](Get-UDINTHash "$($msgText)_mismatch_fix")
+                    Write-Log "ID Mismatch: The ID for '$msgText' was $id, but the correct ID ($expectedId) is already in use. A new ID $newId will be generated and used." -Level Warning
+                    $id = $newId
+                } else {
+                    # The correct ID is available. Use it to fix the mismatch.
+                    Write-Log "ID Mismatch: The ID for '$msgText' was $id, but should be $expectedId. Correcting the ID." -Level Warning
+                    $id = $expectedId
+                }
                 $script:modified = $true
-            } else {
-                # An existing, valid ID was provided and it doesn't collide. Use it as is.
-                # No modification needed for this message.
+            }
+            else {
+                # Case 3: ID exists and is correct. No action needed.
             }
 
             # Add the (potentially new or updated) message to the main hashtable.
@@ -250,13 +279,13 @@ foreach ($file in $files) {
             # This is crucial. We use the FINAL ID that was decided.
             $processedMessages[$id] = @{ id = $id; key = $msgText }
 
-            # Return the replacement string with the FINAL ID.
+            # Return the replacement string with the FINAL ID (without leading zeros)
             return "$prefix`M_$logType($id, '$msgText')$trailing"
         })
 
         if ($script:modified) {
             Set-Content -Path $file.FullName -Value $content -NoNewline -Encoding UTF8
-            Write-Log "Updated file with new message IDs: $($file.FullName)"
+            Write-Log "Updated file with corrected/new message IDs: $($file.FullName)"
         }
 
     } catch {
@@ -277,7 +306,10 @@ if (Test-Path $outputFile) {
     try {
         $jsonContent = Get-Content -Path $outputFile -Raw | ConvertFrom-Json
         foreach ($item in $jsonContent) {
-            $key = "$($item.id)_$($item.locale)"
+            # BUGFIX: Parse the formatted ID back to a number to create a consistent key for lookups.
+            # This prevents the script from incorrectly reporting existing messages as new on each run.
+            $numericId = [uint32]::Parse($item.id)
+            $key = "$($numericId)_$($item.locale)"
             $finalMessages[$key] = $item
         }
         Write-Log "Loaded $($finalMessages.Count) existing messages from '$($script:Config.OutputJson)' to be used as base for new output."
@@ -295,6 +327,7 @@ if (Test-Path $outputFile) {
 # or add a brand new one.
 foreach ($newMsg in $messages.Values | Sort-Object id) {
     foreach ($lang in $Languages) {
+        # The key for lookup is correctly based on the numeric ID.
         $key = "$($newMsg.id)_$($lang)"
 
         # --- Check if this is a new message and log it ---
@@ -308,9 +341,10 @@ foreach ($newMsg in $messages.Values | Sort-Object id) {
         }
 
         # Create the object that represents this message (new or updated).
+        # Use formatted ID with leading zeros for better readability in the output file.
         $messageObject = [PSCustomObject]@{
             locale = $lang
-            id     = $newMsg.id
+            id     = Format-MessageId -Id $newMsg.id  # Use formatted ID for the 'id' property
             key    = "" # Default to an empty translation
         }
 
@@ -327,8 +361,7 @@ foreach ($newMsg in $messages.Values | Sort-Object id) {
         # ready to be filled in by a translator.
 
         # Update the master list with this (new or updated) message object.
-        # This ensures that even if the English text changed, the old translation is kept
-        # until a translator can update it.
+        # The key for the hashtable remains based on the numeric ID for consistency.
         $finalMessages[$key] = $messageObject
     }
 }
@@ -346,6 +379,7 @@ if ($newMessageCount -gt 0) {
 # The $finalMessages hashtable now contains the complete, merged set of messages.
 # We convert it to an array, sort it for consistent output, and save it.
 try {
+    # Sort by numeric ID (not formatted string) for correct ordering
     $sortedOutput = $finalMessages.Values | Sort-Object -Property @{Expression={[uint32]$_.id}; Ascending=$true}, Locale
     $sortedOutput | ConvertTo-Json -Depth 5 | Set-Content -Path $outputFile -Encoding UTF8
     Write-Log "Exported $($sortedOutput.Count) total message entries to '$outputFile'. Old messages have been preserved."
@@ -371,7 +405,8 @@ try {
         $eventEl = $xmlDoc.CreateElement("EventId")
 
         $nameEl = $xmlDoc.CreateElement("Name")
-        $nameEl.SetAttribute("Id", $msg.id)
+        # Use formatted ID with leading zeros
+        $nameEl.SetAttribute("Id", (Format-MessageId -Id $msg.id))
         $nameEl.InnerText = "Tc3_Event_$($msg.id)"
         $eventEl.AppendChild($nameEl) | Out-Null
 
@@ -432,7 +467,7 @@ if ($validationIssues.Count -gt 0) {
     Write-Log "Validation completed with issues:" -Level Warning
     $validationIssues | ForEach-Object { Write-Log "- $_" -Level Warning }
 } else {
-    Write-Log "Validation completed successfully. Output files are present and appear to be well-formed."
+    Write-Log "Validation completed successfully."
 }
 
 Write-Log "Script finished."
