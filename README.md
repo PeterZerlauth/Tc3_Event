@@ -100,15 +100,12 @@ fbEvent.M_Critical(2626343866, 'Emergency stop activated');
 Export messages for HMI during **Activate Configuration** using PowerShell:
 
 ```bash
-.\export.ps1 -Languages @("en", "de", "fr")
+.\export.ps1 -Languages @("en", "de", "es")
 ```
 
 ```json
 {
-    "locale":  [
-                   "en",
-                   "de",
-                   "es"
+    "locale":  ["en","de","es"
                ],
     "Events":  [
                    {
