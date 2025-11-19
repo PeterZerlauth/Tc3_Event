@@ -1,1937 +1,2742 @@
 ﻿[
     {
-        "id":  242586769,
-        "key":  "bus stack firmware interrupt",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "bus stack firmware interrupt"
-                   }
-    },
-    {
-        "id":  165221839,
-        "key":  "thread actuator firmware module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator firmware module"
-                   }
-    },
-    {
-        "id":  457090056,
-        "key":  "thread actuator driver heap",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator driver heap"
-                   }
-    },
-    {
-        "id":  872908747,
-        "key":  "safety register update kernel",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "safety register update kernel"
-                   }
-    },
-    {
-        "id":  197989902,
-        "key":  "actuator thread heap driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator thread heap driver"
-                   }
-    },
-    {
-        "id":  715471347,
-        "key":  "actuator module firmware pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator module firmware pointer"
-                   }
-    },
-    {
-        "id":  697819932,
-        "key":  "stack actuator pointer module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack actuator pointer module"
-                   }
-    },
-    {
-        "id":  16160503,
-        "key":  "interrupt actuator controller reference",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "interrupt actuator controller reference"
-                   }
-    },
-    {
-        "id":  221703851,
-        "key":  "thread actuator pointer stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator pointer stack"
-                   }
-    },
-    {
-        "id":  531516646,
-        "key":  "stack actuator module pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack actuator module pointer"
-                   }
-    },
-    {
-        "id":  902920150,
-        "key":  "sensor voltage stack checksum",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "sensor voltage stack checksum"
-                   }
-    },
-    {
-        "id":  874905154,
-        "key":  "lock frequency heartbeat logic",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "lock frequency heartbeat logic"
-                   }
-    },
-    {
-        "id":  463410925,
-        "key":  "firmware heap driver module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "firmware heap driver module"
-                   }
-    },
-    {
-        "id":  961035730,
-        "key":  "controller stack firmware thread",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "controller stack firmware thread"
-                   }
-    },
-    {
-        "id":  820771522,
-        "key":  "actuator module heap pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator module heap pointer"
-                   }
-    },
-    {
-        "id":  102002305,
-        "key":  "actuator heap bus driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator heap bus driver"
-                   }
-    },
-    {
-        "id":  863623260,
-        "key":  "thread firmware bus module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread firmware bus module"
-                   }
-    },
-    {
-        "id":  468481600,
-        "key":  "controller diagnostic actuator stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "controller diagnostic actuator stack"
-                   }
-    },
-    {
-        "id":  654680498,
-        "key":  "bus valve checksum driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "bus valve checksum driver"
-                   }
-    },
-    {
-        "id":  313409103,
-        "key":  "module actuator heap firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module actuator heap firmware"
-                   }
-    },
-    {
-        "id":  631611239,
-        "key":  "module actuator bus pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module actuator bus pointer"
-                   }
-    },
-    {
-        "id":  630355306,
-        "key":  "temperature cycle driver lock",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "temperature cycle driver lock"
-                   }
-    },
-    {
-        "id":  828536003,
-        "key":  "I message %s %s",
-        "level":  "Info",
-        "locale":  {
-                       "de":  "",
-                       "en":  "I message %s %s"
-                   }
-    },
-    {
-        "id":  893830772,
-        "key":  "heap driver thread stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap driver thread stack"
-                   }
-    },
-    {
-        "id":  778892556,
-        "key":  "heap actuator thread firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap actuator thread firmware"
-                   }
-    },
-    {
-        "id":  772553840,
-        "key":  "stack heartbeat pointer calibration",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack heartbeat pointer calibration"
-                   }
-    },
-    {
-        "id":  921341538,
-        "key":  "sensor heap pointer limit",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "sensor heap pointer limit"
-                   }
-    },
-    {
-        "id":  330380821,
-        "key":  "thread actuator pointer module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator pointer module"
-                   }
-    },
-    {
-        "id":  474486365,
-        "key":  "actuator segment pointer driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator segment pointer driver"
-                   }
-    },
-    {
-        "id":  758776124,
-        "key":  "actuator stack module firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator stack module firmware"
-                   }
-    },
-    {
-        "id":  987934504,
-        "key":  "heap actuator stack module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap actuator stack module"
-                   }
-    },
-    {
-        "id":  452490275,
-        "key":  "bus pointer thread actuator",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "bus pointer thread actuator"
-                   }
-    },
-    {
-        "id":  830380732,
-        "key":  "stack memory interrupt cycle",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack memory interrupt cycle"
-                   }
-    },
-    {
-        "id":  16130800,
-        "key":  "safety interrupt bus calibration",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "safety interrupt bus calibration"
-                   }
-    },
-    {
-        "id":  29992535,
-        "key":  "thread actuator firmware pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator firmware pointer"
-                   }
-    },
-    {
-        "id":  304294395,
-        "key":  "module pointer actuator sensor",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module pointer actuator sensor"
-                   }
-    },
-    {
-        "id":  133049907,
-        "key":  "sensor actuator heap pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "sensor actuator heap pointer"
-                   }
-    },
-    {
-        "id":  538072235,
-        "key":  "actuator bus thread heap",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator bus thread heap"
-                   }
-    },
-    {
-        "id":  69822199,
-        "key":  "stack module actuator pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack module actuator pointer"
-                   }
-    },
-    {
-        "id":  669974772,
-        "key":  "thread actuator module heap",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator module heap"
-                   }
-    },
-    {
-        "id":  23312529,
-        "key":  "offset thread actuator diagnostic",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "offset thread actuator diagnostic"
-                   }
-    },
-    {
-        "id":  547217167,
-        "key":  "voltage frame interrupt kernel",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "voltage frame interrupt kernel"
-                   }
-    },
-    {
-        "id":  622860685,
-        "key":  "checksum driver segment firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "checksum driver segment firmware"
-                   }
-    },
-    {
-        "id":  761622421,
-        "key":  "driver thread actuator pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "driver thread actuator pointer"
-                   }
-    },
-    {
-        "id":  986691915,
-        "key":  "pressure frame system address",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "pressure frame system address"
-                   }
-    },
-    {
-        "id":  835318212,
-        "key":  "bus heartbeat driver segment",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "bus heartbeat driver segment"
-                   }
-    },
-    {
-        "id":  457484262,
-        "key":  "module actuator firmware bus",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module actuator firmware bus"
-                   }
-    },
-    {
-        "id":  991116572,
-        "key":  "heap actuator stack firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap actuator stack firmware"
-                   }
-    },
-    {
-        "id":  958296786,
-        "key":  "module actuator bus firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module actuator bus firmware"
-                   }
-    },
-    {
-        "id":  216002296,
-        "key":  "state firmware heartbeat actuator",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "state firmware heartbeat actuator"
-                   }
-    },
-    {
-        "id":  777779758,
-        "key":  "sensor actuator module firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "sensor actuator module firmware"
-                   }
-    },
-    {
-        "id":  655262105,
-        "key":  "heap actuator pointer stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap actuator pointer stack"
-                   }
-    },
-    {
-        "id":  657120879,
-        "key":  "segment pointer controller interrupt",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "segment pointer controller interrupt"
-                   }
-    },
-    {
-        "id":  692387387,
-        "key":  "pointer state diagnostic module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "pointer state diagnostic module"
-                   }
-    },
-    {
-        "id":  348735929,
-        "key":  "timeout signal update register",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "timeout signal update register"
-                   }
-    },
-    {
-        "id":  335171911,
-        "key":  "bus thread actuator firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "bus thread actuator firmware"
-                   }
-    },
-    {
-        "id":  128823355,
-        "key":  "module actuator pointer firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module actuator pointer firmware"
-                   }
-    },
-    {
-        "id":  76202988,
-        "key":  "bus driver pointer firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "bus driver pointer firmware"
-                   }
-    },
-    {
-        "id":  809749904,
-        "key":  "stack actuator thread firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack actuator thread firmware"
-                   }
-    },
-    {
-        "id":  210963189,
-        "key":  "heap pointer actuator thread",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap pointer actuator thread"
-                   }
-    },
-    {
-        "id":  432604224,
-        "key":  "module encoder actuator firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module encoder actuator firmware"
-                   }
-    },
-    {
-        "id":  300489375,
-        "key":  "motor actuator segment heap",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "motor actuator segment heap"
-                   }
-    },
-    {
-        "id":  891531744,
-        "key":  "stack sensor actuator thread",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack sensor actuator thread"
-                   }
-    },
-    {
-        "id":  639820418,
-        "key":  "driver module bus calibration",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "driver module bus calibration"
-                   }
-    },
-    {
-        "id":  29278741,
-        "key":  "lock voltage segment heartbeat",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "lock voltage segment heartbeat"
-                   }
-    },
-    {
-        "id":  472512677,
-        "key":  "voltage actuator diagnostic stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "voltage actuator diagnostic stack"
-                   }
-    },
-    {
-        "id":  94464907,
-        "key":  "thread module actuator pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread module actuator pointer"
-                   }
-    },
-    {
-        "id":  926103071,
-        "key":  "stack actuator diagnostic heartbeat",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack actuator diagnostic heartbeat"
-                   }
-    },
-    {
-        "id":  129269410,
-        "key":  "heap thread actuator bus",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap thread actuator bus"
-                   }
-    },
-    {
-        "id":  358415303,
-        "key":  "thread firmware bus diagnostic",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread firmware bus diagnostic"
-                   }
-    },
-    {
-        "id":  309317926,
-        "key":  "sensor system checksum actuator",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "sensor system checksum actuator"
-                   }
-    },
-    {
-        "id":  489977613,
-        "key":  "controller stack sensor firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "controller stack sensor firmware"
-                   }
-    },
-    {
-        "id":  816201946,
-        "key":  "driver firmware pointer actuator",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "driver firmware pointer actuator"
-                   }
-    },
-    {
-        "id":  626119748,
-        "key":  "actuator pointer heap module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator pointer heap module"
-                   }
-    },
-    {
-        "id":  6465034,
-        "key":  "thread actuator stack firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator stack firmware"
-                   }
-    },
-    {
-        "id":  865170461,
-        "key":  "segment actuator driver heap",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "segment actuator driver heap"
-                   }
-    },
-    {
-        "id":  53732801,
-        "key":  "bus actuator stack module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "bus actuator stack module"
-                   }
-    },
-    {
-        "id":  694377220,
-        "key":  "thread actuator firmware heap",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator firmware heap"
-                   }
-    },
-    {
-        "id":  388147844,
-        "key":  "bus sensor firmware pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "bus sensor firmware pointer"
-                   }
-    },
-    {
-        "id":  118298693,
-        "key":  "controller ramp stack module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "controller ramp stack module"
-                   }
-    },
-    {
-        "id":  591511353,
-        "key":  "stack diagnostic actuator thread",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack diagnostic actuator thread"
-                   }
-    },
-    {
-        "id":  355893677,
-        "key":  "voltage module safety offset",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "voltage module safety offset"
-                   }
-    },
-    {
-        "id":  28727532,
-        "key":  "diagnostic actuator heartbeat module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "diagnostic actuator heartbeat module"
-                   }
-    },
-    {
-        "id":  328785953,
-        "key":  "controller limit bus firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "controller limit bus firmware"
-                   }
-    },
-    {
-        "id":  290247548,
-        "key":  "module stack actuator sensor",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module stack actuator sensor"
-                   }
-    },
-    {
-        "id":  500299279,
-        "key":  "kernel actuator ramp driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "kernel actuator ramp driver"
-                   }
-    },
-    {
-        "id":  998297800,
-        "key":  "sensor module firmware pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "sensor module firmware pointer"
-                   }
-    },
-    {
-        "id":  47386390,
-        "key":  "stack driver actuator thread",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack driver actuator thread"
-                   }
-    },
-    {
-        "id":  187958773,
-        "key":  "frame diagnostic actuator pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "frame diagnostic actuator pointer"
-                   }
-    },
-    {
-        "id":  144173985,
-        "key":  "thread actuator firmware stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator firmware stack"
-                   }
-    },
-    {
-        "id":  339947909,
-        "key":  "driver bus pointer module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "driver bus pointer module"
-                   }
-    },
-    {
-        "id":  996925078,
-        "key":  "task bus actuator logic",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "task bus actuator logic"
-                   }
-    },
-    {
-        "id":  482896808,
-        "key":  "bus module actuator pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "bus module actuator pointer"
-                   }
-    },
-    {
-        "id":  736271796,
-        "key":  "module actuator heap driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module actuator heap driver"
-                   }
-    },
-    {
-        "id":  633728672,
-        "key":  "controller buffer checksum driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "controller buffer checksum driver"
-                   }
-    },
-    {
-        "id":  666679488,
-        "key":  "checksum pointer stack firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "checksum pointer stack firmware"
-                   }
-    },
-    {
-        "id":  44738678,
-        "key":  "module pointer actuator heap",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module pointer actuator heap"
-                   }
-    },
-    {
-        "id":  959576498,
-        "key":  "heap actuator thread stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap actuator thread stack"
-                   }
-    },
-    {
-        "id":  306579411,
-        "key":  "kernel actuator bus voltage",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "kernel actuator bus voltage"
-                   }
-    },
-    {
-        "id":  861160475,
-        "key":  "interrupt ramp module driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "interrupt ramp module driver"
-                   }
-    },
-    {
-        "id":  420303512,
-        "key":  "module heartbeat stack firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module heartbeat stack firmware"
-                   }
-    },
-    {
-        "id":  234925247,
-        "key":  "module actuator firmware stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module actuator firmware stack"
-                   }
-    },
-    {
-        "id":  966303945,
-        "key":  "thread actuator pointer heap",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator pointer heap"
-                   }
-    },
-    {
-        "id":  780525994,
-        "key":  "kernel firmware lock checksum",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "kernel firmware lock checksum"
-                   }
-    },
-    {
-        "id":  907182663,
-        "key":  "actuator module pointer stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator module pointer stack"
-                   }
-    },
-    {
-        "id":  872559141,
-        "key":  "controller firmware actuator task",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "controller firmware actuator task"
-                   }
-    },
-    {
-        "id":  473867458,
-        "key":  "stack firmware module actuator",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack firmware module actuator"
-                   }
-    },
-    {
-        "id":  116506835,
-        "key":  "module pointer actuator firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module pointer actuator firmware"
-                   }
-    },
-    {
-        "id":  194918386,
-        "key":  "stack module actuator thread",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack module actuator thread"
-                   }
-    },
-    {
-        "id":  382427954,
-        "key":  "frame pointer voltage limit",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "frame pointer voltage limit"
-                   }
-    },
-    {
-        "id":  820472708,
-        "key":  "actuator heap pointer stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator heap pointer stack"
-                   }
-    },
-    {
-        "id":  363481784,
-        "key":  "ramp memory pointer module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "ramp memory pointer module"
-                   }
-    },
-    {
-        "id":  886637610,
-        "key":  "update pointer motor stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "update pointer motor stack"
-                   }
-    },
-    {
-        "id":  445726336,
-        "key":  "actuator module stack heap",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator module stack heap"
-                   }
-    },
-    {
-        "id":  404057693,
-        "key":  "controller module heartbeat pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "controller module heartbeat pointer"
-                   }
-    },
-    {
-        "id":  694068727,
-        "key":  "actuator stack driver module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator stack driver module"
-                   }
-    },
-    {
-        "id":  370812086,
-        "key":  "sensor valve calibration timeout",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "sensor valve calibration timeout"
-                   }
-    },
-    {
-        "id":  690540386,
-        "key":  "firmware thread driver actuator",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "firmware thread driver actuator"
-                   }
-    },
-    {
-        "id":  679044067,
-        "key":  "thread actuator module driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator module driver"
-                   }
-    },
-    {
-        "id":  847086279,
-        "key":  "actuator pointer firmware checksum",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator pointer firmware checksum"
-                   }
-    },
-    {
-        "id":  794302768,
-        "key":  "controller segment calibration voltage",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "controller segment calibration voltage"
-                   }
-    },
-    {
-        "id":  576295605,
-        "key":  "heap motor controller signal",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap motor controller signal"
-                   }
-    },
-    {
-        "id":  167680888,
-        "key":  "heap module actuator thread",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap module actuator thread"
-                   }
-    },
-    {
-        "id":  700449313,
-        "key":  "bus segment pointer firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "bus segment pointer firmware"
-                   }
-    },
-    {
-        "id":  577324398,
-        "key":  "ramp valve safety controller",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "ramp valve safety controller"
-                   }
-    },
-    {
-        "id":  931743797,
-        "key":  "overflow bus motor diagnostic",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "overflow bus motor diagnostic"
-                   }
-    },
-    {
-        "id":  857549273,
-        "key":  "heap segment pointer encoder",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap segment pointer encoder"
-                   }
-    },
-    {
-        "id":  879108887,
-        "key":  "stack actuator pointer firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack actuator pointer firmware"
-                   }
-    },
-    {
-        "id":  759621472,
-        "key":  "segment heap thread module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "segment heap thread module"
-                   }
-    },
-    {
-        "id":  647971184,
-        "key":  "sensor actuator stack module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "sensor actuator stack module"
-                   }
-    },
-    {
-        "id":  452162457,
-        "key":  "sensor stack ramp actuator",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "sensor stack ramp actuator"
-                   }
-    },
-    {
-        "id":  697328175,
-        "key":  "thread module actuator firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread module actuator firmware"
-                   }
-    },
-    {
-        "id":  249934230,
-        "key":  "limit diagnostic firmware heap",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "limit diagnostic firmware heap"
-                   }
-    },
-    {
-        "id":  954830422,
-        "key":  "pointer module actuator heap",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "pointer module actuator heap"
-                   }
-    },
-    {
-        "id":  881123846,
-        "key":  "module pointer heartbeat driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module pointer heartbeat driver"
-                   }
-    },
-    {
-        "id":  353083372,
-        "key":  "thread encoder diagnostic pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread encoder diagnostic pointer"
-                   }
-    },
-    {
-        "id":  475719253,
-        "key":  "W message",
-        "level":  "Warning",
-        "locale":  {
-                       "de":  "",
-                       "en":  "W message"
-                   }
-    },
-    {
-        "id":  124996884,
-        "key":  "task pointer motor calibration",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "task pointer motor calibration"
-                   }
-    },
-    {
-        "id":  637878685,
-        "key":  "memory overflow bus logic",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "memory overflow bus logic"
-                   }
-    },
-    {
-        "id":  979701770,
-        "key":  "driver module firmware pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "driver module firmware pointer"
-                   }
-    },
-    {
-        "id":  417800184,
-        "key":  "heap actuator module stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap actuator module stack"
-                   }
-    },
-    {
-        "id":  837040779,
-        "key":  "thread firmware pointer actuator",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread firmware pointer actuator"
-                   }
-    },
-    {
-        "id":  827384662,
-        "key":  "encoder logic thread register",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "encoder logic thread register"
-                   }
-    },
-    {
-        "id":  540859977,
-        "key":  "thread actuator bus pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator bus pointer"
-                   }
-    },
-    {
-        "id":  376286704,
-        "key":  "task actuator memory diagnostic",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "task actuator memory diagnostic"
-                   }
-    },
-    {
-        "id":  878847349,
-        "key":  "actuator stack heap firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator stack heap firmware"
-                   }
-    },
-    {
-        "id":  691527425,
-        "key":  "heap actuator thread pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap actuator thread pointer"
-                   }
-    },
-    {
-        "id":  200931548,
-        "key":  "checksum axis kernel logic",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "checksum axis kernel logic"
-                   }
-    },
-    {
-        "id":  254841642,
-        "key":  "heap sensor pointer actuator",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap sensor pointer actuator"
-                   }
-    },
-    {
-        "id":  283444959,
-        "key":  "heap thread actuator module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap thread actuator module"
-                   }
-    },
-    {
-        "id":  526722250,
-        "key":  "module actuator heap thread",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module actuator heap thread"
-                   }
-    },
-    {
-        "id":  678303871,
-        "key":  "thread firmware module driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread firmware module driver"
-                   }
-    },
-    {
-        "id":  697355366,
-        "key":  "sensor thread safety module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "sensor thread safety module"
-                   }
-    },
-    {
-        "id":  259581970,
-        "key":  "controller thread firmware stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "controller thread firmware stack"
-                   }
+        "locale":  "en",
+        "id":  4807251,
+        "key":  "System is in hardware fault"
     },
     {
+        "locale":  "en",
+        "id":  5350323,
+        "key":  "Encoder is powering down"
+    },
+    {
+        "locale":  "en",
+        "id":  5835009,
+        "key":  "System is in fault state: Reset required"
+    },
+    {
+        "locale":  "en",
+        "id":  6079279,
+        "key":  "Chiller fluid level is low"
+    },
+    {
+        "locale":  "en",
+        "id":  10818780,
+        "key":  "Excessive cycle time detected"
+    },
+    {
+        "locale":  "en",
+        "id":  11345948,
+        "key":  "System is in standby"
+    },
+    {
+        "locale":  "en",
+        "id":  12352681,
+        "key":  "Robot software limit reached"
+    },
+    {
+        "locale":  "en",
+        "id":  13330519,
+        "key":  "Pump cavitation detected"
+    },
+    {
+        "locale":  "en",
+        "id":  13621109,
+        "key":  "Pallet is empty at location %s"
+    },
+    {
+        "locale":  "en",
+        "id":  14472554,
+        "key":  "HMI display is faulty"
+    },
+    {
+        "locale":  "en",
+        "id":  15017611,
+        "key":  "Failed to execute robot program %s"
+    },
+    {
+        "locale":  "en",
+        "id":  15257384,
+        "key":  "Spindle speed is zero"
+    },
+    {
+        "locale":  "en",
+        "id":  16987038,
+        "key":  "Failed to synchronize axes"
+    },
+    {
+        "locale":  "en",
+        "id":  17659654,
+        "key":  "Conveyor is in E-Stop"
+    },
+    {
+        "locale":  "en",
+        "id":  20308516,
+        "key":  "Air system is in fault"
+    },
+    {
+        "locale":  "en",
+        "id":  21062406,
+        "key":  "Configuration file %s is corrupted"
+    },
+    {
+        "locale":  "en",
+        "id":  21914838,
+        "key":  "Temperature sensor %s is disconnected"
+    },
+    {
+        "locale":  "en",
+        "id":  23099603,
+        "key":  "Input %s is in unknown state"
+    },
+    {
+        "locale":  "en",
+        "id":  26494080,
+        "key":  "Failed to connect to MES system"
+    },
+    {
+        "locale":  "en",
+        "id":  31918372,
+        "key":  "Robot collision detected at joint %s"
+    },
+    {
+        "locale":  "en",
+        "id":  45270352,
+        "key":  "Failed to power on robot"
+    },
+    {
+        "locale":  "en",
+        "id":  47762990,
+        "key":  "Vision system lighting failure"
+    },
+    {
+        "locale":  "en",
+        "id":  47796760,
+        "key":  "System is offline"
+    },
+    {
+        "locale":  "en",
+        "id":  49093818,
+        "key":  "Conveyor belt jam detected"
+    },
+    {
+        "locale":  "en",
+        "id":  50359082,
+        "key":  "Conveyor is running"
+    },
+    {
+        "locale":  "en",
+        "id":  50407106,
+        "key":  "VFD motor stall"
+    },
+    {
+        "locale":  "en",
+        "id":  52190518,
+        "key":  "Spindle tool is broken"
+    },
+    {
+        "locale":  "en",
+        "id":  53324685,
+        "key":  "Valve is shifting"
+    },
+    {
+        "locale":  "en",
+        "id":  53648101,
+        "key":  "Pump motor failed to start"
+    },
+    {
+        "locale":  "en",
+        "id":  54053429,
+        "key":  "Conveyor is in software fault"
+    },
+    {
+        "locale":  "en",
+        "id":  55561347,
+        "key":  "Motor Q is powering down"
+    },
+    {
+        "locale":  "en",
+        "id":  55697345,
+        "key":  "Pallet is missing at location %s"
+    },
+    {
+        "locale":  "en",
+        "id":  56057379,
+        "key":  "Vision system is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  56417063,
+        "key":  "PLC battery needs replacement"
+    },
+    {
+        "locale":  "en",
+        "id":  58246198,
+        "key":  "Failed to eject part from mold"
+    },
+    {
+        "locale":  "en",
+        "id":  61520055,
+        "key":  "Failed to find part %s in vision system"
+    },
+    {
+        "locale":  "en",
+        "id":  62764297,
+        "key":  "Cylinder B failed to extend"
+    },
+    {
+        "locale":  "en",
+        "id":  67668378,
+        "key":  "Axis %s is in error"
+    },
+    {
+        "locale":  "en",
+        "id":  69032799,
+        "key":  "Homing failed for axis %s"
+    },
+    {
+        "locale":  "en",
+        "id":  70786942,
+        "key":  "System is online"
+    },
+    {
+        "locale":  "en",
+        "id":  71142695,
+        "key":  "PLC is in stop mode"
+    },
+    {
+        "locale":  "en",
+        "id":  71608016,
+        "key":  "Hydraulic system is OK"
+    },
+    {
+        "locale":  "en",
+        "id":  74235841,
+        "key":  "System is in software fault"
+    },
+    {
+        "locale":  "en",
+        "id":  82768936,
+        "key":  "Axis %s command position and actual position mismatch"
+    },
+    {
+        "locale":  "en",
+        "id":  87546593,
+        "key":  "HMI application crashed"
+    },
+    {
+        "locale":  "en",
+        "id":  90348213,
+        "key":  "PLC is in reset"
+    },
+    {
+        "locale":  "en",
+        "id":  91123471,
+        "key":  "Axis %s following error is active"
+    },
+    {
+        "locale":  "en",
+        "id":  91674575,
+        "key":  "Axis %s brake did not engage"
+    },
+    {
+        "locale":  "en",
+        "id":  91867106,
+        "key":  "PLC is in communication fault"
+    },
+    {
+        "locale":  "en",
+        "id":  92074348,
+        "key":  "Air filter is dirty"
+    },
+    {
+        "locale":  "en",
+        "id":  96634275,
+        "key":  "Emergency stop chain is broken"
+    },
+    {
+        "locale":  "en",
+        "id":  96700224,
+        "key":  "Valve manifold communication error"
+    },
+    {
+        "locale":  "en",
+        "id":  97019314,
+        "key":  "Valve is de-energized"
+    },
+    {
+        "locale":  "en",
+        "id":  99444800,
+        "key":  "Robot gripper is releasing"
+    },
+    {
+        "locale":  "en",
+        "id":  100381264,
+        "key":  "VFD in fault state"
+    },
+    {
+        "locale":  "en",
+        "id":  100559308,
+        "key":  "Cylinder B did not retract within timeout"
+    },
+    {
+        "locale":  "en",
+        "id":  101908288,
+        "key":  "VFD is running"
+    },
+    {
+        "locale":  "en",
+        "id":  103282373,
+        "key":  "Overvoltage detected on DC bus"
+    },
+    {
+        "locale":  "en",
+        "id":  103593865,
+        "key":  "Pallet is stuck at location %s"
+    },
+    {
+        "locale":  "en",
+        "id":  105663102,
+        "key":  "Pump is priming"
+    },
+    {
+        "locale":  "en",
+        "id":  106218867,
+        "key":  "Air system is venting"
+    },
+    {
+        "locale":  "en",
+        "id":  106531401,
+        "key":  "Motor G is not calibrated"
+    },
+    {
+        "locale":  "en",
+        "id":  107546264,
+        "key":  "Air pressure is normal"
+    },
+    {
+        "locale":  "en",
+        "id":  107984654,
+        "key":  "Internal PLC error: Task overrun"
+    },
+    {
+        "locale":  "en",
+        "id":  108014721,
+        "key":  "System failed to initialize I/O"
+    },
+    {
+        "locale":  "en",
+        "id":  108094323,
+        "key":  "System is ready"
+    },
+    {
+        "locale":  "en",
+        "id":  108261308,
+        "key":  "Pump efficiency is low"
+    },
+    {
+        "locale":  "en",
+        "id":  109177156,
+        "key":  "Network switch communication error"
+    },
+    {
+        "locale":  "en",
+        "id":  111102940,
+        "key":  "Failed to grip part at station %s"
+    },
+    {
+        "locale":  "en",
+        "id":  111232102,
+        "key":  "Air system is powering down"
+    },
+    {
+        "locale":  "en",
+        "id":  111775791,
+        "key":  "Conveyor is stopped"
+    },
+    {
+        "locale":  "en",
+        "id":  114606201,
+        "key":  "Regulator pressure is out of range"
+    },
+    {
+        "locale":  "en",
+        "id":  115614024,
+        "key":  "Robot is referencing"
+    },
+    {
+        "locale":  "en",
+        "id":  123253873,
+        "key":  "Gas leak detected in zone %s"
+    },
+    {
+        "locale":  "en",
+        "id":  124048137,
+        "key":  "Invalid parameter set for drive %s"
+    },
+    {
+        "locale":  "en",
+        "id":  126276672,
+        "key":  "Robot gripper is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  130581478,
+        "key":  "Failed to execute command %s"
+    },
+    {
+        "locale":  "en",
+        "id":  130699376,
+        "key":  "Incorrect password entered %s times"
+    },
+    {
+        "locale":  "en",
+        "id":  131126122,
+        "key":  "Emergency stop source: Pull Cord"
+    },
+    {
+        "locale":  "en",
+        "id":  131986420,
+        "key":  "Safety gate is in unknown state"
+    },
+    {
+        "locale":  "en",
+        "id":  133354980,
+        "key":  "Invalid command received from HMI"
+    },
+    {
+        "locale":  "en",
+        "id":  133408958,
+        "key":  "Air system is charging"
+    },
+    {
+        "locale":  "en",
+        "id":  136578612,
+        "key":  "Pallet is skewed at location %s"
+    },
+    {
+        "locale":  "en",
+        "id":  138291755,
+        "key":  "Incorrect part orientation detected"
+    },
+    {
+        "locale":  "en",
+        "id":  138780411,
+        "key":  "Safety gate is open"
+    },
+    {
+        "locale":  "en",
+        "id":  143184871,
+        "key":  "Motor L is starting"
+    },
+    {
+        "locale":  "en",
+        "id":  144721828,
+        "key":  "Motor K is stopped"
+    },
+    {
+        "locale":  "en",
+        "id":  146319251,
+        "key":  "Pump is running"
+    },
+    {
+        "locale":  "en",
+        "id":  146502318,
+        "key":  "Encoder is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  147243850,
+        "key":  "System failed to initialize"
+    },
+    {
+        "locale":  "en",
+        "id":  147297523,
+        "key":  "Pump pressure is below minimum threshold"
+    },
+    {
+        "locale":  "en",
+        "id":  147858480,
+        "key":  "System failed to load configuration"
+    },
+    {
+        "locale":  "en",
+        "id":  150713939,
+        "key":  "Robot is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  151356623,
+        "key":  "Robot gripper failed to close"
+    },
+    {
+        "locale":  "en",
+        "id":  152167975,
+        "key":  "Pallet is double-stacked at location %s"
+    },
+    {
+        "locale":  "en",
+        "id":  152217629,
+        "key":  "Axis %s hardware limit switch triggered"
+    },
+    {
+        "locale":  "en",
+        "id":  153010784,
+        "key":  "Emergency stop source: Software"
+    },
+    {
+        "locale":  "en",
+        "id":  157553850,
+        "key":  "Air filter is clogged"
+    },
+    {
+        "locale":  "en",
+        "id":  163821495,
+        "key":  "Part jam detected in chute %s"
+    },
+    {
+        "locale":  "en",
+        "id":  164924335,
+        "key":  "System is in manual mode"
+    },
+    {
+        "locale":  "en",
+        "id":  165346795,
+        "key":  "Pallet is missing from location %s"
+    },
+    {
+        "locale":  "en",
+        "id":  165763222,
+        "key":  "Motor A thermal model trip"
+    },
+    {
+        "locale":  "en",
+        "id":  167321371,
+        "key":  "Wrong tool loaded in spindle"
+    },
+    {
+        "locale":  "en",
+        "id":  168985146,
+        "key":  "Hydraulic system is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  169365827,
+        "key":  "Pump is running dry"
+    },
+    {
+        "locale":  "en",
+        "id":  170395681,
+        "key":  "Valve is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  171563348,
+        "key":  "Failed to open valve %s"
+    },
+    {
+        "locale":  "en",
+        "id":  171706880,
+        "key":  "Hydraulic fluid is overheating"
+    },
+    {
+        "locale":  "en",
+        "id":  174104869,
+        "key":  "Robot gripper is empty"
+    },
+    {
+        "locale":  "en",
+        "id":  177442738,
+        "key":  "Air dryer is saturated"
+    },
+    {
+        "locale":  "en",
+        "id":  178852797,
+        "key":  "System is in power down"
+    },
+    {
+        "locale":  "en",
+        "id":  180650545,
+        "key":  "Robot is moving"
+    },
+    {
+        "locale":  "en",
+        "id":  183659276,
+        "key":  "Part presence sensor stuck on"
+    },
+    {
+        "locale":  "en",
+        "id":  185108713,
+        "key":  "Analog input %s signal out of range"
+    },
+    {
+        "locale":  "en",
+        "id":  186009301,
+        "key":  "Failed to close safety gate"
+    },
+    {
+        "locale":  "en",
+        "id":  187121568,
+        "key":  "Spindle direction is incorrect"
+    },
+    {
+        "locale":  "en",
+        "id":  187382456,
+        "key":  "Welding tip is worn"
+    },
+    {
+        "locale":  "en",
+        "id":  189339750,
+        "key":  "Hydraulic fluid is contaminated"
+    },
+    {
+        "locale":  "en",
+        "id":  189564922,
+        "key":  "Cycle start not permitted: Guard open"
+    },
+    {
+        "locale":  "en",
+        "id":  190843921,
+        "key":  "Axis %s stalled during movement"
+    },
+    {
+        "locale":  "en",
+        "id":  193631627,
+        "key":  "Air pressure is too high"
+    },
+    {
+        "locale":  "en",
+        "id":  197253253,
+        "key":  "Servo motor overheating"
+    },
+    {
+        "locale":  "en",
+        "id":  198734585,
+        "key":  "Failed to match pattern %s in vision system"
+    },
+    {
+        "locale":  "en",
+        "id":  201466115,
+        "key":  "HMI backup failed"
+    },
+    {
+        "locale":  "en",
+        "id":  211254420,
+        "key":  "Hydraulic accumulator is pre-charged incorrectly"
+    },
+    {
+        "locale":  "en",
+        "id":  213620218,
+        "key":  "Pressure relief valve is active"
+    },
+    {
+        "locale":  "en",
+        "id":  213764771,
+        "key":  "Emergency stop source: Unknown"
+    },
+    {
+        "locale":  "en",
+        "id":  216165052,
+        "key":  "Part height is incorrect at station %s"
+    },
+    {
+        "locale":  "en",
+        "id":  218555824,
+        "key":  "System voltage is unstable"
+    },
+    {
+        "locale":  "en",
+        "id":  219630415,
+        "key":  "Program execution timeout after %s seconds"
+    },
+    {
+        "locale":  "en",
+        "id":  220452105,
+        "key":  "Spindle is changing tool"
+    },
+    {
+        "locale":  "en",
+        "id":  224203696,
+        "key":  "Communication with VFD %s failed"
+    },
+    {
+        "locale":  "en",
+        "id":  224304038,
+        "key":  "Emergency stop source: Unlisted"
+    },
+    {
+        "locale":  "en",
+        "id":  230331814,
+        "key":  "System is in power save"
+    },
+    {
+        "locale":  "en",
+        "id":  230514679,
+        "key":  "Motor J is OK"
+    },
+    {
+        "locale":  "en",
+        "id":  233128167,
+        "key":  "Safety relay test failed"
+    },
+    {
+        "locale":  "en",
+        "id":  235360000,
+        "key":  "Encoder is in unknown state"
+    },
+    {
+        "locale":  "en",
+        "id":  235849703,
+        "key":  "Spindle is not running"
+    },
+    {
+        "locale":  "en",
+        "id":  236278108,
+        "key":  "I/O Module %s not responding"
+    },
+    {
+        "locale":  "en",
+        "id":  240496535,
+        "key":  "VFD overcurrent trip"
+    },
+    {
+        "locale":  "en",
+        "id":  240623418,
+        "key":  "Vision system is capturing image"
+    },
+    {
+        "locale":  "en",
+        "id":  241776719,
+        "key":  "Robot is not in auto mode"
+    },
+    {
+        "locale":  "en",
+        "id":  242227519,
+        "key":  "Failed to power down robot"
+    },
+    {
+        "locale":  "en",
+        "id":  242242005,
+        "key":  "Vision system is in error"
+    },
+    {
+        "locale":  "en",
+        "id":  245219383,
+        "key":  "Failed to read barcode from part %s"
+    },
+    {
+        "locale":  "en",
+        "id":  245800601,
+        "key":  "PLC scan time is too high"
+    },
+    {
+        "locale":  "en",
+        "id":  247141302,
+        "key":  "Failed to save settings to HMI"
+    },
+    {
+        "locale":  "en",
+        "id":  248322796,
+        "key":  "Analog output %s is at fault"
+    },
+    {
+        "locale":  "en",
+        "id":  249490462,
+        "key":  "E-Stop source: External"
+    },
+    {
+        "locale":  "en",
+        "id":  249651244,
+        "key":  "PLC network redundancy lost"
+    },
+    {
+        "locale":  "en",
+        "id":  250193368,
+        "key":  "Main contactor did not engage"
+    },
+    {
+        "locale":  "en",
+        "id":  250388329,
+        "key":  "Cannot open file %s on HMI"
+    },
+    {
+        "locale":  "en",
+        "id":  253222116,
+        "key":  "Spindle is powering down"
+    },
+    {
+        "locale":  "en",
+        "id":  255896736,
+        "key":  "System is in config mode"
+    },
+    {
+        "locale":  "en",
+        "id":  257990122,
+        "key":  "System failed to boot"
+    },
+    {
+        "locale":  "en",
+        "id":  260834187,
+        "key":  "Safety system is OK"
+    },
+    {
+        "locale":  "en",
+        "id":  262534927,
+        "key":  "PLC task watchdog has expired"
+    },
+    {
+        "locale":  "en",
+        "id":  264421939,
+        "key":  "Encoder is at zero"
+    },
+    {
+        "locale":  "en",
+        "id":  264827515,
+        "key":  "Conveyor motor is not running"
+    },
+    {
+        "locale":  "en",
+        "id":  265293020,
+        "key":  "Valve is closed"
+    },
+    {
+        "locale":  "en",
+        "id":  268499768,
+        "key":  "System is in maintenance mode"
+    },
+    {
+        "locale":  "en",
+        "id":  270934408,
+        "key":  "Axis %s is referencing"
+    },
+    {
+        "locale":  "en",
+        "id":  271146146,
+        "key":  "Signal conflict between two sensors"
+    },
+    {
+        "locale":  "en",
+        "id":  272349207,
+        "key":  "Axis %s is in configuration fault"
+    },
+    {
+        "locale":  "en",
+        "id":  276082621,
+        "key":  "Robot program %s is loaded"
+    },
+    {
+        "locale":  "en",
+        "id":  276535387,
+        "key":  "System pressure is too high"
+    },
+    {
+        "locale":  "en",
+        "id":  278050376,
+        "key":  "Proximity sensor fault: Wire break"
+    },
+    {
+        "locale":  "en",
+        "id":  282561217,
+        "key":  "Robot gripper is gripping"
+    },
+    {
+        "locale":  "en",
+        "id":  284135205,
+        "key":  "System pressure not building"
+    },
+    {
+        "locale":  "en",
+        "id":  288706971,
+        "key":  "Vision system is in software fault"
+    },
+    {
+        "locale":  "en",
+        "id":  292450194,
+        "key":  "Robot gripper is damaged"
+    },
+    {
+        "locale":  "en",
+        "id":  298239697,
+        "key":  "Encoder is in alarm"
+    },
+    {
+        "locale":  "en",
+        "id":  298543865,
+        "key":  "Input %s is in error"
+    },
+    {
+        "locale":  "en",
+        "id":  298911306,
+        "key":  "System is in fault"
+    },
+    {
+        "locale":  "en",
+        "id":  305930856,
+        "key":  "Axis %s is moving"
+    },
+    {
+        "locale":  "en",
+        "id":  306046057,
+        "key":  "Axis 2 position deviation too high"
+    },
+    {
+        "locale":  "en",
+        "id":  307474215,
+        "key":  "Weight of part %s is out of tolerance"
+    },
+    {
+        "locale":  "en",
+        "id":  308668500,
+        "key":  "Temperature in zone %s is too low"
+    },
+    {
+        "locale":  "en",
+        "id":  308713644,
+        "key":  "Valve is in hardware fault"
+    },
+    {
+        "locale":  "en",
+        "id":  311040202,
+        "key":  "Air system is off"
+    },
+    {
+        "locale":  "en",
+        "id":  312928369,
+        "key":  "System is in E-Stop state: Reset required"
+    },
+    {
+        "locale":  "en",
+        "id":  315414856,
+        "key":  "System pressure relief valve active"
+    },
+    {
+        "locale":  "en",
+        "id":  319540893,
+        "key":  "Conveyor is overloaded"
+    },
+    {
+        "locale":  "en",
+        "id":  322717611,
+        "key":  "Axis %s is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  324626171,
+        "key":  "Interlock condition not met for operation %s"
+    },
+    {
+        "locale":  "en",
+        "id":  325249016,
+        "key":  "Temperature ramp rate too fast"
+    },
+    {
+        "locale":  "en",
+        "id":  328825485,
+        "key":  "System is in user fault"
+    },
+    {
+        "locale":  "en",
+        "id":  333901242,
+        "key":  "Robot gripper is worn"
+    },
+    {
+        "locale":  "en",
+        "id":  334820327,
+        "key":  "Main circuit breaker is tripped"
+    },
+    {
+        "locale":  "en",
+        "id":  335177129,
+        "key":  "Failed to find reference mark for axis %s"
+    },
+    {
+        "locale":  "en",
+        "id":  336903017,
+        "key":  "System is initializing"
+    },
+    {
+        "locale":  "en",
+        "id":  337441676,
+        "key":  "Spindle is starting"
+    },
+    {
+        "locale":  "en",
+        "id":  338573968,
+        "key":  "Vision system is in communication fault"
+    },
+    {
+        "locale":  "en",
+        "id":  340736568,
+        "key":  "Safety relay test passed with warnings"
+    },
+    {
+        "locale":  "en",
+        "id":  342459851,
+        "key":  "Conveyor is decelerating"
+    },
+    {
+        "locale":  "en",
+        "id":  347913332,
+        "key":  "PLC is stopped"
+    },
+    {
+        "locale":  "en",
+        "id":  354268224,
+        "key":  "Failed to write to I/O module %s"
+    },
+    {
+        "locale":  "en",
+        "id":  358912044,
+        "key":  "Coolant flow switch is open"
+    },
+    {
+        "locale":  "en",
+        "id":  358926264,
+        "key":  "Robot gripper is in software fault"
+    },
+    {
+        "locale":  "en",
+        "id":  361596979,
+        "key":  "Failed to write to database"
+    },
+    {
+        "locale":  "en",
+        "id":  362431411,
+        "key":  "Failed to close valve manifold"
+    },
+    {
+        "locale":  "en",
+        "id":  368168081,
+        "key":  "Purge valve is stuck open"
+    },
+    {
+        "locale":  "en",
+        "id":  368452984,
+        "key":  "Encoder signal lost for axis %s"
+    },
+    {
+        "locale":  "en",
+        "id":  368754980,
+        "key":  "Input %s is forced"
+    },
+    {
+        "locale":  "en",
+        "id":  374393878,
+        "key":  "E-Stop source: Panel Button"
+    },
+    {
+        "locale":  "en",
+        "id":  376915595,
+        "key":  "System is in power up"
+    },
+    {
+        "locale":  "en",
+        "id":  378641744,
+        "key":  "Valve is in unknown state"
+    },
+    {
+        "locale":  "en",
+        "id":  378958620,
+        "key":  "Data packet from robot is corrupt"
+    },
+    {
+        "locale":  "en",
+        "id":  380578516,
+        "key":  "Hydraulic system is idle"
+    },
+    {
+        "locale":  "en",
+        "id":  382288216,
+        "key":  "Hydraulic fluid is low"
+    },
+    {
+        "locale":  "en",
+        "id":  383890713,
+        "key":  "PLC is running"
+    },
+    {
+        "locale":  "en",
+        "id":  384404749,
+        "key":  "System is in safe state"
+    },
+    {
+        "locale":  "en",
+        "id":  389909287,
+        "key":  "E-Stop reset failed: Fault condition still present"
+    },
+    {
+        "locale":  "en",
+        "id":  390584469,
+        "key":  "Temperature overshoot detected"
+    },
+    {
+        "locale":  "en",
+        "id":  391356591,
+        "key":  "Conveyor motor is overheating"
+    },
+    {
+        "locale":  "en",
+        "id":  394374111,
+        "key":  "Spindle is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  394586519,
+        "key":  "Barcode scanner not ready"
+    },
+    {
+        "locale":  "en",
+        "id":  395644558,
+        "key":  "Failed to park robot"
+    },
+    {
+        "locale":  "en",
+        "id":  395794439,
+        "key":  "Failed to close valve %s"
+    },
+    {
+        "locale":  "en",
+        "id":  396735236,
+        "key":  "Valve is powering down"
+    },
+    {
+        "locale":  "en",
+        "id":  399146913,
+        "key":  "HMI connection lost"
+    },
+    {
+        "locale":  "en",
+        "id":  400693354,
+        "key":  "Pallet not present at location %s"
+    },
+    {
+        "locale":  "en",
+        "id":  401150847,
+        "key":  "Pump suction is clogged"
+    },
+    {
+        "locale":  "en",
+        "id":  402112666,
+        "key":  "Failed to close isolation valve"
+    },
+    {
+        "locale":  "en",
+        "id":  403905948,
+        "key":  "Vision system could not locate part %s"
+    },
+    {
+        "locale":  "en",
+        "id":  406934296,
+        "key":  "Axis %s is enabled"
+    },
+    {
+        "locale":  "en",
+        "id":  408793261,
+        "key":  "Robot gripper is in communication fault"
+    },
+    {
+        "locale":  "en",
+        "id":  413433193,
+        "key":  "Failed to load G-code: Invalid syntax"
+    },
+    {
+        "locale":  "en",
+        "id":  414835851,
+        "key":  "System is in service mode"
+    },
+    {
+        "locale":  "en",
+        "id":  417679101,
+        "key":  "Motor C bearing failure"
+    },
+    {
+        "locale":  "en",
+        "id":  418168403,
+        "key":  "Failed to open safety valve"
+    },
+    {
+        "locale":  "en",
+        "id":  420423205,
+        "key":  "Air pressure in main line is low"
+    },
+    {
+        "locale":  "en",
+        "id":  422522142,
+        "key":  "Main drive overtemperature"
+    },
+    {
+        "locale":  "en",
+        "id":  424019756,
+        "key":  "Failed to write barcode to part %s"
+    },
+    {
+        "locale":  "en",
+        "id":  424182736,
+        "key":  "Safety gate is locked"
+    },
+    {
+        "locale":  "en",
+        "id":  429580340,
+        "key":  "Pallet is wrong at location %s"
+    },
+    {
+        "locale":  "en",
+        "id":  434502460,
+        "key":  "E-Stop source: Gateway"
+    },
+    {
+        "locale":  "en",
+        "id":  435208140,
+        "key":  "Emergency stop has been reset"
+    },
+    {
+        "locale":  "en",
+        "id":  436578119,
+        "key":  "Cylinder home position not reached"
+    },
+    {
+        "locale":  "en",
+        "id":  438353293,
+        "key":  "Spindle temperature is critical"
+    },
+    {
+        "locale":  "en",
+        "id":  443472917,
+        "key":  "Robot is in singularity, cannot move"
+    },
+    {
+        "locale":  "en",
+        "id":  444512173,
+        "key":  "Servo drive fault: %s"
+    },
+    {
+        "locale":  "en",
+        "id":  445448130,
+        "key":  "Axis %s software limit switch triggered"
+    },
+    {
+        "locale":  "en",
+        "id":  446837303,
+        "key":  "Part is gripped"
+    },
+    {
+        "locale":  "en",
+        "id":  447311786,
+        "key":  "Air pressure is too low"
+    },
+    {
+        "locale":  "en",
+        "id":  449222015,
+        "key":  "Hydraulic return filter is clogged"
+    },
+    {
+        "locale":  "en",
+        "id":  450883362,
+        "key":  "PLC memory is full"
+    },
+    {
+        "locale":  "en",
+        "id":  450978005,
+        "key":  "Conveyor belt slipped"
+    },
+    {
+        "locale":  "en",
+        "id":  453904248,
+        "key":  "System is booted"
+    },
+    {
+        "locale":  "en",
+        "id":  454980182,
+        "key":  "Hydraulic fluid level is critically low"
+    },
+    {
+        "locale":  "en",
+        "id":  458251234,
+        "key":  "Machine not homed"
+    },
+    {
+        "locale":  "en",
+        "id":  458833780,
+        "key":  "Pump is in user fault"
+    },
+    {
+        "locale":  "en",
+        "id":  459171370,
+        "key":  "Incorrect fixture detected at station %s"
+    },
+    {
+        "locale":  "en",
+        "id":  459468574,
+        "key":  "Sensor fault: Short circuit"
+    },
+    {
+        "locale":  "en",
+        "id":  459705985,
+        "key":  "Robot is in singularity position"
+    },
+    {
+        "locale":  "en",
+        "id":  461206374,
+        "key":  "Failed to verify barcode on part %s"
+    },
+    {
+        "locale":  "en",
+        "id":  461325003,
+        "key":  "Leak detected in hydraulic line %s"
+    },
+    {
+        "locale":  "en",
+        "id":  461991977,
+        "key":  "Failed to enable safety outputs"
+    },
+    {
+        "locale":  "en",
+        "id":  464230505,
+        "key":  "VFD communication timeout"
+    },
+    {
+        "locale":  "en",
+        "id":  466230381,
+        "key":  "Input %s is on"
+    },
+    {
+        "locale":  "en",
+        "id":  466512842,
+        "key":  "Invalid move command for axis %s"
+    },
+    {
+        "locale":  "en",
+        "id":  466641342,
+        "key":  "Axis %s is stopped"
+    },
+    {
+        "locale":  "en",
+        "id":  467874328,
+        "key":  "Lag error 2"
+    },
+    {
+        "locale":  "en",
+        "id":  472161434,
+        "key":  "Failed to locate feature %s in vision system"
+    },
+    {
+        "locale":  "en",
+        "id":  474590038,
+        "key":  "Conveyor speed is below setpoint"
+    },
+    {
+        "locale":  "en",
         "id":  475719233,
-        "key":  "C message",
-        "level":  "Critical",
-        "locale":  {
-                       "de":  "",
-                       "en":  "C message"
-                   }
+        "key":  "C message"
     },
     {
-        "id":  51399738,
-        "key":  "sensor module actuator stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "sensor module actuator stack"
-                   }
-    },
-    {
-        "id":  266230397,
-        "key":  "voltage limit retry packet",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "voltage limit retry packet"
-                   }
-    },
-    {
-        "id":  774652654,
-        "key":  "actuator heap bus stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator heap bus stack"
-                   }
-    },
-    {
-        "id":  197920126,
-        "key":  "update sensor actuator logic",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "update sensor actuator logic"
-                   }
-    },
-    {
-        "id":  933074454,
-        "key":  "pointer module thread firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "pointer module thread firmware"
-                   }
-    },
-    {
-        "id":  200916118,
-        "key":  "checksum module driver actuator",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "checksum module driver actuator"
-                   }
-    },
-    {
-        "id":  337189298,
-        "key":  "bus firmware interrupt task",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "bus firmware interrupt task"
-                   }
-    },
-    {
-        "id":  55631998,
-        "key":  "controller update thread sensor",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "controller update thread sensor"
-                   }
-    },
-    {
-        "id":  50143645,
-        "key":  "heap thread ramp kernel",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap thread ramp kernel"
-                   }
-    },
-    {
-        "id":  711832086,
-        "key":  "frequency actuator bus calibration",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "frequency actuator bus calibration"
-                   }
-    },
-    {
-        "id":  520051735,
-        "key":  "diagnostic actuator ramp driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "diagnostic actuator ramp driver"
-                   }
-    },
-    {
-        "id":  892784415,
-        "key":  "overflow actuator bus heartbeat",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "overflow actuator bus heartbeat"
-                   }
-    },
-    {
-        "id":  404999304,
-        "key":  "lock actuator bus thread",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "lock actuator bus thread"
-                   }
-    },
-    {
-        "id":  158219915,
-        "key":  "task segment heap offset",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "task segment heap offset"
-                   }
-    },
-    {
-        "id":  278934838,
-        "key":  "signal stack ramp calibration",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "signal stack ramp calibration"
-                   }
-    },
-    {
-        "id":  962125775,
-        "key":  "heap pointer actuator module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap pointer actuator module"
-                   }
-    },
-    {
-        "id":  882123900,
-        "key":  "bus actuator firmware stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "bus actuator firmware stack"
-                   }
-    },
-    {
-        "id":  136846198,
-        "key":  "module sensor pointer actuator",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module sensor pointer actuator"
-                   }
-    },
-    {
-        "id":  501699769,
-        "key":  "interrupt actuator bus firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "interrupt actuator bus firmware"
-                   }
-    },
-    {
-        "id":  407661606,
-        "key":  "module stack thread calibration",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module stack thread calibration"
-                   }
-    },
-    {
-        "id":  796739922,
-        "key":  "segment bus pointer diagnostic",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "segment bus pointer diagnostic"
-                   }
-    },
-    {
-        "id":  526266304,
-        "key":  "actuator stack module pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator stack module pointer"
-                   }
-    },
-    {
-        "id":  833809804,
-        "key":  "module stack firmware actuator",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module stack firmware actuator"
-                   }
-    },
-    {
-        "id":  501600596,
-        "key":  "overflow thread firmware limit",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "overflow thread firmware limit"
-                   }
-    },
-    {
-        "id":  871473160,
-        "key":  "packet ramp module safety",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "packet ramp module safety"
-                   }
-    },
-    {
-        "id":  269922583,
-        "key":  "pointer actuator module stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "pointer actuator module stack"
-                   }
-    },
-    {
-        "id":  950745785,
-        "key":  "thread actuator heap bus",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator heap bus"
-                   }
-    },
-    {
-        "id":  321670183,
-        "key":  "encoder bus task firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "encoder bus task firmware"
-                   }
-    },
-    {
-        "id":  784470659,
-        "key":  "sensor driver heap offset",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "sensor driver heap offset"
-                   }
-    },
-    {
+        "locale":  "en",
         "id":  475719235,
-        "key":  "E message",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "E message"
-                   }
+        "key":  "E message"
     },
     {
-        "id":  222657841,
-        "key":  "thread actuator heap firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator heap firmware"
-                   }
+        "locale":  "en",
+        "id":  475719253,
+        "key":  "W message"
     },
     {
-        "id":  79561101,
-        "key":  "module actuator pointer thread",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "module actuator pointer thread"
-                   }
+        "locale":  "en",
+        "id":  477738670,
+        "key":  "Robot gripper is closed"
     },
     {
-        "id":  628290301,
-        "key":  "actuator pointer heap driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator pointer heap driver"
-                   }
+        "locale":  "en",
+        "id":  478766911,
+        "key":  "Robot program %s is not found"
     },
     {
-        "id":  237487728,
-        "key":  "limit stack frame driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "limit stack frame driver"
-                   }
+        "locale":  "en",
+        "id":  479382623,
+        "key":  "Communication with PLC lost"
     },
     {
-        "id":  422762597,
-        "key":  "calibration frame thread packet",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "calibration frame thread packet"
-                   }
+        "locale":  "en",
+        "id":  481638973,
+        "key":  "Hydraulic system is in communication fault"
     },
     {
-        "id":  55300621,
-        "key":  "thread memory diagnostic pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread memory diagnostic pointer"
-                   }
+        "locale":  "en",
+        "id":  483231793,
+        "key":  "Spindle is in unknown state"
     },
     {
-        "id":  25755573,
-        "key":  "thread pointer actuator firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread pointer actuator firmware"
-                   }
+        "locale":  "en",
+        "id":  483921545,
+        "key":  "Spindle speed not reached"
     },
     {
-        "id":  477135830,
-        "key":  "actuator stack sensor driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator stack sensor driver"
-                   }
+        "locale":  "en",
+        "id":  488694884,
+        "key":  "Axis %s is not enabled"
     },
     {
-        "id":  861893410,
-        "key":  "system heartbeat stack register",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "system heartbeat stack register"
-                   }
+        "locale":  "en",
+        "id":  493067428,
+        "key":  "Emergency stop reset timeout"
     },
     {
-        "id":  237116242,
-        "key":  "heap actuator module firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "heap actuator module firmware"
-                   }
+        "locale":  "en",
+        "id":  493750134,
+        "key":  "Motor B thermal overload"
     },
     {
-        "id":  314961714,
-        "key":  "actuator heap module pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator heap module pointer"
-                   }
+        "locale":  "en",
+        "id":  494356061,
+        "key":  "Vision system is ready"
     },
     {
-        "id":  479823138,
-        "key":  "thread module heartbeat sensor",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread module heartbeat sensor"
-                   }
+        "locale":  "en",
+        "id":  499405395,
+        "key":  "Conveyor is indexing"
     },
     {
-        "id":  337678481,
-        "key":  "diagnostic actuator kernel stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "diagnostic actuator kernel stack"
-                   }
+        "locale":  "en",
+        "id":  503377368,
+        "key":  "Flow rate is too low in line %s"
     },
     {
-        "id":  282107066,
-        "key":  "pointer stack driver calibration",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "pointer stack driver calibration"
-                   }
+        "locale":  "en",
+        "id":  503791964,
+        "key":  "Encoder is in hardware fault"
     },
     {
-        "id":  929521634,
-        "key":  "encoder axis firmware pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "encoder axis firmware pointer"
-                   }
+        "locale":  "en",
+        "id":  506729989,
+        "key":  "Conveyor belt is torn"
     },
     {
-        "id":  248159770,
-        "key":  "task voltage calibration stack",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "task voltage calibration stack"
-                   }
+        "locale":  "en",
+        "id":  507302984,
+        "key":  "System is in configuration fault"
     },
     {
-        "id":  86290825,
-        "key":  "pointer actuator module firmware",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "pointer actuator module firmware"
-                   }
+        "locale":  "en",
+        "id":  507544693,
+        "key":  "System failed to enter run mode"
     },
     {
-        "id":  528572607,
-        "key":  "pointer sensor actuator bus",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "pointer sensor actuator bus"
-                   }
+        "locale":  "en",
+        "id":  509889079,
+        "key":  "Axis %s is powering up"
     },
     {
-        "id":  941017660,
-        "key":  "signal thread memory diagnostic",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "signal thread memory diagnostic"
-                   }
+        "locale":  "en",
+        "id":  510870299,
+        "key":  "Pump is in alarm"
     },
     {
-        "id":  261119645,
-        "key":  "actuator stack firmware bus",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator stack firmware bus"
-                   }
+        "locale":  "en",
+        "id":  511958330,
+        "key":  "Failed to load robot program %s"
     },
     {
-        "id":  615954434,
-        "key":  "checksum segment actuator driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "checksum segment actuator driver"
-                   }
+        "locale":  "en",
+        "id":  512741635,
+        "key":  "Input %s is powering down"
     },
     {
-        "id":  740983660,
-        "key":  "driver frame module limit",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "driver frame module limit"
-                   }
+        "locale":  "en",
+        "id":  512875126,
+        "key":  "Spindle is braking"
     },
     {
-        "id":  760247533,
-        "key":  "thread actuator stack heap",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread actuator stack heap"
-                   }
+        "locale":  "en",
+        "id":  512901664,
+        "key":  "System is in auto mode"
     },
     {
-        "id":  122133757,
-        "key":  "stack actuator firmware pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack actuator firmware pointer"
-                   }
+        "locale":  "en",
+        "id":  513756036,
+        "key":  "Incorrect fixture ID %s received"
     },
     {
-        "id":  337863343,
-        "key":  "actuator module stack driver",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator module stack driver"
-                   }
+        "locale":  "en",
+        "id":  514776885,
+        "key":  "Failed to save robot program %s"
     },
     {
-        "id":  558332778,
-        "key":  "thread motor stack interrupt",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "thread motor stack interrupt"
-                   }
+        "locale":  "en",
+        "id":  514934417,
+        "key":  "Robot is idle"
     },
     {
-        "id":  501252434,
-        "key":  "checksum stack driver pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "checksum stack driver pointer"
-                   }
+        "locale":  "en",
+        "id":  516448418,
+        "key":  "Emergency stop source: Safety Mat"
     },
     {
-        "id":  506760602,
-        "key":  "actuator firmware stack pointer",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "actuator firmware stack pointer"
-                   }
+        "locale":  "en",
+        "id":  516547226,
+        "key":  "Manual mode interlock is active"
     },
     {
-        "id":  676832020,
-        "key":  "driver firmware interrupt module",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "driver firmware interrupt module"
-                   }
+        "locale":  "en",
+        "id":  517173547,
+        "key":  "Axis %s is homed"
     },
     {
-        "id":  378812221,
-        "key":  "stack actuator firmware thread",
-        "level":  "Error",
-        "locale":  {
-                       "de":  "",
-                       "en":  "stack actuator firmware thread"
-                   }
+        "locale":  "en",
+        "id":  518106258,
+        "key":  "Robot collision detected"
+    },
+    {
+        "locale":  "en",
+        "id":  518169734,
+        "key":  "Temperature is stable"
+    },
+    {
+        "locale":  "en",
+        "id":  518915054,
+        "key":  "Motor phase loss detected"
+    },
+    {
+        "locale":  "en",
+        "id":  524419490,
+        "key":  "Safety relay did not pick up"
+    },
+    {
+        "locale":  "en",
+        "id":  527358624,
+        "key":  "Lag error"
+    },
+    {
+        "locale":  "en",
+        "id":  531330424,
+        "key":  "Safety gate is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  538297842,
+        "key":  "Spindle is stopped"
+    },
+    {
+        "locale":  "en",
+        "id":  538649955,
+        "key":  "Safety gate is closing"
+    },
+    {
+        "locale":  "en",
+        "id":  539723334,
+        "key":  "Air dryer fault"
+    },
+    {
+        "locale":  "en",
+        "id":  539938012,
+        "key":  "Vision system failed to focus"
+    },
+    {
+        "locale":  "en",
+        "id":  540454385,
+        "key":  "Encoder signal is noisy"
+    },
+    {
+        "locale":  "en",
+        "id":  541032397,
+        "key":  "Robot is in user fault"
+    },
+    {
+        "locale":  "en",
+        "id":  552243582,
+        "key":  "PLC is in software fault"
+    },
+    {
+        "locale":  "en",
+        "id":  554740636,
+        "key":  "E-Stop source: Hardwired"
+    },
+    {
+        "locale":  "en",
+        "id":  555525126,
+        "key":  "Cylinder A is retracted"
+    },
+    {
+        "locale":  "en",
+        "id":  558772479,
+        "key":  "PLC I/O module error"
+    },
+    {
+        "locale":  "en",
+        "id":  559300625,
+        "key":  "Axis 1 following error too large"
+    },
+    {
+        "locale":  "en",
+        "id":  564745397,
+        "key":  "Encoder is not connected"
+    },
+    {
+        "locale":  "en",
+        "id":  565802479,
+        "key":  "Hydraulic overtemperature detected"
+    },
+    {
+        "locale":  "en",
+        "id":  567617912,
+        "key":  "Robot gripper failed to open"
+    },
+    {
+        "locale":  "en",
+        "id":  568662666,
+        "key":  "Hydraulic system is in software fault"
+    },
+    {
+        "locale":  "en",
+        "id":  570390914,
+        "key":  "Lubrication system fault"
+    },
+    {
+        "locale":  "en",
+        "id":  572177518,
+        "key":  "Safety PLC test failed"
+    },
+    {
+        "locale":  "en",
+        "id":  572693817,
+        "key":  "Fire suppression system activated"
+    },
+    {
+        "locale":  "en",
+        "id":  574025698,
+        "key":  "Encoder battery voltage is low"
+    },
+    {
+        "locale":  "en",
+        "id":  578797095,
+        "key":  "Robot gripper is in fault"
+    },
+    {
+        "locale":  "en",
+        "id":  580024245,
+        "key":  "Failed to close gripper"
+    },
+    {
+        "locale":  "en",
+        "id":  580723245,
+        "key":  "Reservoir level is high"
+    },
+    {
+        "locale":  "en",
+        "id":  581947941,
+        "key":  "Failed to open gripper"
+    },
+    {
+        "locale":  "en",
+        "id":  585312983,
+        "key":  "System is in E-Stop state"
+    },
+    {
+        "locale":  "en",
+        "id":  586587708,
+        "key":  "Insufficient air pressure for gripper"
+    },
+    {
+        "locale":  "en",
+        "id":  586589094,
+        "key":  "Encoder count error"
+    },
+    {
+        "locale":  "en",
+        "id":  591728841,
+        "key":  "Axis %s is not homed"
+    },
+    {
+        "locale":  "en",
+        "id":  592146933,
+        "key":  "System is in unknown state"
+    },
+    {
+        "locale":  "en",
+        "id":  593854326,
+        "key":  "Failed to log data to file %s"
+    },
+    {
+        "locale":  "en",
+        "id":  598382864,
+        "key":  "System is in test mode"
+    },
+    {
+        "locale":  "en",
+        "id":  598954565,
+        "key":  "Homing timeout for axis %s"
+    },
+    {
+        "locale":  "en",
+        "id":  599082815,
+        "key":  "Level sensor in tank %s is frozen"
+    },
+    {
+        "locale":  "en",
+        "id":  601814376,
+        "key":  "Safety relay test failed critically"
+    },
+    {
+        "locale":  "en",
+        "id":  603033245,
+        "key":  "Failed to set output %s"
+    },
+    {
+        "locale":  "en",
+        "id":  605066668,
+        "key":  "Proximity sensor %s is miswired"
+    },
+    {
+        "locale":  "en",
+        "id":  605437452,
+        "key":  "Safety gate is in fault"
+    },
+    {
+        "locale":  "en",
+        "id":  615290565,
+        "key":  "Conveyor is accelerating"
+    },
+    {
+        "locale":  "en",
+        "id":  617100714,
+        "key":  "Actuator %s did not complete motion"
+    },
+    {
+        "locale":  "en",
+        "id":  617683718,
+        "key":  "Robot is in manual mode"
+    },
+    {
+        "locale":  "en",
+        "id":  622567336,
+        "key":  "Safety gate switch is welded"
+    },
+    {
+        "locale":  "en",
+        "id":  624086393,
+        "key":  "Light curtain fault: Mutingshort circuit"
+    },
+    {
+        "locale":  "en",
+        "id":  624130335,
+        "key":  "Pump discharge is blocked"
+    },
+    {
+        "locale":  "en",
+        "id":  624806893,
+        "key":  "System is in communication fault"
+    },
+    {
+        "locale":  "en",
+        "id":  626937195,
+        "key":  "Robot is in configuration fault"
+    },
+    {
+        "locale":  "en",
+        "id":  627431620,
+        "key":  "Safety circuit is open"
+    },
+    {
+        "locale":  "en",
+        "id":  632413153,
+        "key":  "Motor F overcurrent"
+    },
+    {
+        "locale":  "en",
+        "id":  632543431,
+        "key":  "Operator intervention required"
+    },
+    {
+        "locale":  "en",
+        "id":  632933750,
+        "key":  "Robot joint %s temperature is high"
+    },
+    {
+        "locale":  "en",
+        "id":  633513693,
+        "key":  "Spindle is in fault"
+    },
+    {
+        "locale":  "en",
+        "id":  635308455,
+        "key":  "Failed to move robot to safe position"
+    },
+    {
+        "locale":  "en",
+        "id":  636838680,
+        "key":  "Input %s is faulted"
+    },
+    {
+        "locale":  "en",
+        "id":  636971575,
+        "key":  "System is in emergency stop"
+    },
+    {
+        "locale":  "en",
+        "id":  637572567,
+        "key":  "Motor N is at temperature"
+    },
+    {
+        "locale":  "en",
+        "id":  642342615,
+        "key":  "Chiller temperature is too high"
+    },
+    {
+        "locale":  "en",
+        "id":  643839111,
+        "key":  "Network connection to SCADA lost"
+    },
+    {
+        "locale":  "en",
+        "id":  646261057,
+        "key":  "System is in safe stop"
+    },
+    {
+        "locale":  "en",
+        "id":  646466444,
+        "key":  "Position feedback lost for axis %s"
+    },
+    {
+        "locale":  "en",
+        "id":  647484742,
+        "key":  "VFD motor overload"
+    },
+    {
+        "locale":  "en",
+        "id":  650351655,
+        "key":  "Error in motion group %s"
+    },
+    {
+        "locale":  "en",
+        "id":  650467130,
+        "key":  "Cylinder B pressure not building"
+    },
+    {
+        "locale":  "en",
+        "id":  650556097,
+        "key":  "Palletizer stack height error"
+    },
+    {
+        "locale":  "en",
+        "id":  650944564,
+        "key":  "Input %s is off"
+    },
+    {
+        "locale":  "en",
+        "id":  653377590,
+        "key":  "Input %s is simulated"
+    },
+    {
+        "locale":  "en",
+        "id":  653475126,
+        "key":  "System is shutting down"
+    },
+    {
+        "locale":  "en",
+        "id":  656692625,
+        "key":  "Valve is open"
+    },
+    {
+        "locale":  "en",
+        "id":  658719314,
+        "key":  "Level sensor in tank %s is faulty"
+    },
+    {
+        "locale":  "en",
+        "id":  662248344,
+        "key":  "Failed to park robot in home position"
+    },
+    {
+        "locale":  "en",
+        "id":  664414487,
+        "key":  "Conveyor is jammed"
+    },
+    {
+        "locale":  "en",
+        "id":  667295922,
+        "key":  "VFD undervoltage fault"
+    },
+    {
+        "locale":  "en",
+        "id":  668681807,
+        "key":  "Axis %s is in user fault"
+    },
+    {
+        "locale":  "en",
+        "id":  668897735,
+        "key":  "Excessive vibration detected on motor %s"
+    },
+    {
+        "locale":  "en",
+        "id":  671524722,
+        "key":  "Safety gate is opening"
+    },
+    {
+        "locale":  "en",
+        "id":  672737192,
+        "key":  "Proximity sensor %s is faulty"
+    },
+    {
+        "locale":  "en",
+        "id":  673927967,
+        "key":  "Conveyor tracking lost"
+    },
+    {
+        "locale":  "en",
+        "id":  674332993,
+        "key":  "Torque limit exceeded for motor %s"
+    },
+    {
+        "locale":  "en",
+        "id":  675446452,
+        "key":  "Air system is in hardware fault"
+    },
+    {
+        "locale":  "en",
+        "id":  675619028,
+        "key":  "Hydraulic system is off"
+    },
+    {
+        "locale":  "en",
+        "id":  680818073,
+        "key":  "Valve is energized"
+    },
+    {
+        "locale":  "en",
+        "id":  680958902,
+        "key":  "Cylinder A failed to retract"
+    },
+    {
+        "locale":  "en",
+        "id":  681586278,
+        "key":  "Part quality check failed at station %s"
+    },
+    {
+        "locale":  "en",
+        "id":  684209442,
+        "key":  "Motor S is in unknown state"
+    },
+    {
+        "locale":  "en",
+        "id":  685129588,
+        "key":  "Robot is waiting for input"
+    },
+    {
+        "locale":  "en",
+        "id":  685765076,
+        "key":  "Hydraulic system is in fault"
+    },
+    {
+        "locale":  "en",
+        "id":  688320457,
+        "key":  "System is in reset"
+    },
+    {
+        "locale":  "en",
+        "id":  691039117,
+        "key":  "Failed to enable drive group %s"
+    },
+    {
+        "locale":  "en",
+        "id":  694145951,
+        "key":  "Failed to update recipe %s in database"
+    },
+    {
+        "locale":  "en",
+        "id":  696415796,
+        "key":  "Robot path obstructed"
+    },
+    {
+        "locale":  "en",
+        "id":  699628057,
+        "key":  "Cylinder A extended unexpectedly"
+    },
+    {
+        "locale":  "en",
+        "id":  700443361,
+        "key":  "Motor E bearing temperature is high"
+    },
+    {
+        "locale":  "en",
+        "id":  703927388,
+        "key":  "Temperature out of spec for oven %s"
+    },
+    {
+        "locale":  "en",
+        "id":  704170036,
+        "key":  "HMI is connected"
+    },
+    {
+        "locale":  "en",
+        "id":  705339355,
+        "key":  "Axis %s is in warning state"
+    },
+    {
+        "locale":  "en",
+        "id":  707206051,
+        "key":  "Air leak detected in circuit %s"
+    },
+    {
+        "locale":  "en",
+        "id":  715667115,
+        "key":  "Safety gate is closed and locked"
+    },
+    {
+        "locale":  "en",
+        "id":  717293661,
+        "key":  "PLC is in fault mode"
+    },
+    {
+        "locale":  "en",
+        "id":  719075593,
+        "key":  "Cooling system failure"
+    },
+    {
+        "locale":  "en",
+        "id":  719723582,
+        "key":  "Failed to zero axis %s"
+    },
+    {
+        "locale":  "en",
+        "id":  722100646,
+        "key":  "Wrong material loaded for job %s"
+    },
+    {
+        "locale":  "en",
+        "id":  722667901,
+        "key":  "Clamp pressure not released"
+    },
+    {
+        "locale":  "en",
+        "id":  725313717,
+        "key":  "Robot gripper is open"
+    },
+    {
+        "locale":  "en",
+        "id":  725485121,
+        "key":  "Hydraulic system is active"
+    },
+    {
+        "locale":  "en",
+        "id":  727034518,
+        "key":  "Homing sequence interrupted"
+    },
+    {
+        "locale":  "en",
+        "id":  728320830,
+        "key":  "Operator login failed for user %s"
+    },
+    {
+        "locale":  "en",
+        "id":  730300082,
+        "key":  "Axis %s brake did not release"
+    },
+    {
+        "locale":  "en",
+        "id":  731425804,
+        "key":  "Pump is in configuration fault"
+    },
+    {
+        "locale":  "en",
+        "id":  732461370,
+        "key":  "PLC is in program mode"
+    },
+    {
+        "locale":  "en",
+        "id":  733087097,
+        "key":  "Failed to read configuration from drive"
+    },
+    {
+        "locale":  "en",
+        "id":  735365405,
+        "key":  "Input %s is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  735885173,
+        "key":  "Conveyor is in reset"
+    },
+    {
+        "locale":  "en",
+        "id":  737238189,
+        "key":  "Proximity sensor 4 did not detect part"
+    },
+    {
+        "locale":  "en",
+        "id":  738571353,
+        "key":  "Spindle is at speed"
+    },
+    {
+        "locale":  "en",
+        "id":  738933589,
+        "key":  "Thermocouple %s is broken"
+    },
+    {
+        "locale":  "en",
+        "id":  739531565,
+        "key":  "Cannot load G-code file: %s"
+    },
+    {
+        "locale":  "en",
+        "id":  740668744,
+        "key":  "System is in run mode"
+    },
+    {
+        "locale":  "en",
+        "id":  751474474,
+        "key":  "System is in setup"
+    },
+    {
+        "locale":  "en",
+        "id":  751663757,
+        "key":  "Spindle is in hardware fault"
+    },
+    {
+        "locale":  "en",
+        "id":  752570973,
+        "key":  "Lag error 3"
+    },
+    {
+        "locale":  "en",
+        "id":  753322197,
+        "key":  "Motor R is in hardware fault"
+    },
+    {
+        "locale":  "en",
+        "id":  754317046,
+        "key":  "Failed to set input %s"
+    },
+    {
+        "locale":  "en",
+        "id":  755117431,
+        "key":  "Air compressor fault"
+    },
+    {
+        "locale":  "en",
+        "id":  758812146,
+        "key":  "Air system is at pressure"
+    },
+    {
+        "locale":  "en",
+        "id":  759279025,
+        "key":  "Conveyor speed is zero"
+    },
+    {
+        "locale":  "en",
+        "id":  766296111,
+        "key":  "Pallet is arriving at location %s"
+    },
+    {
+        "locale":  "en",
+        "id":  767040015,
+        "key":  "Failed to load recipe: %s"
+    },
+    {
+        "locale":  "en",
+        "id":  770125196,
+        "key":  "Part %s not detected at sensor 2"
+    },
+    {
+        "locale":  "en",
+        "id":  770266437,
+        "key":  "Pump is at speed"
+    },
+    {
+        "locale":  "en",
+        "id":  770448370,
+        "key":  "Valve %s did not shift"
+    },
+    {
+        "locale":  "en",
+        "id":  775018957,
+        "key":  "Level sensor in tank %s is faulted"
+    },
+    {
+        "locale":  "en",
+        "id":  777930705,
+        "key":  "Watchdog timer has expired"
+    },
+    {
+        "locale":  "en",
+        "id":  782034386,
+        "key":  "Robot arm failed to reach target position"
+    },
+    {
+        "locale":  "en",
+        "id":  785816840,
+        "key":  "Conveyor is in communication fault"
+    },
+    {
+        "locale":  "en",
+        "id":  787416019,
+        "key":  "Sensor %s is dirty or misaligned"
+    },
+    {
+        "locale":  "en",
+        "id":  788683792,
+        "key":  "Encoder is working"
+    },
+    {
+        "locale":  "en",
+        "id":  791296333,
+        "key":  "Air system is in unknown state"
+    },
+    {
+        "locale":  "en",
+        "id":  794917286,
+        "key":  "Temperature ramp rate too slow"
+    },
+    {
+        "locale":  "en",
+        "id":  796761515,
+        "key":  "Cylinder B failed to retract"
+    },
+    {
+        "locale":  "en",
+        "id":  798652404,
+        "key":  "Emergency stop pressed"
+    },
+    {
+        "locale":  "en",
+        "id":  799635987,
+        "key":  "Pump is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  801470049,
+        "key":  "Safety gate not locked"
+    },
+    {
+        "locale":  "en",
+        "id":  801846437,
+        "key":  "Clamping force not achieved"
+    },
+    {
+        "locale":  "en",
+        "id":  801929015,
+        "key":  "Pump is building pressure"
+    },
+    {
+        "locale":  "en",
+        "id":  805648219,
+        "key":  "PLC time sync failed"
+    },
+    {
+        "locale":  "en",
+        "id":  807217067,
+        "key":  "Motor D overtemperature"
+    },
+    {
+        "locale":  "en",
+        "id":  809572133,
+        "key":  "Encoder is homing"
+    },
+    {
+        "locale":  "en",
+        "id":  809577234,
+        "key":  "Robot joint limit reached"
+    },
+    {
+        "locale":  "en",
+        "id":  809869490,
+        "key":  "Safety light curtain is muted"
+    },
+    {
+        "locale":  "en",
+        "id":  810684995,
+        "key":  "Encoder battery is dead"
+    },
+    {
+        "locale":  "en",
+        "id":  814091696,
+        "key":  "VFD communication is lost"
+    },
+    {
+        "locale":  "en",
+        "id":  814712779,
+        "key":  "Encoder resolution mismatch"
+    },
+    {
+        "locale":  "en",
+        "id":  814923249,
+        "key":  "Proximity sensor %s is always off"
+    },
+    {
+        "locale":  "en",
+        "id":  815156172,
+        "key":  "Pump is stopped"
+    },
+    {
+        "locale":  "en",
+        "id":  815430670,
+        "key":  "Cylinder B extended unexpectedly"
+    },
+    {
+        "locale":  "en",
+        "id":  817611067,
+        "key":  "Failed to maintain position at %s mm"
+    },
+    {
+        "locale":  "en",
+        "id":  817837904,
+        "key":  "Axis 3 move command cancelled"
+    },
+    {
+        "locale":  "en",
+        "id":  817895218,
+        "key":  "Failed to establish connection to robot %s"
+    },
+    {
+        "locale":  "en",
+        "id":  819946865,
+        "key":  "Proximity sensor %s is always on"
+    },
+    {
+        "locale":  "en",
+        "id":  822620336,
+        "key":  "PLC scan time is too long"
+    },
+    {
+        "locale":  "en",
+        "id":  825497978,
+        "key":  "Mode change failed: System not in safe state"
+    },
+    {
+        "locale":  "en",
+        "id":  826896815,
+        "key":  "Barcode on part %s is verified"
+    },
+    {
+        "locale":  "en",
+        "id":  828536003,
+        "key":  "I message %s %s"
+    },
+    {
+        "locale":  "en",
+        "id":  829414129,
+        "key":  "Pressure sensor reading is frozen"
+    },
+    {
+        "locale":  "en",
+        "id":  830120866,
+        "key":  "System is saving data"
+    },
+    {
+        "locale":  "en",
+        "id":  830463546,
+        "key":  "Failed to release part"
+    },
+    {
+        "locale":  "en",
+        "id":  831292259,
+        "key":  "Batch number %s is invalid or expired"
+    },
+    {
+        "locale":  "en",
+        "id":  832896431,
+        "key":  "Air system is OK"
+    },
+    {
+        "locale":  "en",
+        "id":  833526939,
+        "key":  "Purge cycle failed to complete"
+    },
+    {
+        "locale":  "en",
+        "id":  833582598,
+        "key":  "Label printer error: Out of labels"
+    },
+    {
+        "locale":  "en",
+        "id":  835699300,
+        "key":  "Robot is in error"
+    },
+    {
+        "locale":  "en",
+        "id":  842704677,
+        "key":  "Tool change failed on station %s"
+    },
+    {
+        "locale":  "en",
+        "id":  845540868,
+        "key":  "Safety gate is in hardware fault"
+    },
+    {
+        "locale":  "en",
+        "id":  850383252,
+        "key":  "Part transfer failed"
+    },
+    {
+        "locale":  "en",
+        "id":  850980581,
+        "key":  "Pallet is at location %s"
+    },
+    {
+        "locale":  "en",
+        "id":  853313589,
+        "key":  "HMI firmware update failed"
+    },
+    {
+        "locale":  "en",
+        "id":  853428607,
+        "key":  "Part unloading failed"
+    },
+    {
+        "locale":  "en",
+        "id":  854716410,
+        "key":  "Safety gate is unlocked"
+    },
+    {
+        "locale":  "en",
+        "id":  867753627,
+        "key":  "Conveyor belt is misaligned"
+    },
+    {
+        "locale":  "en",
+        "id":  872261152,
+        "key":  "Light curtain is blocked"
+    },
+    {
+        "locale":  "en",
+        "id":  873262718,
+        "key":  "HMI screen saver is active"
+    },
+    {
+        "locale":  "en",
+        "id":  875369228,
+        "key":  "Failed to apply torque on fastener %s"
+    },
+    {
+        "locale":  "en",
+        "id":  876255699,
+        "key":  "Conveyor motor overload"
+    },
+    {
+        "locale":  "en",
+        "id":  877440804,
+        "key":  "Filter differential pressure is high"
+    },
+    {
+        "locale":  "en",
+        "id":  879160142,
+        "key":  "Proximity sensor %s is working"
+    },
+    {
+        "locale":  "en",
+        "id":  883170496,
+        "key":  "Air system is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  883541551,
+        "key":  "Safety gate not closed"
+    },
+    {
+        "locale":  "en",
+        "id":  886870306,
+        "key":  "Temperature undershoot detected"
+    },
+    {
+        "locale":  "en",
+        "id":  887975720,
+        "key":  "Failed to maintain pressure at %s bar"
+    },
+    {
+        "locale":  "en",
+        "id":  892005793,
+        "key":  "Failed to clear output %s"
+    },
+    {
+        "locale":  "en",
+        "id":  892736622,
+        "key":  "Sensor supply voltage is low"
+    },
+    {
+        "locale":  "en",
+        "id":  894832746,
+        "key":  "Failed to start cycle: Guard not closed"
+    },
+    {
+        "locale":  "en",
+        "id":  895266560,
+        "key":  "Pressure sensor %s shows maximum value"
+    },
+    {
+        "locale":  "en",
+        "id":  895803704,
+        "key":  "Failed to maintain speed at %s RPM"
+    },
+    {
+        "locale":  "en",
+        "id":  896554714,
+        "key":  "Failed to maintain torque at %s Nm"
+    },
+    {
+        "locale":  "en",
+        "id":  897554373,
+        "key":  "Position is correct at %s mm"
+    },
+    {
+        "locale":  "en",
+        "id":  901105930,
+        "key":  "Motor B is not responding"
+    },
+    {
+        "locale":  "en",
+        "id":  901588235,
+        "key":  "Pump is powering up"
+    },
+    {
+        "locale":  "en",
+        "id":  902100387,
+        "key":  "Robot joint %s limit exceeded"
+    },
+    {
+        "locale":  "en",
+        "id":  902808007,
+        "key":  "Encoder is synchronized"
+    },
+    {
+        "locale":  "en",
+        "id":  903016714,
+        "key":  "Axis %s is in alarm state"
+    },
+    {
+        "locale":  "en",
+        "id":  907814064,
+        "key":  "Failed to read data from RFID tag"
+    },
+    {
+        "locale":  "en",
+        "id":  908161022,
+        "key":  "Air pressure is unstable"
+    },
+    {
+        "locale":  "en",
+        "id":  909253506,
+        "key":  "Motor A overcurrent fault"
+    },
+    {
+        "locale":  "en",
+        "id":  909421439,
+        "key":  "Conveyor index timeout"
+    },
+    {
+        "locale":  "en",
+        "id":  912727106,
+        "key":  "Robot path planning error for destination %s"
+    },
+    {
+        "locale":  "en",
+        "id":  914575188,
+        "key":  "Axis %s is waiting"
+    },
+    {
+        "locale":  "en",
+        "id":  918018155,
+        "key":  "Network cable unplugged for device %s"
+    },
+    {
+        "locale":  "en",
+        "id":  920133186,
+        "key":  "User %s does not have required permissions"
+    },
+    {
+        "locale":  "en",
+        "id":  920835287,
+        "key":  "Safety PLC communication fault"
+    },
+    {
+        "locale":  "en",
+        "id":  921825778,
+        "key":  "Safety gate is not interlocked"
+    },
+    {
+        "locale":  "en",
+        "id":  922682629,
+        "key":  "E-Stop source is clear"
+    },
+    {
+        "locale":  "en",
+        "id":  922947088,
+        "key":  "Robot is powering up"
+    },
+    {
+        "locale":  "en",
+        "id":  923173815,
+        "key":  "Spindle tool not clamped"
+    },
+    {
+        "locale":  "en",
+        "id":  925410774,
+        "key":  "Proximity sensor %s is intermittent"
+    },
+    {
+        "locale":  "en",
+        "id":  926405723,
+        "key":  "Failed to grip part"
+    },
+    {
+        "locale":  "en",
+        "id":  927599790,
+        "key":  "Inconsistent barcode scan for part %s"
+    },
+    {
+        "locale":  "en",
+        "id":  939635885,
+        "key":  "System is in maintenance"
+    },
+    {
+        "locale":  "en",
+        "id":  940536226,
+        "key":  "Vision system is off"
+    },
+    {
+        "locale":  "en",
+        "id":  945171139,
+        "key":  "Gate interlock failed"
+    },
+    {
+        "locale":  "en",
+        "id":  946961693,
+        "key":  "Cylinder A failed to extend"
+    },
+    {
+        "locale":  "en",
+        "id":  947105744,
+        "key":  "Motor M is running"
+    },
+    {
+        "locale":  "en",
+        "id":  947331221,
+        "key":  "Robot is in home position"
+    },
+    {
+        "locale":  "en",
+        "id":  949812312,
+        "key":  "Motor O is in alarm"
+    },
+    {
+        "locale":  "en",
+        "id":  954889344,
+        "key":  "Cylinder A pressure sensor fault"
+    },
+    {
+        "locale":  "en",
+        "id":  955082190,
+        "key":  "Input %s is in hardware fault"
+    },
+    {
+        "locale":  "en",
+        "id":  955690866,
+        "key":  "Vision system is processing image"
+    },
+    {
+        "locale":  "en",
+        "id":  955956074,
+        "key":  "Pallet is at position %s"
+    },
+    {
+        "locale":  "en",
+        "id":  959258201,
+        "key":  "Pallet is leaving location %s"
+    },
+    {
+        "locale":  "en",
+        "id":  960505020,
+        "key":  "PLC is in run mode"
+    },
+    {
+        "locale":  "en",
+        "id":  967408081,
+        "key":  "Emergency stop source: Dual Channel"
+    },
+    {
+        "locale":  "en",
+        "id":  969610107,
+        "key":  "Safety gate is powering down"
+    },
+    {
+        "locale":  "en",
+        "id":  970539493,
+        "key":  "PLC CPU temperature is high"
+    },
+    {
+        "locale":  "en",
+        "id":  973163742,
+        "key":  "Emergency stop line is broken"
+    },
+    {
+        "locale":  "en",
+        "id":  976000847,
+        "key":  "Main power supply failure"
+    },
+    {
+        "locale":  "en",
+        "id":  976950794,
+        "key":  "Axis %s is not referenced"
+    },
+    {
+        "locale":  "en",
+        "id":  983074762,
+        "key":  "Hydraulic system is charging"
+    },
+    {
+        "locale":  "en",
+        "id":  984349400,
+        "key":  "Hydraulic pump is noisy"
+    },
+    {
+        "locale":  "en",
+        "id":  984735048,
+        "key":  "Pallet is damaged at location %s"
+    },
+    {
+        "locale":  "en",
+        "id":  989752245,
+        "key":  "System failed to shutdown gracefully"
+    },
+    {
+        "locale":  "en",
+        "id":  990418917,
+        "key":  "Axis %s is in fault state"
+    },
+    {
+        "locale":  "en",
+        "id":  990910834,
+        "key":  "VFD DC bus overvoltage"
+    },
+    {
+        "locale":  "en",
+        "id":  992338084,
+        "key":  "Valve is in fault"
+    },
+    {
+        "locale":  "en",
+        "id":  995328853,
+        "key":  "Motor I is not configured"
+    },
+    {
+        "locale":  "en",
+        "id":  995549063,
+        "key":  "Load cell signal is unstable"
+    },
+    {
+        "locale":  "en",
+        "id":  997394142,
+        "key":  "Motor P is disabled"
+    },
+    {
+        "locale":  "en",
+        "id":  997482720,
+        "key":  "Safety mat is active"
+    },
+    {
+        "locale":  "en",
+        "id":  997626545,
+        "key":  "Motor H has a ground fault"
+    },
+    {
+        "locale":  "en",
+        "id":  999593972,
+        "key":  "Failed to find fiducial %s in vision system"
     }
 ]
