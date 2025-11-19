@@ -1,2532 +1,2025 @@
-﻿[
-    {
-        "locale":  "en",
-        "id":  "00329133",
-        "key":  "Axis %s brake did not release"
-    },
-    {
-        "locale":  "en",
-        "id":  "00839218",
-        "key":  "PLC CPU temperature is high"
-    },
-    {
-        "locale":  "en",
-        "id":  "02628015",
-        "key":  "Safety PLC test failed"
-    },
-    {
-        "locale":  "en",
-        "id":  "06496515",
-        "key":  "Robot is idle"
-    },
-    {
-        "locale":  "en",
-        "id":  "06730302",
-        "key":  "Temperature in zone %s is too low"
-    },
-    {
-        "locale":  "en",
-        "id":  "06921616",
-        "key":  "Failed to read data from RFID tag"
-    },
-    {
-        "locale":  "en",
-        "id":  "07449781",
-        "key":  "Robot gripper failed to open"
-    },
-    {
-        "locale":  "en",
-        "id":  "10066866",
-        "key":  "Valve manifold communication error"
-    },
-    {
-        "locale":  "en",
-        "id":  "11187824",
-        "key":  "Axis %s stalled during movement"
-    },
-    {
-        "locale":  "en",
-        "id":  "16864990",
-        "key":  "Axis %s is in error"
-    },
-    {
-        "locale":  "en",
-        "id":  "17242893",
-        "key":  "Robot program %s is not found"
-    },
-    {
-        "locale":  "en",
-        "id":  "22088896",
-        "key":  "Robot gripper is in fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "28063579",
-        "key":  "Sensor fault: Short circuit"
-    },
-    {
-        "locale":  "en",
-        "id":  "28238082",
-        "key":  "Cylinder B pressure not building"
-    },
-    {
-        "locale":  "en",
-        "id":  "30615213",
-        "key":  "Motor G is not calibrated"
-    },
-    {
-        "locale":  "en",
-        "id":  "34792077",
-        "key":  "Axis %s software limit switch triggered"
-    },
-    {
-        "locale":  "en",
-        "id":  "36049922",
-        "key":  "Emergency stop source: Dual Channel"
-    },
-    {
-        "locale":  "en",
-        "id":  "39012755",
-        "key":  "Homing failed for axis %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "41725285",
-        "key":  "Conveyor is indexing"
-    },
-    {
-        "locale":  "en",
-        "id":  "47527036",
-        "key":  "Motor M is running"
-    },
-    {
-        "locale":  "en",
-        "id":  "49686060",
-        "key":  "Axis %s is enabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "50258952",
-        "key":  "Motor D overtemperature"
-    },
-    {
-        "locale":  "en",
-        "id":  "54425602",
-        "key":  "Lubrication system fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "54844710",
-        "key":  "Light curtain fault: Mutingshort circuit"
-    },
-    {
-        "locale":  "en",
-        "id":  "57039477",
-        "key":  "Conveyor is decelerating"
-    },
-    {
-        "locale":  "en",
-        "id":  "57280963",
-        "key":  "System is in config mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "57826245",
-        "key":  "Air pressure is unstable"
-    },
-    {
-        "locale":  "en",
-        "id":  "58824455",
-        "key":  "Valve is powering down"
-    },
-    {
-        "locale":  "en",
-        "id":  "61467370",
-        "key":  "Failed to maintain speed at %s RPM"
-    },
-    {
-        "locale":  "en",
-        "id":  "62951896",
-        "key":  "Safety gate is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "64576557",
-        "key":  "Safety light curtain is muted"
-    },
-    {
-        "locale":  "en",
-        "id":  "65762173",
-        "key":  "Leak detected in hydraulic line %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "74315214",
-        "key":  "Hydraulic system is in fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "75459534",
-        "key":  "Temperature undershoot detected"
-    },
-    {
-        "locale":  "en",
-        "id":  "79236373",
-        "key":  "Failed to close valve %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "80432916",
-        "key":  "Air pressure is too high"
-    },
-    {
-        "locale":  "en",
-        "id":  "80896362",
-        "key":  "Signal conflict between two sensors"
-    },
-    {
-        "locale":  "en",
-        "id":  "85107326",
-        "key":  "Robot collision detected at joint %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "87711744",
-        "key":  "Pallet is empty at location %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "88367024",
-        "key":  "Axis %s is not homed"
-    },
-    {
-        "locale":  "en",
-        "id":  "90116955",
-        "key":  "System failed to load configuration"
-    },
-    {
-        "locale":  "en",
-        "id":  "90775392",
-        "key":  "Air system is charging"
-    },
-    {
-        "locale":  "en",
-        "id":  "90860287",
-        "key":  "PLC is in communication fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "93283491",
-        "key":  "Hydraulic system is off"
-    },
-    {
-        "locale":  "en",
-        "id":  "95999827",
-        "key":  "Valve is energized"
-    },
-    {
-        "locale":  "en",
-        "id":  "101312224",
-        "key":  "PLC scan time is too high"
-    },
-    {
-        "locale":  "en",
-        "id":  "103013536",
-        "key":  "Main power supply failure"
-    },
-    {
-        "locale":  "en",
-        "id":  "103224179",
-        "key":  "Failed to maintain position at %s mm"
-    },
-    {
-        "locale":  "en",
-        "id":  "103430303",
-        "key":  "Incorrect fixture ID %s received"
-    },
-    {
-        "locale":  "en",
-        "id":  "103668540",
-        "key":  "Lag error 3"
-    },
-    {
-        "locale":  "en",
-        "id":  "103822728",
-        "key":  "Air leak detected in circuit %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "104405939",
-        "key":  "Robot is powering up"
-    },
-    {
-        "locale":  "en",
-        "id":  "105321266",
-        "key":  "Failed to establish connection to robot %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "105901330",
-        "key":  "Spindle is changing tool"
-    },
-    {
-        "locale":  "en",
-        "id":  "106098276",
-        "key":  "Axis 2 position deviation too high"
-    },
-    {
-        "locale":  "en",
-        "id":  "107227910",
-        "key":  "Data packet from robot is corrupt"
-    },
-    {
-        "locale":  "en",
-        "id":  "108292847",
-        "key":  "Axis %s is not referenced"
-    },
-    {
-        "locale":  "en",
-        "id":  "108431048",
-        "key":  "PLC is in reset"
-    },
-    {
-        "locale":  "en",
-        "id":  "109044549",
-        "key":  "System pressure relief valve active"
-    },
-    {
-        "locale":  "en",
-        "id":  "109320720",
-        "key":  "System is in service mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "110725211",
-        "key":  "Pump is powering up"
-    },
-    {
-        "locale":  "en",
-        "id":  "111094027",
-        "key":  "Axis %s is powering up"
-    },
-    {
-        "locale":  "en",
-        "id":  "111852218",
-        "key":  "Cylinder B failed to extend"
-    },
-    {
-        "locale":  "en",
-        "id":  "116099748",
-        "key":  "Cycle start not permitted: Guard open"
-    },
-    {
-        "locale":  "en",
-        "id":  "118851667",
-        "key":  "Gate interlock failed"
-    },
-    {
-        "locale":  "en",
-        "id":  "119729734",
-        "key":  "Operator intervention required"
-    },
-    {
-        "locale":  "en",
-        "id":  "119981003",
-        "key":  "Network switch communication error"
-    },
-    {
-        "locale":  "en",
-        "id":  "121511879",
-        "key":  "Invalid command received from HMI"
-    },
-    {
-        "locale":  "en",
-        "id":  "122069157",
-        "key":  "Failed to eject part from mold"
-    },
-    {
-        "locale":  "en",
-        "id":  "122916115",
-        "key":  "Invalid move command for axis %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "125674975",
-        "key":  "Valve is de-energized"
-    },
-    {
-        "locale":  "en",
-        "id":  "127546449",
-        "key":  "Palletizer stack height error"
-    },
-    {
-        "locale":  "en",
-        "id":  "130294318",
-        "key":  "Pump is in configuration fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "132892386",
-        "key":  "Coolant flow switch is open"
-    },
-    {
-        "locale":  "en",
-        "id":  "133950658",
-        "key":  "Safety gate not closed"
-    },
-    {
-        "locale":  "en",
-        "id":  "136101471",
-        "key":  "Motor H has a ground fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "138989844",
-        "key":  "PLC network redundancy lost"
-    },
-    {
-        "locale":  "en",
-        "id":  "140194638",
-        "key":  "Pump is at speed"
-    },
-    {
-        "locale":  "en",
-        "id":  "141691375",
-        "key":  "Hydraulic fluid level is critically low"
-    },
-    {
-        "locale":  "en",
-        "id":  "142099094",
-        "key":  "Air pressure is normal"
-    },
-    {
-        "locale":  "en",
-        "id":  "149896403",
-        "key":  "System is in configuration fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "154609732",
-        "key":  "System is in run mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "155930849",
-        "key":  "Pallet is missing at location %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "157727822",
-        "key":  "Spindle tool not clamped"
-    },
-    {
-        "locale":  "en",
-        "id":  "159027536",
-        "key":  "Encoder is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "159508959",
-        "key":  "Axis %s is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "163495912",
-        "key":  "System is in emergency stop"
-    },
-    {
-        "locale":  "en",
-        "id":  "165625991",
-        "key":  "Spindle speed is zero"
-    },
-    {
-        "locale":  "en",
-        "id":  "165858997",
-        "key":  "Motor P is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "170043574",
-        "key":  "Failed to maintain pressure at %s bar"
-    },
-    {
-        "locale":  "en",
-        "id":  "170151812",
-        "key":  "Emergency stop source: Unlisted"
-    },
-    {
-        "locale":  "en",
-        "id":  "170426620",
-        "key":  "Robot gripper is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "172701248",
-        "key":  "Valve is shifting"
-    },
-    {
-        "locale":  "en",
-        "id":  "174850429",
-        "key":  "System is in safe state"
-    },
-    {
-        "locale":  "en",
-        "id":  "175987386",
-        "key":  "Air system is OK"
-    },
-    {
-        "locale":  "en",
-        "id":  "178323855",
-        "key":  "Regulator pressure is out of range"
-    },
-    {
-        "locale":  "en",
-        "id":  "179389617",
-        "key":  "Thermocouple %s is broken"
-    },
-    {
-        "locale":  "en",
-        "id":  "181859858",
-        "key":  "System is initializing"
-    },
-    {
-        "locale":  "en",
-        "id":  "181892822",
-        "key":  "Pallet is at location %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "182345328",
-        "key":  "Robot joint limit reached"
-    },
-    {
-        "locale":  "en",
-        "id":  "185356685",
-        "key":  "Axis %s brake did not engage"
-    },
-    {
-        "locale":  "en",
-        "id":  "186098607",
-        "key":  "Failed to read barcode from part %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "186408788",
-        "key":  "Failed to open safety valve"
-    },
-    {
-        "locale":  "en",
-        "id":  "187095213",
-        "key":  "Encoder resolution mismatch"
-    },
-    {
-        "locale":  "en",
-        "id":  "191893753",
-        "key":  "Analog input %s signal out of range"
-    },
-    {
-        "locale":  "en",
-        "id":  "194019962",
-        "key":  "System is in E-Stop state"
-    },
-    {
-        "locale":  "en",
-        "id":  "194196433",
-        "key":  "Failed to grip part"
-    },
-    {
-        "locale":  "en",
-        "id":  "198407162",
-        "key":  "Wrong material loaded for job %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "198827357",
-        "key":  "Hydraulic fluid is overheating"
-    },
-    {
-        "locale":  "en",
-        "id":  "201076670",
-        "key":  "Failed to read configuration from drive"
-    },
-    {
-        "locale":  "en",
-        "id":  "206145070",
-        "key":  "Pallet is arriving at location %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "207776615",
-        "key":  "PLC is in program mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "212140868",
-        "key":  "Failed to write barcode to part %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "216876843",
-        "key":  "Cylinder B extended unexpectedly"
-    },
-    {
-        "locale":  "en",
-        "id":  "217052528",
-        "key":  "System is offline"
-    },
-    {
-        "locale":  "en",
-        "id":  "217544684",
-        "key":  "Robot is not in auto mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "221046379",
-        "key":  "Hydraulic system is in communication fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "227807103",
-        "key":  "Proximity sensor %s is intermittent"
-    },
-    {
-        "locale":  "en",
-        "id":  "230789099",
-        "key":  "System is in hardware fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "233061244",
-        "key":  "Air dryer is saturated"
-    },
-    {
-        "locale":  "en",
-        "id":  "234602243",
-        "key":  "Safety gate is powering down"
-    },
-    {
-        "locale":  "en",
-        "id":  "234731108",
-        "key":  "Air system is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "237489277",
-        "key":  "VFD motor stall"
-    },
-    {
-        "locale":  "en",
-        "id":  "240236294",
-        "key":  "Motor E bearing temperature is high"
-    },
-    {
-        "locale":  "en",
-        "id":  "240773138",
-        "key":  "PLC is in fault mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "242273333",
-        "key":  "Emergency stop chain is broken"
-    },
-    {
-        "locale":  "en",
-        "id":  "246357126",
-        "key":  "Hydraulic accumulator is pre-charged incorrectly"
-    },
-    {
-        "locale":  "en",
-        "id":  "250102496",
-        "key":  "Vision system lighting failure"
-    },
-    {
-        "locale":  "en",
-        "id":  "254562129",
-        "key":  "Watchdog timer has expired"
-    },
-    {
-        "locale":  "en",
-        "id":  "258163367",
-        "key":  "System is in safe stop"
-    },
-    {
-        "locale":  "en",
-        "id":  "259892226",
-        "key":  "Robot is moving"
-    },
-    {
-        "locale":  "en",
-        "id":  "262738951",
-        "key":  "Encoder is at zero"
-    },
-    {
-        "locale":  "en",
-        "id":  "262982191",
-        "key":  "Excessive cycle time detected"
-    },
-    {
-        "locale":  "en",
-        "id":  "263454198",
-        "key":  "Safety relay test failed"
-    },
-    {
-        "locale":  "en",
-        "id":  "264507605",
-        "key":  "Input %s is off"
-    },
-    {
-        "locale":  "en",
-        "id":  "264569568",
-        "key":  "Motor Q is powering down"
-    },
-    {
-        "locale":  "en",
-        "id":  "265437496",
-        "key":  "Pump discharge is blocked"
-    },
-    {
-        "locale":  "en",
-        "id":  "275778846",
-        "key":  "Cannot open file %s on HMI"
-    },
-    {
-        "locale":  "en",
-        "id":  "276810072",
-        "key":  "Motor L is starting"
-    },
-    {
-        "locale":  "en",
-        "id":  "277091341",
-        "key":  "Failed to park robot"
-    },
-    {
-        "locale":  "en",
-        "id":  "277757321",
-        "key":  "Failed to release part"
-    },
-    {
-        "locale":  "en",
-        "id":  "279662546",
-        "key":  "Input %s is on"
-    },
-    {
-        "locale":  "en",
-        "id":  "281793927",
-        "key":  "Failed to synchronize axes"
-    },
-    {
-        "locale":  "en",
-        "id":  "282577562",
-        "key":  "HMI backup failed"
-    },
-    {
-        "locale":  "en",
-        "id":  "283109924",
-        "key":  "Hydraulic system is OK"
-    },
-    {
-        "locale":  "en",
-        "id":  "286233919",
-        "key":  "Part jam detected in chute %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "286572655",
-        "key":  "Failed to power down robot"
-    },
-    {
-        "locale":  "en",
-        "id":  "289058555",
-        "key":  "System failed to shutdown gracefully"
-    },
-    {
-        "locale":  "en",
-        "id":  "289949864",
-        "key":  "Spindle is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "291757759",
-        "key":  "Failed to grip part at station %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "293993190",
-        "key":  "E-Stop source is clear"
-    },
-    {
-        "locale":  "en",
-        "id":  "300947899",
-        "key":  "Air filter is dirty"
-    },
-    {
-        "locale":  "en",
-        "id":  "302203944",
-        "key":  "VFD motor overload"
-    },
-    {
-        "locale":  "en",
-        "id":  "305123578",
-        "key":  "System is in standby"
-    },
-    {
-        "locale":  "en",
-        "id":  "305668940",
-        "key":  "Motor C bearing failure"
-    },
-    {
-        "locale":  "en",
-        "id":  "305819171",
-        "key":  "Safety gate is locked"
-    },
-    {
-        "locale":  "en",
-        "id":  "307361688",
-        "key":  "System is in communication fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "309335721",
-        "key":  "Emergency stop has been reset"
-    },
-    {
-        "locale":  "en",
-        "id":  "309396701",
-        "key":  "Communication with VFD %s failed"
-    },
-    {
-        "locale":  "en",
-        "id":  "311451049",
-        "key":  "PLC scan time is too long"
-    },
-    {
-        "locale":  "en",
-        "id":  "315127736",
-        "key":  "Robot path planning error for destination %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "319110611",
-        "key":  "System is in reset"
-    },
-    {
-        "locale":  "en",
-        "id":  "321847964",
-        "key":  "Part is gripped"
-    },
-    {
-        "locale":  "en",
-        "id":  "322923140",
-        "key":  "Air system is venting"
-    },
-    {
-        "locale":  "en",
-        "id":  "323445774",
-        "key":  "Part quality check failed at station %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "325226080",
-        "key":  "Encoder is in alarm"
-    },
-    {
-        "locale":  "en",
-        "id":  "327357878",
-        "key":  "Pallet is wrong at location %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "329884446",
-        "key":  "System failed to initialize I/O"
-    },
-    {
-        "locale":  "en",
-        "id":  "335007187",
-        "key":  "Pump is building pressure"
-    },
-    {
-        "locale":  "en",
-        "id":  "336598871",
-        "key":  "Failed to log data to file %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "337610281",
-        "key":  "Encoder is in hardware fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "338315346",
-        "key":  "System is in test mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "339227309",
-        "key":  "Pallet is damaged at location %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "340190816",
-        "key":  "Conveyor is in E-Stop"
-    },
-    {
-        "locale":  "en",
-        "id":  "340828109",
-        "key":  "Encoder is synchronized"
-    },
-    {
-        "locale":  "en",
-        "id":  "345061979",
-        "key":  "Axis %s is in configuration fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "348454004",
-        "key":  "Proximity sensor fault: Wire break"
-    },
-    {
-        "locale":  "en",
-        "id":  "348878313",
-        "key":  "PLC time sync failed"
-    },
-    {
-        "locale":  "en",
-        "id":  "350444340",
-        "key":  "Pump efficiency is low"
-    },
-    {
-        "locale":  "en",
-        "id":  "350665306",
-        "key":  "Failed to set output %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "352575033",
-        "key":  "Encoder battery voltage is low"
-    },
-    {
-        "locale":  "en",
-        "id":  "353171688",
-        "key":  "Air system is off"
-    },
-    {
-        "locale":  "en",
-        "id":  "357632549",
-        "key":  "Part height is incorrect at station %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "357818060",
-        "key":  "Failed to load recipe: %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "357999834",
-        "key":  "Robot is in singularity, cannot move"
-    },
-    {
-        "locale":  "en",
-        "id":  "360021832",
-        "key":  "Conveyor is accelerating"
-    },
-    {
-        "locale":  "en",
-        "id":  "360463664",
-        "key":  "Failed to park robot in home position"
-    },
-    {
-        "locale":  "en",
-        "id":  "361844212",
-        "key":  "Robot is referencing"
-    },
-    {
-        "locale":  "en",
-        "id":  "361966966",
-        "key":  "Robot gripper is closed"
-    },
-    {
-        "locale":  "en",
-        "id":  "365218255",
-        "key":  "Hydraulic system is active"
-    },
-    {
-        "locale":  "en",
-        "id":  "365980608",
-        "key":  "Robot gripper is in communication fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "366731016",
-        "key":  "Main contactor did not engage"
-    },
-    {
-        "locale":  "en",
-        "id":  "368079717",
-        "key":  "Purge valve is stuck open"
-    },
-    {
-        "locale":  "en",
-        "id":  "370392395",
-        "key":  "Hydraulic return filter is clogged"
-    },
-    {
-        "locale":  "en",
-        "id":  "373226799",
-        "key":  "Cylinder A failed to extend"
-    },
-    {
-        "locale":  "en",
-        "id":  "373346217",
-        "key":  "Conveyor is jammed"
-    },
-    {
-        "locale":  "en",
-        "id":  "373789771",
-        "key":  "Tool change failed on station %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "377623810",
-        "key":  "Pump is in alarm"
-    },
-    {
-        "locale":  "en",
-        "id":  "378168816",
-        "key":  "Failed to write to database"
-    },
-    {
-        "locale":  "en",
-        "id":  "379744884",
-        "key":  "Conveyor speed is zero"
-    },
-    {
-        "locale":  "en",
-        "id":  "381300644",
-        "key":  "Pallet is skewed at location %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "386296766",
-        "key":  "Sensor %s is dirty or misaligned"
-    },
-    {
-        "locale":  "en",
-        "id":  "396387794",
-        "key":  "Pump cavitation detected"
-    },
-    {
-        "locale":  "en",
-        "id":  "397074462",
-        "key":  "Conveyor is running"
-    },
-    {
-        "locale":  "en",
-        "id":  "400399278",
-        "key":  "Flow rate is too low in line %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "400783557",
-        "key":  "Emergency stop source: Unknown"
-    },
-    {
-        "locale":  "en",
-        "id":  "401867310",
-        "key":  "Input %s is forced"
-    },
-    {
-        "locale":  "en",
-        "id":  "404055868",
-        "key":  "Failed to load robot program %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "405885388",
-        "key":  "System is in E-Stop state: Reset required"
-    },
-    {
-        "locale":  "en",
-        "id":  "406348215",
-        "key":  "System is in fault state: Reset required"
-    },
-    {
-        "locale":  "en",
-        "id":  "406567956",
-        "key":  "Temperature out of spec for oven %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "407073985",
-        "key":  "Spindle is braking"
-    },
-    {
-        "locale":  "en",
-        "id":  "408567347",
-        "key":  "Failed to move robot to safe position"
-    },
-    {
-        "locale":  "en",
-        "id":  "409216181",
-        "key":  "Failed to set input %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "413280508",
-        "key":  "Robot is waiting for input"
-    },
-    {
-        "locale":  "en",
-        "id":  "415163047",
-        "key":  "Conveyor is in communication fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "416941017",
-        "key":  "Part presence sensor stuck on"
-    },
-    {
-        "locale":  "en",
-        "id":  "417051589",
-        "key":  "Proximity sensor %s is always on"
-    },
-    {
-        "locale":  "en",
-        "id":  "417246690",
-        "key":  "Conveyor motor is not running"
-    },
-    {
-        "locale":  "en",
-        "id":  "418224237",
-        "key":  "Input %s is faulted"
-    },
-    {
-        "locale":  "en",
-        "id":  "418538085",
-        "key":  "Safety relay did not pick up"
-    },
-    {
-        "locale":  "en",
-        "id":  "423729794",
-        "key":  "Motor B is not responding"
-    },
-    {
-        "locale":  "en",
-        "id":  "424789367",
-        "key":  "Safety gate is open"
-    },
-    {
-        "locale":  "en",
-        "id":  "426179790",
-        "key":  "Main drive overtemperature"
-    },
-    {
-        "locale":  "en",
-        "id":  "426479410",
-        "key":  "Homing timeout for axis %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "427933954",
-        "key":  "Operator login failed for user %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "431554599",
-        "key":  "Torque limit exceeded for motor %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "433875535",
-        "key":  "Failed to update recipe %s in database"
-    },
-    {
-        "locale":  "en",
-        "id":  "436001307",
-        "key":  "Temperature ramp rate too fast"
-    },
-    {
-        "locale":  "en",
-        "id":  "437415664",
-        "key":  "System failed to enter run mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "440680958",
-        "key":  "HMI display is faulty"
-    },
-    {
-        "locale":  "en",
-        "id":  "442704929",
-        "key":  "Spindle is in fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "449292690",
-        "key":  "Failed to close isolation valve"
-    },
-    {
-        "locale":  "en",
-        "id":  "449988299",
-        "key":  "Motor A thermal model trip"
-    },
-    {
-        "locale":  "en",
-        "id":  "450171867",
-        "key":  "Spindle tool is broken"
-    },
-    {
-        "locale":  "en",
-        "id":  "453988495",
-        "key":  "Valve is open"
-    },
-    {
-        "locale":  "en",
-        "id":  "454848228",
-        "key":  "System is in power save"
-    },
-    {
-        "locale":  "en",
-        "id":  "455563805",
-        "key":  "Encoder is homing"
-    },
-    {
-        "locale":  "en",
-        "id":  "456148294",
-        "key":  "Failed to open valve %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "457848118",
-        "key":  "Robot program %s is loaded"
-    },
-    {
-        "locale":  "en",
-        "id":  "458184506",
-        "key":  "Safety gate switch is welded"
-    },
-    {
-        "locale":  "en",
-        "id":  "458919012",
-        "key":  "Conveyor tracking lost"
-    },
-    {
-        "locale":  "en",
-        "id":  "463877781",
-        "key":  "Temperature overshoot detected"
-    },
-    {
-        "locale":  "en",
-        "id":  "465243624",
-        "key":  "Failed to load recipe: %s %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "472951340",
-        "key":  "Failed to power on robot"
-    },
-    {
-        "locale":  "en",
-        "id":  "475719233",
-        "key":  "C message"
-    },
-    {
-        "locale":  "en",
-        "id":  "475719235",
-        "key":  "E message"
-    },
-    {
-        "locale":  "en",
-        "id":  "475719253",
-        "key":  "W message"
-    },
-    {
-        "locale":  "en",
-        "id":  "475894515",
-        "key":  "Motor R is in hardware fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "476336752",
-        "key":  "Conveyor belt is misaligned"
-    },
-    {
-        "locale":  "en",
-        "id":  "477836306",
-        "key":  "Air compressor fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "478251424",
-        "key":  "Cylinder A extended unexpectedly"
-    },
-    {
-        "locale":  "en",
-        "id":  "478985983",
-        "key":  "Cylinder B did not retract within timeout"
-    },
-    {
-        "locale":  "en",
-        "id":  "479810162",
-        "key":  "Failed to save settings to HMI"
-    },
-    {
-        "locale":  "en",
-        "id":  "480483646",
-        "key":  "Pressure relief valve is active"
-    },
-    {
-        "locale":  "en",
-        "id":  "482613552",
-        "key":  "Air system is powering down"
-    },
-    {
-        "locale":  "en",
-        "id":  "487525630",
-        "key":  "Level sensor in tank %s is faulted"
-    },
-    {
-        "locale":  "en",
-        "id":  "489457463",
-        "key":  "VFD communication is lost"
-    },
-    {
-        "locale":  "en",
-        "id":  "499147908",
-        "key":  "Part transfer failed"
-    },
-    {
-        "locale":  "en",
-        "id":  "499438490",
-        "key":  "Conveyor is in reset"
-    },
-    {
-        "locale":  "en",
-        "id":  "500211574",
-        "key":  "Robot collision detected"
-    },
-    {
-        "locale":  "en",
-        "id":  "511865723",
-        "key":  "Input %s is in hardware fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "515304940",
-        "key":  "Failed to close safety gate"
-    },
-    {
-        "locale":  "en",
-        "id":  "516754421",
-        "key":  "Vision system is in error"
-    },
-    {
-        "locale":  "en",
-        "id":  "518848565",
-        "key":  "Axis %s hardware limit switch triggered"
-    },
-    {
-        "locale":  "en",
-        "id":  "524031458",
-        "key":  "Motor J is OK"
-    },
-    {
-        "locale":  "en",
-        "id":  "525919964",
-        "key":  "Robot gripper is open"
-    },
-    {
-        "locale":  "en",
-        "id":  "526591558",
-        "key":  "System is in power up"
-    },
-    {
-        "locale":  "en",
-        "id":  "526801336",
-        "key":  "Pump is stopped"
-    },
-    {
-        "locale":  "en",
-        "id":  "528206401",
-        "key":  "Robot software limit reached"
-    },
-    {
-        "locale":  "en",
-        "id":  "528281057",
-        "key":  "Conveyor index timeout"
-    },
-    {
-        "locale":  "en",
-        "id":  "529208917",
-        "key":  "Encoder is working"
-    },
-    {
-        "locale":  "en",
-        "id":  "530241786",
-        "key":  "Temperature is stable"
-    },
-    {
-        "locale":  "en",
-        "id":  "530604795",
-        "key":  "VFD overcurrent trip"
-    },
-    {
-        "locale":  "en",
-        "id":  "532755668",
-        "key":  "User %s does not have required permissions"
-    },
-    {
-        "locale":  "en",
-        "id":  "532962581",
-        "key":  "Overvoltage detected on DC bus"
-    },
-    {
-        "locale":  "en",
-        "id":  "533849785",
-        "key":  "Encoder is not connected"
-    },
-    {
-        "locale":  "en",
-        "id":  "537205036",
-        "key":  "Network connection to SCADA lost"
-    },
-    {
-        "locale":  "en",
-        "id":  "539036317",
-        "key":  "Motor B thermal overload"
-    },
-    {
-        "locale":  "en",
-        "id":  "539163415",
-        "key":  "Safety relay test failed critically"
-    },
-    {
-        "locale":  "en",
-        "id":  "540011896",
-        "key":  "Safety gate is closed and locked"
-    },
-    {
-        "locale":  "en",
-        "id":  "542239548",
-        "key":  "System is shutting down"
-    },
-    {
-        "locale":  "en",
-        "id":  "542290731",
-        "key":  "Air pressure is too low"
-    },
-    {
-        "locale":  "en",
-        "id":  "544086596",
-        "key":  "Axis %s is referencing"
-    },
-    {
-        "locale":  "en",
-        "id":  "544112161",
-        "key":  "Emergency stop reset timeout"
-    },
-    {
-        "locale":  "en",
-        "id":  "547426220",
-        "key":  "Robot joint %s limit exceeded"
-    },
-    {
-        "locale":  "en",
-        "id":  "548874609",
-        "key":  "Valve is closed"
-    },
-    {
-        "locale":  "en",
-        "id":  "550219210",
-        "key":  "Proximity sensor 4 did not detect part"
-    },
-    {
-        "locale":  "en",
-        "id":  "557066724",
-        "key":  "System is in setup"
-    },
-    {
-        "locale":  "en",
-        "id":  "560041746",
-        "key":  "Temperature ramp rate too slow"
-    },
-    {
-        "locale":  "en",
-        "id":  "560430170",
-        "key":  "Mode change failed: System not in safe state"
-    },
-    {
-        "locale":  "en",
-        "id":  "563485368",
-        "key":  "Cylinder B failed to retract"
-    },
-    {
-        "locale":  "en",
-        "id":  "564280028",
-        "key":  "Robot gripper failed to close"
-    },
-    {
-        "locale":  "en",
-        "id":  "564592578",
-        "key":  "HMI is connected"
-    },
-    {
-        "locale":  "en",
-        "id":  "564997759",
-        "key":  "Robot gripper is worn"
-    },
-    {
-        "locale":  "en",
-        "id":  "569106138",
-        "key":  "Sensor supply voltage is low"
-    },
-    {
-        "locale":  "en",
-        "id":  "569656297",
-        "key":  "System is in manual mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "570763187",
-        "key":  "Vision system is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "572326510",
-        "key":  "PLC is in stop mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "576534155",
-        "key":  "Safety mat is active"
-    },
-    {
-        "locale":  "en",
-        "id":  "577509354",
-        "key":  "Motor N is at temperature"
-    },
-    {
-        "locale":  "en",
-        "id":  "578481480",
-        "key":  "Failed to enable safety outputs"
-    },
-    {
-        "locale":  "en",
-        "id":  "579673878",
-        "key":  "System is in maintenance"
-    },
-    {
-        "locale":  "en",
-        "id":  "580072928",
-        "key":  "Pressure sensor reading is frozen"
-    },
-    {
-        "locale":  "en",
-        "id":  "583691718",
-        "key":  "Encoder signal is noisy"
-    },
-    {
-        "locale":  "en",
-        "id":  "584607011",
-        "key":  "Proximity sensor %s is always off"
-    },
-    {
-        "locale":  "en",
-        "id":  "585336403",
-        "key":  "Failed to close valve manifold"
-    },
-    {
-        "locale":  "en",
-        "id":  "592920496",
-        "key":  "Axis 3 move command cancelled"
-    },
-    {
-        "locale":  "en",
-        "id":  "594607632",
-        "key":  "Homing sequence interrupted"
-    },
-    {
-        "locale":  "en",
-        "id":  "596581822",
-        "key":  "VFD undervoltage fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "597666627",
-        "key":  "Incorrect part orientation detected"
-    },
-    {
-        "locale":  "en",
-        "id":  "598877655",
-        "key":  "Failed to zero axis %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "603145075",
-        "key":  "Barcode on part %s is verified"
-    },
-    {
-        "locale":  "en",
-        "id":  "608989523",
-        "key":  "Hydraulic system is idle"
-    },
-    {
-        "locale":  "en",
-        "id":  "614113915",
-        "key":  "Encoder count error"
-    },
-    {
-        "locale":  "en",
-        "id":  "614863977",
-        "key":  "Axis %s is stopped"
-    },
-    {
-        "locale":  "en",
-        "id":  "617228608",
-        "key":  "Robot gripper is releasing"
-    },
-    {
-        "locale":  "en",
-        "id":  "618186036",
-        "key":  "Robot gripper is gripping"
-    },
-    {
-        "locale":  "en",
-        "id":  "619031287",
-        "key":  "PLC memory is full"
-    },
-    {
-        "locale":  "en",
-        "id":  "619244592",
-        "key":  "System pressure not building"
-    },
-    {
-        "locale":  "en",
-        "id":  "621187246",
-        "key":  "Valve %s did not shift"
-    },
-    {
-        "locale":  "en",
-        "id":  "621913516",
-        "key":  "Axis %s is in fault state"
-    },
-    {
-        "locale":  "en",
-        "id":  "624719034",
-        "key":  "Input %s is powering down"
-    },
-    {
-        "locale":  "en",
-        "id":  "626477413",
-        "key":  "Input %s is in error"
-    },
-    {
-        "locale":  "en",
-        "id":  "630778805",
-        "key":  "Configuration file %s is corrupted"
-    },
-    {
-        "locale":  "en",
-        "id":  "634344537",
-        "key":  "Failed to save robot program %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "634474780",
-        "key":  "Axis %s is homed"
-    },
-    {
-        "locale":  "en",
-        "id":  "635260245",
-        "key":  "Conveyor belt slipped"
-    },
-    {
-        "locale":  "en",
-        "id":  "635356995",
-        "key":  "Axis %s is in alarm state"
-    },
-    {
-        "locale":  "en",
-        "id":  "635796636",
-        "key":  "PLC is stopped"
-    },
-    {
-        "locale":  "en",
-        "id":  "635973644",
-        "key":  "Pallet not present at location %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "638220346",
-        "key":  "Pump suction is clogged"
-    },
-    {
-        "locale":  "en",
-        "id":  "645750778",
-        "key":  "Safety gate is in fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "646335546",
-        "key":  "System failed to initialize"
-    },
-    {
-        "locale":  "en",
-        "id":  "651826221",
-        "key":  "Spindle is not running"
-    },
-    {
-        "locale":  "en",
-        "id":  "653459603",
-        "key":  "Wrong tool loaded in spindle"
-    },
-    {
-        "locale":  "en",
-        "id":  "654845819",
-        "key":  "Position feedback lost for axis %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "655951572",
-        "key":  "Valve is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "660322600",
-        "key":  "Failed to locate feature %s in vision system"
-    },
-    {
-        "locale":  "en",
-        "id":  "663037999",
-        "key":  "Motor I is not configured"
-    },
-    {
-        "locale":  "en",
-        "id":  "663806485",
-        "key":  "Spindle is starting"
-    },
-    {
-        "locale":  "en",
-        "id":  "666584115",
-        "key":  "Conveyor motor is overheating"
-    },
-    {
-        "locale":  "en",
-        "id":  "667308375",
-        "key":  "Pallet is missing from location %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "668341244",
-        "key":  "Failed to start cycle: Guard not closed"
-    },
-    {
-        "locale":  "en",
-        "id":  "675711322",
-        "key":  "Interlock condition not met for operation %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "676144596",
-        "key":  "Proximity sensor %s is miswired"
-    },
-    {
-        "locale":  "en",
-        "id":  "677923405",
-        "key":  "Failed to verify barcode on part %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "680495858",
-        "key":  "Pressure sensor %s shows maximum value"
-    },
-    {
-        "locale":  "en",
-        "id":  "681484970",
-        "key":  "Lag error"
-    },
-    {
-        "locale":  "en",
-        "id":  "683696240",
-        "key":  "Robot is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "684582860",
-        "key":  "Weight of part %s is out of tolerance"
-    },
-    {
-        "locale":  "en",
-        "id":  "684752803",
-        "key":  "Manual mode interlock is active"
-    },
-    {
-        "locale":  "en",
-        "id":  "687503128",
-        "key":  "Robot is in home position"
-    },
-    {
-        "locale":  "en",
-        "id":  "690645040",
-        "key":  "Fire suppression system activated"
-    },
-    {
-        "locale":  "en",
-        "id":  "691255652",
-        "key":  "Emergency stop source: Safety Mat"
-    },
-    {
-        "locale":  "en",
-        "id":  "692011725",
-        "key":  "Encoder is powering down"
-    },
-    {
-        "locale":  "en",
-        "id":  "692138795",
-        "key":  "E-Stop source: External"
-    },
-    {
-        "locale":  "en",
-        "id":  "693263043",
-        "key":  "Safety gate is unlocked"
-    },
-    {
-        "locale":  "en",
-        "id":  "694796410",
-        "key":  "Valve is in hardware fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "697446562",
-        "key":  "Proximity sensor %s is faulty"
-    },
-    {
-        "locale":  "en",
-        "id":  "700847574",
-        "key":  "Safety gate is closing"
-    },
-    {
-        "locale":  "en",
-        "id":  "702570581",
-        "key":  "System is in auto mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "707430004",
-        "key":  "Internal PLC error: Task overrun"
-    },
-    {
-        "locale":  "en",
-        "id":  "707539160",
-        "key":  "Servo motor overheating"
-    },
-    {
-        "locale":  "en",
-        "id":  "709412327",
-        "key":  "PLC I/O module error"
-    },
-    {
-        "locale":  "en",
-        "id":  "712668444",
-        "key":  "Axis %s is waiting"
-    },
-    {
-        "locale":  "en",
-        "id":  "715796097",
-        "key":  "Insufficient air pressure for gripper"
-    },
-    {
-        "locale":  "en",
-        "id":  "716456626",
-        "key":  "Failed to enable drive group %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "717765502",
-        "key":  "Robot gripper is empty"
-    },
-    {
-        "locale":  "en",
-        "id":  "718470536",
-        "key":  "Failed to connect to MES system"
-    },
-    {
-        "locale":  "en",
-        "id":  "724256379",
-        "key":  "Inconsistent barcode scan for part %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "725753688",
-        "key":  "Vision system could not locate part %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "726804838",
-        "key":  "Position is correct at %s mm"
-    },
-    {
-        "locale":  "en",
-        "id":  "726897854",
-        "key":  "Part unloading failed"
-    },
-    {
-        "locale":  "en",
-        "id":  "730111847",
-        "key":  "Failed to write to I/O module %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "731123442",
-        "key":  "System failed to boot"
-    },
-    {
-        "locale":  "en",
-        "id":  "732406110",
-        "key":  "System is ready"
-    },
-    {
-        "locale":  "en",
-        "id":  "736968920",
-        "key":  "Air system is in fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "738601621",
-        "key":  "Axis %s command position and actual position mismatch"
-    },
-    {
-        "locale":  "en",
-        "id":  "738673258",
-        "key":  "Emergency stop line is broken"
-    },
-    {
-        "locale":  "en",
-        "id":  "741030180",
-        "key":  "Failed to clear output %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "741153201",
-        "key":  "Safety PLC communication fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "745304882",
-        "key":  "Spindle is stopped"
-    },
-    {
-        "locale":  "en",
-        "id":  "751844004",
-        "key":  "Robot gripper is damaged"
-    },
-    {
-        "locale":  "en",
-        "id":  "753128079",
-        "key":  "E-Stop source: Hardwired"
-    },
-    {
-        "locale":  "en",
-        "id":  "755154645",
-        "key":  "PLC is running"
-    },
-    {
-        "locale":  "en",
-        "id":  "755155798",
-        "key":  "VFD is running"
-    },
-    {
-        "locale":  "en",
-        "id":  "755383388",
-        "key":  "Label printer error: Out of labels"
-    },
-    {
-        "locale":  "en",
-        "id":  "757446510",
-        "key":  "E-Stop source: Gateway"
-    },
-    {
-        "locale":  "en",
-        "id":  "758816493",
-        "key":  "Pump motor failed to start"
-    },
-    {
-        "locale":  "en",
-        "id":  "761487350",
-        "key":  "System is saving data"
-    },
-    {
-        "locale":  "en",
-        "id":  "765643058",
-        "key":  "Cylinder A is retracted"
-    },
-    {
-        "locale":  "en",
-        "id":  "766317175",
-        "key":  "Vision system is in communication fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "766331159",
-        "key":  "Motor O is in alarm"
-    },
-    {
-        "locale":  "en",
-        "id":  "770244041",
-        "key":  "Emergency stop source: Pull Cord"
-    },
-    {
-        "locale":  "en",
-        "id":  "770631599",
-        "key":  "System is in fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "773247963",
-        "key":  "Failed to open gripper"
-    },
-    {
-        "locale":  "en",
-        "id":  "774527956",
-        "key":  "Lag error 2"
-    },
-    {
-        "locale":  "en",
-        "id":  "776980042",
-        "key":  "Hydraulic fluid is contaminated"
-    },
-    {
-        "locale":  "en",
-        "id":  "779282330",
-        "key":  "Robot is in error"
-    },
-    {
-        "locale":  "en",
-        "id":  "785582455",
-        "key":  "Welding tip is worn"
-    },
-    {
-        "locale":  "en",
-        "id":  "788139320",
-        "key":  "Axis %s following error is active"
-    },
-    {
-        "locale":  "en",
-        "id":  "790125858",
-        "key":  "Temperature sensor %s is disconnected"
-    },
-    {
-        "locale":  "en",
-        "id":  "790152895",
-        "key":  "Motor phase loss detected"
-    },
-    {
-        "locale":  "en",
-        "id":  "791956772",
-        "key":  "PLC task watchdog has expired"
-    },
-    {
-        "locale":  "en",
-        "id":  "792582087",
-        "key":  "Motor K is stopped"
-    },
-    {
-        "locale":  "en",
-        "id":  "792913450",
-        "key":  "Conveyor motor overload"
-    },
-    {
-        "locale":  "en",
-        "id":  "796973120",
-        "key":  "Safety system is OK"
-    },
-    {
-        "locale":  "en",
-        "id":  "798245427",
-        "key":  "Failed to find fiducial %s in vision system"
-    },
-    {
-        "locale":  "en",
-        "id":  "798717805",
-        "key":  "Excessive vibration detected on motor %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "802205547",
-        "key":  "Air dryer fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "802928548",
-        "key":  "Failed to maintain torque at %s Nm"
-    },
-    {
-        "locale":  "en",
-        "id":  "807848533",
-        "key":  "Vision system is capturing image"
-    },
-    {
-        "locale":  "en",
-        "id":  "810077404",
-        "key":  "System voltage is unstable"
-    },
-    {
-        "locale":  "en",
-        "id":  "811924027",
-        "key":  "Failed to close gripper"
-    },
-    {
-        "locale":  "en",
-        "id":  "813120861",
-        "key":  "System is online"
-    },
-    {
-        "locale":  "en",
-        "id":  "815311898",
-        "key":  "Incorrect password entered %s times"
-    },
-    {
-        "locale":  "en",
-        "id":  "816986360",
-        "key":  "System pressure is too high"
-    },
-    {
-        "locale":  "en",
-        "id":  "817664351",
-        "key":  "Failed to apply torque on fastener %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "818586704",
-        "key":  "Robot path obstructed"
-    },
-    {
-        "locale":  "en",
-        "id":  "822934053",
-        "key":  "Spindle is powering down"
-    },
-    {
-        "locale":  "en",
-        "id":  "824859949",
-        "key":  "Cylinder A failed to retract"
-    },
-    {
-        "locale":  "en",
-        "id":  "824981369",
-        "key":  "Hydraulic system is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "826798443",
-        "key":  "Vision system is processing image"
-    },
-    {
-        "locale":  "en",
-        "id":  "827863662",
-        "key":  "Conveyor is stopped"
-    },
-    {
-        "locale":  "en",
-        "id":  "828462898",
-        "key":  "Robot is in configuration fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "828536003",
-        "key":  "I message %s %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "829423237",
-        "key":  "Failed to match pattern %s in vision system"
-    },
-    {
-        "locale":  "en",
-        "id":  "832893823",
-        "key":  "Failed to ad recipe: %s %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "833767271",
-        "key":  "Air system is at pressure"
-    },
-    {
-        "locale":  "en",
-        "id":  "833785224",
-        "key":  "Batch number %s is invalid or expired"
-    },
-    {
-        "locale":  "en",
-        "id":  "835758112",
-        "key":  "Level sensor in tank %s is frozen"
-    },
-    {
-        "locale":  "en",
-        "id":  "839807760",
-        "key":  "Robot is in manual mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "840940439",
-        "key":  "Chiller temperature is too high"
-    },
-    {
-        "locale":  "en",
-        "id":  "843353429",
-        "key":  "Error in motion group %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "843994824",
-        "key":  "VFD in fault state"
-    },
-    {
-        "locale":  "en",
-        "id":  "844021694",
-        "key":  "HMI screen saver is active"
-    },
-    {
-        "locale":  "en",
-        "id":  "844887995",
-        "key":  "Pallet is at position %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "845967336",
-        "key":  "Invalid parameter set for drive %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "848312986",
-        "key":  "Barcode scanner not ready"
-    },
-    {
-        "locale":  "en",
-        "id":  "849363082",
-        "key":  "Input %s is simulated"
-    },
-    {
-        "locale":  "en",
-        "id":  "861139381",
-        "key":  "Pallet is leaving location %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "865519035",
-        "key":  "System is in maintenance mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "866629375",
-        "key":  "System is in power down"
-    },
-    {
-        "locale":  "en",
-        "id":  "869858701",
-        "key":  "PLC battery needs replacement"
-    },
-    {
-        "locale":  "en",
-        "id":  "873836778",
-        "key":  "Conveyor belt is torn"
-    },
-    {
-        "locale":  "en",
-        "id":  "875891613",
-        "key":  "Safety gate is in hardware fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "878151236",
-        "key":  "HMI application crashed"
-    },
-    {
-        "locale":  "en",
-        "id":  "879449371",
-        "key":  "Filter differential pressure is high"
-    },
-    {
-        "locale":  "en",
-        "id":  "881340240",
-        "key":  "Load cell signal is unstable"
-    },
-    {
-        "locale":  "en",
-        "id":  "881436336",
-        "key":  "Hydraulic system is charging"
-    },
-    {
-        "locale":  "en",
-        "id":  "882166272",
-        "key":  "Machine not homed"
-    },
-    {
-        "locale":  "en",
-        "id":  "884934701",
-        "key":  "Main circuit breaker is tripped"
-    },
-    {
-        "locale":  "en",
-        "id":  "885967005",
-        "key":  "Axis %s is not enabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "887612404",
-        "key":  "Safety relay test passed with warnings"
-    },
-    {
-        "locale":  "en",
-        "id":  "894005669",
-        "key":  "Actuator %s did not complete motion"
-    },
-    {
-        "locale":  "en",
-        "id":  "894279110",
-        "key":  "Spindle speed not reached"
-    },
-    {
-        "locale":  "en",
-        "id":  "894443599",
-        "key":  "Hydraulic pump is noisy"
-    },
-    {
-        "locale":  "en",
-        "id":  "901417390",
-        "key":  "Network cable unplugged for device %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "902198983",
-        "key":  "Cylinder A pressure sensor fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "902925985",
-        "key":  "Conveyor speed is below setpoint"
-    },
-    {
-        "locale":  "en",
-        "id":  "904304221",
-        "key":  "Input %s is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "908391860",
-        "key":  "Clamping force not achieved"
-    },
-    {
-        "locale":  "en",
-        "id":  "909197747",
-        "key":  "Failed to execute command %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "911204631",
-        "key":  "Vision system failed to focus"
-    },
-    {
-        "locale":  "en",
-        "id":  "913386085",
-        "key":  "Safety gate is not interlocked"
-    },
-    {
-        "locale":  "en",
-        "id":  "915053279",
-        "key":  "PLC is in run mode"
-    },
-    {
-        "locale":  "en",
-        "id":  "916964646",
-        "key":  "E-Stop reset failed: Fault condition still present"
-    },
-    {
-        "locale":  "en",
-        "id":  "919838823",
-        "key":  "Motor F overcurrent"
-    },
-    {
-        "locale":  "en",
-        "id":  "922463265",
-        "key":  "Air filter is clogged"
-    },
-    {
-        "locale":  "en",
-        "id":  "925602966",
-        "key":  "Valve is in fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "925673804",
-        "key":  "Safety gate not locked"
-    },
-    {
-        "locale":  "en",
-        "id":  "932272750",
-        "key":  "Analog output %s is at fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "933027441",
-        "key":  "Encoder battery is dead"
-    },
-    {
-        "locale":  "en",
-        "id":  "939430834",
-        "key":  "Pallet is double-stacked at location %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "941407936",
-        "key":  "Vision system is off"
-    },
-    {
-        "locale":  "en",
-        "id":  "943047633",
-        "key":  "Pump is running"
-    },
-    {
-        "locale":  "en",
-        "id":  "944357119",
-        "key":  "Proximity sensor %s is working"
-    },
-    {
-        "locale":  "en",
-        "id":  "944421970",
-        "key":  "Pump is priming"
-    },
-    {
-        "locale":  "en",
-        "id":  "947294229",
-        "key":  "Pump is running dry"
-    },
-    {
-        "locale":  "en",
-        "id":  "949104028",
-        "key":  "Robot joint %s temperature is high"
-    },
-    {
-        "locale":  "en",
-        "id":  "951020145",
-        "key":  "Failed to find reference mark for axis %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "954893308",
-        "key":  "Reservoir level is high"
-    },
-    {
-        "locale":  "en",
-        "id":  "956082325",
-        "key":  "Cannot load G-code file: %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "956407335",
-        "key":  "Spindle is at speed"
-    },
-    {
-        "locale":  "en",
-        "id":  "958296709",
-        "key":  "Failed to execute robot program %s"
-    },
-    {
-        "locale":  "en",
-        "id":  "961944472",
-        "key":  "Safety gate is opening"
-    },
-    {
-        "locale":  "en",
-        "id":  "963090393",
-        "key":  "Failed to load G-code: Invalid syntax"
-    },
-    {
-        "locale":  "en",
-        "id":  "964219551",
-        "key":  "Pump is disabled"
-    },
-    {
-        "locale":  "en",
-        "id":  "966835846",
-        "key":  "Hydraulic fluid is low"
-    },
-    {
-        "locale":  "en",
-        "id":  "967372774",
-        "key":  "VFD DC bus overvoltage"
-    },
-    {
-        "locale":  "en",
-        "id":  "971819022",
-        "key":  "Axis %s is moving"
-    },
-    {
-        "locale":  "en",
-        "id":  "973083953",
-        "key":  "Conveyor is overloaded"
-    },
-    {
-        "locale":  "en",
-        "id":  "973132419",
-        "key":  "HMI firmware update failed"
-    },
-    {
-        "locale":  "en",
-        "id":  "973694476",
-        "key":  "E-Stop source: Panel Button"
-    },
-    {
-        "locale":  "en",
-        "id":  "974334660",
-        "key":  "Robot is in singularity position"
-    },
-    {
-        "locale":  "en",
-        "id":  "976382904",
-        "key":  "Clamp pressure not released"
-    },
-    {
-        "locale":  "en",
-        "id":  "980730346",
-        "key":  "Chiller fluid level is low"
-    },
-    {
-        "locale":  "en",
-        "id":  "984938963",
-        "key":  "Vision system is ready"
-    },
-    {
-        "locale":  "en",
-        "id":  "986432188",
-        "key":  "Air system is in hardware fault"
-    },
-    {
-        "locale":  "en",
-        "id":  "990092022",
-        "key":  "Failed to find part %s in vision system"
-    },
-    {
-        "locale":  "en",
-        "id":  "990252450",
-        "key":  "Purge cycle failed to complete"
-    },
-    {
-        "locale":  "en",
-        "id":  "991067110",
-        "key":  "Axis %s is in warning state"
-    },
-    {
-        "locale":  "en",
-        "id":  "995454603",
-        "key":  "System is booted"
-    },
-    {
-        "locale":  "en",
-        "id":  "996015977",
-        "key":  "Spindle direction is incorrect"
-    },
-    {
-        "locale":  "en",
-        "id":  "996676608",
-        "key":  "Emergency stop source: Software"
-    }
-]
+﻿{
+    "locale":  [
+                   "en",
+                   "de",
+                   "es"
+               ],
+    "Events":  [
+                   {
+                       "id":  "951020145",
+                       "key":  "Failed to find reference mark for axis %s"
+                   },
+                   {
+                       "id":  "925602966",
+                       "key":  "Valve is in fault"
+                   },
+                   {
+                       "id":  "305668940",
+                       "key":  "Motor C bearing failure"
+                   },
+                   {
+                       "id":  "816986360",
+                       "key":  "System pressure is too high"
+                   },
+                   {
+                       "id":  "941407936",
+                       "key":  "Vision system is off"
+                   },
+                   {
+                       "id":  "690645040",
+                       "key":  "Fire suppression system activated"
+                   },
+                   {
+                       "id":  "424789367",
+                       "key":  "Safety gate is open"
+                   },
+                   {
+                       "id":  "340828109",
+                       "key":  "Encoder is synchronized"
+                   },
+                   {
+                       "id":  "843353429",
+                       "key":  "Error in motion group %s"
+                   },
+                   {
+                       "id":  "404055868",
+                       "key":  "Failed to load robot program %s"
+                   },
+                   {
+                       "id":  "340190816",
+                       "key":  "Conveyor is in E-Stop"
+                   },
+                   {
+                       "id":  "54425602",
+                       "key":  "Lubrication system fault"
+                   },
+                   {
+                       "id":  "242273333",
+                       "key":  "Emergency stop chain is broken"
+                   },
+                   {
+                       "id":  "635356995",
+                       "key":  "Axis %s is in alarm state"
+                   },
+                   {
+                       "id":  "790125858",
+                       "key":  "Temperature sensor %s is disconnected"
+                   },
+                   {
+                       "id":  "302203944",
+                       "key":  "VFD motor overload"
+                   },
+                   {
+                       "id":  "206145070",
+                       "key":  "Pallet is arriving at location %s"
+                   },
+                   {
+                       "id":  "337610281",
+                       "key":  "Encoder is in hardware fault"
+                   },
+                   {
+                       "id":  "770631599",
+                       "key":  "System is in fault"
+                   },
+                   {
+                       "id":  "702570581",
+                       "key":  "System is in auto mode"
+                   },
+                   {
+                       "id":  "547426220",
+                       "key":  "Robot joint %s limit exceeded"
+                   },
+                   {
+                       "id":  "133950658",
+                       "key":  "Safety gate not closed"
+                   },
+                   {
+                       "id":  "426179790",
+                       "key":  "Main drive overtemperature"
+                   },
+                   {
+                       "id":  "289058555",
+                       "key":  "System failed to shutdown gracefully"
+                   },
+                   {
+                       "id":  "265437496",
+                       "key":  "Pump discharge is blocked"
+                   },
+                   {
+                       "id":  "130294318",
+                       "key":  "Pump is in configuration fault"
+                   },
+                   {
+                       "id":  "159508959",
+                       "key":  "Axis %s is disabled"
+                   },
+                   {
+                       "id":  "286572655",
+                       "key":  "Failed to power down robot"
+                   },
+                   {
+                       "id":  "726804838",
+                       "key":  "Position is correct at %s mm"
+                   },
+                   {
+                       "id":  "57039477",
+                       "key":  "Conveyor is decelerating"
+                   },
+                   {
+                       "id":  "207776615",
+                       "key":  "PLC is in program mode"
+                   },
+                   {
+                       "id":  "594607632",
+                       "key":  "Homing sequence interrupted"
+                   },
+                   {
+                       "id":  "660322600",
+                       "key":  "Failed to locate feature %s in vision system"
+                   },
+                   {
+                       "id":  "878151236",
+                       "key":  "HMI application crashed"
+                   },
+                   {
+                       "id":  "572326510",
+                       "key":  "PLC is in stop mode"
+                   },
+                   {
+                       "id":  "579673878",
+                       "key":  "System is in maintenance"
+                   },
+                   {
+                       "id":  "904304221",
+                       "key":  "Input %s is disabled"
+                   },
+                   {
+                       "id":  "449988299",
+                       "key":  "Motor A thermal model trip"
+                   },
+                   {
+                       "id":  "259892226",
+                       "key":  "Robot is moving"
+                   },
+                   {
+                       "id":  "881340240",
+                       "key":  "Load cell signal is unstable"
+                   },
+                   {
+                       "id":  "475719233",
+                       "key":  "C message"
+                   },
+                   {
+                       "id":  "634474780",
+                       "key":  "Axis %s is homed"
+                   },
+                   {
+                       "id":  "234731108",
+                       "key":  "Air system is disabled"
+                   },
+                   {
+                       "id":  "887612404",
+                       "key":  "Safety relay test passed with warnings"
+                   },
+                   {
+                       "id":  "154609732",
+                       "key":  "System is in run mode"
+                   },
+                   {
+                       "id":  "798245427",
+                       "key":  "Failed to find fiducial %s in vision system"
+                   },
+                   {
+                       "id":  "843994824",
+                       "key":  "VFD in fault state"
+                   },
+                   {
+                       "id":  "542290731",
+                       "key":  "Air pressure is too low"
+                   },
+                   {
+                       "id":  "570763187",
+                       "key":  "Vision system is disabled"
+                   },
+                   {
+                       "id":  "516754421",
+                       "key":  "Vision system is in error"
+                   },
+                   {
+                       "id":  "539163415",
+                       "key":  "Safety relay test failed critically"
+                   },
+                   {
+                       "id":  "276810072",
+                       "key":  "Motor L is starting"
+                   },
+                   {
+                       "id":  "741153201",
+                       "key":  "Safety PLC communication fault"
+                   },
+                   {
+                       "id":  "11187824",
+                       "key":  "Axis %s stalled during movement"
+                   },
+                   {
+                       "id":  "406567956",
+                       "key":  "Temperature out of spec for oven %s"
+                   },
+                   {
+                       "id":  "815311898",
+                       "key":  "Incorrect password entered %s times"
+                   },
+                   {
+                       "id":  "537205036",
+                       "key":  "Network connection to SCADA lost"
+                   },
+                   {
+                       "id":  "107227910",
+                       "key":  "Data packet from robot is corrupt"
+                   },
+                   {
+                       "id":  "170426620",
+                       "key":  "Robot gripper is disabled"
+                   },
+                   {
+                       "id":  "416941017",
+                       "key":  "Part presence sensor stuck on"
+                   },
+                   {
+                       "id":  "530604795",
+                       "key":  "VFD overcurrent trip"
+                   },
+                   {
+                       "id":  "774527956",
+                       "key":  "Lag error 2"
+                   },
+                   {
+                       "id":  "833767271",
+                       "key":  "Air system is at pressure"
+                   },
+                   {
+                       "id":  "544112161",
+                       "key":  "Emergency stop reset timeout"
+                   },
+                   {
+                       "id":  "289949864",
+                       "key":  "Spindle is disabled"
+                   },
+                   {
+                       "id":  "717765502",
+                       "key":  "Robot gripper is empty"
+                   },
+                   {
+                       "id":  "157727822",
+                       "key":  "Spindle tool not clamped"
+                   },
+                   {
+                       "id":  "360021832",
+                       "key":  "Conveyor is accelerating"
+                   },
+                   {
+                       "id":  "583691718",
+                       "key":  "Encoder signal is noisy"
+                   },
+                   {
+                       "id":  "159027536",
+                       "key":  "Encoder is disabled"
+                   },
+                   {
+                       "id":  "813120861",
+                       "key":  "System is online"
+                   },
+                   {
+                       "id":  "456148294",
+                       "key":  "Failed to open valve %s"
+                   },
+                   {
+                       "id":  "181859858",
+                       "key":  "System is initializing"
+                   },
+                   {
+                       "id":  "973083953",
+                       "key":  "Conveyor is overloaded"
+                   },
+                   {
+                       "id":  "258163367",
+                       "key":  "System is in safe stop"
+                   },
+                   {
+                       "id":  "455563805",
+                       "key":  "Encoder is homing"
+                   },
+                   {
+                       "id":  "170151812",
+                       "key":  "Emergency stop source: Unlisted"
+                   },
+                   {
+                       "id":  "822934053",
+                       "key":  "Spindle is powering down"
+                   },
+                   {
+                       "id":  "315127736",
+                       "key":  "Robot path planning error for destination %s"
+                   },
+                   {
+                       "id":  "246357126",
+                       "key":  "Hydraulic accumulator is pre-charged incorrectly"
+                   },
+                   {
+                       "id":  "826798443",
+                       "key":  "Vision system is processing image"
+                   },
+                   {
+                       "id":  "500211574",
+                       "key":  "Robot collision detected"
+                   },
+                   {
+                       "id":  "263454198",
+                       "key":  "Safety relay test failed"
+                   },
+                   {
+                       "id":  "453988495",
+                       "key":  "Valve is open"
+                   },
+                   {
+                       "id":  "396387794",
+                       "key":  "Pump cavitation detected"
+                   },
+                   {
+                       "id":  "732406110",
+                       "key":  "System is ready"
+                   },
+                   {
+                       "id":  "227807103",
+                       "key":  "Proximity sensor %s is intermittent"
+                   },
+                   {
+                       "id":  "996676608",
+                       "key":  "Emergency stop source: Software"
+                   },
+                   {
+                       "id":  "544086596",
+                       "key":  "Axis %s is referencing"
+                   },
+                   {
+                       "id":  "122916115",
+                       "key":  "Invalid move command for axis %s"
+                   },
+                   {
+                       "id":  "715796097",
+                       "key":  "Insufficient air pressure for gripper"
+                   },
+                   {
+                       "id":  "175987386",
+                       "key":  "Air system is OK"
+                   },
+                   {
+                       "id":  "487525630",
+                       "key":  "Level sensor in tank %s is faulted"
+                   },
+                   {
+                       "id":  "319110611",
+                       "key":  "System is in reset"
+                   },
+                   {
+                       "id":  "111852218",
+                       "key":  "Cylinder B failed to extend"
+                   },
+                   {
+                       "id":  "217544684",
+                       "key":  "Robot is not in auto mode"
+                   },
+                   {
+                       "id":  "489457463",
+                       "key":  "VFD communication is lost"
+                   },
+                   {
+                       "id":  "185356685",
+                       "key":  "Axis %s brake did not engage"
+                   },
+                   {
+                       "id":  "212140868",
+                       "key":  "Failed to write barcode to part %s"
+                   },
+                   {
+                       "id":  "405885388",
+                       "key":  "System is in E-Stop state: Reset required"
+                   },
+                   {
+                       "id":  "322923140",
+                       "key":  "Air system is venting"
+                   },
+                   {
+                       "id":  "645750778",
+                       "key":  "Safety gate is in fault"
+                   },
+                   {
+                       "id":  "361966966",
+                       "key":  "Robot gripper is closed"
+                   },
+                   {
+                       "id":  "49686060",
+                       "key":  "Axis %s is enabled"
+                   },
+                   {
+                       "id":  "755155798",
+                       "key":  "VFD is running"
+                   },
+                   {
+                       "id":  "779282330",
+                       "key":  "Robot is in error"
+                   },
+                   {
+                       "id":  "766317175",
+                       "key":  "Vision system is in communication fault"
+                   },
+                   {
+                       "id":  "499438490",
+                       "key":  "Conveyor is in reset"
+                   },
+                   {
+                       "id":  "954893308",
+                       "key":  "Reservoir level is high"
+                   },
+                   {
+                       "id":  "305123578",
+                       "key":  "System is in standby"
+                   },
+                   {
+                       "id":  "839807760",
+                       "key":  "Robot is in manual mode"
+                   },
+                   {
+                       "id":  "101312224",
+                       "key":  "PLC scan time is too high"
+                   },
+                   {
+                       "id":  "475719235",
+                       "key":  "E message"
+                   },
+                   {
+                       "id":  "741030180",
+                       "key":  "Failed to clear output %s"
+                   },
+                   {
+                       "id":  "933027441",
+                       "key":  "Encoder battery is dead"
+                   },
+                   {
+                       "id":  "635973644",
+                       "key":  "Pallet not present at location %s"
+                   },
+                   {
+                       "id":  "475719253",
+                       "key":  "W message"
+                   },
+                   {
+                       "id":  "458919012",
+                       "key":  "Conveyor tracking lost"
+                   },
+                   {
+                       "id":  "279662546",
+                       "key":  "Input %s is on"
+                   },
+                   {
+                       "id":  "90116955",
+                       "key":  "System failed to load configuration"
+                   },
+                   {
+                       "id":  "770244041",
+                       "key":  "Emergency stop source: Pull Cord"
+                   },
+                   {
+                       "id":  "964219551",
+                       "key":  "Pump is disabled"
+                   },
+                   {
+                       "id":  "275778846",
+                       "key":  "Cannot open file %s on HMI"
+                   },
+                   {
+                       "id":  "974334660",
+                       "key":  "Robot is in singularity position"
+                   },
+                   {
+                       "id":  "121511879",
+                       "key":  "Invalid command received from HMI"
+                   },
+                   {
+                       "id":  "909197747",
+                       "key":  "Failed to execute command %s"
+                   },
+                   {
+                       "id":  "365980608",
+                       "key":  "Robot gripper is in communication fault"
+                   },
+                   {
+                       "id":  "62951896",
+                       "key":  "Safety gate is disabled"
+                   },
+                   {
+                       "id":  "984938963",
+                       "key":  "Vision system is ready"
+                   },
+                   {
+                       "id":  "111094027",
+                       "key":  "Axis %s is powering up"
+                   },
+                   {
+                       "id":  "882166272",
+                       "key":  "Machine not homed"
+                   },
+                   {
+                       "id":  "194196433",
+                       "key":  "Failed to grip part"
+                   },
+                   {
+                       "id":  "482613552",
+                       "key":  "Air system is powering down"
+                   },
+                   {
+                       "id":  "477836306",
+                       "key":  "Air compressor fault"
+                   },
+                   {
+                       "id":  "919838823",
+                       "key":  "Motor F overcurrent"
+                   },
+                   {
+                       "id":  "773247963",
+                       "key":  "Failed to open gripper"
+                   },
+                   {
+                       "id":  "693263043",
+                       "key":  "Safety gate is unlocked"
+                   },
+                   {
+                       "id":  "694796410",
+                       "key":  "Valve is in hardware fault"
+                   },
+                   {
+                       "id":  "881436336",
+                       "key":  "Hydraulic system is charging"
+                   },
+                   {
+                       "id":  "427933954",
+                       "key":  "Operator login failed for user %s"
+                   },
+                   {
+                       "id":  "47527036",
+                       "key":  "Motor M is running"
+                   },
+                   {
+                       "id":  "603145075",
+                       "key":  "Barcode on part %s is verified"
+                   },
+                   {
+                       "id":  "194019962",
+                       "key":  "System is in E-Stop state"
+                   },
+                   {
+                       "id":  "373226799",
+                       "key":  "Cylinder A failed to extend"
+                   },
+                   {
+                       "id":  "50258952",
+                       "key":  "Motor D overtemperature"
+                   },
+                   {
+                       "id":  "683696240",
+                       "key":  "Robot is disabled"
+                   },
+                   {
+                       "id":  "956082325",
+                       "key":  "Cannot load G-code file: %s"
+                   },
+                   {
+                       "id":  "418538085",
+                       "key":  "Safety relay did not pick up"
+                   },
+                   {
+                       "id":  "454848228",
+                       "key":  "System is in power save"
+                   },
+                   {
+                       "id":  "687503128",
+                       "key":  "Robot is in home position"
+                   },
+                   {
+                       "id":  "186408788",
+                       "key":  "Failed to open safety valve"
+                   },
+                   {
+                       "id":  "433875535",
+                       "key":  "Failed to update recipe %s in database"
+                   },
+                   {
+                       "id":  "41725285",
+                       "key":  "Conveyor is indexing"
+                   },
+                   {
+                       "id":  "651826221",
+                       "key":  "Spindle is not running"
+                   },
+                   {
+                       "id":  "618186036",
+                       "key":  "Robot gripper is gripping"
+                   },
+                   {
+                       "id":  "281793927",
+                       "key":  "Failed to synchronize axes"
+                   },
+                   {
+                       "id":  "350444340",
+                       "key":  "Pump efficiency is low"
+                   },
+                   {
+                       "id":  "817664351",
+                       "key":  "Failed to apply torque on fastener %s"
+                   },
+                   {
+                       "id":  "116099748",
+                       "key":  "Cycle start not permitted: Guard open"
+                   },
+                   {
+                       "id":  "350665306",
+                       "key":  "Failed to set output %s"
+                   },
+                   {
+                       "id":  "450171867",
+                       "key":  "Spindle tool is broken"
+                   },
+                   {
+                       "id":  "165858997",
+                       "key":  "Motor P is disabled"
+                   },
+                   {
+                       "id":  "757446510",
+                       "key":  "E-Stop source: Gateway"
+                   },
+                   {
+                       "id":  "894005669",
+                       "key":  "Actuator %s did not complete motion"
+                   },
+                   {
+                       "id":  "528281057",
+                       "key":  "Conveyor index timeout"
+                   },
+                   {
+                       "id":  "995454603",
+                       "key":  "System is booted"
+                   },
+                   {
+                       "id":  "848312986",
+                       "key":  "Barcode scanner not ready"
+                   },
+                   {
+                       "id":  "06921616",
+                       "key":  "Failed to read data from RFID tag"
+                   },
+                   {
+                       "id":  "80432916",
+                       "key":  "Air pressure is too high"
+                   },
+                   {
+                       "id":  "569106138",
+                       "key":  "Sensor supply voltage is low"
+                   },
+                   {
+                       "id":  "352575033",
+                       "key":  "Encoder battery voltage is low"
+                   },
+                   {
+                       "id":  "240773138",
+                       "key":  "PLC is in fault mode"
+                   },
+                   {
+                       "id":  "17242893",
+                       "key":  "Robot program %s is not found"
+                   },
+                   {
+                       "id":  "57280963",
+                       "key":  "System is in config mode"
+                   },
+                   {
+                       "id":  "277091341",
+                       "key":  "Failed to park robot"
+                   },
+                   {
+                       "id":  "109044549",
+                       "key":  "System pressure relief valve active"
+                   },
+                   {
+                       "id":  "323445774",
+                       "key":  "Part quality check failed at station %s"
+                   },
+                   {
+                       "id":  "28238082",
+                       "key":  "Cylinder B pressure not building"
+                   },
+                   {
+                       "id":  "277757321",
+                       "key":  "Failed to release part"
+                   },
+                   {
+                       "id":  "187095213",
+                       "key":  "Encoder resolution mismatch"
+                   },
+                   {
+                       "id":  "967372774",
+                       "key":  "VFD DC bus overvoltage"
+                   },
+                   {
+                       "id":  "02628015",
+                       "key":  "Safety PLC test failed"
+                   },
+                   {
+                       "id":  "944421970",
+                       "key":  "Pump is priming"
+                   },
+                   {
+                       "id":  "309396701",
+                       "key":  "Communication with VFD %s failed"
+                   },
+                   {
+                       "id":  "792582087",
+                       "key":  "Motor K is stopped"
+                   },
+                   {
+                       "id":  "106098276",
+                       "key":  "Axis 2 position deviation too high"
+                   },
+                   {
+                       "id":  "108292847",
+                       "key":  "Axis %s is not referenced"
+                   },
+                   {
+                       "id":  "103430303",
+                       "key":  "Incorrect fixture ID %s received"
+                   },
+                   {
+                       "id":  "179389617",
+                       "key":  "Thermocouple %s is broken"
+                   },
+                   {
+                       "id":  "463877781",
+                       "key":  "Temperature overshoot detected"
+                   },
+                   {
+                       "id":  "264569568",
+                       "key":  "Motor Q is powering down"
+                   },
+                   {
+                       "id":  "88367024",
+                       "key":  "Axis %s is not homed"
+                   },
+                   {
+                       "id":  "638220346",
+                       "key":  "Pump suction is clogged"
+                   },
+                   {
+                       "id":  "635260245",
+                       "key":  "Conveyor belt slipped"
+                   },
+                   {
+                       "id":  "34792077",
+                       "key":  "Axis %s software limit switch triggered"
+                   },
+                   {
+                       "id":  "85107326",
+                       "key":  "Robot collision detected at joint %s"
+                   },
+                   {
+                       "id":  "442704929",
+                       "key":  "Spindle is in fault"
+                   },
+                   {
+                       "id":  "174850429",
+                       "key":  "System is in safe state"
+                   },
+                   {
+                       "id":  "966835846",
+                       "key":  "Hydraulic fluid is low"
+                   },
+                   {
+                       "id":  "30615213",
+                       "key":  "Motor G is not calibrated"
+                   },
+                   {
+                       "id":  "577509354",
+                       "key":  "Motor N is at temperature"
+                   },
+                   {
+                       "id":  "986432188",
+                       "key":  "Air system is in hardware fault"
+                   },
+                   {
+                       "id":  "973132419",
+                       "key":  "HMI firmware update failed"
+                   },
+                   {
+                       "id":  "663037999",
+                       "key":  "Motor I is not configured"
+                   },
+                   {
+                       "id":  "142099094",
+                       "key":  "Air pressure is normal"
+                   },
+                   {
+                       "id":  "692011725",
+                       "key":  "Encoder is powering down"
+                   },
+                   {
+                       "id":  "592920496",
+                       "key":  "Axis 3 move command cancelled"
+                   },
+                   {
+                       "id":  "932272750",
+                       "key":  "Analog output %s is at fault"
+                   },
+                   {
+                       "id":  "716456626",
+                       "key":  "Failed to enable drive group %s"
+                   },
+                   {
+                       "id":  "22088896",
+                       "key":  "Robot gripper is in fault"
+                   },
+                   {
+                       "id":  "198407162",
+                       "key":  "Wrong material loaded for job %s"
+                   },
+                   {
+                       "id":  "939430834",
+                       "key":  "Pallet is double-stacked at location %s"
+                   },
+                   {
+                       "id":  "976382904",
+                       "key":  "Clamp pressure not released"
+                   },
+                   {
+                       "id":  "539036317",
+                       "key":  "Motor B thermal overload"
+                   },
+                   {
+                       "id":  "990252450",
+                       "key":  "Purge cycle failed to complete"
+                   },
+                   {
+                       "id":  "103822728",
+                       "key":  "Air leak detected in circuit %s"
+                   },
+                   {
+                       "id":  "861139381",
+                       "key":  "Pallet is leaving location %s"
+                   },
+                   {
+                       "id":  "515304940",
+                       "key":  "Failed to close safety gate"
+                   },
+                   {
+                       "id":  "119729734",
+                       "key":  "Operator intervention required"
+                   },
+                   {
+                       "id":  "533849785",
+                       "key":  "Encoder is not connected"
+                   },
+                   {
+                       "id":  "542239548",
+                       "key":  "System is shutting down"
+                   },
+                   {
+                       "id":  "584607011",
+                       "key":  "Proximity sensor %s is always off"
+                   },
+                   {
+                       "id":  "234602243",
+                       "key":  "Safety gate is powering down"
+                   },
+                   {
+                       "id":  "262738951",
+                       "key":  "Encoder is at zero"
+                   },
+                   {
+                       "id":  "828536003",
+                       "key":  "I message %s %s"
+                   },
+                   {
+                       "id":  "961944472",
+                       "key":  "Safety gate is opening"
+                   },
+                   {
+                       "id":  "681484970",
+                       "key":  "Lag error"
+                   },
+                   {
+                       "id":  "563485368",
+                       "key":  "Cylinder B failed to retract"
+                   },
+                   {
+                       "id":  "373346217",
+                       "key":  "Conveyor is jammed"
+                   },
+                   {
+                       "id":  "339227309",
+                       "key":  "Pallet is damaged at location %s"
+                   },
+                   {
+                       "id":  "458184506",
+                       "key":  "Safety gate switch is welded"
+                   },
+                   {
+                       "id":  "911204631",
+                       "key":  "Vision system failed to focus"
+                   },
+                   {
+                       "id":  "65762173",
+                       "key":  "Leak detected in hydraulic line %s"
+                   },
+                   {
+                       "id":  "240236294",
+                       "key":  "Motor E bearing temperature is high"
+                   },
+                   {
+                       "id":  "530241786",
+                       "key":  "Temperature is stable"
+                   },
+                   {
+                       "id":  "844887995",
+                       "key":  "Pallet is at position %s"
+                   },
+                   {
+                       "id":  "824859949",
+                       "key":  "Cylinder A failed to retract"
+                   },
+                   {
+                       "id":  "293993190",
+                       "key":  "E-Stop source is clear"
+                   },
+                   {
+                       "id":  "597666627",
+                       "key":  "Incorrect part orientation detected"
+                   },
+                   {
+                       "id":  "585336403",
+                       "key":  "Failed to close valve manifold"
+                   },
+                   {
+                       "id":  "761487350",
+                       "key":  "System is saving data"
+                   },
+                   {
+                       "id":  "712668444",
+                       "key":  "Axis %s is waiting"
+                   },
+                   {
+                       "id":  "621913516",
+                       "key":  "Axis %s is in fault state"
+                   },
+                   {
+                       "id":  "457848118",
+                       "key":  "Robot program %s is loaded"
+                   },
+                   {
+                       "id":  "532962581",
+                       "key":  "Overvoltage detected on DC bus"
+                   },
+                   {
+                       "id":  "745304882",
+                       "key":  "Spindle is stopped"
+                   },
+                   {
+                       "id":  "475894515",
+                       "key":  "Motor R is in hardware fault"
+                   },
+                   {
+                       "id":  "370392395",
+                       "key":  "Hydraulic return filter is clogged"
+                   },
+                   {
+                       "id":  "417246690",
+                       "key":  "Conveyor motor is not running"
+                   },
+                   {
+                       "id":  "526591558",
+                       "key":  "System is in power up"
+                   },
+                   {
+                       "id":  "431554599",
+                       "key":  "Torque limit exceeded for motor %s"
+                   },
+                   {
+                       "id":  "80896362",
+                       "key":  "Signal conflict between two sensors"
+                   },
+                   {
+                       "id":  "377623810",
+                       "key":  "Pump is in alarm"
+                   },
+                   {
+                       "id":  "885967005",
+                       "key":  "Axis %s is not enabled"
+                   },
+                   {
+                       "id":  "406348215",
+                       "key":  "System is in fault state: Reset required"
+                   },
+                   {
+                       "id":  "626477413",
+                       "key":  "Input %s is in error"
+                   },
+                   {
+                       "id":  "676144596",
+                       "key":  "Proximity sensor %s is miswired"
+                   },
+                   {
+                       "id":  "345061979",
+                       "key":  "Axis %s is in configuration fault"
+                   },
+                   {
+                       "id":  "865519035",
+                       "key":  "System is in maintenance mode"
+                   },
+                   {
+                       "id":  "397074462",
+                       "key":  "Conveyor is running"
+                   },
+                   {
+                       "id":  "348454004",
+                       "key":  "Proximity sensor fault: Wire break"
+                   },
+                   {
+                       "id":  "963090393",
+                       "key":  "Failed to load G-code: Invalid syntax"
+                   },
+                   {
+                       "id":  "386296766",
+                       "key":  "Sensor %s is dirty or misaligned"
+                   },
+                   {
+                       "id":  "832893823",
+                       "key":  "Failed to ad recipe: %s %s"
+                   },
+                   {
+                       "id":  "75459534",
+                       "key":  "Temperature undershoot detected"
+                   },
+                   {
+                       "id":  "155930849",
+                       "key":  "Pallet is missing at location %s"
+                   },
+                   {
+                       "id":  "335007187",
+                       "key":  "Pump is building pressure"
+                   },
+                   {
+                       "id":  "401867310",
+                       "key":  "Input %s is forced"
+                   },
+                   {
+                       "id":  "614113915",
+                       "key":  "Encoder count error"
+                   },
+                   {
+                       "id":  "828462898",
+                       "key":  "Robot is in configuration fault"
+                   },
+                   {
+                       "id":  "108431048",
+                       "key":  "PLC is in reset"
+                   },
+                   {
+                       "id":  "426479410",
+                       "key":  "Homing timeout for axis %s"
+                   },
+                   {
+                       "id":  "866629375",
+                       "key":  "System is in power down"
+                   },
+                   {
+                       "id":  "478985983",
+                       "key":  "Cylinder B did not retract within timeout"
+                   },
+                   {
+                       "id":  "576534155",
+                       "key":  "Safety mat is active"
+                   },
+                   {
+                       "id":  "869858701",
+                       "key":  "PLC battery needs replacement"
+                   },
+                   {
+                       "id":  "16864990",
+                       "key":  "Axis %s is in error"
+                   },
+                   {
+                       "id":  "667308375",
+                       "key":  "Pallet is missing from location %s"
+                   },
+                   {
+                       "id":  "833785224",
+                       "key":  "Batch number %s is invalid or expired"
+                   },
+                   {
+                       "id":  "336598871",
+                       "key":  "Failed to log data to file %s"
+                   },
+                   {
+                       "id":  "971819022",
+                       "key":  "Axis %s is moving"
+                   },
+                   {
+                       "id":  "110725211",
+                       "key":  "Pump is powering up"
+                   },
+                   {
+                       "id":  "423729794",
+                       "key":  "Motor B is not responding"
+                   },
+                   {
+                       "id":  "499147908",
+                       "key":  "Part transfer failed"
+                   },
+                   {
+                       "id":  "738601621",
+                       "key":  "Axis %s command position and actual position mismatch"
+                   },
+                   {
+                       "id":  "755154645",
+                       "key":  "PLC is running"
+                   },
+                   {
+                       "id":  "93283491",
+                       "key":  "Hydraulic system is off"
+                   },
+                   {
+                       "id":  "198827357",
+                       "key":  "Hydraulic fluid is overheating"
+                   },
+                   {
+                       "id":  "691255652",
+                       "key":  "Emergency stop source: Safety Mat"
+                   },
+                   {
+                       "id":  "811924027",
+                       "key":  "Failed to close gripper"
+                   },
+                   {
+                       "id":  "325226080",
+                       "key":  "Encoder is in alarm"
+                   },
+                   {
+                       "id":  "132892386",
+                       "key":  "Coolant flow switch is open"
+                   },
+                   {
+                       "id":  "366731016",
+                       "key":  "Main contactor did not engage"
+                   },
+                   {
+                       "id":  "201076670",
+                       "key":  "Failed to read configuration from drive"
+                   },
+                   {
+                       "id":  "217052528",
+                       "key":  "System is offline"
+                   },
+                   {
+                       "id":  "578481480",
+                       "key":  "Failed to enable safety outputs"
+                   },
+                   {
+                       "id":  "709412327",
+                       "key":  "PLC I/O module error"
+                   },
+                   {
+                       "id":  "915053279",
+                       "key":  "PLC is in run mode"
+                   },
+                   {
+                       "id":  "237489277",
+                       "key":  "VFD motor stall"
+                   },
+                   {
+                       "id":  "879449371",
+                       "key":  "Filter differential pressure is high"
+                   },
+                   {
+                       "id":  "827863662",
+                       "key":  "Conveyor is stopped"
+                   },
+                   {
+                       "id":  "790152895",
+                       "key":  "Motor phase loss detected"
+                   },
+                   {
+                       "id":  "07449781",
+                       "key":  "Robot gripper failed to open"
+                   },
+                   {
+                       "id":  "105901330",
+                       "key":  "Spindle is changing tool"
+                   },
+                   {
+                       "id":  "264507605",
+                       "key":  "Input %s is off"
+                   },
+                   {
+                       "id":  "569656297",
+                       "key":  "System is in manual mode"
+                   },
+                   {
+                       "id":  "90860287",
+                       "key":  "PLC is in communication fault"
+                   },
+                   {
+                       "id":  "956407335",
+                       "key":  "Spindle is at speed"
+                   },
+                   {
+                       "id":  "738673258",
+                       "key":  "Emergency stop line is broken"
+                   },
+                   {
+                       "id":  "730111847",
+                       "key":  "Failed to write to I/O module %s"
+                   },
+                   {
+                       "id":  "361844212",
+                       "key":  "Robot is referencing"
+                   },
+                   {
+                       "id":  "845967336",
+                       "key":  "Invalid parameter set for drive %s"
+                   },
+                   {
+                       "id":  "64576557",
+                       "key":  "Safety light curtain is muted"
+                   },
+                   {
+                       "id":  "321847964",
+                       "key":  "Part is gripped"
+                   },
+                   {
+                       "id":  "479810162",
+                       "key":  "Failed to save settings to HMI"
+                   },
+                   {
+                       "id":  "103224179",
+                       "key":  "Failed to maintain position at %s mm"
+                   },
+                   {
+                       "id":  "802205547",
+                       "key":  "Air dryer fault"
+                   },
+                   {
+                       "id":  "619244592",
+                       "key":  "System pressure not building"
+                   },
+                   {
+                       "id":  "564592578",
+                       "key":  "HMI is connected"
+                   },
+                   {
+                       "id":  "668341244",
+                       "key":  "Failed to start cycle: Guard not closed"
+                   },
+                   {
+                       "id":  "666584115",
+                       "key":  "Conveyor motor is overheating"
+                   },
+                   {
+                       "id":  "646335546",
+                       "key":  "System failed to initialize"
+                   },
+                   {
+                       "id":  "305819171",
+                       "key":  "Safety gate is locked"
+                   },
+                   {
+                       "id":  "136101471",
+                       "key":  "Motor H has a ground fault"
+                   },
+                   {
+                       "id":  "381300644",
+                       "key":  "Pallet is skewed at location %s"
+                   },
+                   {
+                       "id":  "788139320",
+                       "key":  "Axis %s following error is active"
+                   },
+                   {
+                       "id":  "736968920",
+                       "key":  "Air system is in fault"
+                   },
+                   {
+                       "id":  "250102496",
+                       "key":  "Vision system lighting failure"
+                   },
+                   {
+                       "id":  "309335721",
+                       "key":  "Emergency stop has been reset"
+                   },
+                   {
+                       "id":  "818586704",
+                       "key":  "Robot path obstructed"
+                   },
+                   {
+                       "id":  "378168816",
+                       "key":  "Failed to write to database"
+                   },
+                   {
+                       "id":  "692138795",
+                       "key":  "E-Stop source: External"
+                   },
+                   {
+                       "id":  "230789099",
+                       "key":  "System is in hardware fault"
+                   },
+                   {
+                       "id":  "755383388",
+                       "key":  "Label printer error: Out of labels"
+                   },
+                   {
+                       "id":  "36049922",
+                       "key":  "Emergency stop source: Dual Channel"
+                   },
+                   {
+                       "id":  "849363082",
+                       "key":  "Input %s is simulated"
+                   },
+                   {
+                       "id":  "373789771",
+                       "key":  "Tool change failed on station %s"
+                   },
+                   {
+                       "id":  "400783557",
+                       "key":  "Emergency stop source: Unknown"
+                   },
+                   {
+                       "id":  "365218255",
+                       "key":  "Hydraulic system is active"
+                   },
+                   {
+                       "id":  "368079717",
+                       "key":  "Purge valve is stuck open"
+                   },
+                   {
+                       "id":  "707430004",
+                       "key":  "Internal PLC error: Task overrun"
+                   },
+                   {
+                       "id":  "307361688",
+                       "key":  "System is in communication fault"
+                   },
+                   {
+                       "id":  "379744884",
+                       "key":  "Conveyor speed is zero"
+                   },
+                   {
+                       "id":  "163495912",
+                       "key":  "System is in emergency stop"
+                   },
+                   {
+                       "id":  "624719034",
+                       "key":  "Input %s is powering down"
+                   },
+                   {
+                       "id":  "684752803",
+                       "key":  "Manual mode interlock is active"
+                   },
+                   {
+                       "id":  "560041746",
+                       "key":  "Temperature ramp rate too slow"
+                   },
+                   {
+                       "id":  "449292690",
+                       "key":  "Failed to close isolation valve"
+                   },
+                   {
+                       "id":  "39012755",
+                       "key":  "Homing failed for axis %s"
+                   },
+                   {
+                       "id":  "103668540",
+                       "key":  "Lag error 3"
+                   },
+                   {
+                       "id":  "138989844",
+                       "key":  "PLC network redundancy lost"
+                   },
+                   {
+                       "id":  "74315214",
+                       "key":  "Hydraulic system is in fault"
+                   },
+                   {
+                       "id":  "598877655",
+                       "key":  "Failed to zero axis %s"
+                   },
+                   {
+                       "id":  "353171688",
+                       "key":  "Air system is off"
+                   },
+                   {
+                       "id":  "635796636",
+                       "key":  "PLC is stopped"
+                   },
+                   {
+                       "id":  "655951572",
+                       "key":  "Valve is disabled"
+                   },
+                   {
+                       "id":  "958296709",
+                       "key":  "Failed to execute robot program %s"
+                   },
+                   {
+                       "id":  "440680958",
+                       "key":  "HMI display is faulty"
+                   },
+                   {
+                       "id":  "06730302",
+                       "key":  "Temperature in zone %s is too low"
+                   },
+                   {
+                       "id":  "776980042",
+                       "key":  "Hydraulic fluid is contaminated"
+                   },
+                   {
+                       "id":  "181892822",
+                       "key":  "Pallet is at location %s"
+                   },
+                   {
+                       "id":  "908391860",
+                       "key":  "Clamping force not achieved"
+                   },
+                   {
+                       "id":  "913386085",
+                       "key":  "Safety gate is not interlocked"
+                   },
+                   {
+                       "id":  "663806485",
+                       "key":  "Spindle is starting"
+                   },
+                   {
+                       "id":  "614863977",
+                       "key":  "Axis %s is stopped"
+                   },
+                   {
+                       "id":  "680495858",
+                       "key":  "Pressure sensor %s shows maximum value"
+                   },
+                   {
+                       "id":  "791956772",
+                       "key":  "PLC task watchdog has expired"
+                   },
+                   {
+                       "id":  "792913450",
+                       "key":  "Conveyor motor overload"
+                   },
+                   {
+                       "id":  "90775392",
+                       "key":  "Air system is charging"
+                   },
+                   {
+                       "id":  "282577562",
+                       "key":  "HMI backup failed"
+                   },
+                   {
+                       "id":  "564280028",
+                       "key":  "Robot gripper failed to close"
+                   },
+                   {
+                       "id":  "141691375",
+                       "key":  "Hydraulic fluid level is critically low"
+                   },
+                   {
+                       "id":  "765643058",
+                       "key":  "Cylinder A is retracted"
+                   },
+                   {
+                       "id":  "949104028",
+                       "key":  "Robot joint %s temperature is high"
+                   },
+                   {
+                       "id":  "286233919",
+                       "key":  "Part jam detected in chute %s"
+                   },
+                   {
+                       "id":  "532755668",
+                       "key":  "User %s does not have required permissions"
+                   },
+                   {
+                       "id":  "684582860",
+                       "key":  "Weight of part %s is out of tolerance"
+                   },
+                   {
+                       "id":  "619031287",
+                       "key":  "PLC memory is full"
+                   },
+                   {
+                       "id":  "87711744",
+                       "key":  "Pallet is empty at location %s"
+                   },
+                   {
+                       "id":  "109320720",
+                       "key":  "System is in service mode"
+                   },
+                   {
+                       "id":  "262982191",
+                       "key":  "Excessive cycle time detected"
+                   },
+                   {
+                       "id":  "916964646",
+                       "key":  "E-Stop reset failed: Fault condition still present"
+                   },
+                   {
+                       "id":  "617228608",
+                       "key":  "Robot gripper is releasing"
+                   },
+                   {
+                       "id":  "221046379",
+                       "key":  "Hydraulic system is in communication fault"
+                   },
+                   {
+                       "id":  "753128079",
+                       "key":  "E-Stop source: Hardwired"
+                   },
+                   {
+                       "id":  "122069157",
+                       "key":  "Failed to eject part from mold"
+                   },
+                   {
+                       "id":  "621187246",
+                       "key":  "Valve %s did not shift"
+                   },
+                   {
+                       "id":  "327357878",
+                       "key":  "Pallet is wrong at location %s"
+                   },
+                   {
+                       "id":  "902925985",
+                       "key":  "Conveyor speed is below setpoint"
+                   },
+                   {
+                       "id":  "835758112",
+                       "key":  "Level sensor in tank %s is frozen"
+                   },
+                   {
+                       "id":  "300947899",
+                       "key":  "Air filter is dirty"
+                   },
+                   {
+                       "id":  "894279110",
+                       "key":  "Spindle speed not reached"
+                   },
+                   {
+                       "id":  "526801336",
+                       "key":  "Pump is stopped"
+                   },
+                   {
+                       "id":  "329884446",
+                       "key":  "System failed to initialize I/O"
+                   },
+                   {
+                       "id":  "418224237",
+                       "key":  "Input %s is faulted"
+                   },
+                   {
+                       "id":  "415163047",
+                       "key":  "Conveyor is in communication fault"
+                   },
+                   {
+                       "id":  "798717805",
+                       "key":  "Excessive vibration detected on motor %s"
+                   },
+                   {
+                       "id":  "338315346",
+                       "key":  "System is in test mode"
+                   },
+                   {
+                       "id":  "417051589",
+                       "key":  "Proximity sensor %s is always on"
+                   },
+                   {
+                       "id":  "894443599",
+                       "key":  "Hydraulic pump is noisy"
+                   },
+                   {
+                       "id":  "980730346",
+                       "key":  "Chiller fluid level is low"
+                   },
+                   {
+                       "id":  "216876843",
+                       "key":  "Cylinder B extended unexpectedly"
+                   },
+                   {
+                       "id":  "79236373",
+                       "key":  "Failed to close valve %s"
+                   },
+                   {
+                       "id":  "634344537",
+                       "key":  "Failed to save robot program %s"
+                   },
+                   {
+                       "id":  "973694476",
+                       "key":  "E-Stop source: Panel Button"
+                   },
+                   {
+                       "id":  "105321266",
+                       "key":  "Failed to establish connection to robot %s"
+                   },
+                   {
+                       "id":  "943047633",
+                       "key":  "Pump is running"
+                   },
+                   {
+                       "id":  "580072928",
+                       "key":  "Pressure sensor reading is frozen"
+                   },
+                   {
+                       "id":  "902198983",
+                       "key":  "Cylinder A pressure sensor fault"
+                   },
+                   {
+                       "id":  "731123442",
+                       "key":  "System failed to boot"
+                   },
+                   {
+                       "id":  "104405939",
+                       "key":  "Robot is powering up"
+                   },
+                   {
+                       "id":  "518848565",
+                       "key":  "Axis %s hardware limit switch triggered"
+                   },
+                   {
+                       "id":  "348878313",
+                       "key":  "PLC time sync failed"
+                   },
+                   {
+                       "id":  "630778805",
+                       "key":  "Configuration file %s is corrupted"
+                   },
+                   {
+                       "id":  "407073985",
+                       "key":  "Spindle is braking"
+                   },
+                   {
+                       "id":  "178323855",
+                       "key":  "Regulator pressure is out of range"
+                   },
+                   {
+                       "id":  "884934701",
+                       "key":  "Main circuit breaker is tripped"
+                   },
+                   {
+                       "id":  "796973120",
+                       "key":  "Safety system is OK"
+                   },
+                   {
+                       "id":  "00839218",
+                       "key":  "PLC CPU temperature is high"
+                   },
+                   {
+                       "id":  "557066724",
+                       "key":  "System is in setup"
+                   },
+                   {
+                       "id":  "400399278",
+                       "key":  "Flow rate is too low in line %s"
+                   },
+                   {
+                       "id":  "28063579",
+                       "key":  "Sensor fault: Short circuit"
+                   },
+                   {
+                       "id":  "408567347",
+                       "key":  "Failed to move robot to safe position"
+                   },
+                   {
+                       "id":  "525919964",
+                       "key":  "Robot gripper is open"
+                   },
+                   {
+                       "id":  "58824455",
+                       "key":  "Valve is powering down"
+                   },
+                   {
+                       "id":  "564997759",
+                       "key":  "Robot gripper is worn"
+                   },
+                   {
+                       "id":  "118851667",
+                       "key":  "Gate interlock failed"
+                   },
+                   {
+                       "id":  "437415664",
+                       "key":  "System failed to enter run mode"
+                   },
+                   {
+                       "id":  "472951340",
+                       "key":  "Failed to power on robot"
+                   },
+                   {
+                       "id":  "149896403",
+                       "key":  "System is in configuration fault"
+                   },
+                   {
+                       "id":  "478251424",
+                       "key":  "Cylinder A extended unexpectedly"
+                   },
+                   {
+                       "id":  "654845819",
+                       "key":  "Position feedback lost for axis %s"
+                   },
+                   {
+                       "id":  "540011896",
+                       "key":  "Safety gate is closed and locked"
+                   },
+                   {
+                       "id":  "707539160",
+                       "key":  "Servo motor overheating"
+                   },
+                   {
+                       "id":  "10066866",
+                       "key":  "Valve manifold communication error"
+                   },
+                   {
+                       "id":  "436001307",
+                       "key":  "Temperature ramp rate too fast"
+                   },
+                   {
+                       "id":  "165625991",
+                       "key":  "Spindle speed is zero"
+                   },
+                   {
+                       "id":  "00329133",
+                       "key":  "Axis %s brake did not release"
+                   },
+                   {
+                       "id":  "127546449",
+                       "key":  "Palletizer stack height error"
+                   },
+                   {
+                       "id":  "844021694",
+                       "key":  "HMI screen saver is active"
+                   },
+                   {
+                       "id":  "186098607",
+                       "key":  "Failed to read barcode from part %s"
+                   },
+                   {
+                       "id":  "409216181",
+                       "key":  "Failed to set input %s"
+                   },
+                   {
+                       "id":  "751844004",
+                       "key":  "Robot gripper is damaged"
+                   },
+                   {
+                       "id":  "528206401",
+                       "key":  "Robot software limit reached"
+                   },
+                   {
+                       "id":  "700847574",
+                       "key":  "Safety gate is closing"
+                   },
+                   {
+                       "id":  "191893753",
+                       "key":  "Analog input %s signal out of range"
+                   },
+                   {
+                       "id":  "480483646",
+                       "key":  "Pressure relief valve is active"
+                   },
+                   {
+                       "id":  "785582455",
+                       "key":  "Welding tip is worn"
+                   },
+                   {
+                       "id":  "608989523",
+                       "key":  "Hydraulic system is idle"
+                   },
+                   {
+                       "id":  "840940439",
+                       "key":  "Chiller temperature is too high"
+                   },
+                   {
+                       "id":  "873836778",
+                       "key":  "Conveyor belt is torn"
+                   },
+                   {
+                       "id":  "311451049",
+                       "key":  "PLC scan time is too long"
+                   },
+                   {
+                       "id":  "476336752",
+                       "key":  "Conveyor belt is misaligned"
+                   },
+                   {
+                       "id":  "596581822",
+                       "key":  "VFD undervoltage fault"
+                   },
+                   {
+                       "id":  "182345328",
+                       "key":  "Robot joint limit reached"
+                   },
+                   {
+                       "id":  "360463664",
+                       "key":  "Failed to park robot in home position"
+                   },
+                   {
+                       "id":  "95999827",
+                       "key":  "Valve is energized"
+                   },
+                   {
+                       "id":  "996015977",
+                       "key":  "Spindle direction is incorrect"
+                   },
+                   {
+                       "id":  "726897854",
+                       "key":  "Part unloading failed"
+                   },
+                   {
+                       "id":  "724256379",
+                       "key":  "Inconsistent barcode scan for part %s"
+                   },
+                   {
+                       "id":  "725753688",
+                       "key":  "Vision system could not locate part %s"
+                   },
+                   {
+                       "id":  "233061244",
+                       "key":  "Air dryer is saturated"
+                   },
+                   {
+                       "id":  "802928548",
+                       "key":  "Failed to maintain torque at %s Nm"
+                   },
+                   {
+                       "id":  "170043574",
+                       "key":  "Failed to maintain pressure at %s bar"
+                   },
+                   {
+                       "id":  "677923405",
+                       "key":  "Failed to verify barcode on part %s"
+                   },
+                   {
+                       "id":  "357999834",
+                       "key":  "Robot is in singularity, cannot move"
+                   },
+                   {
+                       "id":  "511865723",
+                       "key":  "Input %s is in hardware fault"
+                   },
+                   {
+                       "id":  "560430170",
+                       "key":  "Mode change failed: System not in safe state"
+                   },
+                   {
+                       "id":  "291757759",
+                       "key":  "Failed to grip part at station %s"
+                   },
+                   {
+                       "id":  "944357119",
+                       "key":  "Proximity sensor %s is working"
+                   },
+                   {
+                       "id":  "140194638",
+                       "key":  "Pump is at speed"
+                   },
+                   {
+                       "id":  "901417390",
+                       "key":  "Network cable unplugged for device %s"
+                   },
+                   {
+                       "id":  "875891613",
+                       "key":  "Safety gate is in hardware fault"
+                   },
+                   {
+                       "id":  "529208917",
+                       "key":  "Encoder is working"
+                   },
+                   {
+                       "id":  "125674975",
+                       "key":  "Valve is de-energized"
+                   },
+                   {
+                       "id":  "829423237",
+                       "key":  "Failed to match pattern %s in vision system"
+                   },
+                   {
+                       "id":  "653459603",
+                       "key":  "Wrong tool loaded in spindle"
+                   },
+                   {
+                       "id":  "766331159",
+                       "key":  "Motor O is in alarm"
+                   },
+                   {
+                       "id":  "947294229",
+                       "key":  "Pump is running dry"
+                   },
+                   {
+                       "id":  "61467370",
+                       "key":  "Failed to maintain speed at %s RPM"
+                   },
+                   {
+                       "id":  "413280508",
+                       "key":  "Robot is waiting for input"
+                   },
+                   {
+                       "id":  "524031458",
+                       "key":  "Motor J is OK"
+                   },
+                   {
+                       "id":  "991067110",
+                       "key":  "Axis %s is in warning state"
+                   },
+                   {
+                       "id":  "254562129",
+                       "key":  "Watchdog timer has expired"
+                   },
+                   {
+                       "id":  "922463265",
+                       "key":  "Air filter is clogged"
+                   },
+                   {
+                       "id":  "54844710",
+                       "key":  "Light curtain fault: Mutingshort circuit"
+                   },
+                   {
+                       "id":  "810077404",
+                       "key":  "System voltage is unstable"
+                   },
+                   {
+                       "id":  "57826245",
+                       "key":  "Air pressure is unstable"
+                   },
+                   {
+                       "id":  "824981369",
+                       "key":  "Hydraulic system is disabled"
+                   },
+                   {
+                       "id":  "06496515",
+                       "key":  "Robot is idle"
+                   },
+                   {
+                       "id":  "807848533",
+                       "key":  "Vision system is capturing image"
+                   },
+                   {
+                       "id":  "103013536",
+                       "key":  "Main power supply failure"
+                   },
+                   {
+                       "id":  "550219210",
+                       "key":  "Proximity sensor 4 did not detect part"
+                   },
+                   {
+                       "id":  "758816493",
+                       "key":  "Pump motor failed to start"
+                   },
+                   {
+                       "id":  "675711322",
+                       "key":  "Interlock condition not met for operation %s"
+                   },
+                   {
+                       "id":  "283109924",
+                       "key":  "Hydraulic system is OK"
+                   },
+                   {
+                       "id":  "925673804",
+                       "key":  "Safety gate not locked"
+                   },
+                   {
+                       "id":  "357632549",
+                       "key":  "Part height is incorrect at station %s"
+                   },
+                   {
+                       "id":  "548874609",
+                       "key":  "Valve is closed"
+                   },
+                   {
+                       "id":  "990092022",
+                       "key":  "Failed to find part %s in vision system"
+                   },
+                   {
+                       "id":  "718470536",
+                       "key":  "Failed to connect to MES system"
+                   },
+                   {
+                       "id":  "172701248",
+                       "key":  "Valve is shifting"
+                   },
+                   {
+                       "id":  "119981003",
+                       "key":  "Network switch communication error"
+                   },
+                   {
+                       "id":  "697446562",
+                       "key":  "Proximity sensor %s is faulty"
+                   }
+               ]
+}

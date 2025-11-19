@@ -2,472 +2,255 @@
 
 <#
 .SYNOPSIS
-    Extracts, processes, and standardizes messages from TwinCAT PLC (.TcPOU) files.
-
-.DESCRIPTION
-    This script scans a Git repository for *.TcPOU files to find structured log messages
-    (e.g., M_Info(...), M_Warning(...)). It performs the following actions:
-    1. Calculates a unique, reproducible hash-based ID for each message if one is not present.
-    2. Detects and automatically corrects mismatched message IDs in source files.
-    3. If an ID collision is detected (same ID for different text), it automatically generates a new unique ID and updates the source file.
-    4. Generates a 'messages.json' file, MERGING new messages with existing translations.
-    5. Reports any new messages found during the run.
-    6. Generates an 'EventClass.xml' file for TwinCAT Event Manager integration.
-    7. Includes robust error handling, logging, and output validation.
-    8. Formats message IDs with leading zeros in output files for better readability.
-
-.PARAMETER Languages
-    An array of language codes (e.g., "en", "de") to include in the output 'messages.json'.
-    Defaults to "en".
-
-.EXAMPLE
-    .\Extract-Messages.ps1
-    Runs the script with default settings, processing all *.TcPOU files in the Git repository.
-
-.EXAMPLE
-    .\Extract-Messages.ps1 -Languages @("en", "de", "fr")
-    Runs the script and generates entries for English, German, and French in the JSON output.
+    Tc3 Message Extractor - Final Version (Exports JSON without empty translation fields)
 #>
 
-# -----------------------------
-# Parameters
-# -----------------------------
 param(
-    [Parameter(HelpMessage="An array of language codes to include in the output JSON.")]
-    [string[]]$Languages = @("en")
+    [string[]]$Languages = @("en", "de", "es") 
 )
 
-# -----------------------------
-# Centralized Configuration
-# -----------------------------
- $script:Config = @{
-    # --- Script Metadata ---
-    Version = "2.9.5" # Updated version (Configuration cleanup)
-    GeneratedBy = "Tc3 Message Extractor (PowerShell)"
-    IdWidth = 8  # Number of digits for formatted IDs (e.g., 00000001)
-
-
-    # --- File Processing ---
-    # Regex to find messages: [optional_prefix.]M_(Type)([optional_id], 'message_text')
+$script:Config = @{
+    IdWidth = 8
     MessagePattern = '(\w+\.)?M_(Info|Warning|Error|Critical)\s*\(\s*([0-9]*)\s*,\s*''([^'']+)''\s*\)(.*)'
     FileFilter = "*.TcPOU"
-
-    # --- Placeholder Conversion for XML ---
-    # Defines the PLC placeholders to search for.
-    PlaceholderMap = @{
-        '%s' = '{0}'
-    }
-
-    # --- Output Filenames ---
+    PlaceholderMap = @{ '%s' = '{0}' }
     OutputJson = "messages.json"
     OutputXml = "EventClass.xml"
 }
 
-# -----------------------------
-# Logging Function
-# -----------------------------
- $script:Log = @()
+# --- Minimal Logger ---
 function Write-Log {
-    param(
-        [Parameter(Mandatory=$true)]
-        [string]$Message,
-        [ValidateSet("Info", "Warning", "Error")]
-        [string]$Level = "Info"
-    )
-    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    $logEntry = "[$timestamp] [$Level] $Message"
-    $script:Log += $logEntry
-
-    switch ($Level) {
-        "Info"    { Write-Host $logEntry -ForegroundColor White }
-        "Warning" { Write-Host $logEntry -ForegroundColor Yellow }
-        "Error"   { Write-Error $logEntry }
+    param([string]$Message, [string]$Level = "Info")
+    if ($Level -ne "Debug") {
+        $color = switch ($Level) { "Warning" {"Yellow"} "Error" {"Red"} Default {"Green"} }
+        Write-Host "[$Level] $Message" -ForegroundColor $color
     }
 }
 
-# -----------------------------
-# Function: Format-MessageId
-# -----------------------------
-function Format-MessageId {
-    param(
-        [Parameter(Mandatory=$true)]
-        [uint32]$Id
-    )
-    return "{0:D$($script:Config.IdWidth)}" -f $Id
-}
-
-# -----------------------------
-# Determine Git repository root dynamically
-# -----------------------------
-try {
-    $gitRoot = git rev-parse --show-toplevel 2>$null
-    if (-not $gitRoot) {
-        throw "Not a git repository (or no .git directory)."
-    }
-    $rootFolder = $gitRoot.Trim()
-    Write-Log "Successfully determined Git repository root: $rootFolder"
-} catch {
-    Write-Log "Cannot determine Git repository root. Falling back to script folder. Error: $($_.Exception.Message)" -Level Warning
-    $rootFolder = $PSScriptRoot
-}
-
- $outputFile = Join-Path -Path $rootFolder -ChildPath $script:Config.OutputJson
- $outputXmlFile = Join-Path -Path $rootFolder -ChildPath $script:Config.OutputXml
-
-# Ensure output folder exists
- $outputFolder = Split-Path $outputFile
-if (-not (Test-Path $outputFolder)) {
-    New-Item -Path $outputFolder -ItemType Directory -Force | Out-Null
-    Write-Log "Created output directory: $outputFolder"
-}
-
-Write-Log "Output JSON file: $outputFile"
-Write-Log "Output XML file: $outputXmlFile"
-
-# -----------------------------
-# Get all *.TcPOU files
-# -----------------------------
-try {
-    $files = Get-ChildItem -Path $rootFolder -Recurse -Include $script:Config.FileFilter -ErrorAction Stop
-    if ($files.Count -eq 0) {
-        Write-Log "No '$($script:Config.FileFilter)' files found in '$rootFolder'. Exiting." -Level Warning
-        return
-    }
-    Write-Log "Found $($files.Count) '$($script:Config.FileFilter)' files to process."
-} catch {
-    Write-Log "Failed to search for files. Error: $($_.Exception.Message)" -Level Error
-    return
-}
-
-# -----------------------------
-# Function: Get-UDINTHash (polynomial rolling hash)
-# -----------------------------
+function Format-MessageId { param([uint32]$Id); return "{0:D$($script:Config.IdWidth)}" -f $Id }
 
 function Get-UDINTHash {
     param([string]$s)
-
-    [int64]$p = 37
-    [int64]$m = 1000000009
-    [int64]$hash = 0
-    [int64]$pPow = 1
-
-
-
+    [int64]$p = 37; [int64]$m = 1000000009; [int64]$hash = 0; [int64]$pPow = 1
     foreach ($ch in $s.ToCharArray()) {
         [int64]$cVal = [int][char]$ch 
         $hash = ($hash + ($cVal * $pPow) % $m) % $m
         $pPow = ($pPow * $p) % $m
     }
-    # which can be safely cast to [uint32].
     return [uint32]$hash
 }
 
-# -----------------------------
-# Function: Convert-Placeholders (ROBUST VERSION)
-# -----------------------------
 function Convert-Placeholders {
     param([string]$text)
-
-    # Define the pattern of placeholders to look for from the map keys.
-    $placeholderPattern = $script:Config.PlaceholderMap.Keys -join '|'
-    
-    # Use a variable in the local function scope to track the index.
-    # We will access and modify this variable from within the script block.
-    $index = 0
-    
-    # Use a regex replace with a script block to handle each match sequentially.
-    # To ensure the script block can correctly modify the $index variable from the
-    # parent function scope, we use the Get-Variable and Set-Variable cmdlets.
-    return [regex]::Replace($text, "($placeholderPattern)", {
-        param($match)
-        
-        # Get the current value of the index variable from the parent scope.
-        $currentIndex = (Get-Variable -Name 'index' -ValueOnly -Scope 1)
-        
-        # Create the replacement string using the current index.
-        $replacement = "{$currentIndex}"
-        
-        # Increment the index variable in the parent scope for the next match.
-        Set-Variable -Name 'index' -Value ($currentIndex + 1) -Scope 1
-        
-        return $replacement
+    $pat = $script:Config.PlaceholderMap.Keys -join '|'
+    $idx = 0
+    return [regex]::Replace($text, "($pat)", { 
+        param($m); $r = "{$idx}"; Set-Variable -Name 'idx' -Value ($idx + 1) -Scope 1; $r 
     })
 }
 
-# -----------------------------
-# Initialize messages hashtable
-# -----------------------------
- $messages = @{}
+# --- Main Execution ---
 
-# --- Track processed messages to detect collisions ---
- $processedMessages = @{}
+try {
+    $gitRoot = git rev-parse --show-toplevel 2>$null
+    if (-not $gitRoot) { throw "Not a git repo" }
+    $rootFolder = $gitRoot.Trim()
+} catch { $rootFolder = $PSScriptRoot }
 
-# -----------------------------
-# Iterate files and process content
-# -----------------------------
+$outputFile = Join-Path $rootFolder $script:Config.OutputJson
+$outputXmlFile = Join-Path $rootFolder $script:Config.OutputXml
+
+# 1. Scan Files
+$files = Get-ChildItem -Path $rootFolder -Recurse -Include $script:Config.FileFilter -ErrorAction SilentlyContinue
+if (-not $files) { return }
+
+$scannedMessages = @{}
+$idTracker = @{}
+$modifiedFiles = 0
+$totalFiles = $files.Count
+$conflictLog = @()
+
 foreach ($file in $files) {
-    Write-Log "Processing file: $($file.FullName)"
     try {
         $content = Get-Content $file.FullName -Raw -Encoding UTF8
-        if ([string]::IsNullOrWhiteSpace($content)) {
-            Write-Log "File is empty or contains only whitespace. Skipping." -Level Warning
-            continue
-        }
+        if ([string]::IsNullOrWhiteSpace($content)) { continue }
+        
+        $modified = $false
+        $content = [regex]::Replace($content, $script:Config.MessagePattern, {
+            param($m)
+            $pre, $type, $idStr, $txt, $suf = $m.Groups[1].Value, $m.Groups[2].Value, $m.Groups[3].Value.Trim(), $m.Groups[4].Value.Trim(), $m.Groups[5].Value
+            if ([string]::IsNullOrWhiteSpace($txt)) { return $m.Value }
 
-        $originalContent = $content
-        $script:modified = $false
-        $pattern = $script:Config.MessagePattern
-
-        $content = [regex]::Replace($content, $pattern, {
-            param($match)
-
-            $prefix = $match.Groups[1].Value
-            $logType = $match.Groups[2].Value
-            $idText = $match.Groups[3].Value.Trim()
-            $msgText = $match.Groups[4].Value.Trim()
-            $trailing = $match.Groups[5].Value
-
-            if ([string]::IsNullOrWhiteSpace($msgText)) {
-                Write-Log "Found an empty message string in $($file.FullName). Skipping this match." -Level Warning
-                return $match.Value # Return original content to avoid breaking the file
-            }
-
-            [uint32]$id = 0
-            $hasExistingId = [uint32]::TryParse($idText, [ref]$id)
-            $expectedId = [uint32](Get-UDINTHash $msgText)
-
-            # --- ID Validation and Correction Logic ---
-            if (-not $hasExistingId -or $id -eq 0) {
-                # Case 1: No ID provided or ID is 0. Calculate and assign the correct hash.
-                $id = $expectedId
-                $script:modified = $true
-                Write-Log "No ID found for message '$msgText'. Assigning new ID: $id." -Level Warning
-            }
-            elseif ($id -ne $expectedId) {
-                # Case 2: ID exists but is incorrect (mismatch).
-                # We need to fix it, but first, check if the correct ID would cause a collision.
-                if ($processedMessages.ContainsKey($expectedId) -and $processedMessages[$expectedId].key -ne $msgText) {
-                    # The correct ID is already taken by a different message. Generate a new unique one.
-                    $newId = [uint32](Get-UDINTHash "$($msgText)_mismatch_fix")
-                    Write-Log "ID Mismatch: The ID for '$msgText' was $id, but the correct ID ($expectedId) is already in use. A new ID $newId will be generated and used." -Level Warning
-                    $id = $newId
-                } else {
-                    # The correct ID is available. Use it to fix the mismatch.
-                    Write-Log "ID Mismatch: The ID for '$msgText' was $id, but should be $expectedId. Correcting the ID." -Level Warning
-                    $id = $expectedId
+            [uint32]$id = 0; $hasId = [uint32]::TryParse($idStr, [ref]$id); $hashId = [uint32](Get-UDINTHash $txt)
+            
+            if (-not $hasId -or $id -eq 0) { $id = $hashId; $modified = $true }
+            elseif ($id -ne $hashId) {
+                $oldId = $id
+                if ($idTracker[$hashId].key -ne $txt) { 
+                    $id = [uint32](Get-UDINTHash "$($txt)_fix") 
+                    $conflictType = "Collision Resolved"
+                } 
+                else { 
+                    $id = $hashId 
+                    $conflictType = "Hash Corrected"
                 }
-                $script:modified = $true
-            }
-            else {
-                # Case 3: ID exists and is correct. No action needed.
+                $modified = $true
+                $conflictLog += "[ID $oldId -> $id] $conflictType for '$txt'"
             }
 
-            # Add the (potentially new or updated) message to the main hashtable.
-            # The key is the ID, so we only add it once.
-            if (-not $messages.ContainsKey($id)) {
-                $messages[$id] = @{
-                    id = $id
-                    key = $msgText
-                    locale = @{}
-                }
-            }
-
-            # Store English text as the definitive source for this ID.
-            $messages[$id].locale["en"] = $msgText
-
-            # Update the processed messages list for future collision checks.
-            # This is crucial. We use the FINAL ID that was decided.
-            $processedMessages[$id] = @{ id = $id; key = $msgText }
-
-            # Return the replacement string with the FINAL ID (without leading zeros)
-            return "$prefix`M_$logType($id, '$msgText')$trailing"
+            if (-not $scannedMessages.ContainsKey($id)) { $scannedMessages[$id] = @{ id = $id; key = $txt } }
+            $idTracker[$id] = @{ id = $id; key = $txt }
+            return "$pre`M_$type($id, '$txt')$suf"
         })
 
-        if ($script:modified) {
-            Set-Content -Path $file.FullName -Value $content -NoNewline -Encoding UTF8
-            Write-Log "Updated file with corrected/new message IDs: $($file.FullName)"
+        if ($modified) { 
+            Set-Content $file.FullName -Value $content -NoNewline -Encoding UTF8
+            $modifiedFiles++
         }
-
-    } catch {
-        Write-Log "An error occurred while processing file '$($file.FullName)'. Error: $($_.Exception.Message)" -Level Error
-    }
+    } catch { Write-Log "Error reading $($file.Name): $_" -Level Error }
 }
 
-# --------------------------------------------------------------------
-# --- Export flat-structure messages.json (MERGING LOGIC) ---
-# --------------------------------------------------------------------
-# This section is rewritten to preserve all existing messages and add/update new ones.
+# --- Report on initial scan ---
+Write-Log "Parsed $totalFiles files, found $($scannedMessages.Count) total messages." -Level Info
+if ($modifiedFiles -gt 0) { Write-Log "Fixed IDs in $modifiedFiles source files." -Level Warning }
+if ($conflictLog.Count -gt 0) { Write-Log "Detected and resolved $($conflictLog.Count) message ID conflicts/corrections." -Level Warning }
 
-# Start with a complete copy of all existing messages.
-# This hashtable will be our "master list" and will contain the final result.
-# The key is a combination of ID and locale, e.g., "12345_en".
- $finalMessages = @{}
+# 2. Merge JSON
+$finalMessages = [System.Collections.Specialized.OrderedDictionary]::new()
+$keyToIdMap = @{}
+$duplicateKeyLog = @()
+
 if (Test-Path $outputFile) {
     try {
-        $jsonContent = Get-Content -Path $outputFile -Raw | ConvertFrom-Json
-        foreach ($item in $jsonContent) {
-            # BUGFIX: Parse the formatted ID back to a number to create a consistent key for lookups.
-            # This prevents the script from incorrectly reporting existing messages as new on each run.
-            $numericId = [uint32]::Parse($item.id)
-            $key = "$($numericId)_$($item.locale)"
-            $finalMessages[$key] = $item
+        $rawJson = Get-Content -Path $outputFile -Raw -Encoding UTF8 | ConvertFrom-Json
+        $rawMessages = $rawJson.Events
+        if (-not $rawMessages) { $rawMessages = $rawJson.Messages }
+        if (-not $rawMessages) { $rawMessages = $rawJson }
+
+        foreach ($msg in $rawMessages) {
+            $currentId = [uint32]::Parse($msg.id)
+            $messageKey = $msg.key.Trim()
+            $correctHash = [uint32](Get-UDINTHash $messageKey)
+
+            if ($keyToIdMap.ContainsKey($messageKey)) {
+                $existingId = $keyToIdMap[$messageKey]
+                $currentIsCorrect = ($currentId -eq $correctHash)
+                $existingIsCorrect = ($existingId -eq $correctHash)
+                
+                $action = ""
+                $removedId = ""
+                
+                if ($existingIsCorrect -and -not $currentIsCorrect) {
+                    $action = "SKIP"; $removedId = $currentId
+                }
+                elseif ($currentIsCorrect -and -not $existingIsCorrect) {
+                    $finalMessages.Remove($existingId)
+                    $keyToIdMap[$messageKey] = $currentId
+                    $action = "REPLACE"; $removedId = $existingId
+                }
+                else {
+                    $action = "SKIP"; $removedId = $currentId
+                }
+
+                $duplicateKeyLog += "[Duplicate Key] Removed ID $removedId because '$messageKey' is defined by canonical ID $($keyToIdMap[$messageKey]). (Hash: $correctHash)"
+                
+                if ($action -eq "SKIP") { continue }
+            }
+            
+            $keyToIdMap[$messageKey] = $currentId
+            
+            $dict = [System.Collections.Specialized.OrderedDictionary]::new()
+            foreach ($prop in $msg.PSObject.Properties) {
+                if ($prop.Name -eq "en") { continue }
+                $dict[$prop.Name] = $prop.Value
+            }
+            $finalMessages[$currentId] = $dict
         }
-        Write-Log "Loaded $($finalMessages.Count) existing messages from '$($script:Config.OutputJson)' to be used as base for new output."
-    } catch {
-        Write-Log "Failed to load or parse existing JSON file '$($script:Config.OutputJson)'. Starting with an empty list. Error: $($_.Exception.Message)" -Level Warning
+    } catch { Write-Log "Error processing existing JSON. Starting merge fresh." -Level Error }
+}
+
+# --- Report on JSON Cleanup ---
+if ($duplicateKeyLog.Count -gt 0) { 
+    Write-Log "Cleaned up $($duplicateKeyLog.Count) event entries with duplicate 'key' text in messages.json." -Level Warning
+    Write-Log "--- JSON Cleanup Details ---" -Level Info
+    foreach ($logEntry in $duplicateKeyLog) {
+        Write-Log $logEntry -Level Info
+    }
+    Write-Log "--------------------------" -Level Info
+}
+
+# 3. Merge Scanned Data
+$newCount = 0
+$newMessagesList = @()
+
+foreach ($scan in $scannedMessages.Values | Sort-Object id) {
+    $id = $scan.id
+    if (-not $finalMessages.Contains($id)) {
+        $newCount++
+        $newMessagesList += @{Id = (Format-MessageId $id); Text = $scan.key}
+        $finalMessages[$id] = [Ordered]@{ id = (Format-MessageId $id); key = $scan.key }
+    }
+    $finalMessages[$id]["key"] = $scan.key
+    
+    # Ensure all translation keys exist, but DON'T initialize them to "" here.
+    foreach ($lang in $Languages) {
+        if ($lang -ne "en" -and -not $finalMessages[$id].Contains($lang)) { 
+            # If the entry is brand new, we won't add the language key yet, it will be added when translated.
+            # If it's existing but the language was missed, ensure it's at least present for the next step.
+            # For simplicity and to achieve the requested output, we rely on the final cleanup step.
+        }
     }
 }
 
-# --- Initialize a counter for new messages ---
- $newMessageCount = 0
- $newMessagesFound = @() # To store details of new messages for a final report
+# --- Report on new messages ---
+if ($newCount -gt 0) { 
+    $totalMessagesAfter = $finalMessages.Count
+    Write-Log "Added $newCount new messages (Total unique: $totalMessagesAfter)." -Level Warning
+    
+    Write-Log "--- New Messages Details ---" -Level Info
+    foreach ($msg in $newMessagesList) {
+        Write-Log "New: [$($msg.Id)] $($msg.Text)" -Level Info
+    }
+    Write-Log "--------------------------" -Level Info
+}
 
-# Now, iterate through the messages we just found in the .TcPOU files.
-# For each new message, we will either update an existing entry in our master list
-# or add a brand new one.
-foreach ($newMsg in $messages.Values | Sort-Object id) {
-    foreach ($lang in $Languages) {
-        # The key for lookup is correctly based on the numeric ID.
-        $key = "$($newMsg.id)_$($lang)"
-
-        # --- Check if this is a new message and log it ---
-        # We only need to report it once, so we check the 'en' locale.
-        if (-not $finalMessages.ContainsKey($key) -and $lang -eq "en") {
-            $newMessageCount++
-            $newMessagesFound += [PSCustomObject]@{
-                Id = $newMsg.id
-                Text = $newMsg.key
+# 4. Export (JSON and XML)
+try {
+    # Cleanup pass: Remove language fields if they contain empty strings.
+    $cleanedSortedList = @()
+    foreach ($messageObject in $finalMessages.Values | Sort-Object id) {
+        $cleanedObject = [System.Collections.Specialized.OrderedDictionary]::new()
+        
+        foreach ($prop in $messageObject.Keys) {
+            $value = $messageObject[$prop]
+            
+            # Keep 'id' and 'key' regardless. 
+            # Keep other properties (languages) ONLY if the value is NOT an empty string.
+            if ($prop -eq "id" -or $prop -eq "key" -or -not ([string]::IsNullOrEmpty($value))) {
+                $cleanedObject[$prop] = $value
             }
         }
-
-        # Create the object that represents this message (new or updated).
-        # Use formatted ID with leading zeros for better readability in the output file.
-        $messageObject = [PSCustomObject]@{
-            locale = $lang
-            id     = Format-MessageId -Id $newMsg.id  # Use formatted ID for the 'id' property
-            key    = "" # Default to an empty translation
-        }
-
-        if ($finalMessages.ContainsKey($key)) {
-            # This message (ID + Locale) already exists in our master list.
-            # We preserve its existing translation to avoid losing work.
-            $messageObject.key = $finalMessages[$key].key
-        } elseif ($lang -eq "en") {
-            # This is a brand new message and it's the English version.
-            # Use the text from the source code as the definitive translation.
-            $messageObject.key = $newMsg.key
-        }
-        # If it's a new message and not English, 'key' correctly remains empty,
-        # ready to be filled in by a translator.
-
-        # Update the master list with this (new or updated) message object.
-        # The key for the hashtable remains based on the numeric ID for consistency.
-        $finalMessages[$key] = $messageObject
+        $cleanedSortedList += $cleanedObject
     }
-}
-
-# --- Log a summary of new messages ---
-if ($newMessageCount -gt 0) {
-    Write-Log "Found and added $newMessageCount new message(s) this run:" -Level Warning
-    foreach ($msg in $newMessagesFound) {
-        Write-Log "  - New: ID=$($msg.Id), Text='$($msg.Text)'" -Level Warning
-    }
-} else {
-    Write-Log "No new messages found in source files."
-}
-
-# The $finalMessages hashtable now contains the complete, merged set of messages.
-# We convert it to an array, sort it for consistent output, and save it.
-try {
-    # Sort by numeric ID (not formatted string) for correct ordering
-    $sortedOutput = $finalMessages.Values | Sort-Object -Property @{Expression={[uint32]$_.id}; Ascending=$true}, Locale
-    $sortedOutput | ConvertTo-Json -Depth 5 | Set-Content -Path $outputFile -Encoding UTF8
-    Write-Log "Exported $($sortedOutput.Count) total message entries to '$outputFile'. Old messages have been preserved."
-} catch {
-    Write-Log "Failed to write JSON output file. Error: $($_.Exception.Message)" -Level Error
-}
-
-# --------------------------------------------------------------------
-# --- Export EventClass.xml (Enhanced with metadata and placeholders) ---
-# --------------------------------------------------------------------
-try {
+    
+    # JSON Export with 'Events' array
+    $outputObject = [Ordered]@{ locale = $Languages; Events = $cleanedSortedList }
+    $outputObject | ConvertTo-Json -Depth 5 | Set-Content -Path $outputFile -Encoding UTF8
+    
+    # XML Export (remains unchanged)
     $xmlDoc = [System.Xml.XmlDocument]::new()
     $xmlDec = $xmlDoc.CreateXmlDeclaration("1.0", "utf-8", $null)
-    $xmlDoc.AppendChild($xmlDec) | Out-Null
-
+    [void]$xmlDoc.AppendChild($xmlDec) 
     $rootEl = $xmlDoc.CreateElement("EventClass")
-    $rootEl.SetAttribute("Generated", (Get-Date -Format "yyyy-MM-ddTHH:mm:ss"))
-    $rootEl.SetAttribute("Generator", $script:Config.GeneratedBy)
-    $rootEl.SetAttribute("Version", $script:Config.Version)
-    $xmlDoc.AppendChild($rootEl) | Out-Null
-
-    foreach ($msg in $messages.Values | Sort-Object id) {
-        $eventEl = $xmlDoc.CreateElement("EventId")
-
-        $nameEl = $xmlDoc.CreateElement("Name")
-        # Use formatted ID with leading zeros
-        $nameEl.SetAttribute("Id", (Format-MessageId -Id $msg.id))
-        $nameEl.InnerText = "Tc3_Event_$($msg.id)"
-        $eventEl.AppendChild($nameEl) | Out-Null
-
-        $displayEl = $xmlDoc.CreateElement("DisplayName")
-        $displayEl.SetAttribute("TxtId", "")
-        # Convert placeholders like %s to {0} for TwinCAT
-        $cdata = $xmlDoc.CreateCDataSection( (Convert-Placeholders $msg.key) )
-        $displayEl.AppendChild($cdata) | Out-Null
-        $eventEl.AppendChild($displayEl) | Out-Null
-
-        $rootEl.AppendChild($eventEl) | Out-Null
+    [void]$xmlDoc.AppendChild($rootEl)
+    foreach ($msg in $scannedMessages.Values | Sort-Object id) {
+        $ev = $xmlDoc.CreateElement("EventId")
+        $nm = $xmlDoc.CreateElement("Name"); $nm.SetAttribute("Id", (Format-MessageId $msg.id)); $nm.InnerText = "Tc3_Event_$($msg.id)"
+        $dn = $xmlDoc.CreateElement("DisplayName"); $dn.SetAttribute("TxtId", "")
+        $cd = $xmlDoc.CreateCDataSection((Convert-Placeholders $msg.key))
+        [void]$dn.AppendChild($cd); [void]$ev.AppendChild($nm); [void]$ev.AppendChild($dn); [void]$rootEl.AppendChild($ev)
     }
-
     $xmlDoc.Save($outputXmlFile)
-    Write-Log "Exported XML to '$outputXmlFile'"
-
-} catch {
-    Write-Log "Failed to create or save XML file. Error: $($_.Exception.Message)" -Level Error
-}
-
-# --------------------------------------------------------------------
-# --- Final Output Validation ---
-# --------------------------------------------------------------------
-function Test-OutputFiles {
-    $issues = @()
-    # Validate JSON
-    if (Test-Path $outputFile) {
-        try {
-            $jsonContent = Get-Content -Path $outputFile -Raw | ConvertFrom-Json
-            if ($jsonContent.Count -eq 0) {
-                $issues += "JSON file '$($script:Config.OutputJson)' is valid but contains no entries."
-            }
-        } catch {
-            $issues += "JSON file '$($script:Config.OutputJson)' is not valid or cannot be parsed. Error: $_"
-        }
-    } else {
-        $issues += "JSON file '$($script:Config.OutputJson)' was not created."
-    }
-
-    # Validate XML
-    if (Test-Path $outputXmlFile) {
-        try {
-            [xml]$xmlContent = Get-Content -Path $outputXmlFile -Raw
-            if (-not $xmlContent.EventClass -or $xmlContent.EventClass.EventId.Count -eq 0) {
-                $issues += "XML file '$($script:Config.OutputXml)' is valid but contains no EventId elements."
-            }
-        } catch {
-            $issues += "XML file '$($script:Config.OutputXml)' is not valid or cannot be parsed. Error: $_"
-        }
-    } else {
-        $issues += "XML file '$($script:Config.OutputXml)' was not created."
-    }
-    return $issues
-}
-
- $validationIssues = Test-OutputFiles
-if ($validationIssues.Count -gt 0) {
-    Write-Log "Validation completed with issues:" -Level Warning
-    $validationIssues | ForEach-Object { Write-Log "- $_" -Level Warning }
-} else {
-    Write-Log "Validation completed successfully."
-}
-
-Write-Log "Script finished."
+    
+    Write-Log "Done." -Level Info
+} catch { Write-Log "Export Failed: $_" -Level Error }

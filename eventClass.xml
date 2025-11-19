@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<EventClass Generated="2025-11-19T12:59:25" Generator="Tc3 Message Extractor (PowerShell)" Version="2.9.5">
+<EventClass>
   <EventId>
     <Name Id="368079717">Tc3_Event_368079717</Name>
     <DisplayName TxtId=""><![CDATA[Purge valve is stuck open]]></DisplayName>
