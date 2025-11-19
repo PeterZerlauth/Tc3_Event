@@ -146,8 +146,8 @@ Export messages for TwinCAT Eventlogger:
 ## 🚀 Roadmap
 - [x] Structured Logging
 - [x] HMI Integration
-- [ ] File Logging
-- [ ] TwinCAT Eventlogger Integration
+- [x] File Logging
+- [ ] TwinCAT Eventlogger Integration (in development)
 
 ---
 
