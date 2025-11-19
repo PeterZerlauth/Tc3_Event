@@ -7,6 +7,7 @@ VAR_INPUT
 	sPathName:				STRING(255):= 'C:\tempx\logger.txt';
 END_VAR
 VAR
+    {attribute 'hide'} 
 	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 	fbFile:					FB_File;
 	nTimestamp: 			Tc2_Utilities.T_FILETIME64;
@@ -144,7 +145,7 @@ END_VAR
     </Method>
     <Property Name="P_LogLevel" Id="{4a4febf7-9f38-4135-9708-e563fad83f87}">
       <Declaration><![CDATA[{attribute 'OPC.UA.DA.Property' := '1'}
-{attribute 'monitoring' := 'variable'}
+{attribute 'monitoring' := 'call'}
 PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
       <Get Name="Get" Id="{fb1589e6-403d-4ff2-b9ef-b07d913d1a98}">
         <Declaration><![CDATA[VAR

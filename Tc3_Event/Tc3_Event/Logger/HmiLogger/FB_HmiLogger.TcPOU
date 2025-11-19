@@ -4,6 +4,7 @@
     <Declaration><![CDATA[// Provide logging 
 FUNCTION_BLOCK FB_HmiLogger IMPLEMENTS I_Logger
 VAR
+    {attribute 'hide'} 
 	eLogLevel:				E_LogLevel:= E_LogLevel.Verbose;
 	{attribute 'OPC.UA.DA.Property' := '1'}
 	aMessages:				ARRAY[0..99] OF FB_Message; 	// Message store
@@ -119,7 +120,7 @@ M_Reset:= TRUE;]]></ST>
     </Method>
     <Property Name="P_LogLevel" Id="{1c739022-3d6f-4ecb-abf9-2f9944cdc386}">
       <Declaration><![CDATA[{attribute 'OPC.UA.DA.Property' := '1'}
-{attribute 'monitoring' := 'variable'}
+{attribute 'monitoring' := 'call'}
 PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
       <Get Name="Get" Id="{92f636fd-e8a2-488e-a20a-d9bd7d8e0a21}">
         <Declaration><![CDATA[VAR

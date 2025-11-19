@@ -4,7 +4,9 @@
     <Declaration><![CDATA[// Provide TwinCAT 3 Eventlogger 
 FUNCTION_BLOCK FB_TcLogger IMPLEMENTS I_Logger
 VAR
+    {attribute 'hide'} 
 	eLogLevel:				E_LogLevel:= E_LogLevel.Info;
+    {attribute 'hide'} 
 	eventClass:				GUID;
 	fbSourceInfo:			FB_TcSourceInfo;
 	aAlarm:					ARRAY[0..99] OF FB_TcAlarm; 	// Message store
@@ -147,7 +149,9 @@ M_Reset:= TRUE;]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_EventClass" Id="{94d20d2c-ce12-4945-b1ea-fbee1216358f}">
-      <Declaration><![CDATA[PROPERTY PUBLIC P_EventClass : GUID]]></Declaration>
+      <Declaration><![CDATA[{attribute 'OPC.UA.DA.Property' := '1'}
+{attribute 'monitoring' := 'call'}
+PROPERTY PUBLIC P_EventClass : GUID]]></Declaration>
       <Get Name="Get" Id="{bffa8c8e-1ead-4f51-9f17-d09495426456}">
         <Declaration><![CDATA[VAR
 END_VAR
@@ -167,7 +171,7 @@ END_VAR
     </Property>
     <Property Name="P_LogLevel" Id="{f86a40a0-98fd-40f4-a32f-52729e621278}">
       <Declaration><![CDATA[{attribute 'OPC.UA.DA.Property' := '1'}
-{attribute 'monitoring' := 'variable'}
+{attribute 'monitoring' := 'call'}
 PROPERTY PUBLIC P_LogLevel : E_LogLevel]]></Declaration>
       <Get Name="Get" Id="{65712a2e-9ca7-492d-83fc-203b71a5ffed}">
         <Declaration><![CDATA[VAR
