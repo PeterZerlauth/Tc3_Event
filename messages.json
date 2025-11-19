@@ -616,8 +616,18 @@
     },
     {
         "locale":  "en",
+        "id":  200774085,
+        "key":  "Encoder is in hardware fault"
+    },
+    {
+        "locale":  "en",
         "id":  201466115,
         "key":  "HMI backup failed"
+    },
+    {
+        "locale":  "en",
+        "id":  204240054,
+        "key":  "Lag error 2"
     },
     {
         "locale":  "en",
@@ -1373,6 +1383,11 @@
         "locale":  "en",
         "id":  488694884,
         "key":  "Axis %s is not enabled"
+    },
+    {
+        "locale":  "en",
+        "id":  488936699,
+        "key":  "Lag error 3"
     },
     {
         "locale":  "en",
@@ -2628,6 +2643,11 @@
         "locale":  "en",
         "id":  955690866,
         "key":  "Vision system is processing image"
+    },
+    {
+        "locale":  "en",
+        "id":  955946185,
+        "key":  "Lag error"
     },
     {
         "locale":  "en",

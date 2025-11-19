@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<EventClass Generated="2025-11-19T09:38:30" Generator="Tc3 Message Extractor (PowerShell)" Version="2.2">
+<EventClass Generated="2025-11-19T10:13:56" Generator="Tc3 Message Extractor (PowerShell)" Version="2.8">
   <EventId>
     <Name Id="814923249">Tc3_Event_814923249</Name>
     <DisplayName TxtId=""><![CDATA[Proximity sensor 0 is always off]]></DisplayName>
@@ -129,10 +129,6 @@
     <DisplayName TxtId=""><![CDATA[System is in fault state: Reset required]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="809572133">Tc3_Event_809572133</Name>
-    <DisplayName TxtId=""><![CDATA[Encoder is homing]]></DisplayName>
-  </EventId>
-  <EventId>
     <Name Id="62764297">Tc3_Event_62764297</Name>
     <DisplayName TxtId=""><![CDATA[Cylinder B failed to extend]]></DisplayName>
   </EventId>
@@ -181,16 +177,16 @@
     <DisplayName TxtId=""><![CDATA[Hydraulic system is charging]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="725313717">Tc3_Event_725313717</Name>
-    <DisplayName TxtId=""><![CDATA[Robot gripper is open]]></DisplayName>
-  </EventId>
-  <EventId>
     <Name Id="475719235">Tc3_Event_475719235</Name>
     <DisplayName TxtId=""><![CDATA[E message]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="605437452">Tc3_Event_605437452</Name>
-    <DisplayName TxtId=""><![CDATA[Safety gate is in fault]]></DisplayName>
+    <Name Id="725313717">Tc3_Event_725313717</Name>
+    <DisplayName TxtId=""><![CDATA[Robot gripper is open]]></DisplayName>
+  </EventId>
+  <EventId>
+    <Name Id="883541551">Tc3_Event_883541551</Name>
+    <DisplayName TxtId=""><![CDATA[Safety gate not closed]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="242227519">Tc3_Event_242227519</Name>
@@ -233,6 +229,10 @@
     <DisplayName TxtId=""><![CDATA[System failed to shutdown gracefully]]></DisplayName>
   </EventId>
   <EventId>
+    <Name Id="200774085">Tc3_Event_200774085</Name>
+    <DisplayName TxtId=""><![CDATA[Encoder is in hardware fault]]></DisplayName>
+  </EventId>
+  <EventId>
     <Name Id="69032799">Tc3_Event_69032799</Name>
     <DisplayName TxtId=""><![CDATA[Homing failed for axis 0]]></DisplayName>
   </EventId>
@@ -241,12 +241,12 @@
     <DisplayName TxtId=""><![CDATA[Sensor 0 is dirty or misaligned]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="883541551">Tc3_Event_883541551</Name>
-    <DisplayName TxtId=""><![CDATA[Safety gate not closed]]></DisplayName>
+    <Name Id="605437452">Tc3_Event_605437452</Name>
+    <DisplayName TxtId=""><![CDATA[Safety gate is in fault]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="914575188">Tc3_Event_914575188</Name>
-    <DisplayName TxtId=""><![CDATA[Axis 0 is waiting]]></DisplayName>
+    <Name Id="809572133">Tc3_Event_809572133</Name>
+    <DisplayName TxtId=""><![CDATA[Encoder is homing]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="877440804">Tc3_Event_877440804</Name>
@@ -259,10 +259,6 @@
   <EventId>
     <Name Id="380578516">Tc3_Event_380578516</Name>
     <DisplayName TxtId=""><![CDATA[Hydraulic system is idle]]></DisplayName>
-  </EventId>
-  <EventId>
-    <Name Id="467874328">Tc3_Event_467874328</Name>
-    <DisplayName TxtId=""><![CDATA[Lag error 2]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="615290565">Tc3_Event_615290565</Name>
@@ -363,6 +359,10 @@
   <EventId>
     <Name Id="131126122">Tc3_Event_131126122</Name>
     <DisplayName TxtId=""><![CDATA[Emergency stop source: Pull Cord]]></DisplayName>
+  </EventId>
+  <EventId>
+    <Name Id="324626171">Tc3_Event_324626171</Name>
+    <DisplayName TxtId=""><![CDATA[Interlock condition not met for operation 0]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="477738670">Tc3_Event_477738670</Name>
@@ -497,16 +497,16 @@
     <DisplayName TxtId=""><![CDATA[Pallet is at location 0]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="324626171">Tc3_Event_324626171</Name>
-    <DisplayName TxtId=""><![CDATA[Interlock condition not met for operation 0]]></DisplayName>
+    <Name Id="143184871">Tc3_Event_143184871</Name>
+    <DisplayName TxtId=""><![CDATA[Motor L is starting]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="835699300">Tc3_Event_835699300</Name>
-    <DisplayName TxtId=""><![CDATA[Robot is in error]]></DisplayName>
+    <Name Id="914575188">Tc3_Event_914575188</Name>
+    <DisplayName TxtId=""><![CDATA[Axis 0 is waiting]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="211254420">Tc3_Event_211254420</Name>
-    <DisplayName TxtId=""><![CDATA[Hydraulic accumulator is pre-charged incorrectly]]></DisplayName>
+    <Name Id="170395681">Tc3_Event_170395681</Name>
+    <DisplayName TxtId=""><![CDATA[Valve is disabled]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="842704677">Tc3_Event_842704677</Name>
@@ -749,8 +749,8 @@
     <DisplayName TxtId=""><![CDATA[System is in test mode]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="170395681">Tc3_Event_170395681</Name>
-    <DisplayName TxtId=""><![CDATA[Valve is disabled]]></DisplayName>
+    <Name Id="835699300">Tc3_Event_835699300</Name>
+    <DisplayName TxtId=""><![CDATA[Robot is in error]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="586587708">Tc3_Event_586587708</Name>
@@ -849,10 +849,6 @@
     <DisplayName TxtId=""><![CDATA[Conveyor motor is not running]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="527358624">Tc3_Event_527358624</Name>
-    <DisplayName TxtId=""><![CDATA[Lag error]]></DisplayName>
-  </EventId>
-  <EventId>
     <Name Id="242242005">Tc3_Event_242242005</Name>
     <DisplayName TxtId=""><![CDATA[Vision system is in error]]></DisplayName>
   </EventId>
@@ -867,6 +863,10 @@
   <EventId>
     <Name Id="250193368">Tc3_Event_250193368</Name>
     <DisplayName TxtId=""><![CDATA[Main contactor did not engage]]></DisplayName>
+  </EventId>
+  <EventId>
+    <Name Id="211254420">Tc3_Event_211254420</Name>
+    <DisplayName TxtId=""><![CDATA[Hydraulic accumulator is pre-charged incorrectly]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="650351655">Tc3_Event_650351655</Name>
@@ -1001,16 +1001,20 @@
     <DisplayName TxtId=""><![CDATA[VFD communication is lost]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="171706880">Tc3_Event_171706880</Name>
-    <DisplayName TxtId=""><![CDATA[Hydraulic fluid is overheating]]></DisplayName>
-  </EventId>
-  <EventId>
-    <Name Id="143184871">Tc3_Event_143184871</Name>
-    <DisplayName TxtId=""><![CDATA[Motor L is starting]]></DisplayName>
+    <Name Id="673927967">Tc3_Event_673927967</Name>
+    <DisplayName TxtId=""><![CDATA[Conveyor tracking lost]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="71608016">Tc3_Event_71608016</Name>
     <DisplayName TxtId=""><![CDATA[Hydraulic system is OK]]></DisplayName>
+  </EventId>
+  <EventId>
+    <Name Id="715667115">Tc3_Event_715667115</Name>
+    <DisplayName TxtId=""><![CDATA[Safety gate is closed and locked]]></DisplayName>
+  </EventId>
+  <EventId>
+    <Name Id="147243850">Tc3_Event_147243850</Name>
+    <DisplayName TxtId=""><![CDATA[System failed to initialize]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="727034518">Tc3_Event_727034518</Name>
@@ -1027,10 +1031,6 @@
   <EventId>
     <Name Id="382288216">Tc3_Event_382288216</Name>
     <DisplayName TxtId=""><![CDATA[Hydraulic fluid is low]]></DisplayName>
-  </EventId>
-  <EventId>
-    <Name Id="503791964">Tc3_Event_503791964</Name>
-    <DisplayName TxtId=""><![CDATA[Encoder is in hardware fault]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="21062406">Tc3_Event_21062406</Name>
@@ -1121,10 +1121,6 @@
     <DisplayName TxtId=""><![CDATA[Part presence sensor stuck on]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="147243850">Tc3_Event_147243850</Name>
-    <DisplayName TxtId=""><![CDATA[System failed to initialize]]></DisplayName>
-  </EventId>
-  <EventId>
     <Name Id="925410774">Tc3_Event_925410774</Name>
     <DisplayName TxtId=""><![CDATA[Proximity sensor 0 is intermittent]]></DisplayName>
   </EventId>
@@ -1135,6 +1131,10 @@
   <EventId>
     <Name Id="758812146">Tc3_Event_758812146</Name>
     <DisplayName TxtId=""><![CDATA[Air system is at pressure]]></DisplayName>
+  </EventId>
+  <EventId>
+    <Name Id="516448418">Tc3_Event_516448418</Name>
+    <DisplayName TxtId=""><![CDATA[Emergency stop source: Safety Mat]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="831292259">Tc3_Event_831292259</Name>
@@ -1193,8 +1193,12 @@
     <DisplayName TxtId=""><![CDATA[Robot is waiting for input]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="248322796">Tc3_Event_248322796</Name>
-    <DisplayName TxtId=""><![CDATA[Analog output 0 is at fault]]></DisplayName>
+    <Name Id="955946185">Tc3_Event_955946185</Name>
+    <DisplayName TxtId=""><![CDATA[Lag error]]></DisplayName>
+  </EventId>
+  <EventId>
+    <Name Id="809577234">Tc3_Event_809577234</Name>
+    <DisplayName TxtId=""><![CDATA[Robot joint limit reached]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="940536226">Tc3_Event_940536226</Name>
@@ -1245,12 +1249,8 @@
     <DisplayName TxtId=""><![CDATA[Proximity sensor 0 is miswired]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="516448418">Tc3_Event_516448418</Name>
-    <DisplayName TxtId=""><![CDATA[Emergency stop source: Safety Mat]]></DisplayName>
-  </EventId>
-  <EventId>
-    <Name Id="809577234">Tc3_Event_809577234</Name>
-    <DisplayName TxtId=""><![CDATA[Robot joint limit reached]]></DisplayName>
+    <Name Id="248322796">Tc3_Event_248322796</Name>
+    <DisplayName TxtId=""><![CDATA[Analog output 0 is at fault]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="378958620">Tc3_Event_378958620</Name>
@@ -1505,20 +1505,16 @@
     <DisplayName TxtId=""><![CDATA[System is in safe state]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="673927967">Tc3_Event_673927967</Name>
-    <DisplayName TxtId=""><![CDATA[Conveyor tracking lost]]></DisplayName>
-  </EventId>
-  <EventId>
     <Name Id="901105930">Tc3_Event_901105930</Name>
     <DisplayName TxtId=""><![CDATA[Motor B is not responding]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="265293020">Tc3_Event_265293020</Name>
-    <DisplayName TxtId=""><![CDATA[Valve is closed]]></DisplayName>
+    <Name Id="150713939">Tc3_Event_150713939</Name>
+    <DisplayName TxtId=""><![CDATA[Robot is disabled]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="788683792">Tc3_Event_788683792</Name>
-    <DisplayName TxtId=""><![CDATA[Encoder is working]]></DisplayName>
+    <Name Id="265293020">Tc3_Event_265293020</Name>
+    <DisplayName TxtId=""><![CDATA[Valve is closed]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="429580340">Tc3_Event_429580340</Name>
@@ -1577,6 +1573,10 @@
     <DisplayName TxtId=""><![CDATA[Motor D overtemperature]]></DisplayName>
   </EventId>
   <EventId>
+    <Name Id="488936699">Tc3_Event_488936699</Name>
+    <DisplayName TxtId=""><![CDATA[Lag error 3]]></DisplayName>
+  </EventId>
+  <EventId>
     <Name Id="163821495">Tc3_Event_163821495</Name>
     <DisplayName TxtId=""><![CDATA[Part jam detected in chute 0]]></DisplayName>
   </EventId>
@@ -1625,6 +1625,10 @@
     <DisplayName TxtId=""><![CDATA[Robot gripper is empty]]></DisplayName>
   </EventId>
   <EventId>
+    <Name Id="788683792">Tc3_Event_788683792</Name>
+    <DisplayName TxtId=""><![CDATA[Encoder is working]]></DisplayName>
+  </EventId>
+  <EventId>
     <Name Id="262534927">Tc3_Event_262534927</Name>
     <DisplayName TxtId=""><![CDATA[PLC task watchdog has expired]]></DisplayName>
   </EventId>
@@ -1635,14 +1639,6 @@
   <EventId>
     <Name Id="383890713">Tc3_Event_383890713</Name>
     <DisplayName TxtId=""><![CDATA[PLC is running]]></DisplayName>
-  </EventId>
-  <EventId>
-    <Name Id="735885173">Tc3_Event_735885173</Name>
-    <DisplayName TxtId=""><![CDATA[Conveyor is in reset]]></DisplayName>
-  </EventId>
-  <EventId>
-    <Name Id="715667115">Tc3_Event_715667115</Name>
-    <DisplayName TxtId=""><![CDATA[Safety gate is closed and locked]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="719723582">Tc3_Event_719723582</Name>
@@ -1693,16 +1689,16 @@
     <DisplayName TxtId=""><![CDATA[Valve is de-energized]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="531330424">Tc3_Event_531330424</Name>
-    <DisplayName TxtId=""><![CDATA[Safety gate is disabled]]></DisplayName>
-  </EventId>
-  <EventId>
     <Name Id="617100714">Tc3_Event_617100714</Name>
     <DisplayName TxtId=""><![CDATA[Actuator 0 did not complete motion]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="828536003">Tc3_Event_828536003</Name>
-    <DisplayName TxtId=""><![CDATA[I message 0 1]]></DisplayName>
+    <Name Id="204240054">Tc3_Event_204240054</Name>
+    <DisplayName TxtId=""><![CDATA[Lag error 2]]></DisplayName>
+  </EventId>
+  <EventId>
+    <Name Id="959258201">Tc3_Event_959258201</Name>
+    <DisplayName TxtId=""><![CDATA[Pallet is leaving location 0]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="646466444">Tc3_Event_646466444</Name>
@@ -1753,20 +1749,28 @@
     <DisplayName TxtId=""><![CDATA[Sensor supply voltage is low]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="959258201">Tc3_Event_959258201</Name>
-    <DisplayName TxtId=""><![CDATA[Pallet is leaving location 0]]></DisplayName>
+    <Name Id="735885173">Tc3_Event_735885173</Name>
+    <DisplayName TxtId=""><![CDATA[Conveyor is in reset]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="150713939">Tc3_Event_150713939</Name>
-    <DisplayName TxtId=""><![CDATA[Robot is disabled]]></DisplayName>
+    <Name Id="828536003">Tc3_Event_828536003</Name>
+    <DisplayName TxtId=""><![CDATA[I message 0 1]]></DisplayName>
+  </EventId>
+  <EventId>
+    <Name Id="531330424">Tc3_Event_531330424</Name>
+    <DisplayName TxtId=""><![CDATA[Safety gate is disabled]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="643839111">Tc3_Event_643839111</Name>
     <DisplayName TxtId=""><![CDATA[Network connection to SCADA lost]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="945171139">Tc3_Event_945171139</Name>
-    <DisplayName TxtId=""><![CDATA[Gate interlock failed]]></DisplayName>
+    <Name Id="111775791">Tc3_Event_111775791</Name>
+    <DisplayName TxtId=""><![CDATA[Conveyor is stopped]]></DisplayName>
+  </EventId>
+  <EventId>
+    <Name Id="374393878">Tc3_Event_374393878</Name>
+    <DisplayName TxtId=""><![CDATA[E-Stop source: Panel Button]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="699628057">Tc3_Event_699628057</Name>
@@ -1817,12 +1821,12 @@
     <DisplayName TxtId=""><![CDATA[Pressure sensor 0 shows maximum value]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="92074348">Tc3_Event_92074348</Name>
-    <DisplayName TxtId=""><![CDATA[Air filter is dirty]]></DisplayName>
+    <Name Id="707206051">Tc3_Event_707206051</Name>
+    <DisplayName TxtId=""><![CDATA[Air leak detected in circuit 0]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="955690866">Tc3_Event_955690866</Name>
-    <DisplayName TxtId=""><![CDATA[Vision system is processing image]]></DisplayName>
+    <Name Id="92074348">Tc3_Event_92074348</Name>
+    <DisplayName TxtId=""><![CDATA[Air filter is dirty]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="939635885">Tc3_Event_939635885</Name>
@@ -1877,20 +1881,24 @@
     <DisplayName TxtId=""><![CDATA[System is in run mode]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="374393878">Tc3_Event_374393878</Name>
-    <DisplayName TxtId=""><![CDATA[E-Stop source: Panel Button]]></DisplayName>
+    <Name Id="955690866">Tc3_Event_955690866</Name>
+    <DisplayName TxtId=""><![CDATA[Vision system is processing image]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="707206051">Tc3_Event_707206051</Name>
-    <DisplayName TxtId=""><![CDATA[Air leak detected in circuit 0]]></DisplayName>
+    <Name Id="171706880">Tc3_Event_171706880</Name>
+    <DisplayName TxtId=""><![CDATA[Hydraulic fluid is overheating]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="908161022">Tc3_Event_908161022</Name>
     <DisplayName TxtId=""><![CDATA[Air pressure is unstable]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="50407106">Tc3_Event_50407106</Name>
-    <DisplayName TxtId=""><![CDATA[VFD motor stall]]></DisplayName>
+    <Name Id="108094323">Tc3_Event_108094323</Name>
+    <DisplayName TxtId=""><![CDATA[System is ready]]></DisplayName>
+  </EventId>
+  <EventId>
+    <Name Id="945171139">Tc3_Event_945171139</Name>
+    <DisplayName TxtId=""><![CDATA[Gate interlock failed]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="626937195">Tc3_Event_626937195</Name>
@@ -1941,16 +1949,16 @@
     <DisplayName TxtId=""><![CDATA[Invalid parameter set for drive 0]]></DisplayName>
   </EventId>
   <EventId>
+    <Name Id="50407106">Tc3_Event_50407106</Name>
+    <DisplayName TxtId=""><![CDATA[VFD motor stall]]></DisplayName>
+  </EventId>
+  <EventId>
     <Name Id="688320457">Tc3_Event_688320457</Name>
     <DisplayName TxtId=""><![CDATA[System is in reset]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="111775791">Tc3_Event_111775791</Name>
-    <DisplayName TxtId=""><![CDATA[Conveyor is stopped]]></DisplayName>
-  </EventId>
-  <EventId>
-    <Name Id="902808007">Tc3_Event_902808007</Name>
-    <DisplayName TxtId=""><![CDATA[Encoder is synchronized]]></DisplayName>
+    <Name Id="136578612">Tc3_Event_136578612</Name>
+    <DisplayName TxtId=""><![CDATA[Pallet is skewed at location 0]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="512741635">Tc3_Event_512741635</Name>
@@ -2001,12 +2009,8 @@
     <DisplayName TxtId=""><![CDATA[System pressure not building]]></DisplayName>
   </EventId>
   <EventId>
-    <Name Id="108094323">Tc3_Event_108094323</Name>
-    <DisplayName TxtId=""><![CDATA[System is ready]]></DisplayName>
-  </EventId>
-  <EventId>
-    <Name Id="136578612">Tc3_Event_136578612</Name>
-    <DisplayName TxtId=""><![CDATA[Pallet is skewed at location 0]]></DisplayName>
+    <Name Id="902808007">Tc3_Event_902808007</Name>
+    <DisplayName TxtId=""><![CDATA[Encoder is synchronized]]></DisplayName>
   </EventId>
   <EventId>
     <Name Id="177442738">Tc3_Event_177442738</Name>

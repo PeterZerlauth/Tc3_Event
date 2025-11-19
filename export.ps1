@@ -9,10 +9,11 @@
     (e.g., M_Info(...), M_Warning(...)). It performs the following actions:
     1. Calculates a unique, reproducible hash-based ID for each message if one is not present.
     2. Updates source files with the calculated ID.
-    3. Generates a 'messages.json' file, MERGING new messages with existing translations.
-    4. Reports any new messages found during the run.
-    5. Generates an 'EventClass.xml' file for TwinCAT Event Manager integration.
-    6. Includes robust error handling, logging, and output validation.
+    3. **NEW:** If an ID collision is detected (same ID for different text), it automatically generates a new unique ID and updates the source file.
+    4. Generates a 'messages.json' file, MERGING new messages with existing translations.
+    5. Reports any new messages found during the run.
+    6. Generates an 'EventClass.xml' file for TwinCAT Event Manager integration.
+    7. Includes robust error handling, logging, and output validation.
 
 .PARAMETER Languages
     An array of language codes (e.g., "en", "de") to include in the output 'messages.json'.
@@ -40,7 +41,7 @@ param(
 # -----------------------------
  $script:Config = @{
     # --- Script Metadata ---
-    Version = "2.2" # Updated version
+    Version = "2.8" # Updated version
     GeneratedBy = "Tc3 Message Extractor (PowerShell)"
 
     # --- Hash Calculation ---
@@ -83,8 +84,8 @@ function Write-Log {
     $script:Log += $logEntry
 
     switch ($Level) {
-        "Info"    { Write-Host $logEntry -ForegroundColor Green }
-        "Warning" { Write-Host $logEntry -ForegroundColor Red }
+        "Info"    { Write-Host $logEntry -ForegroundColor White }
+        "Warning" { Write-Host $logEntry -ForegroundColor Red } # MODIFIED LINE
         "Error"   { Write-Error $logEntry }
     }
 }
@@ -133,7 +134,7 @@ try {
 }
 
 # -----------------------------
-# Function: Get-UDINTHash (Improved)
+# Function: Get-UDINTHash
 # -----------------------------
 function Get-UDINTHash {
     param([string]$s)
@@ -156,7 +157,7 @@ function Get-UDINTHash {
 }
 
 # -----------------------------
-# Function: Convert-Placeholders (Improved)
+# Function: Convert-Placeholders
 # -----------------------------
 function Convert-Placeholders {
     param([string]$text)
@@ -180,6 +181,9 @@ function Convert-Placeholders {
 # Initialize messages hashtable
 # -----------------------------
  $messages = @{}
+
+# --- NEW: Track processed messages to detect collisions ---
+ $processedMessages = @{}
 
 # -----------------------------
 # Iterate files and process content
@@ -213,13 +217,28 @@ foreach ($file in $files) {
 
             [uint32]$id = 0
             $hasExistingId = [uint32]::TryParse($idText, [ref]$id)
-
             $computedId = [uint32](Get-UDINTHash $msgText)
-            if (-not $hasExistingId -or $id -eq 0) {
+
+            # --- NEW: ID Collision Resolution Logic ---
+            # Check if an ID was provided and if it collides with a different text.
+            if ($hasExistingId -and $processedMessages.ContainsKey($id) -and $processedMessages[$id].key -ne $msgText) {
+                # This is a collision. The provided ID is used by a different message.
+                # We need to resolve this by generating a new ID.
+                $newId = [uint32](Get-UDINTHash "$($msgText)_collision_fix") # Salt the text to ensure a new hash
+                Write-Log "ID Collision: The provided ID $id for message '$msgText' is already used by a different message. A new ID $newId will be generated and used." -Level Warning
+                $id = $newId
+                $script:modified = $true
+            } elseif (-not $hasExistingId -or $id -eq 0) {
+                # No ID was provided or it was 0, so we use the computed one.
                 $id = $computedId
                 $script:modified = $true
+            } else {
+                # An existing, valid ID was provided and it doesn't collide. Use it as is.
+                # No modification needed for this message.
             }
 
+            # Add the (potentially new or updated) message to the main hashtable.
+            # The key is the ID, so we only add it once.
             if (-not $messages.ContainsKey($id)) {
                 $messages[$id] = @{
                     id = $id
@@ -228,9 +247,14 @@ foreach ($file in $files) {
                 }
             }
 
-            # Store English text as the definitive source
+            # Store English text as the definitive source for this ID.
             $messages[$id].locale["en"] = $msgText
 
+            # Update the processed messages list for future collision checks.
+            # This is crucial. We use the FINAL ID that was decided.
+            $processedMessages[$id] = @{ id = $id; key = $msgText }
+
+            # Return the replacement string with the FINAL ID.
             return "$prefix`M_$logType($id, '$msgText')$trailing"
         })
 
