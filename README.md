@@ -1,5 +1,5 @@
 # Tc3_Event: Event Logging Framework for TwinCAT 3  
-[![License](https://img.shields.io/github/license/PeterZerlauth/Tc3_Event)](LICENSE)
+[![License](https://img.shields.io/github/license/PeterZerlauth/Tc3_Event)](LICENSE.md)
 ![TwinCAT](https://img.shields.io/badge/TwinCAT-3-blue)
 ![Platform](https://img.shields.io/badge/Platform-PLC%20Automation-green)
 
@@ -156,4 +156,4 @@ Pull requests are welcome! For major changes, please open an issue first.
 ---
 
 ## 📜 License
-This project is licensed under the MIT License.
+This project is licensed under the **GPL**—see the [LICENSE.md](LICENSE.md) file for details.
