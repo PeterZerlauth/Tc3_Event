@@ -105,8 +105,7 @@ Export messages for HMI during **Activate Configuration** using PowerShell:
 
 ```json
 {
-    "locale":  ["en","de","es"
-               ],
+    "locale":  ["en", "de", "es"],
     "Events":  [
                    {
                        "id":  "951020145",
