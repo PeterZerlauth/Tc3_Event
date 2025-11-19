@@ -1,6 +1,11 @@
 ﻿[
     {
         "locale":  "en",
+        "id":  1,
+        "key":  "Motor R is in hardware fault"
+    },
+    {
+        "locale":  "en",
         "id":  2222,
         "key":  "Input %s is in hardware fault"
     },

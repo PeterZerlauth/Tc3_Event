@@ -510,7 +510,7 @@ fbEvent.M_Error(272349207, 'Axis %s is in configuration fault');
 fbEvent.M_Error(731425804, 'Pump is in configuration fault');
 fbEvent.M_Error(626937195, 'Robot is in configuration fault');
 fbEvent.M_Error(4807251, 'System is in hardware fault');
-fbEvent.M_Error(753322197, 'Motor R is in hardware fault');
+fbEvent.M_Error(1, 'Motor R is in hardware fault');
 fbEvent.M_Error(675446452, 'Air system is in hardware fault');
 fbEvent.M_Error(308713644, 'Valve is in hardware fault');
 fbEvent.M_Error(845540868, 'Safety gate is in hardware fault');

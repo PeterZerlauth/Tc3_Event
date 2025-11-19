@@ -220,7 +220,7 @@ foreach ($file in $files) {
             if ($hasExistingId -and $processedMessages.ContainsKey($id) -and $processedMessages[$id].key -ne $msgText) {
                 # This is a collision. The provided ID is used by a different message.
                 # We need to resolve this by generating a new ID.
-                $newId = [uint32](Get-UDINTHash "$($msgText)_collision_fix") # Salt the text to ensure a new hash
+                $newId = [uint32](Get-UDINTHash "$($msgText)_collision_fix")
                 Write-Log "ID Collision: The provided ID $id for message '$msgText' is already used by a different message. A new ID $newId will be generated and used." -Level Warning
                 $id = $newId
                 $script:modified = $true
