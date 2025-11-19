@@ -1,96 +1,86 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./logoDark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./logo.svg">
-  <img src="./logo.svg" width="420" alt="Tc3_Event Logo">
-</picture>
+# Tc3_Event: Event Logging Framework for TwinCAT 3  
+[![License](https://img.shields.io/github/license/PeterZerlauth/Tc3_Event)](LICENSE)
+![TwinCAT](https://img.shields.io/badge/TwinCAT-3-blue)
+![Platform](https://img.shields.io/badge/Platform-PLC%20Automation-green)
 
-# Tc3_Event: The Essential Event Logging Framework for TwinCAT 3
+**Tc3_Event** is a **lightweight, high-performance event logging framework** designed for **TwinCAT 3 automation projects**.  
+It provides structured, standardized logging for diagnostics, simplifies development, and integrates seamlessly with HMIs and SCADA systems.
 
-**Tc3_Event** is a **lightweight, high-performance event logging framework** engineered specifically for **TwinCAT 3 automation projects**. 
-It provides a robust, structured approach to system diagnostics that dramatically simplifies development and improves operational clarity.
+---
 
-By using reusable **Function Blocks** in Structured Text (ST), Tc3_Event provides clear visibility into system events, ensures **seamless HMI display integration**, 
-and lays the foundation for reliable file logging.
-**Accelerate your development cycle by 30–50%** by eliminating error-prone manual steps and implementing standardized, traceable logging from day one.
+## 📚 Table of Contents
+- [Overview](#overview)
+- [Key Features](#key-features--developer-benefits)
+- [Getting Started](#getting-started)
+- [Advanced Usage](#advanced-usage)
+- [Exports](#json-export--xml-export)
+- [Screenshots](#screenshots)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## 🔍 Overview
+Tc3_Event accelerates your development cycle by **30–50%** by eliminating manual steps and implementing **standardized, traceable logging** from day one.  
+Built with **Structured Text (ST)** and reusable **Function Blocks**, it ensures clarity, consistency, and operational transparency.
 
 ---
 
 ## 🛠️ Key Features & Developer Benefits
-
-| Feature | Description | Developer Benefit |
+| Feature | Description | Benefit |
 | :--- | :--- | :--- |
-| **Structured Logging** | Utilizes simple, reusable Function Blocks (FBs) in Structured Text (ST). | **Easy Adoption:** Standardized, clear logging that's easy to implement and maintain across projects. |
-| **Automated ID Generation** | Includes a **PowerShell script** to automatically generate unique, sequential message IDs. | **Reduced Errors & Speed:** Removes manual ID tracking, ensuring consistency and accelerating development. |
-| **Dynamic Parameter Support** | Easily embed variables (**integers, floats, strings**) directly into your log messages. | **Context-Rich Diagnostics:** Capture critical runtime data, making debugging significantly faster and more precise. |
-| **HMI/SCADA Ready** | Built-in functionality for real-time display of structured logs on **Human-Machine Interfaces (HMIs)**. | **Operational Clarity:** Provides operators with immediate, actionable visibility into system status and faults. |
-| **Multi-Level Traceability** | Supports standard log levels: `Verbose`, `Info`, `Warning`, `Error`, and `Critical`. | **Efficient Debugging:** Filter and prioritize logs quickly for efficient event tracing and issue identification. |
-| **Integrated Functional Logger** | A dedicated component for testing and debugging your PLC code. | **Rapid Testing:** Helps developers validate logic flow and component behavior during commissioning. |
+| ✅ **Structured Logging** | Reusable Function Blocks in ST | Easy adoption & maintainability |
+| 🔢 **Automated ID Generation** | PowerShell script for unique IDs | Faster development, fewer errors |
+| 📊 **Dynamic Parameters** | Embed variables in logs | Context-rich diagnostics |
+| 🖥️ **HMI Ready** | Real-time display on HMIs | Operational clarity |
+| 🔍 **Multi-Level Traceability** | Log levels: `Verbose`, `Info`, `Warning`, `Error`, `Critical` | Efficient debugging |
+| 🧪 **Functional Logger** | Dedicated component for testing | Rapid commissioning |
 
 ---
 
-## Documentation
+## ⚡ Getting Started
 
-You can find all project documentation, examples, and usage instructions in the [Documentation folder](https://github.com/PeterZerlauth/Tc3_Event/tree/master/doc) of this repository.
+### 1. Clone the Repository
+```bash
+git clone https://github.com/PeterZerlauth/Tc3_Event.git
+```
 
----
+### 2. Import into TwinCAT 3
+Add the library to your TwinCAT 3 project.
 
-## 🚀 Future Roadmap (In Development)
-
-* **Reliable File Logging:** Capturing system events to persistent log files for long-term analysis.
-* **TwinCAT 3 Eventlogger Integration:** Native support for the standard TwinCAT 3 Eventlogger system.
-## Getting Started
-
-### Setup Loggers
+### 3. Initialize Loggers
 ```pascal
 PROGRAM MAIN
 VAR
-	fbLogger:			Tc3_Event.FB_LoggerManager;
-	fbHmiLogger:		Tc3_Event.FB_HmiLogger;
-	fbFileLogger:		Tc3_Event.FB_FileLogger;
-	fbTcLogger:			Tc3_Event.FB_TcLogger;
+    fbLogger:       Tc3_Event.FB_LoggerManager;
+    fbHmiLogger:    Tc3_Event.FB_HmiLogger;
+    fbFileLogger:   Tc3_Event.FB_FileLogger;
+    fbTcLogger:     Tc3_Event.FB_TcLogger;
 END_VAR
 
 // Initialise loggers
 fbLogger.M_Add(fbHmiLogger);
 fbLogger.M_Add(fbFileLogger);
 fbLogger.M_Add(fbTcLogger);
-
 ```
 
-### Setup Event
+---
+
+## 🔍 Advanced Usage
 ```pascal
 PROGRAM MAIN
 VAR
-	fbEvent:			FB_Event;
+    fbEvent: FB_Event;
 END_VAR
 
 fbEvent();
+fbEvent.P_Logger := fbLogger;
 
-// set event target
-fbEvent.P_Logger:= fbLogger;
+// Verbose message
+fbEvent.M_Verbose('Verbose');
 
-// send a simple test message
-IF bVerbose THEN
-	fbEvent.M_Verbose('Verbose');
-END_IF
-```
-
-## Advanced Usage
-
-```pascal
-PROGRAM MAIN
-VAR
-	fbEvent:			FB_Event;
-END_VAR
-
-fbEvent();
-
-// Different log levels
-fbEvent.M_AddINT(1);
-fbEvent.M_AddSTRING('cycles');
-fbEvent.M_Verbose('Process completed: %s %s');
-
-// Simple info message
+// Info message with ID
 fbEvent.M_Info(2276475569, 'System initialized');
 
 // Warning with context
@@ -102,38 +92,38 @@ fbEvent.M_Error(2621541999, 'Motor communication failed');
 
 // Critical error
 fbEvent.M_Critical(2626343866, 'Emergency stop activated');
-
 ```
-## JSON Export
 
-Messages for the HMI can be quickly and easily exported during “Activate Configuration” using a simple PowerShell script
+---
+
+## 📤 JSON Export
+Export messages for HMI during **Activate Configuration** using PowerShell:
 
 ```json
 [
     {
-        "id":  828536003,
-        "key":  "I message %s %s",
-        "locale":  {
-                       "de":  "",
-                       "en":  "I message %s %s"
-                   }
+        "id": 828536003,
+        "key": "I message %s %s",
+        "locale": {
+            "de": "",
+            "en": "I message %s %s"
+        }
     },
     {
-        "id":  662973879,
-        "key":  "Critical message",
-        "locale":  {
-                       "de":  "",
-                       "en":  "Critical message"
-                   }
-    },
-    {
-		"..."
-    },
+        "id": 662973879,
+        "key": "Critical message",
+        "locale": {
+            "de": "",
+            "en": "Critical message"
+        }
+    }
 ]
 ```
-## XML Export
 
-Messages for the Twincat 3 Eventlogger can be quickly and easily exported during “Activate Configuration” using a simple PowerShell script
+---
+
+## 📤 XML Export
+Export messages for TwinCAT Eventlogger:
 
 ```xml
 <EventClass>
@@ -141,12 +131,30 @@ Messages for the Twincat 3 Eventlogger can be quickly and easily exported during
     <Name Id="828536003">Tc3_Event_828536003</Name>
     <DisplayName TxtId=""><![CDATA[I message {0} {1}]]></DisplayName>
   </EventId>
-	...
 </EventClass>
 ```
 
-## Screenshots
+---
 
-<img width="303" height="212" alt="image" src="https://github.com/user-attachments/assets/76e4d475-e2f1-42ff-9ccd-e3bdb786d7bc" />
-<img width="768" height="315" alt="image" src="https://github.com/user-attachments/assets/b2c84339-6437-416f-bf1d-d2c682075724" />
-<img width="1271" height="195" alt="image" src="https://github.com/user-attachments/assets/dbc4e062-77dd-4cb7-ab16-48f9eb94d3ca" />
+## 📸 Screenshots
+| HMI Integration | Logger Manager | Event Trace |
+| :---: | :---: | :---: |
+| ![HMI](https://github.com/user-attachments/assets/76e4d475-e2f1-42ff-9ccd-e3bdb786d7bc) | ![Logger](https://github.com/user-attachments/assets/b2c84339-6437-416f-bf1d-d2c682075724) | ![Trace](https://github.com/user-attachments/assets/dbc4e062-77dd-4cb7-ab16-48f9eb94d3ca) |
+
+---
+
+## 🚀 Roadmap
+- [x] Structured Logging
+- [x] HMI Integration
+- [x] File Logging
+- [ ] TwinCAT Eventlogger Integration (in development)
+
+---
+
+## 🤝 Contributing
+Pull requests are welcome! For major changes, please open an issue first.
+
+---
+
+## 📜 License
+This project is licensed under the MIT License.
