@@ -44,6 +44,7 @@ END_IF
 
 IF bCritical THEN
 	fbEvent.M_Critical(475719233, 'C message'); ///839384782
+	fbEvent.M_Error(849363082, 'Input %s is simulated');
 END_IF
 ]]></ST>
     </Implementation>

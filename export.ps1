@@ -1,4 +1,4 @@
-#Requires -Version 5.1
+# Requires -Version 5.1
 
 <#
 .SYNOPSIS
@@ -9,7 +9,7 @@ param(
     [string[]]$Languages = @("en", "de", "es") 
 )
 
-$script:Config = @{
+ $script:Config = @{
     IdWidth = 8
     MessagePattern = '(\w+\.)?M_(Info|Warning|Error|Critical)\s*\(\s*([0-9]*)\s*,\s*''([^'']+)''\s*\)(.*)'
     FileFilter = "*.TcPOU"
@@ -57,23 +57,32 @@ try {
     $rootFolder = $gitRoot.Trim()
 } catch { $rootFolder = $PSScriptRoot }
 
-$outputFile = Join-Path $rootFolder $script:Config.OutputJson
-$outputXmlFile = Join-Path $rootFolder $script:Config.OutputXml
+ $outputFile = Join-Path $rootFolder $script:Config.OutputJson
+ $outputXmlFile = Join-Path $rootFolder $script:Config.OutputXml
 
 # 1. Scan Files
-$files = Get-ChildItem -Path $rootFolder -Recurse -Include $script:Config.FileFilter -ErrorAction SilentlyContinue
+ $files = Get-ChildItem -Path $rootFolder -Recurse -Include $script:Config.FileFilter -ErrorAction SilentlyContinue
 if (-not $files) { return }
 
-$scannedMessages = @{}
-$idTracker = @{}
-$modifiedFiles = 0
-$totalFiles = $files.Count
-$conflictLog = @()
+ $scannedMessages = @{}
+ $idTracker = @{}
+ $modifiedFiles = 0
+ $totalFiles = $files.Count
+ $conflictLog = @()
 
 foreach ($file in $files) {
     try {
         $content = Get-Content $file.FullName -Raw -Encoding UTF8
         if ([string]::IsNullOrWhiteSpace($content)) { continue }
+        
+        # Extract POU name from XML
+        $pouName = ""
+        if ($content -match '<POU Name="([^"]+)"') {
+            $pouName = $matches[1]
+        } else {
+            # Fallback to filename without extension if POU name not found
+            $pouName = [System.IO.Path]::GetFileNameWithoutExtension($file.Name)
+        }
         
         $modified = $false
         $content = [regex]::Replace($content, $script:Config.MessagePattern, {
@@ -98,7 +107,19 @@ foreach ($file in $files) {
                 $conflictLog += "[ID $oldId -> $id] $conflictType for '$txt'"
             }
 
-            if (-not $scannedMessages.ContainsKey($id)) { $scannedMessages[$id] = @{ id = $id; key = $txt } }
+            if (-not $scannedMessages.ContainsKey($id)) { 
+                $scannedMessages[$id] = @{ 
+                    id = $id; 
+                    key = $txt; 
+                    source = @($pouName) 
+                } 
+            } else {
+                # Add POU name to source array if not already present
+                if ($pouName -notin $scannedMessages[$id].source) {
+                    $scannedMessages[$id].source += $pouName
+                }
+            }
+            
             $idTracker[$id] = @{ id = $id; key = $txt }
             return "$pre`M_$type($id, '$txt')$suf"
         })
@@ -116,9 +137,9 @@ if ($modifiedFiles -gt 0) { Write-Log "Fixed IDs in $modifiedFiles source files.
 if ($conflictLog.Count -gt 0) { Write-Log "Detected and resolved $($conflictLog.Count) message ID conflicts/corrections." -Level Warning }
 
 # 2. Merge JSON
-$finalMessages = [System.Collections.Specialized.OrderedDictionary]::new()
-$keyToIdMap = @{}
-$duplicateKeyLog = @()
+ $finalMessages = [System.Collections.Specialized.OrderedDictionary]::new()
+ $keyToIdMap = @{}
+ $duplicateKeyLog = @()
 
 if (Test-Path $outputFile) {
     try {
@@ -180,17 +201,40 @@ if ($duplicateKeyLog.Count -gt 0) {
 }
 
 # 3. Merge Scanned Data
-$newCount = 0
-$newMessagesList = @()
+ $newCount = 0
+ $newMessagesList = @()
 
 foreach ($scan in $scannedMessages.Values | Sort-Object id) {
     $id = $scan.id
     if (-not $finalMessages.Contains($id)) {
         $newCount++
         $newMessagesList += @{Id = (Format-MessageId $id); Text = $scan.key}
-        $finalMessages[$id] = [Ordered]@{ id = (Format-MessageId $id); key = $scan.key }
+        $finalMessages[$id] = [Ordered]@{ 
+            id = (Format-MessageId $id); 
+            key = $scan.key;
+            source = $scan.source
+        }
     }
     $finalMessages[$id]["key"] = $scan.key
+    
+    # Merge source arrays
+    if ($finalMessages[$id].Contains("source")) {
+        $existingSources = $finalMessages[$id]["source"]
+        if ($existingSources -isnot [array]) {
+            $existingSources = @($existingSources)
+        }
+        
+        $newSources = $scan.source
+        if ($newSources -isnot [array]) {
+            $newSources = @($newSources)
+        }
+        
+        # Combine and deduplicate sources
+        $allSources = $existingSources + $newSources | Sort-Object -Unique
+        $finalMessages[$id]["source"] = $allSources
+    } else {
+        $finalMessages[$id]["source"] = $scan.source
+    }
     
     # Ensure all translation keys exist, but DON'T initialize them to "" here.
     foreach ($lang in $Languages) {
@@ -224,9 +268,9 @@ try {
         foreach ($prop in $messageObject.Keys) {
             $value = $messageObject[$prop]
             
-            # Keep 'id' and 'key' regardless. 
+            # Keep 'id', 'key', and 'source' regardless. 
             # Keep other properties (languages) ONLY if the value is NOT an empty string.
-            if ($prop -eq "id" -or $prop -eq "key" -or -not ([string]::IsNullOrEmpty($value))) {
+            if ($prop -eq "id" -or $prop -eq "key" -or $prop -eq "source" -or -not ([string]::IsNullOrEmpty($value))) {
                 $cleanedObject[$prop] = $value
             }
         }
