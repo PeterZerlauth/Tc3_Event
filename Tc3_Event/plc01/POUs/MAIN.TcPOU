@@ -6,7 +6,6 @@ VAR
 	fbLogger:			Tc3_Event.FB_LoggerManager;
 	fbHmiLogger:		Tc3_Event.FB_HmiLogger;
 	fbFileLogger:		Tc3_Event.FB_FileLogger;
-	fbTcLogger:			Tc3_Event.FB_TcLogger;
 	fbTest:				FB_TestSlow;
 	fbTest1000:			FB_Test1000;
   	exception:			__SYSTEM.ExceptionCode;	
@@ -17,13 +16,11 @@ END_VAR]]></Declaration>
 	IF exception = __SYSTEM.ExceptionCode.RTSEXCPT_NOEXCEPTION THEN
 		fbLogger.M_Add(fbHmiLogger);
 		fbLogger.M_Add(fbFileLogger);
-		fbLogger.M_Add(fbTcLogger);
 			
 		fbHmiLogger();
 		fbFileLogger.sPathName:= 'C:\temp\log.txt';
 		fbFileLogger();
-		fbTcLogger.P_EventClass:= TC_EVENT_CLASSES.Tc3_Event;
-		fbTcLogger();
+
 		
 		
 		IF bReset THEN
